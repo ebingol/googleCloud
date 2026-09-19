@@ -1,6 +1,6 @@
 # Beş soruluk quizler
 
-**77 quiz · 385 soru · 3 bölüm · 16 PDF modülü + paylaşılan quiz**
+**102 quiz · 510 soru · 4 bölüm · 21 PDF modülü + paylaşılan quiz**
 
 Sorular İngilizce, açıklamalar Türkçe. Her set beş sorudur. `Select two/three` sorularında istenen sayıda seçenek işaretle; tam doğru seçenek kümesi 1 puan, diğer cevaplar 0 puandır. Toplam 5 puan üzerinden değerlendirilir.
 
@@ -103,3 +103,35 @@ Sorular yüklenen PDF sürümlerine göre hazırlanmış özgün çalışma soru
 | OQ-02 | Choreography versus orchestration | [Çöz](orchestration/OQ-02.md) | [Kontrol et](answers/orchestration/OQ-02.md) |
 | OQ-03 | Workflows: execution state and long-running coordination | [Çöz](orchestration/OQ-03.md) | [Kontrol et](answers/orchestration/OQ-03.md) |
 | OQ-04 | Eventarc Standard: CloudEvents, Audit Logs and Pub/Sub | [Çöz](orchestration/OQ-04.md) | [Kontrol et](answers/orchestration/OQ-04.md) |
+
+## Cloud Run Functions
+
+5 modül · 25 quiz · 125 soru. [Bölüm ve kaynak notları](cloudRunFunctions/README.md).
+
+| Quiz | Konu | Sorular | Cevaplar |
+|---|---|---|---|
+| C01-01 | Platform, benefits and use cases | [Çöz](cloudRunFunctions/C01-01.md) | [Kontrol et](answers/cloudRunFunctions/C01-01.md) |
+| C01-02 | HTTP, CloudEvent and background handlers | [Çöz](cloudRunFunctions/C01-02.md) | [Kontrol et](answers/cloudRunFunctions/C01-02.md) |
+| C01-03 | Capacity, revisions and portability | [Çöz](cloudRunFunctions/C01-03.md) | [Kontrol et](answers/cloudRunFunctions/C01-03.md) |
+| C01-04 | Runtime source layout, entry points and regions | [Çöz](cloudRunFunctions/C01-04.md) | [Kontrol et](answers/cloudRunFunctions/C01-04.md) |
+| C01-05 | Deployment permissions, flags and sources | [Çöz](cloudRunFunctions/C01-05.md) | [Kontrol et](answers/cloudRunFunctions/C01-05.md) |
+| C01-06 | Build pipeline and artifact storage | [Çöz](cloudRunFunctions/C01-06.md) | [Kontrol et](answers/cloudRunFunctions/C01-06.md) |
+| C02-01 | Trigger categories, HTTP and Pub/Sub | [Çöz](cloudRunFunctions/C02-01.md) | [Kontrol et](answers/cloudRunFunctions/C02-01.md) |
+| C02-02 | Cloud Storage, Firestore and Firebase events | [Çöz](cloudRunFunctions/C02-02.md) | [Kontrol et](answers/cloudRunFunctions/C02-02.md) |
+| C02-03 | Workflows coordination and data passing | [Çöz](cloudRunFunctions/C02-03.md) | [Kontrol et](answers/cloudRunFunctions/C02-03.md) |
+| C02-04 | Serverless VPC Access configuration | [Çöz](cloudRunFunctions/C02-04.md) | [Kontrol et](answers/cloudRunFunctions/C02-04.md) |
+| C02-05 | Connecting Redis and private VM services | [Çöz](cloudRunFunctions/C02-05.md) | [Kontrol et](answers/cloudRunFunctions/C02-05.md) |
+| C03-01 | Identity, tokens and IAM authorization | [Çöz](cloudRunFunctions/C03-01.md) | [Kontrol et](answers/cloudRunFunctions/C03-01.md) |
+| C03-02 | Runtime identity and function-to-function invocation | [Çöz](cloudRunFunctions/C03-02.md) | [Kontrol et](answers/cloudRunFunctions/C03-02.md) |
+| C03-03 | Ingress, egress and VPC Service Controls | [Çöz](cloudRunFunctions/C03-03.md) | [Kontrol et](answers/cloudRunFunctions/C03-03.md) |
+| C03-04 | CMEK scope and setup | [Çöz](cloudRunFunctions/C03-04.md) | [Kontrol et](answers/cloudRunFunctions/C03-04.md) |
+| C03-05 | CMEK deployment, versions and key loss | [Çöz](cloudRunFunctions/C03-05.md) | [Kontrol et](answers/cloudRunFunctions/C03-05.md) |
+| C04-01 | Memorystore and Redis connectivity | [Çöz](cloudRunFunctions/C04-01.md) | [Kontrol et](answers/cloudRunFunctions/C04-01.md) |
+| C04-02 | Environment-variable configuration | [Çöz](cloudRunFunctions/C04-02.md) | [Kontrol et](answers/cloudRunFunctions/C04-02.md) |
+| C04-03 | Firestore documents, events and snapshots | [Çöz](cloudRunFunctions/C04-03.md) | [Kontrol et](answers/cloudRunFunctions/C04-03.md) |
+| C04-04 | Secret Manager, versions and cross-project access | [Çöz](cloudRunFunctions/C04-04.md) | [Kontrol et](answers/cloudRunFunctions/C04-04.md) |
+| C05-01 | Idempotency, completion and temporary files | [Çöz](cloudRunFunctions/C05-01.md) | [Kontrol et](answers/cloudRunFunctions/C05-01.md) |
+| C05-02 | Errors, local testing and runtime portability | [Çöz](cloudRunFunctions/C05-02.md) | [Kontrol et](answers/cloudRunFunctions/C05-02.md) |
+| C05-03 | Cold starts, object reuse and networking | [Çöz](cloudRunFunctions/C05-03.md) | [Kontrol et](answers/cloudRunFunctions/C05-03.md) |
+| C05-04 | Retry configuration and failure handling | [Çöz](cloudRunFunctions/C05-04.md) | [Kontrol et](answers/cloudRunFunctions/C05-04.md) |
+| C05-05 | Configuration, scaling and traffic splitting | [Çöz](cloudRunFunctions/C05-05.md) | [Kontrol et](answers/cloudRunFunctions/C05-05.md) |

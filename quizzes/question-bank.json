@@ -7022,6 +7022,2281 @@
           ]
         }
       ]
+    },
+    {
+      "id": "C01-01",
+      "title": "Platform, benefits and use cases",
+      "source": "cloudRunFunctions/jFlXbz-M1_Introduction_to_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What execution model does the module assign to Cloud Run functions?",
+          "options": {
+            "A": "A database-only query engine",
+            "B": "Self-managed virtual machines per function",
+            "C": "A mandatory Kubernetes cluster managed by the developer",
+            "D": "Fully managed serverless FaaS"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Cloud Run functions yönetilen serverless FaaS ortamıdır; sunucu sağlama ve işletme yükü kullanıcıda değildir."
+        },
+        {
+          "question": "Which two statements distinguish the versions in the course?",
+          "options": {
+            "A": "Cloud Run functions cannot use Eventarc",
+            "B": "The first generation has more limited triggers and configuration",
+            "C": "The first generation requires developers to patch its operating system",
+            "D": "Cloud Run functions deploys functions as Cloud Run services"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Ders güncel adlandırmada eski 2nd gen ürününü Cloud Run üzerinde servis olarak, 1st gen ürününü daha sınırlı sürüm olarak tanımlar."
+        },
+        {
+          "question": "Which two capabilities are listed as features?",
+          "options": {
+            "A": "Authentication to Google Cloud services with service accounts",
+            "B": "Local development and testing",
+            "C": "A requirement to use the same database for all functions",
+            "D": "Mandatory manual provisioning before every invocation"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Yerel geliştirme/test ve service account ile kimlik doğrulama özellikler arasındadır; sunucu sağlama zorunluluğu yoktur."
+        },
+        {
+          "question": "Which pairing matches the use cases described?",
+          "options": {
+            "A": "Image processing only through IAM policies; webhooks only through database triggers",
+            "B": "IoT only through Artifact Registry; mobile backends only through KMS",
+            "C": "Webhooks through a memory allocator; IoT through deployment revisions",
+            "D": "IoT device data through Pub/Sub; mobile backends through Firebase events"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            20
+          ],
+          "explanation": "IoT verisi Pub/Sub ile işlenebilir; Firebase olayları mobil backend'i tetikleyebilir. Dosya işleme ve HTTP webhook da ayrı örneklerdir."
+        },
+        {
+          "question": "According to the course's pricing description, which three usage factors matter?",
+          "options": {
+            "A": "The number of comments in source code",
+            "B": "Compute duration",
+            "C": "Outbound network data transfer",
+            "D": "Invocation count",
+            "E": "The number of IAM role names in documentation"
+          },
+          "answers": [
+            "B",
+            "C",
+            "D"
+          ],
+          "pages": [
+            11,
+            12
+          ],
+          "explanation": "Dersin fiyatlama anlatımı çağrı sayısı, çalışma süresi ve dış ağ aktarımını sayar. Bu, güncel fiyat teklifi değildir."
+        }
+      ]
+    },
+    {
+      "id": "C01-02",
+      "title": "HTTP, CloudEvent and background handlers",
+      "source": "cloudRunFunctions/jFlXbz-M1_Introduction_to_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which function type fits an external webhook that sends HTTP requests?",
+          "options": {
+            "A": "A function triggered only by Firestore deletion",
+            "B": "A function triggered only by image builds",
+            "C": "A background function without an HTTP endpoint",
+            "D": "An HTTP function with a URL endpoint"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            13,
+            14
+          ],
+          "explanation": "Webhook HTTP(S) isteği gönderir; HTTP trigger fonksiyona çağrılabilir URL verir."
+        },
+        {
+          "question": "Which two actions belong in an HTTP handler's lifecycle?",
+          "options": {
+            "A": "Require every caller to publish a Pub/Sub message",
+            "B": "Process the request and send an HTTP response",
+            "C": "Return first and rely on an unfinished thread to complete reliably",
+            "D": "Finish background work before sending the response"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            15
+          ],
+          "explanation": "Handler isteği işler ve yanıt gönderir; thread/process/Promise gibi arka plan işleri yanıt öncesinde bitirilmelidir."
+        },
+        {
+          "question": "What is the role of the Functions Framework in the CloudEvent implementation?",
+          "options": {
+            "A": "Allocate a separate VM for each line of code",
+            "B": "Register and wrap the function in a persistent HTTP application",
+            "C": "Store the function's database documents",
+            "D": "Replace the event payload with an IAM policy"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            17
+          ],
+          "explanation": "Açık kaynak Functions Framework fonksiyonu kaydeder ve kalıcı HTTP uygulamasıyla sarar; CloudEvent formatını kullanan handler'ı destekler."
+        },
+        {
+          "question": "Which three first-generation runtimes use CloudEvent functions in the module's classification?",
+          "options": {
+            "A": "Node.js",
+            "B": "Ruby",
+            "C": "PHP",
+            "D": ".NET",
+            "E": "Python"
+          },
+          "answers": [
+            "B",
+            "C",
+            "D"
+          ],
+          "pages": [
+            17
+          ],
+          "explanation": "Sayfa 17, 1st gen için .NET/Ruby/PHP'yi CloudEvent; Node.js/Python/Go/Java'yı Background olarak sınıflandırır. Yeni Cloud Run functions tüm runtime'larda CloudEvent kullanır."
+        },
+        {
+          "question": "How does background-function event data differ in the course?",
+          "options": {
+            "A": "It excludes all information about the triggering event",
+            "B": "Its structure depends on the event type",
+            "C": "It is always a workflow YAML definition",
+            "D": "It always contains only an HTTP response code"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            16,
+            17
+          ],
+          "explanation": "Eski Background biçimi olaya özgü veri alır; CloudEvent biçimi CloudEvents standardına dayanır."
+        }
+      ]
+    },
+    {
+      "id": "C01-03",
+      "title": "Capacity, revisions and portability",
+      "source": "cloudRunFunctions/jFlXbz-M1_Introduction_to_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "According to page 18, which instance-size limits are listed?",
+          "options": {
+            "A": "32 GiB RAM and 64 vCPUs",
+            "B": "32 GiB RAM and 4 vCPUs",
+            "C": "4 GiB RAM and 32 vCPUs",
+            "D": "32 MiB RAM and 4 vCPUs"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "Dersin sayfa 18'de verdiği rakamlar 32 GiB ve 4 vCPU'dur. Soru PDF bilgisini ölçer; güncel kota taahhüdü değildir."
+        },
+        {
+          "question": "What maximum per-instance concurrency does page 18 state?",
+          "options": {
+            "A": "1 concurrent request",
+            "B": "1000 concurrent requests",
+            "C": "100 concurrent requests",
+            "D": "10000 concurrent requests"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "Sayfa 18 tek instance için 1000 eşzamanlı isteğe kadar destek belirtir; bu üst sınır ile varsayılan ayar aynı kavram değildir."
+        },
+        {
+          "question": "Which runtime-limit pairing appears on page 18?",
+          "options": {
+            "A": "Both: 24 hours",
+            "B": "HTTP: 10 minutes; event-driven: 60 minutes",
+            "C": "Both: 60 seconds",
+            "D": "HTTP: 60 minutes; event-driven: 10 minutes"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "PDF HTTP için 60 dakika, event-driven için 10 dakika verir. Bu soru dersin belirttiği sınırlar içindir."
+        },
+        {
+          "question": "Which two capabilities follow from function revisions in the module?",
+          "options": {
+            "A": "Edit an already deployed immutable revision in place",
+            "B": "Remove the need to deploy changed code",
+            "C": "Roll back to an earlier revision",
+            "D": "Split traffic between revisions"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "Her deployment yeni revision oluşturur; trafik bölüştürülebilir ve önceki revision'a geri dönülebilir."
+        },
+        {
+          "question": "What supports moving a function to Cloud Run or Kubernetes in the module?",
+          "options": {
+            "A": "Dependence on a proprietary physical server image",
+            "B": "Cloud Run's scalable container platform",
+            "C": "The absence of any container image",
+            "D": "A requirement to retain a single fixed VM address"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "Ders taşınabilirliği alttaki container platformuyla ilişkilendirir; Cloud Run ve Kubernetes olası hedeflerdir."
+        }
+      ]
+    },
+    {
+      "id": "C01-04",
+      "title": "Runtime source layout, entry points and regions",
+      "source": "cloudRunFunctions/jFlXbz-M1_Introduction_to_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two files form the default Node.js source layout shown?",
+          "options": {
+            "A": "package.json",
+            "B": "index.js",
+            "C": "go.mod",
+            "D": "main.py"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            23
+          ],
+          "explanation": "Node.js varsayılan kaynak index.js, bağımlılık ve main ayarı package.json içindedir."
+        },
+        {
+          "question": "Which file pair is shown for Python functions?",
+          "options": {
+            "A": "main.py and package.json",
+            "B": "myfunction.go and go.mod",
+            "C": "index.js and requirements.txt",
+            "D": "main.py and requirements.txt"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            23
+          ],
+          "explanation": "Python kaynak main.py, Functions Framework ve diğer bağımlılıklar requirements.txt dosyasındadır."
+        },
+        {
+          "question": "What is required for the Go source layout shown?",
+          "options": {
+            "A": "A Java class declared in package.json",
+            "B": "A Go package at the project root with dependencies in go.mod",
+            "C": "A Python package under requirements.txt",
+            "D": "An index.js file at the root"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            23
+          ],
+          "explanation": "Go fonksiyonu proje kökündeki package içinde bulunur; bağımlılıklar go.mod ile belirtilir."
+        },
+        {
+          "question": "What does a function entry point identify?",
+          "options": {
+            "A": "The function or class to execute when invoked",
+            "B": "The image registry's billing account",
+            "C": "The storage bucket's retention policy",
+            "D": "The region's network gateway"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            24
+          ],
+          "explanation": "Entry point çağrılınca çalışacak kodu belirtir; ana dosyada veya root package içinde tanımlanır ve deploy sırasında seçilir."
+        },
+        {
+          "question": "Which two factors should influence region choice according to the module?",
+          "options": {
+            "A": "Availability and location-related pricing considerations",
+            "B": "Only the alphabetical order of region names",
+            "C": "Latency to users and dependent services",
+            "D": "A guarantee that cross-region calls never affect latency"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            25
+          ],
+          "explanation": "Kullanıcı ve bağımlı servis konumu gecikmeyi etkiler; bölgesel erişilebilirlik ve fiyatlama da dikkate alınır. Bölge içinde zonlar arası yedeklilik anlatılır."
+        }
+      ]
+    },
+    {
+      "id": "C01-05",
+      "title": "Deployment permissions, flags and sources",
+      "source": "cloudRunFunctions/jFlXbz-M1_Introduction_to_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two roles does the module require for a deployer?",
+          "options": {
+            "A": "Service Account User on the runtime service account",
+            "B": "Secret Manager Secret Accessor on every project",
+            "C": "Cloud KMS Admin on every encryption key",
+            "D": "Cloud Functions Developer or equivalent permissions"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            28
+          ],
+          "explanation": "Ders deployer için geliştirme yetkilerini ve runtime hesabını kullanabilmek için Service Account User rolünü belirtir."
+        },
+        {
+          "question": "In the shown gcloud functions deploy command, what does --entry-point select?",
+          "options": {
+            "A": "The trigger's retry deadline",
+            "B": "The source function or class that executes",
+            "C": "The initial number of HTTP clients",
+            "D": "The destination Artifact Registry region"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            29
+          ],
+          "explanation": "--entry-point kod girişini seçer; --runtime dil çalışma ortamını, --region bölgeyi belirtir."
+        },
+        {
+          "question": "Which two source arrangements are described as valid?",
+          "options": {
+            "A": "A ZIP that hides all source under an extra enclosing directory",
+            "B": "Only a source file pasted into an IAM policy",
+            "C": "A local root source directory",
+            "D": "A Cloud Storage ZIP with source files at its root"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            30
+          ],
+          "explanation": "Yerel dizin ve Cloud Storage ZIP kaynakları anlatılır; ZIP içinde kaynak dosyalar kökte olmalıdır."
+        },
+        {
+          "question": "What is the purpose of .gcloudignore in the deployment-source discussion?",
+          "options": {
+            "A": "Exclude unnecessary source files from upload",
+            "B": "Grant the runtime service account invocation permission",
+            "C": "Configure the request timeout",
+            "D": "Select a Cloud KMS key version"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            30
+          ],
+          "explanation": ".gcloudignore gereksiz dosyaları yükleme kapsamı dışında bırakır; IAM veya runtime timeout ayarı değildir."
+        },
+        {
+          "question": "What generation restriction labels source-repository deployment on page 30?",
+          "options": {
+            "A": "The source-repository option is labeled first generation only",
+            "B": "It is labeled available only for PHP",
+            "C": "It is labeled Cloud Run functions only, excluding first generation",
+            "D": "It is labeled available only for event-driven functions"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            30,
+            31
+          ],
+          "explanation": "Sayfa 30 kaynak repository yolunu 1st gen only olarak etiketler. Bu soru PDF'deki deployment akışını ölçer."
+        }
+      ]
+    },
+    {
+      "id": "C01-06",
+      "title": "Build pipeline and artifact storage",
+      "source": "cloudRunFunctions/jFlXbz-M1_Introduction_to_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Where is uploaded function source stored during the build process?",
+          "options": {
+            "A": "Secret Manager",
+            "B": "Cloud Monitoring",
+            "C": "Error Reporting",
+            "D": "Cloud Storage"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            33
+          ],
+          "explanation": "Deploy edilen kaynak kod Cloud Storage'da saklanır; kaynak ile oluşan container image farklı yerlerde tutulur."
+        },
+        {
+          "question": "Which service builds the container image from function source?",
+          "options": {
+            "A": "Workflows",
+            "B": "Firestore",
+            "C": "Cloud Build",
+            "D": "Cloud KMS"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            33
+          ],
+          "explanation": "Kaynağı container image'a dönüştüren servis Cloud Build'dir."
+        },
+        {
+          "question": "Where is the resulting function container image stored?",
+          "options": {
+            "A": "The function's temporary directory only",
+            "B": "A Firestore trigger path",
+            "C": "The caller's ID token",
+            "D": "Artifact Registry"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            33,
+            34
+          ],
+          "explanation": "Image Artifact Registry'ye gönderilir; fonksiyon container çalıştırmak için bu image'ı kullanır."
+        },
+        {
+          "question": "Which two build-process details are stated?",
+          "options": {
+            "A": "Build resources execute in the user's project",
+            "B": "Build logs cannot be accessed",
+            "C": "The build must always be manually compiled on the developer's laptop",
+            "D": "The Cloud Build API must be enabled"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            33
+          ],
+          "explanation": "Cloud Build API etkin olmalıdır; kaynaklar kullanıcının projesinde çalışır ve build logları Cloud Logging ile erişilebilir."
+        },
+        {
+          "question": "Which statement correctly connects source, configuration and execution?",
+          "options": {
+            "A": "The source ZIP itself is an already-running function instance",
+            "B": "Artifact Registry executes each HTTP request directly",
+            "C": "Configuration replaces the source code entirely",
+            "D": "Deployment builds a runnable image from source and configuration"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            27,
+            33,
+            34
+          ],
+          "explanation": "Deploy süreci kaynak ve yapılandırmadan çalıştırılabilir image üretir; registry depolama, çalışma platformu yürütme görevi görür."
+        }
+      ]
+    },
+    {
+      "id": "C02-01",
+      "title": "Trigger categories, HTTP and Pub/Sub",
+      "source": "cloudRunFunctions/M2_Calling_and_Connecting_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two trigger categories does the module distinguish?",
+          "options": {
+            "A": "Image registry triggers for every source line",
+            "B": "Event triggers for cloud events",
+            "C": "HTTP triggers for HTTP requests",
+            "D": "IAM role triggers for every permission check"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "HTTP ve event trigger kategorileri sırasıyla HTTP ve event-driven fonksiyonlarla eşleşir."
+        },
+        {
+          "question": "How does page 5 describe making the same event invoke several functions?",
+          "options": {
+            "A": "Disable all event filters",
+            "B": "Require a single function to have multiple simultaneous bindings in that deployment model",
+            "C": "Deploy several functions with the same trigger source settings",
+            "D": "Replace the event source with an HTTP response"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Dersin deployment modelinde aynı kaynak ayarı farklı fonksiyonları tetikleyebilir; aynı fonksiyona birden fazla trigger bağlama iddiası farklıdır."
+        },
+        {
+          "question": "Which two mechanisms extend invocation beyond basic storage events?",
+          "options": {
+            "A": "Use a service account label as a trigger transport",
+            "B": "Send Gmail push notifications to Pub/Sub for a function to consume",
+            "C": "Use an HTTP function as a Cloud Tasks handler",
+            "D": "Require Gmail to edit the function's container image"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Cloud Tasks HTTP handler kullanabilir; Gmail Push Notification API olayları Pub/Sub üzerinden iletebilir."
+        },
+        {
+          "question": "Which HTTP-method list is explicitly shown on page 7?",
+          "options": {
+            "A": "GET, SELECT, COMMIT, ROLLBACK, OPTIONS",
+            "B": "PUBLISH, ACK, NACK, SUBSCRIBE, DELETE",
+            "C": "GET, POST, PUT, DELETE, OPTIONS",
+            "D": "INSERT, UPDATE, CREATE, DROP, SELECT"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Sayfa 7 GET/POST/PUT/DELETE/OPTIONS listesini verir; bu listeyi başka protokol komutlarıyla karıştırma."
+        },
+        {
+          "question": "Which two statements describe the Pub/Sub trigger in the module?",
+          "options": {
+            "A": "The handler must be an event-driven function",
+            "B": "The handler must always receive a browser form",
+            "C": "A topic must be specified",
+            "D": "No message publication is needed to invoke it"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Pub/Sub trigger konuya yayınlanan mesajla event-driven handler'ı çağırır; CloudEvent veya Background biçimi veri temsilini belirler."
+        }
+      ]
+    },
+    {
+      "id": "C02-02",
+      "title": "Cloud Storage, Firestore and Firebase events",
+      "source": "cloudRunFunctions/M2_Calling_and_Connecting_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two settings are needed for the Cloud Storage trigger described?",
+          "options": {
+            "A": "A SQL table name",
+            "B": "An HTTP response status to watch",
+            "C": "An event type",
+            "D": "A bucket"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Trigger belirli bucket'taki seçilen object olayını dinler."
+        },
+        {
+          "question": "Which list contains the four Cloud Storage events shown?",
+          "options": {
+            "A": "Finalized, deleted, archived, metadata updated",
+            "B": "Authenticated, authorized, encrypted, billed",
+            "C": "Compiled, linked, deployed, invoked",
+            "D": "Created, SQL joined, committed, rolled back"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "PDF object finalized/deleted/archived/metadata updated olaylarını listeler; bunlar nesne yaşam döngüsü olaylarıdır."
+        },
+        {
+          "question": "At what level do Firestore triggers operate in the module?",
+          "options": {
+            "A": "A selected field alone without a document path",
+            "B": "An entire database with no document matching",
+            "C": "Document level, with an event type and document path",
+            "D": "Only the billing account level"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Ders document path ve event type ister; belirli alan için ayrı trigger veya doğrudan collection-level trigger tanımlanmadığını belirtir."
+        },
+        {
+          "question": "Which project relationship is specified for the Firestore trigger described?",
+          "options": {
+            "A": "Firestore and the function are in the same Google Cloud project",
+            "B": "Firestore must be in an unrelated organization",
+            "C": "The function's project must have no Firestore resources",
+            "D": "Only the billing currencies must match"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Sayfa 10 aynı proje koşulunu verir. Soru bu PDF'deki trigger modeline aittir."
+        },
+        {
+          "question": "Which two Firebase sources are labeled first-generation-only on page 11?",
+          "options": {
+            "A": "Firebase Authentication",
+            "B": "Firebase Remote Config",
+            "C": "Firebase Realtime Database",
+            "D": "Google Analytics for Firebase"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Ders Analytics ve Authentication için 1st gen notunu düşer; diğer iki kaynağa bu sayfada aynı not verilmez."
+        }
+      ]
+    },
+    {
+      "id": "C02-03",
+      "title": "Workflows coordination and data passing",
+      "source": "cloudRunFunctions/M2_Calling_and_Connecting_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two properties describe Workflows in this module?",
+          "options": {
+            "A": "A requirement that every step be a local function call",
+            "B": "State, retries, polling or waiting for long-running processes",
+            "C": "No persisted execution state",
+            "D": "A central observable orchestration flow"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Workflows merkezî akışı yürütür, execution izlenebilir ve uzun süreçlerde durum/bekleme/retry destekler."
+        },
+        {
+          "question": "What maximum waiting/stateful duration does the module mention?",
+          "options": {
+            "A": "Up to one minute",
+            "B": "Up to one year",
+            "C": "Unlimited duration with no limit",
+            "D": "Up to one hour"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "PDF hold state/retry/poll/wait için bir yıla kadar der; burada dersin sayısal ayrıntısı sorulur."
+        },
+        {
+          "question": "Which step belongs before connecting deployed functions into a workflow?",
+          "options": {
+            "A": "Test the HTTP functions individually with curl or another HTTP client",
+            "B": "Replace the runtime service accounts with database documents",
+            "C": "Make the function source available only inside the workflow YAML",
+            "D": "Delete all function URLs"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            16
+          ],
+          "explanation": "API'leri etkinleştirme ve gerekli hesaplardan sonra HTTP fonksiyonları deploy/test edilir; sonra workflow oluşturulup çalıştırılır."
+        },
+        {
+          "question": "Which two formats can define the workflow steps?",
+          "options": {
+            "A": "JSON",
+            "B": "YAML",
+            "C": "ZIP",
+            "D": "PNG"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            17
+          ],
+          "explanation": "Workflow adımları YAML veya JSON ile tanımlanır; fonksiyonlar URL argümanı içeren HTTP çağrılarıyla kullanılır."
+        },
+        {
+          "question": "In the sample, how does the first function's result reach the second?",
+          "options": {
+            "A": "The second function reads the first function's private memory",
+            "B": "The result can only be sent through a manual console copy",
+            "C": "The first function's source file becomes the second request's IAM policy",
+            "D": "A field from cfn1_result.body is passed in the second request body"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            17,
+            18
+          ],
+          "explanation": "Örnekte cfn1_result.body.xyz ikinci çağrının body.input alanına verilir; sonraki REST ve Cloud Run adımlarına da sonuç aktarılır."
+        }
+      ]
+    },
+    {
+      "id": "C02-04",
+      "title": "Serverless VPC Access configuration",
+      "source": "cloudRunFunctions/M2_Calling_and_Connecting_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two benefits are attributed to Serverless VPC Access?",
+          "options": {
+            "A": "Reach resources by internal IP addresses or DNS",
+            "B": "Automatically grant every IAM permission",
+            "C": "Keep traffic to internal resources off the public internet",
+            "D": "Make all resources publicly reachable"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            20,
+            21
+          ],
+          "explanation": "Connector fonksiyonu VPC içindeki VM/Memorystore gibi kaynaklara özel adreslerle bağlar; IAM yetkisi sağlamaz."
+        },
+        {
+          "question": "What regional relationship is required for the connector in the described setup?",
+          "options": {
+            "A": "Its region matches the function's region",
+            "B": "It must always be on a different continent",
+            "C": "Only its name must match the function's name",
+            "D": "Its region must match the developer's laptop timezone"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            22
+          ],
+          "explanation": "Connector bölgesi fonksiyon bölgesiyle eşleşmelidir; VPC'nin global olması connector'ın bölgesel koşulunu kaldırmaz."
+        },
+        {
+          "question": "Which two setup requirements are listed?",
+          "options": {
+            "A": "Share the exact connector CIDR with an overlapping workload range",
+            "B": "Enable the Serverless VPC Access API",
+            "C": "Create a public IP address for every invocation",
+            "D": "Reserve a subnet or CIDR range exclusively for the connector"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            22
+          ],
+          "explanation": "API etkinleştirilir, connector oluşturulur ve ona özel subnet/CIDR ayrılır."
+        },
+        {
+          "question": "Which deployment flag associates a function with the connector?",
+          "options": {
+            "A": "--set-secrets",
+            "B": "--timeout",
+            "C": "--vpc-connector",
+            "D": "--entry-point"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            23
+          ],
+          "explanation": "Connector oluşturmak tek başına yetmez; her ilgili fonksiyon --vpc-connector ile yapılandırılır."
+        },
+        {
+          "question": "What can further restrict the connector's access to VPC resources?",
+          "options": {
+            "A": "Changing the handler's Python variable names",
+            "B": "Renaming the secret's display label",
+            "C": "Firewall rules",
+            "D": "Removing the function's HTTP response"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            23
+          ],
+          "explanation": "PDF VPC kaynaklarına erişimi firewall kurallarıyla kısıtlamayı belirtir; ağ kontrolü uygulama isimlerinden bağımsızdır."
+        }
+      ]
+    },
+    {
+      "id": "C02-05",
+      "title": "Connecting Redis and private VM services",
+      "source": "cloudRunFunctions/M2_Calling_and_Connecting_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "In the optional lab, which function writes messages into Redis?",
+          "options": {
+            "A": "An HTTP function with no Redis connection",
+            "B": "An Artifact Registry build step",
+            "C": "A Pub/Sub event-driven function using the connector",
+            "D": "A KMS key rotation handler with no message input"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            25,
+            26
+          ],
+          "explanation": "Lab Pub/Sub mesajını alan event-driven fonksiyonla Redis'e yazma akışını kurar."
+        },
+        {
+          "question": "Which function retrieves the stored Redis data for a caller?",
+          "options": {
+            "A": "An IAM policy binding without code",
+            "B": "A workflow that has no Redis-reading step",
+            "C": "An HTTP function that returns the data in its response",
+            "D": "A trigger that only deletes Redis messages"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            26
+          ],
+          "explanation": "İkinci handler HTTP isteği alıp connector üzerinden veriyi okur ve response içinde döndürür."
+        },
+        {
+          "question": "Which third private resource is accessed in the lab after Redis?",
+          "options": {
+            "A": "A public website unrelated to the VPC",
+            "B": "The source repository's branch protection page",
+            "C": "A web server on a VM in the VPC",
+            "D": "The developer's local browser storage"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            26
+          ],
+          "explanation": "Lab HTTP fonksiyonun VPC'deki VM web sunucusuna connector üzerinden erişmesini de içerir."
+        },
+        {
+          "question": "What is the role of the connector in both the Redis and VM examples?",
+          "options": {
+            "A": "Store every HTTP response permanently",
+            "B": "Generate the functions' source code",
+            "C": "Provide network connectivity to internal resources",
+            "D": "Replace the Redis client protocol"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            21,
+            26
+          ],
+          "explanation": "Connector ağ yoludur; uygulamanın istemci kodu ve veri işleme sorumluluğu sürer."
+        },
+        {
+          "question": "Which end-to-end sequence matches the lab?",
+          "options": {
+            "A": "Deploy an HTTP reader before creating any datastore and omit networking",
+            "B": "Use only an IAM role to transfer the message without function code",
+            "C": "Store the message in Artifact Registry and query it as Redis",
+            "D": "Create Redis and connector, then deploy event writer and HTTP reader"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            26
+          ],
+          "explanation": "Önce datastore ve ağ bağlantısı hazırlanır; ardından yazan event handler ve okuyan HTTP handler geliştirilir."
+        }
+      ]
+    },
+    {
+      "id": "C03-01",
+      "title": "Identity, tokens and IAM authorization",
+      "source": "cloudRunFunctions/RszHeV-M3_Securing_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which sequence separates authentication from authorization?",
+          "options": {
+            "A": "Decrypt source code, then create an event",
+            "B": "Create a region, then assign an IP address",
+            "C": "Evaluate billing, then rename the identity",
+            "D": "Validate identity, then evaluate its permissions"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            5,
+            9
+          ],
+          "explanation": "Authentication kimliği doğrular; authorization IAM rolleriyle izinleri değerlendirir."
+        },
+        {
+          "question": "Which two identity types are discussed?",
+          "options": {
+            "A": "Function revision numbers as identities",
+            "B": "User accounts representing people",
+            "C": "Service accounts for applications or functions",
+            "D": "Cloud Storage bucket names as identities"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Service account insan dışı iş yükünü, user account kişiyi temsil eder."
+        },
+        {
+          "question": "Which token mapping does the module use?",
+          "options": {
+            "A": "Access tokens always replace function invocation IAM roles",
+            "B": "OAuth access tokens for API calls; ID tokens for developer-created code",
+            "C": "ID tokens only for storage encryption; access tokens only for logging",
+            "D": "Both tokens are permanent passwords"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Ders API çağrısı için access token, fonksiyon gibi geliştirici koduna çağrı için ID token ayrımını yapar; token ömrü sınırlıdır."
+        },
+        {
+          "question": "What does an IAM role represent?",
+          "options": {
+            "A": "A single function's HTTP response",
+            "B": "A group of individual permissions",
+            "C": "A list of all region names",
+            "D": "The secret value in a token"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Rol izin kümesidir; kimliğe/politika üzerinden atanarak yetkilendirmede değerlendirilir."
+        },
+        {
+          "question": "Which two actions appear in the developer invocation test?",
+          "options": {
+            "A": "Omit invocation permissions because a token always grants access",
+            "B": "Generate an ID token with gcloud auth print-identity-token",
+            "C": "Put the password in the function URL",
+            "D": "Send it in the Authorization header"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Kimlik token'ı Authorization header'ında taşınır; uygun invocation izni ayrıca gereklidir. Sayfadaki permission adı nesil bağlamıyla değerlendirilmelidir."
+        }
+      ]
+    },
+    {
+      "id": "C03-02",
+      "title": "Runtime identity and function-to-function invocation",
+      "source": "cloudRunFunctions/RszHeV-M3_Securing_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What is a runtime service account used for?",
+          "options": {
+            "A": "The identity of every human who deploys it",
+            "B": "The function's URL hostname",
+            "C": "The function's identity when accessing other resources",
+            "D": "The destination object's encryption key bytes"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Runtime hesabı çalışan fonksiyonun kaynaklara erişim kimliğidir; deployer hesabıyla aynı kavram değildir."
+        },
+        {
+          "question": "Which default runtime-account pairing does the module give?",
+          "options": {
+            "A": "Cloud Run functions: Cloud Storage agent; first generation: Artifact Registry agent",
+            "B": "Cloud Run functions: Compute Engine default; first generation: App Engine default",
+            "C": "Cloud Run functions: App Engine default; first generation: Compute Engine default",
+            "D": "Both generations: a mandatory human user account"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "PDF yeni sürüm için Compute Engine, 1st gen için App Engine varsayılan hesabını belirtir."
+        },
+        {
+          "question": "Which two practices are recommended for production identities?",
+          "options": {
+            "A": "Project Owner permission for every caller",
+            "B": "One broadly privileged identity shared by every workload",
+            "C": "A dedicated user-managed runtime service account per function",
+            "D": "Only the permissions needed for that function's job"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            12,
+            13
+          ],
+          "explanation": "Her fonksiyona ayrı, en az yetkili kimlik verilmesi erişim sınırlarını kontrol etmeyi kolaylaştırır."
+        },
+        {
+          "question": "According to page 13's generation-specific explanation, which role lets a caller invoke a Cloud Run functions receiver (not first generation)?",
+          "options": {
+            "A": "roles/run.invoker",
+            "B": "roles/cloudfunctions.invoker for every generation",
+            "C": "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            "D": "roles/secretmanager.secretAccessor"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            13
+          ],
+          "explanation": "Açıklama yeni sürüm için roles/run.invoker, 1st gen için roles/cloudfunctions.invoker der. Aynı sayfadaki komut örneği eski rolü kullandığından nesil ayrımı önemlidir."
+        },
+        {
+          "question": "Which two ID-token details are required in the described function-to-function call?",
+          "options": {
+            "A": "The audience is the caller's source filename",
+            "B": "The audience is the receiving function's URL",
+            "C": "The Google-signed token is sent in the Authorization header",
+            "D": "The token replaces the receiver's IAM policy entirely"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            13
+          ],
+          "explanation": "aud alıcı URL'sine ayarlanır ve token Authorization header'ında taşınır; çağıran hesaba alıcı üzerinde invoke rolü de verilir."
+        }
+      ]
+    },
+    {
+      "id": "C03-03",
+      "title": "Ingress, egress and VPC Service Controls",
+      "source": "cloudRunFunctions/RszHeV-M3_Securing_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two controls are distinct in the network settings?",
+          "options": {
+            "A": "Egress controls outbound routing",
+            "B": "Egress determines only ID-token expiry",
+            "C": "Ingress controls incoming reachability",
+            "D": "Ingress determines only Python package versions"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Ingress fonksiyona geliş, egress fonksiyondan çıkış trafiğiyle ilgilidir; kimlik kontrolü ayrı katmandır."
+        },
+        {
+          "question": "Which ingress option admits internal sources plus Cloud Load Balancing traffic?",
+          "options": {
+            "A": "Allow no traffic at all",
+            "B": "Allow internal traffic only",
+            "C": "Route private-IP egress through the connector",
+            "D": "Allow internal traffic and traffic from Cloud Load Balancing"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Bu seçenek internal-only'den farklı olarak Cloud Load Balancing üzerinden gelen trafiği de kabul eder."
+        },
+        {
+          "question": "Which two egress-routing choices are described for the connector?",
+          "options": {
+            "A": "Route only private-IP requests through it",
+            "B": "Use it to remove all IAM checks",
+            "C": "Route only requests with a particular Python function name",
+            "D": "Route all outbound traffic through it"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Ders connector ile tüm trafik veya yalnız private-IP hedefleri arasında seçim anlatır."
+        },
+        {
+          "question": "For the Shared VPC perimeter setup described, which projects are included?",
+          "options": {
+            "A": "No projects, only function names",
+            "B": "Only an unrelated billing project",
+            "C": "Only the developer's personal project",
+            "D": "Both the host and service projects"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            15
+          ],
+          "explanation": "VPC Service Controls örneğinde Shared VPC host ve service projeleri perimetreye eklenir."
+        },
+        {
+          "question": "Which two restrictions are part of the described perimeter configuration?",
+          "options": {
+            "A": "Require a Serverless VPC Access connector",
+            "B": "Route all egress through the VPC network",
+            "C": "Make every HTTP function public on the internet",
+            "D": "Disable organization policies for functions"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            15
+          ],
+          "explanation": "Örnekte connector zorunluluğu, VPC üzerinden tüm çıkış ve internal ingress kısıtları organizasyon politikalarıyla uygulanır."
+        }
+      ]
+    },
+    {
+      "id": "C03-04",
+      "title": "CMEK scope and setup",
+      "source": "cloudRunFunctions/RszHeV-M3_Securing_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which service creates and manages the customer-managed keys described?",
+          "options": {
+            "A": "Cloud Logging",
+            "B": "Cloud KMS",
+            "C": "Cloud Scheduler",
+            "D": "Cloud Tasks"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            17
+          ],
+          "explanation": "CMEK anahtarlarının yönetimi Cloud KMS ile yapılır; amaç fonksiyonla ilişkili veriyi at rest korumaktır."
+        },
+        {
+          "question": "Which three data categories are listed as CMEK-protected?",
+          "options": {
+            "A": "The built container image",
+            "B": "Data at rest for internal event transport",
+            "C": "Uploaded function source in Cloud Storage",
+            "D": "Every external website's database automatically",
+            "E": "All caller-owned laptop files"
+          },
+          "answers": [
+            "A",
+            "B",
+            "C"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "PDF kaynak kodu, build sonuçları ve internal event transport at-rest verisini sayar; kapsam haricindeki sistemler kendiliğinden korunmaz."
+        },
+        {
+          "question": "What key relationship is specified between the function and its Artifact Registry repository?",
+          "options": {
+            "A": "Use only the caller's ID token as a key",
+            "B": "Use the same key for both",
+            "C": "Disable encryption on the repository first",
+            "D": "Use an unrelated key with no access grants"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            19
+          ],
+          "explanation": "Ders tek bölgeli key oluşturmayı ve function/repository için aynı key'i kullanmayı belirtir."
+        },
+        {
+          "question": "Which three service agents need key access in the setup?",
+          "options": {
+            "A": "Every anonymous internet caller",
+            "B": "Cloud Run functions service agent",
+            "C": "Every user in every organization",
+            "D": "Artifact Registry service agent",
+            "E": "Cloud Storage service agent"
+          },
+          "answers": [
+            "B",
+            "D",
+            "E"
+          ],
+          "pages": [
+            19,
+            21
+          ],
+          "explanation": "Sayfa 21 anahtar erişimi verilecek agent'ları netleştirir; runtime kullanıcısına toplu yetki verme anlatılmaz."
+        },
+        {
+          "question": "Which role grants the required cryptographic access in the example?",
+          "options": {
+            "A": "roles/secretmanager.secretAccessor",
+            "B": "roles/run.invoker",
+            "C": "roles/source.reader",
+            "D": "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            21
+          ],
+          "explanation": "Key üzerinde ilgili service agent'lara CryptoKey Encrypter/Decrypter rolü verilir."
+        }
+      ]
+    },
+    {
+      "id": "C03-05",
+      "title": "CMEK deployment, versions and key loss",
+      "source": "cloudRunFunctions/RszHeV-M3_Securing_Cloud_Run_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two flags appear when enabling CMEK for the function?",
+          "options": {
+            "A": "--docker-repository",
+            "B": "--retry",
+            "C": "--env-vars-file",
+            "D": "--kms-key"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            22
+          ],
+          "explanation": "Deploy sırasında key ve CMEK'li Artifact Registry repository belirtilir."
+        },
+        {
+          "question": "Which key version does the module say the function uses?",
+          "options": {
+            "A": "Any arbitrary version chosen per HTTP header",
+            "B": "Always the oldest destroyed version",
+            "C": "Only a version named after the runtime language",
+            "D": "The primary version; a specific version cannot be selected here"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            22
+          ],
+          "explanation": "PDF function CMEK ayarında primary sürümün kullanıldığını, belirli key version seçilemediğini belirtir."
+        },
+        {
+          "question": "In the storage example, what event causes the function to run?",
+          "options": {
+            "A": "Every browser tab refresh regardless of storage activity",
+            "B": "Object creation/finalization delivered through Eventarc",
+            "C": "The mere existence of an unused encryption key",
+            "D": "Every IAM role listing"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            20
+          ],
+          "explanation": "CMEK'li bucket'a object yüklenmesi finalized/create olayını üretir; Eventarc trigger fonksiyonu çağırır."
+        },
+        {
+          "question": "Which two effects of disabling the key are unambiguous on page 23?",
+          "options": {
+            "A": "Already-running executions continue",
+            "B": "Executions requiring new instances fail",
+            "C": "New instances are guaranteed to start without the key",
+            "D": "All active instances immediately shut down"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            23
+          ],
+          "explanation": "Sayfa çalışan execution'ların devam ettiğini ve yeni instance gerektirenlerin başarısız olacağını belirtir. Aktif instance'taki yeni çağrılar için slayt/not farklı kesinlik kullanır; burada o belirsizlik sorulmaz."
+        },
+        {
+          "question": "How can the function retrieve an object from the CMEK-protected bucket in the example?",
+          "options": {
+            "A": "Cloud Storage serves the decrypted object when the required access is in place",
+            "B": "An ID token contains the complete object plaintext",
+            "C": "CMEK permanently prevents all object reads",
+            "D": "The function must guess the raw encryption key"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            20,
+            21
+          ],
+          "explanation": "Örnek yetkiler sağlandıktan sonra bucket'tan decrypted object alınmasını anlatır; Cloud Storage service agent'ın key erişimi gereklidir."
+        }
+      ]
+    },
+    {
+      "id": "C04-01",
+      "title": "Memorystore and Redis connectivity",
+      "source": "cloudRunFunctions/M4_Integrating_Cloud_Databases.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two characteristics describe Memorystore in the module?",
+          "options": {
+            "A": "Managed in-memory caching for Redis and Memcached",
+            "B": "A requirement to patch every cache VM manually",
+            "C": "A relational SQL-only database",
+            "D": "Automated provisioning, replication, failover and patching"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Ders Memorystore'u Redis/Memcached için yönetilen in-memory cache olarak tanımlar; bakım görevleri servis tarafından otomatikleştirilir."
+        },
+        {
+          "question": "What must be identified before attaching the connector for Redis access?",
+          "options": {
+            "A": "The developer's browser theme",
+            "B": "The source ZIP's compression ratio",
+            "C": "The Redis instance's authorized VPC network",
+            "D": "The function's last HTTP response body"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Connector Redis'in yetkilendirilmiş VPC ağına bağlanır; yalnız aynı proje adını kullanmak ağ yolunu sağlamaz."
+        },
+        {
+          "question": "Which three values are supplied when creating the connector?",
+          "options": {
+            "A": "ID-token audience",
+            "B": "HTTP response text",
+            "C": "IP address range",
+            "D": "Region",
+            "E": "Network"
+          },
+          "answers": [
+            "C",
+            "D",
+            "E"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Komut --network, --region ve --range içerir; connector kullanılmadan Ready durumu doğrulanır."
+        },
+        {
+          "question": "Which two environment variables appear in the Redis deployment example?",
+          "options": {
+            "A": "KMSKEYVERSION",
+            "B": "REDISHOST",
+            "C": "FIRESTORECOLLECTION",
+            "D": "REDISPORT"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "İstemci Redis host IP ve portunu bu değişkenlerden okur; connector yolu ayrıca deploy argümanıdır."
+        },
+        {
+          "question": "What is checked before using the newly created connector?",
+          "options": {
+            "A": "That it has exactly one million log entries",
+            "B": "That its state is Ready",
+            "C": "That all cache data has been deleted",
+            "D": "That every function is public"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Connector describe çıktısından Ready durumu doğrulanır; oluşturma komutunun verilmesi tek başına hazırlığı kanıtlamaz."
+        }
+      ]
+    },
+    {
+      "id": "C04-02",
+      "title": "Environment-variable configuration",
+      "source": "cloudRunFunctions/M4_Integrating_Cloud_Databases.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two statements describe runtime environment variables in the module?",
+          "options": {
+            "A": "Scoped to one function and accessed by code at runtime",
+            "B": "Automatically shared with every function in the project",
+            "C": "Key-value pairs configured during deployment",
+            "D": "Always a replacement for secret access permissions"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Değişkenler fonksiyonun yaşam döngüsü ve kapsamına bağlıdır; proje genelinde otomatik paylaşılmaz."
+        },
+        {
+          "question": "Which flag loads environment values from the illustrated YAML file?",
+          "options": {
+            "A": "--env-vars-file",
+            "B": "--entry-point",
+            "C": "--docker-repository",
+            "D": "--kms-key"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "YAML dosyası --env-vars-file ile verilir; doğrudan çiftler --set-env-vars ile tanımlanır."
+        },
+        {
+          "question": "Which command fragment sets two ordinary environment variables?",
+          "options": {
+            "A": "--region FOO=bar,BAZ=boo",
+            "B": "--runtime FOO=bar,BAZ=boo",
+            "C": "--entry-point FOO=bar,BAZ=boo",
+            "D": "--set-env-vars FOO=bar,BAZ=boo"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "--set-env-vars virgülle ayrılan anahtar=değer çiftlerini alır; runtime ve bölge bayraklarının amacı farklıdır."
+        },
+        {
+          "question": "Which Python API retrieves FOO with a fallback in the sample?",
+          "options": {
+            "A": "json.load('FOO', fallback)",
+            "B": "requests.post('FOO', fallback)",
+            "C": "sys.exit('FOO', fallback)",
+            "D": "os.environ.get('FOO', fallback)"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Python örneği os.environ.get kullanır; ikinci argüman değişken bulunmadığında kullanılacak değerdir."
+        },
+        {
+          "question": "Which Node.js property is mentioned for runtime environment access?",
+          "options": {
+            "A": "module.exports.length",
+            "B": "response.statusCode",
+            "C": "process.exit",
+            "D": "process.env"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Node.js'te environment değişkenleri process.env üzerinden okunur; HTTP status veya process sonlandırma ile karıştırma."
+        }
+      ]
+    },
+    {
+      "id": "C04-03",
+      "title": "Firestore documents, events and snapshots",
+      "source": "cloudRunFunctions/M4_Integrating_Cloud_Databases.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "How is Firestore data organized in the module?",
+          "options": {
+            "A": "Only container images in repositories",
+            "B": "Key-value documents stored in collections",
+            "C": "Only fixed-width rows in local files",
+            "D": "Only ephemeral messages without stored documents"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Firestore serverless NoSQL document veritabanıdır; key-value içeren document'lar collection'larda tutulur."
+        },
+        {
+          "question": "Which two event mappings match the course's Firebase SDK examples?",
+          "options": {
+            "A": "onCreate handles document creation",
+            "B": "onUpdate is the name for container-image deployment",
+            "C": "onDelete handles only field renaming",
+            "D": "onWrite covers create, update or delete"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            16
+          ],
+          "explanation": "Dersin SDK örnekleri onCreate/onUpdate/onDelete/onWrite ayrımını kullanır; bu isimler kaynak örneğin sürümüne aittir."
+        },
+        {
+          "question": "Which path matches every user document in the sample without a trailing slash?",
+          "options": {
+            "A": "users//",
+            "B": "users/{userId}/",
+            "C": "users/john/",
+            "D": "users/{userId}"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            17
+          ],
+          "explanation": "Wildcard belirli collection'daki farklı document kimliklerini kapsar; PDF trailing slash kullanılmamasını ister."
+        },
+        {
+          "question": "Which pair reads the before and after values of an updated document in the sample?",
+          "options": {
+            "A": "change.oldToken() and change.newToken()",
+            "B": "process.env.before and process.env.after",
+            "C": "request.query.old and response.status.new",
+            "D": "change.before.data() and change.after.data()"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "Update snapshot'ı önceki ve sonraki document durumlarını sunar; DocumentReference ise snapshot.ref üzerinden erişilir."
+        },
+        {
+          "question": "Which two access patterns are described?",
+          "options": {
+            "A": "Assume the event snapshot is a container image",
+            "B": "Treat the document path as an encryption key",
+            "C": "Read or write other documents using the Firebase Admin SDK",
+            "D": "Modify the triggering document through its DocumentReference"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "ref tetikleyen belgeye erişir; başka belgelerde işlem için Admin SDK kullanılabilir."
+        }
+      ]
+    },
+    {
+      "id": "C04-04",
+      "title": "Secret Manager, versions and cross-project access",
+      "source": "cloudRunFunctions/M4_Integrating_Cloud_Databases.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What holds the actual password or API-key bytes in Secret Manager?",
+          "options": {
+            "A": "Only the secret's label",
+            "B": "Only the replication-location name",
+            "C": "A secret version",
+            "D": "Only the IAM role's display name"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            20
+          ],
+          "explanation": "Secret metadata ve version'ları kapsar; gerçek hassas veri string veya binary blob olarak secret version'da bulunur."
+        },
+        {
+          "question": "Which role must the runtime service account receive on the secret?",
+          "options": {
+            "A": "roles/run.invoker",
+            "B": "roles/cloudfunctions.viewer",
+            "C": "roles/source.reader",
+            "D": "roles/secretmanager.secretAccessor"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            21
+          ],
+          "explanation": "Fonksiyonun çalışma kimliğine secret üzerinde Secret Accessor verilir; deployment hesabına rol vermek aynı şey değildir."
+        },
+        {
+          "question": "Which two delivery methods make a secret available to the function?",
+          "options": {
+            "A": "A public source-code comment",
+            "B": "A mounted volume file",
+            "C": "An environment variable",
+            "D": "A mandatory public URL parameter"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            21
+          ],
+          "explanation": "Secret dosya olarak mount edilebilir veya environment değişkenine bağlanabilir; hassas değeri kodda yayımlamak gerekmez."
+        },
+        {
+          "question": "Which difference matters when a secret is configured to follow its latest version?",
+          "options": {
+            "A": "Both methods rewrite the running process's environment after every rotation",
+            "B": "Environment values resolve at instance startup; a mounted file can fetch the latest on each read",
+            "C": "Environment variables require no secret permissions",
+            "D": "Files can never access a newer secret version"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            21
+          ],
+          "explanation": "Environment değeri instance başlangıcında çözülür; latest sürümüne bağlı volume okuması yeni değere erişebilir. Sabit version'a pinlenen dosyanın latest izleyeceği varsayılmaz."
+        },
+        {
+          "question": "Which two steps allow access to a secret in another project?",
+          "options": {
+            "A": "Copy the plaintext key into the public repository",
+            "B": "Remove the secret's IAM policy",
+            "C": "Grant the function's runtime account access on that secret",
+            "D": "Specify a resource path including the secret's project and name"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            22
+          ],
+          "explanation": "Cross-project erişimde hem IAM hem projects/PROJECT_ID/secrets/SECRET_NAME yolu gerekir."
+        }
+      ]
+    },
+    {
+      "id": "C05-01",
+      "title": "Idempotency, completion and temporary files",
+      "source": "cloudRunFunctions/M5_Best_Practices_for_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Why should a function be idempotent?",
+          "options": {
+            "A": "It guarantees no event will ever be delivered twice",
+            "B": "It makes IAM unnecessary",
+            "C": "It ensures code cannot throw exceptions",
+            "D": "Repeating an invocation can safely produce the same intended result"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "İdempotency kısmi başarısızlıktan sonra retry'ı güvenli kılar; delivery'nin tek sefer olacağını garanti etmez."
+        },
+        {
+          "question": "What risk does the module associate with failing to send an HTTP response?",
+          "options": {
+            "A": "All future invocations become free",
+            "B": "The function's source is automatically deleted",
+            "C": "Execution may continue until timeout and incur charges",
+            "D": "The request automatically becomes a successful response"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "HTTP handler yanıt dönmezse timeout'a kadar çalışma/ücret oluşabilir."
+        },
+        {
+          "question": "Which two reasons support finishing background activities before return?",
+          "options": {
+            "A": "CPU is not available for reliable work after invocation completion in the described model",
+            "B": "A later invocation may resume unfinished activity and be affected by it",
+            "C": "Background work automatically gets a separate isolated billing account",
+            "D": "Returning guarantees every outstanding promise completed"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Ders tamamlanma sonrası işin güvenilir sürmeyeceğini ve ortam yeniden kullanılırsa sonraki çağrıyla karışabileceğini belirtir."
+        },
+        {
+          "question": "Why should temporary files be deleted explicitly?",
+          "options": {
+            "A": "Deleting them changes the function's IAM role",
+            "B": "They consume function memory and may persist across invocations",
+            "C": "They are always automatically moved to permanent Cloud Storage",
+            "D": "They cannot affect memory usage"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Geçici dizin in-memory dosya sistemindedir; kalıntılar bellek tükenmesi ve cold start'a neden olabilir."
+        },
+        {
+          "question": "Which exit practice does the module recommend?",
+          "options": {
+            "A": "Call process.exit() in every Node.js request",
+            "B": "Call sys.exit() to acknowledge every Python event",
+            "C": "Return from event-driven code and send a response from HTTP code",
+            "D": "Terminate the runtime before pending work completes"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Dil düzeyinde return/HTTP response kullanılır; process.exit/sys.exit beklenmedik davranışa neden olabilir."
+        }
+      ]
+    },
+    {
+      "id": "C05-02",
+      "title": "Errors, local testing and runtime portability",
+      "source": "cloudRunFunctions/M5_Best_Practices_for_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Why develop and test locally in the module's workflow?",
+          "options": {
+            "A": "Eliminate the need for function source code",
+            "B": "Bypass every integration test permanently",
+            "C": "Guarantee every production network policy is tested automatically",
+            "D": "Shorten iteration time without waiting for deployment and logs each time"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Yerel test geliştirme döngüsünü hızlandırır; üretim entegrasyonunun tüm koşullarını kendiliğinden doğrulamaz."
+        },
+        {
+          "question": "How can open-source abstraction compatibility help with data-locality requirements?",
+          "options": {
+            "A": "Ignore geographical restrictions because all code is serverless",
+            "B": "Run the function on a compatible platform within the required boundaries",
+            "C": "Replace data storage with an ID token",
+            "D": "Automatically relocate all existing data without configuration"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Uyumlu platformda çalıştırma seçeneği coğrafi/ağ sınırı gereksinimlerini karşılamaya yardımcı olabilir."
+        },
+        {
+          "question": "Which two error-handling actions are recommended?",
+          "options": {
+            "A": "Always respond with success even after failure",
+            "B": "Handle runtime exceptions",
+            "C": "Return an appropriate HTTP error status for an HTTP function",
+            "D": "Leave all exceptions uncaught to improve warm reuse"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Hatalar ele alınmalı ve HTTP yanıtı uygun status taşımalıdır; uncaught exception ortamı sonlandırıp sonraki cold start'a neden olabilir."
+        },
+        {
+          "question": "Where do stdout and stderr logs appear according to the module?",
+          "options": {
+            "A": "Cloud Logging in the Google Cloud console",
+            "B": "Only in the Artifact Registry image name",
+            "C": "Only in the caller's cookie store",
+            "D": "Only in a secret version"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Runtime logging stdout/stderr çıktılarını Cloud Logging'e taşır; hata toplama ayrı Error Reporting hizmetidir."
+        },
+        {
+          "question": "Which Python action explicitly reports the current exception in the example?",
+          "options": {
+            "A": "process.exit()",
+            "B": "os.environ.clear()",
+            "C": "error_client.report_exception()",
+            "D": "error_client.delete_project()"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Örnekte google.cloud.error_reporting Client'ı oluşturulur ve except bloğunda report_exception çağrılır."
+        }
+      ]
+    },
+    {
+      "id": "C05-03",
+      "title": "Cold starts, object reuse and networking",
+      "source": "cloudRunFunctions/M5_Best_Practices_for_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two changes reduce avoidable initialization work?",
+          "options": {
+            "A": "Recreate all cached clients for every request",
+            "B": "Lazily initialize globals not needed on every path",
+            "C": "Import every available library on every request",
+            "D": "Remove unused dependencies"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Gereksiz import'ları kaldırmak cold start yükünü azaltır; koşullu global nesneler ihtiyaç anında oluşturulabilir."
+        },
+        {
+          "question": "What is the intended scope of reusing a global API client?",
+          "options": {
+            "A": "All instances share one guaranteed global memory object",
+            "B": "It replaces database durability",
+            "C": "It persists permanently after every instance is destroyed",
+            "D": "Later invocations on a reused function instance may reuse it"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Global yeniden kullanım instance ortamıyla sınırlıdır; farklı instance'lar arasında ortak veya kalıcı bellek garantisi değildir."
+        },
+        {
+          "question": "Which setting keeps instances ready to reduce cold starts?",
+          "options": {
+            "A": "A minimum instance count",
+            "B": "A new source file extension",
+            "C": "A lower log-retention label",
+            "D": "A different secret display name"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Minimum instance sayısı hazır kapasite tutar ve cold start'ı azaltır; tüm gelecekteki cold start'ları yok ettiği varsayılmaz."
+        },
+        {
+          "question": "Which two benefits are linked to persistent HTTP connections?",
+          "options": {
+            "A": "Guaranteed zero network latency",
+            "B": "Less CPU time spent establishing connections",
+            "C": "Reduced risk of exhausting connection quotas",
+            "D": "Automatic authorization to all remote services"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Bağlantı tekrar kullanımı kurulum maliyeti ve kota baskısını azaltır; gecikmeyi sıfırlamaz veya IAM sağlamaz."
+        },
+        {
+          "question": "Why store Google service clients in global scope?",
+          "options": {
+            "A": "Prevent any function instance from scaling",
+            "B": "Make the clients accessible to unrelated projects without IAM",
+            "C": "Avoid unnecessary connections and DNS queries across reused invocations",
+            "D": "Force a new network connection for each line of code"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Global istemci bağlantı ve DNS tekrarını azaltır; ölçekleme ve yetki sınırları devam eder."
+        }
+      ]
+    },
+    {
+      "id": "C05-04",
+      "title": "Retry configuration and failure handling",
+      "source": "cloudRunFunctions/M5_Best_Practices_for_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "In the deployment model described in this module, which two retry statements are given?",
+          "options": {
+            "A": "Automatic retry is for event-driven functions",
+            "B": "Retry makes non-idempotent side effects safe automatically",
+            "C": "It is disabled by default",
+            "D": "Every HTTP request is always retried automatically by this setting"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Sayfa 11 event-driven otomatik retry ayarını ve varsayılan kapalı durumu anlatır; başka trigger/API yollarına genellenmez."
+        },
+        {
+          "question": "Which flag enables retry in the illustrated deployment command?",
+          "options": {
+            "A": "--entry-point",
+            "B": "--memory",
+            "C": "--docker-repository",
+            "D": "--retry"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "gcloud functions deploy akışında --retry kullanılır; kapatmak için yeniden deploy edip flag kaldırılır."
+        },
+        {
+          "question": "Which two failures are listed as retry-triggering failures when retry is enabled?",
+          "options": {
+            "A": "A harmless comment in source code",
+            "B": "An unreachable service causing timeout",
+            "C": "A rejected Node.js promise",
+            "D": "A completed successful invocation"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Timeout ve rejected promise başarısızlık örnekleridir; unhandled exception da listelenir."
+        },
+        {
+          "question": "What retry duration does page 12 state for its course example?",
+          "options": {
+            "A": "Unlimited with no end",
+            "B": "Up to seven days",
+            "C": "Exactly one year",
+            "D": "Exactly seven seconds"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "PDF örneği yedi güne kadar der. Bu değer sürüm/trigger bağımlıdır; tüm Cloud Run functions yolları için güncel garanti olarak kullanılmaz."
+        },
+        {
+          "question": "Which two measures prevent harmful repeated failures?",
+          "options": {
+            "A": "Fix deterministic code bugs before enabling retries",
+            "B": "Use an end condition such as rejecting overly old events",
+            "C": "Retry permanent bugs forever without a stop condition",
+            "D": "Assume retry removes the need for exception handling"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            13
+          ],
+          "explanation": "Retry geçici arızalar içindir; kalıcı bug düzeltilir ve timestamp gibi koşulla eski event'ler bırakılarak döngü sınırlanır."
+        }
+      ]
+    },
+    {
+      "id": "C05-05",
+      "title": "Configuration, scaling and traffic splitting",
+      "source": "cloudRunFunctions/M5_Best_Practices_for_Functions.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two configuration choices directly tune resource and execution limits?",
+          "options": {
+            "A": "--timeout slightly above expected execution duration",
+            "B": "--entry-point for network latency guarantees",
+            "C": "--memory for allocated memory",
+            "D": "--set-env-vars for automatic infinite execution"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            16
+          ],
+          "explanation": "Bellek ve timeout ayrı ayarlardır; timeout beklenen süreyi karşılamalıdır. PDF memory ile CPU tahsisi ilişkisini de belirtir."
+        },
+        {
+          "question": "What must code account for when multiple requests share one instance?",
+          "options": {
+            "A": "A requirement to disable all HTTP responses",
+            "B": "A guarantee that global state is private to each request",
+            "C": "A guarantee that no two requests can overlap",
+            "D": "Concurrency safety because invocations are not isolated from each other within that instance"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            16
+          ],
+          "explanation": "Concurrency aynı instance'a birden fazla istek getirir; ortak durum güvenli yönetilmelidir."
+        },
+        {
+          "question": "Which two instance-count choices address distinct concerns?",
+          "options": {
+            "A": "Maximum instances help limit pressure on constrained downstream services",
+            "B": "Minimum instances reduce cold-start latency",
+            "C": "Maximum instances eliminate every transient overshoot",
+            "D": "Minimum instances guarantee infinite database throughput"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            18,
+            19
+          ],
+          "explanation": "Minimum hazır kapasite içindir; maximum downstream yükünü sınırlamaya yardımcıdır. Sayfa 19 geçici aşımı ayrıca belirtir."
+        },
+        {
+          "question": "Why can the stated maximum instance count be temporarily exceeded in the module?",
+          "options": {
+            "A": "Because all IAM policies require unlimited instances",
+            "B": "Because max-instances configures only source file count",
+            "C": "Because each HTTP response permanently doubles the limit",
+            "D": "Traffic spikes and overlapping revisions during deployment"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            19
+          ],
+          "explanation": "PDF ani trafik ve revision geçişinde eski/yeni instance örtüşmesini gerekçe verir; limit mutlak anlık tavan gibi yorumlanmaz."
+        },
+        {
+          "question": "Which two revision statements support safe traffic rollout?",
+          "options": {
+            "A": "Traffic splitting requires overwriting the previous revision's source",
+            "B": "Revisions are immutable, so changes create a new revision",
+            "C": "A custom traffic configuration can split traffic or route back to a prior revision",
+            "D": "Every deployed revision can be edited in place"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            20
+          ],
+          "explanation": "Deploy yeni immutable revision üretir; gcloud run services update-traffic ile dağılım veya rollback ayarlanır."
+        }
+      ]
     }
   ]
 }

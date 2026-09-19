@@ -81,3 +81,28 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 | OQ-02 | Choreography versus orchestration | Paylaşılan quiz + resmî web kaynakları; PDF sayfası yok |
 | OQ-03 | Workflows: execution state and long-running coordination | Paylaşılan quiz + resmî web kaynakları; PDF sayfası yok |
 | OQ-04 | Eventarc Standard: CloudEvents, Audit Logs and Pub/Sub | Paylaşılan quiz + resmî web kaynakları; PDF sayfası yok |
+| C01-01 | Platform, benefits and use cases | 4, 11, 12, 20 |
+| C01-02 | HTTP, CloudEvent and background handlers | 13, 14, 15, 16, 17 |
+| C01-03 | Capacity, revisions and portability | 18 |
+| C01-04 | Runtime source layout, entry points and regions | 23, 24, 25 |
+| C01-05 | Deployment permissions, flags and sources | 28, 29, 30, 31 |
+| C01-06 | Build pipeline and artifact storage | 27, 33, 34 |
+| C02-01 | Trigger categories, HTTP and Pub/Sub | 4, 5, 6, 7, 8 |
+| C02-02 | Cloud Storage, Firestore and Firebase events | 9, 10, 11 |
+| C02-03 | Workflows coordination and data passing | 14, 16, 17, 18 |
+| C02-04 | Serverless VPC Access configuration | 20, 21, 22, 23 |
+| C02-05 | Connecting Redis and private VM services | 21, 25, 26 |
+| C03-01 | Identity, tokens and IAM authorization | 5, 6, 8, 9, 11 |
+| C03-02 | Runtime identity and function-to-function invocation | 12, 13 |
+| C03-03 | Ingress, egress and VPC Service Controls | 14, 15 |
+| C03-04 | CMEK scope and setup | 17, 18, 19, 21 |
+| C03-05 | CMEK deployment, versions and key loss | 20, 21, 22, 23 |
+| C04-01 | Memorystore and Redis connectivity | 5, 6, 7, 8 |
+| C04-02 | Environment-variable configuration | 11, 12 |
+| C04-03 | Firestore documents, events and snapshots | 14, 16, 17, 18 |
+| C04-04 | Secret Manager, versions and cross-project access | 20, 21, 22 |
+| C05-01 | Idempotency, completion and temporary files | 3, 4 |
+| C05-02 | Errors, local testing and runtime portability | 4, 5, 6 |
+| C05-03 | Cold starts, object reuse and networking | 8, 9 |
+| C05-04 | Retry configuration and failure handling | 11, 12, 13 |
+| C05-05 | Configuration, scaling and traffic splitting | 16, 18, 19, 20 |

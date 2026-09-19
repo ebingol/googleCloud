@@ -39,3 +39,18 @@ Aynı modülün sonundaki hub-and-spoke önerisi yalnız Sasha örneğinin cevab
 ## 9. Orchestration kaynak kapsamı
 
 O01 setlerinin kaynağı Introduction to Microservices PDF’idir. OQ setleri paylaşılan quiz ve resmî dokümanlarla desteklenir. Eventarc taşıma soruları Standard kapsamındadır. Cloud Tasks token seçeneğinin işaretlenmemiş olması onun yanlışlığını kanıtlamaz; [bölüm analizi](orchestration/README.md) kimlik ayrımını açıklar.
+
+## 10. Cloud Run Functions: ders sürümü ve çelişkiler
+
+25 set (C01–C05) yalnız yüklenen beş PDF’ye dayanır. Sayfa numaraları PDF dosyasının 1 tabanlı sayfalarıdır. Kaynaklar toplam 146 sayfadır. Başlık/gündem/tekrar sayfaları bağımsız konu sayılmadı; lab akışlarının Redis yazma-okuma ve özel VM bağlantısı gibi somut adımları kapsama alındı.
+
+- M1 s. 18’deki 32 GiB/4 vCPU, 1000 concurrency, HTTP 60 dakika/event 10 dakika değerleri **PDF’ye göre** sorulur. Üst sınır, varsayılan ve güncel kullanılabilir konfigürasyon aynı değildir.
+- M1 s. 17’deki runtime/CloudEvent/Background sınıflandırması ve s. 30–31’deki repository deployment yolu dersin nesil ayrımını korur. M2 s. 5’teki tek trigger bağlama sınırı bu deployment anlatımına aittir; tüm çağdaş Cloud Run/Eventarc yapılandırmalarına genellenmez.
+- M3 s. 11’de cloudfunctions.functions.invoke izni bulunur. S. 13’te açıklama yeni Cloud Run functions için roles/run.invoker, 1st gen için roles/cloudfunctions.invoker der; CLI kutusunda eski rol vardır. C03-02, soruda nesli belirterek açıklamadaki ayrımı kullanır.
+- M3 s. 17 anahtar erişimi kaybını genel anlatırken s. 23, hâlihazırda çalışan execution’ların devam ettiğini belirtir. Aynı s. 23’te aktif instance’a gelen yeni çağrılar slaytta “may fail”, konuşmacı notunda “will fail” diye geçer. Bu tartışmalı kesinlik sınav sorusuna dönüştürülmedi; devam eden execution ve yeni instance ayrımı soruldu.
+- M3 s. 19 “service accounts” der; s. 21 ilgili Cloud Run functions, Artifact Registry ve Cloud Storage **service agent** kimliklerini açıklar. CMEK yetkisi bu kimliklerle sorulur; runtime service account ile karıştırılmaz.
+- M4 s. 16–18 eski Firebase SDK biçimindeki onCreate/onWrite ve snapshot örneklerini içerir. Native/Datastore destek ifadesi güncel ürün desteğine genellenmedi. M4 s. 21’de volume üzerinden latest okuma, latest sürümünü izleyen bağlantı için sorulur; sabit secret version’ın kendiliğinden yenilendiği iddia edilmez.
+- M5 s. 11–12’de retry kapalı varsayılanı ve yedi günlük süre anlatılır. C05-04 bunları yalnız dersin deployment modeli için sorar. HTTP istemcisinin retry davranışı veya başka Eventarc/API yolları için genel kural değildir.
+- M5 s. 16’daki varsayılan tek istek ifadesi bütün güncel konfigürasyonlara genellenmedi. C05-05 concurrency güvenliği, min/max instance ayrımı, geçici limit aşımı ve immutable revision davranışını ölçer.
+
+Bu bölüm için kurs quiz sonucu henüz paylaşılmadı. Başarı puanı veya çözülmüş durum uydurulmadı; takip tablosu boş satırlarla genişletildi.

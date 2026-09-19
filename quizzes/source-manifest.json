@@ -80,6 +80,31 @@
       "path": "orchestration/Module1-IntroductionToMicroservices.pdf",
       "pages": 16,
       "sha256": "2f8a762dae6f465bb705eb890ba95bcfb70b65e82661a0e7f288034959228289"
+    },
+    {
+      "path": "cloudRunFunctions/jFlXbz-M1_Introduction_to_Cloud_Run_Functions.pdf",
+      "pages": 40,
+      "sha256": "eb8e03717edfcb0df93a6d9f9473be65b1807fb2e88908c091de5f42ac0165ea"
+    },
+    {
+      "path": "cloudRunFunctions/M2_Calling_and_Connecting_Cloud_Run_Functions.pdf",
+      "pages": 29,
+      "sha256": "62c3a1e57ee554b6ccd0067e997ce3d31940d479e16654dac8e6d8e9461f69ed"
+    },
+    {
+      "path": "cloudRunFunctions/RszHeV-M3_Securing_Cloud_Run_Functions.pdf",
+      "pages": 26,
+      "sha256": "96f15f6a6ad936416308e4d726ec725bd8b403661a53ce23684931f4fd09486d"
+    },
+    {
+      "path": "cloudRunFunctions/M4_Integrating_Cloud_Databases.pdf",
+      "pages": 29,
+      "sha256": "129cbaeac6da2e90cd5b161f34f1c292d2d1b195a82c9f15efcfaa8ef3d6e12b"
+    },
+    {
+      "path": "cloudRunFunctions/M5_Best_Practices_for_Functions.pdf",
+      "pages": 22,
+      "sha256": "df43f9e3e8d4964f6f11f4a4fb887c4e8a2316a370c157783501dfa1fd67489d"
     }
   ],
   "supplemental_sources": [
