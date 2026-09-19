@@ -1,0 +1,80 @@
+{
+  "basis": "Uploaded course PDFs; 1-based PDF file pages",
+  "sources": [
+    {
+      "path": "foundations/Module1-BestPracticesForCloudApplicationDevelopment.pdf",
+      "pages": 17,
+      "sha256": "57d2ead6224a479c8d10b8b8a7dde3dbc9460fac4bf9df80b361782c6c126090"
+    },
+    {
+      "path": "foundations/Module2-GettingStartedWithGoogleCloudDevelopment.pdf",
+      "pages": 25,
+      "sha256": "8b7361a90aff0d0122d966e7c940d23d94326ec3ae1cfb6688271430fb515a06"
+    },
+    {
+      "path": "foundations/Module3-DataStorageOptions.pdf",
+      "pages": 20,
+      "sha256": "876251d64b19ac89241a4dd449436923aa6276dd7111115d4d03a2edb2ba4989"
+    },
+    {
+      "path": "foundations/Module4-HandlingAuthenticationAndAuthorization.pdf",
+      "pages": 39,
+      "sha256": "7b569c8cfd60b5ee2581f200090076e661852e0c908c821f0a5f3ad710cf44bc"
+    },
+    {
+      "path": "foundations/Module5-AddingIntelligenceToYourApplication.pdf",
+      "pages": 23,
+      "sha256": "18111990f6eeaeb93f448e72fab78e5f6c2811132777dbe68467f13ca8503c6a"
+    },
+    {
+      "path": "foundations/Module6-DeployingApplications.pdf",
+      "pages": 17,
+      "sha256": "2db77e70cb6cc28b1edef6914437a68af8662c75a5cc2329c61cf960348db5ba"
+    },
+    {
+      "path": "foundations/Module7-ComputeOptionsForYourApplication.pdf",
+      "pages": 55,
+      "sha256": "4c4c657f83d0f91469901a5b90ce1cfa37ad7187385585f43305e464aa4f0c61"
+    },
+    {
+      "path": "foundations/Module8-MonitoringAndPerformanceTuning.pdf",
+      "pages": 34,
+      "sha256": "319c190852293fb0c3ad1d5b0648adea06276f8802f09332f6a80014720463f0"
+    },
+    {
+      "path": "fundamentals/M1 _ Introducing Google Cloud v5.2 _ ILT.pdf",
+      "pages": 70,
+      "sha256": "2341bd070828ffb0d5bc84df265b9b7db4906b4329342d657cc0561976161e94"
+    },
+    {
+      "path": "fundamentals/M2 _ Resouces and Access in the Cloud v5.2 _ ILT.pdf",
+      "pages": 47,
+      "sha256": "666be6b72c1c56c448123d760462b6aa2027421d45ce19c891b7068223b4931c"
+    },
+    {
+      "path": "fundamentals/M3 _ Virtual Machines and Networks in the Cloud v5.2 _ ILT.pdf",
+      "pages": 52,
+      "sha256": "85afa26fc779fbb96a444603af2081ad45b14a15e9b25d2568c0b269de7a4549"
+    },
+    {
+      "path": "fundamentals/M4 _ Storage in the Cloud v5.2 _ ILT.pdf",
+      "pages": 60,
+      "sha256": "3faae59228ac828b4b475a2c50f8321a3fb99099737146cd13e84d971e7ee388"
+    },
+    {
+      "path": "fundamentals/M5 _ Containers in the Cloud v5.2 _ ILT.pdf",
+      "pages": 30,
+      "sha256": "cc1123502185462356922562c73e86aecc1e8bdb4e99909914b4c3f9ecef8098"
+    },
+    {
+      "path": "fundamentals/M6 _ Applications in the Cloud v5.2 _ ILT.pdf",
+      "pages": 20,
+      "sha256": "b8be55632183811419807845f26522991a90eade7c8bdf1c8189f07f9232e388"
+    },
+    {
+      "path": "fundamentals/M7 _ Prompt Engineering v5.2 _ ILT.pdf",
+      "pages": 38,
+      "sha256": "7de425893d9a257615d66da171c81b5293de324f204385668e874c17d9b197ad"
+    }
+  ]
+}
