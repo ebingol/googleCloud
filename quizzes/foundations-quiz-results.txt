@@ -1,0 +1,454 @@
+Quiz: Best Practices for Cloud Application Development
+Your score: 100% Passing score: 50%
+Congratulations! You passed this assessment.
+
+check
+1.
+For transient network issues, what error-handling approach should you implement?
+check
+Retry with exponential backoff
+
+
+Implement a circuit breaker
+
+
+Retry constantly until the call succeeds
+
+
+Display the error to the user
+Correct! For transient network issues, the error-handling approach that you should implement is to retry with exponential backoff.
+check
+2.
+Which of the following is an anti-pattern when designing a cloud application?
+
+
+Perform asynchronous operations
+check
+Embed configuration settings in your source code
+
+
+Cache application data and frontend content
+
+
+Use APIs and API gateways to connect to legacy systems in applications
+Correct! Instead of embedding app configuration settings in your source code, you should separate code from config by passing the app's configuration into your application using environment variables. This allows you to use the exact same code in development, test, and production environments.
+
+
+Quiz: Getting Started with Google Cloud Development
+Your score: 66% Passing score: 66%
+Congratulations! You passed this assessment.
+
+check
+1.
+Which command-line tools does the Google Cloud SDK include? Select two.
+
+
+
+
+node
+check
+bq
+Correct!
+
+
+
+
+ruby
+
+
+
+
+gRPC
+check
+gcloud
+Correct!
+check
+2.
+Which of the following statements about Cloud Code are true? Select two.
+
+
+
+
+Cloud Code is an integrated development environment for creating cloud applications.
+check
+Cloud Code works with both Cloud Run and Kubernetes applications.
+Correct!
+
+
+
+
+Cloud Code is only available in the Cloud Shell editor.
+check
+Cloud Code integrates with Secret Manager to securely store sensitive data.
+Correct!
+
+
+
+
+Cloud Code's YAML authoring assistance provides autocomplete and inline documentation for Docker files.
+close
+3.
+Which of the following statements about Google Cloud Client Libraries are true? Select two.
+info
+Note: To get credit for a multiple-select question, you must select all of the correct options and none of the incorrect ones.
+
+
+
+
+Cloud Client Libraries should only be used when you cannot call Cloud APIs directly.
+check
+Cloud Client Libraries handle retry logic and authentication.
+Correct!
+
+
+
+
+Cloud Client Libraries are provided in all languages that can be used on Google Cloud.
+
+
+
+
+Cloud Client Libraries support a language's natural conventions and styles.
+close
+Cloud Client Libraries include the Cloud SDK.
+Incorrect. The Cloud SDK includes the Cloud Client Libraries, not vice versa.
+
+Quiz: Handling Authentication and Authorization
+Your score: 100% Passing score: 66%
+Congratulations! You passed this assessment.
+
+check
+1.
+Your photo-sharing application requires user login. You don't want to build a custom user authentication system that stores usernames and passwords. What is the best way to authenticate your users?
+check
+You can leverage federated identity management by using Firebase Authentication.
+
+
+You can give employees read permissions to critical resources in the project.
+
+
+You can use Identity-Aware Proxy to provide application-level access.
+
+
+You can use OAuth 2.0 to access resources on behalf of a user.
+Correct!
+check
+2.
+How should you authenticate to Google Cloud APIs from your production application that is deployed to Cloud Run?
+check
+Attach a service account to your application.
+
+
+Use a service account key.
+
+
+Use workload identity federation.
+
+
+Use "gcloud auth application-default login."
+Correct!
+check
+3.
+Your enterprise has an online expense reporting application. Employees must be able to access the application without having to log into the corporate VPN. How can you enable this type of access?
+check
+You can use Identity-Aware Proxy to provide application-level access.
+
+
+You can give employees read permissions to critical resources in the project.
+
+
+You can leverage federated identity management by using Firebase authentication.
+
+
+You can use OAuth 2.0 to access resources on behalf of a user.
+Correct!
+
+Quiz: Data Storage Options
+Your score: 100% Passing score: 66%
+Congratulations! You passed this assessment.
+
+check
+1.
+You're building a banking application that is expected to have a very large number of users around the world. When users make a deposit, they want to see the result of this deposit reflected immediately when they view their balance. What data storage option is ideal for storing account balance information for users?
+
+
+Cloud SQL is ideal because it's a relational database that supports transactions.
+
+
+Firestore is ideal because it lets you develop a mobile app.
+
+
+Bigtable is ideal because it supports low-latency read/write access.
+check
+Spanner is ideal because it supports strongly consistent reads in addition to horizontal scalability, low latency, and high throughput.
+Correct!
+check
+2.
+A restaurant in your neighborhood wants to put up a website that displays static information including a menu, restaurant hours, and location on a map. What is the best solution for serving the website’s content on Google Cloud?
+
+
+Serve the website's content from a web server running on a Compute Engine instance.
+check
+Serve the website's content from a Cloud Storage bucket.
+
+
+Serve the website's content from Firestore.
+
+
+Serve the website's content from Bigtable.
+Correct!
+check
+3.
+You have a very large database that you're using for complex queries in a suite of business intelligence applications. You want to move the data to a fully-managed solution. Which option is ideal for such use cases?
+
+
+Bigtable
+check
+BigQuery
+
+
+Cloud SQL
+
+
+Firestore
+Correct!
+
+Quiz: Handling Authentication and Authorization
+Your score: 100% Passing score: 66%
+Congratulations! You passed this assessment.
+
+check
+1.
+Your photo-sharing application requires user login. You don't want to build a custom user authentication system that stores usernames and passwords. What is the best way to authenticate your users?
+check
+You can leverage federated identity management by using Firebase Authentication.
+
+
+You can give employees read permissions to critical resources in the project.
+
+
+You can use Identity-Aware Proxy to provide application-level access.
+
+
+You can use OAuth 2.0 to access resources on behalf of a user.
+Correct!
+check
+2.
+How should you authenticate to Google Cloud APIs from your production application that is deployed to Cloud Run?
+check
+Attach a service account to your application.
+
+
+Use a service account key.
+
+
+Use workload identity federation.
+
+
+Use "gcloud auth application-default login."
+Correct!
+check
+3.
+Your enterprise has an online expense reporting application. Employees must be able to access the application without having to log into the corporate VPN. How can you enable this type of access?
+check
+You can use Identity-Aware Proxy to provide application-level access.
+
+
+You can give employees read permissions to critical resources in the project.
+
+
+You can leverage federated identity management by using Firebase authentication.
+
+
+You can use OAuth 2.0 to access resources on behalf of a user.
+Correct!
+
+Quiz: Adding Intelligence to Your Application
+Your score: 100% Passing score: 50%
+Congratulations! You passed this assessment.
+
+check
+1.
+How can you invoke pre-trained machine learning APIs (such as the Vision API or Natural Language API) from your application?
+
+
+Use a gcloud CLI command.
+check
+Use the REST API.
+
+
+Use TensorFlow.
+
+
+Use the Google Cloud console.
+Correct!
+check
+2.
+You're developing an application that labels entities in video before storing the files. Which API should you use?
+check
+Video Intelligence API
+
+
+Cloud Translation API
+
+
+Cloud Natural Language API
+
+
+Vision API
+
+Quiz: Deploying Applications
+Your score: 50% Passing score: 50%
+Congratulations! You passed this assessment.
+
+check
+1.
+How can Cloud Build and Artifact Registry help you build a continuous integration and delivery pipeline? Select two.
+check
+With Cloud Build, the artifacts produced by each build step are persisted in the /workspace folder and can be used by the following build step.
+Correct.
+check
+By using Artifact Registry and Cloud Build, you can create build pipelines that are automatically triggered when you commit code to a repository.
+Correct.
+
+
+
+
+Each build step in a Cloud Build configuration specifies how to build an application container image.
+
+
+
+
+You can install Cloud Build on Google Kubernetes Engine. GKE will autoscale depending on the number of builds.
+
+
+
+
+When you commit code to a repository, you must start a build manually using a gcloud CLI command.
+close
+2.
+Which of the following statements about continuous integration and delivery are accurate? Select two.
+info
+Note: To get credit for a multiple-select question, you must select all of the correct options and none of the incorrect ones.
+
+
+
+
+To benefit from continuous integration and delivery developers must use GitHub.
+
+
+
+
+Continuous delivery is a workflow that is triggered when changes are pushed to the main branch in the repository.
+
+
+
+
+Continuous integration is a developer workflow in which developers pull from the main branch and commit their changes into a feature branch in a source code repository.
+close
+Any continuous integration and delivery pipeline built on Google Cloud will automatically provide best security practices.
+Incorrect. Google Cloud's Software Delivery Shield provides managed services to fully secure your pipeline, but you must include these services in your pipeline.
+close
+If all tests pass, builds generated from continuous integration in a feature branch can be released on a production environment.
+Incorrect. Builds from a feature branch cannot be released because the application images will not have features that are being developed on other feature branches.
+
+Quiz: Compute Options for Your Application
+Your score: 66% Passing score: 66%
+Congratulations! You passed this assessment.
+
+check
+1.
+You have an application running on virtual machines in another cloud provider. You want to move this application into Google Cloud with as few changes as possible. Which execution environment should you consider?
+
+
+Cloud Run functions
+
+
+Cloud Run
+check
+Compute Engine
+
+
+Google Kubernetes Engine
+Correct!
+close
+2.
+Your application is containerized, requires automatic scaling, and accepts requests over gRPC. You do not want to manage infrastructure. Which would be the ideal execution environment for your application?
+
+
+Google Kubernetes Engine
+
+
+Cloud Run functions
+
+
+Compute Engine
+close
+Cloud Run
+Incorrect. Cloud Run cannot accept requests over gRPC.
+check
+3.
+Your code needs to create a thumbnail of an image in response to a Pub/Sub event. Which of the following execution environments should you consider?
+
+
+Compute Engine
+
+
+Google Kubernetes Engine
+check
+Cloud Run functions
+
+
+App Engine (flexible environment)
+Correct.
+
+Quiz: Monitoring and Performance Tuning
+Your score: 66% Passing score: 66%
+Congratulations! You passed this assessment.
+
+check
+1.
+You want to set up monitoring for your mission-critical application. What signals should you monitor in your dashboards?
+
+
+Contrast, Latency, Traffic, Errors
+
+
+Saturation, Latency, Throttling, Errors
+check
+Saturation, Latency, Traffic, Errors
+
+
+Security, Latency, Throttling, Errors
+Correct!
+check
+2.
+You want to stream logs into Cloud Logging from third-party applications running on Compute Engine instances. What service should you consider?
+
+
+Cloud Trace
+check
+Ops Agent
+
+
+Error Reporting
+
+
+Cloud Monitoring
+Correct!
+close
+3.
+Users are encountering errors in your application. You want to view the stack trace to determine where the error occurred. Which service would help you view the stack trace?
+
+
+Cloud Logging
+close
+Cloud Monitoring
+
+
+Cloud Trace
+
+
+Error Reporting
+Incorrect. Cloud Monitoring does not help you find errors and their stack traces.
+
