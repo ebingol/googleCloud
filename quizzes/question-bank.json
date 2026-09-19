@@ -9297,6 +9297,2198 @@
           "explanation": "Deploy yeni immutable revision üretir; gcloud run services update-traffic ile dağılım veya rollback ayarlanır."
         }
       ]
+    },
+    {
+      "id": "T01-01",
+      "title": "Images, runtime containers and execution environments",
+      "source": "containeried/T-DVCNTA-B-m1-l1-en-file-2.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What is a container image in the lesson's terminology?",
+          "options": {
+            "A": "A Kubernetes cluster control plane",
+            "B": "A file archive that templates a runtime container",
+            "C": "A running application process only",
+            "D": "A virtual machine's physical network adapter"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            4,
+            5
+          ],
+          "explanation": "Image uygulama ve gerekli dosyaları paketleyen arşiv/şablondur; çalışan instance ayrı kavramdır."
+        },
+        {
+          "question": "What distinguishes a container from its image in the lesson?",
+          "options": {
+            "A": "The container represents running application processes",
+            "B": "The image exists only while a request is active",
+            "C": "The image is always a database snapshot",
+            "D": "The container is only an unexecuted archive"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            6,
+            8
+          ],
+          "explanation": "Ders container'ı image'ın çalışma anındaki instance'ı olarak anlatır; image saklanıp taşınabilir."
+        },
+        {
+          "question": "Which two things happen when an image runs in the model shown?",
+          "options": {
+            "A": "Processes get a virtual network interface with a local IP",
+            "B": "Every source file must be recompiled into the host kernel",
+            "C": "Image contents seed a private filesystem",
+            "D": "The image becomes a physical Ethernet switch"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Çalışan süreçler özel dosya sistemi ve sanal ağ arayüzü kullanır; uygulama port açıp dinleyebilir."
+        },
+        {
+          "question": "Which two local container runtimes are named?",
+          "options": {
+            "A": "Podman",
+            "B": "Cloud Build",
+            "C": "Artifact Registry",
+            "D": "Docker"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Ders yerelde Docker/Podman, Google Cloud'da Compute Engine/GKE/Cloud Run seçeneklerini ayırır."
+        },
+        {
+          "question": "Which file category may be included in an image besides program code?",
+          "options": {
+            "A": "System libraries and resources such as HTML or images",
+            "B": "Only the physical host's firmware",
+            "C": "Only the deployment user's personal browser cache",
+            "D": "Only a cloud billing invoice"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Image executable, sistem kütüphanesi, source ve static resource içerebilir; içerik uygulamanın gereksinimine göre seçilir."
+        }
+      ]
+    },
+    {
+      "id": "T01-02",
+      "title": "Language runtimes, dependencies and application assets",
+      "source": "containeried/T-DVCNTA-B-m1-l1-en-file-2.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which three components are identified in the sample Node.js application?",
+          "options": {
+            "A": "go.mod",
+            "B": "pom.xml",
+            "C": "package.json",
+            "D": "server.js",
+            "E": "index.html"
+          },
+          "answers": [
+            "C",
+            "D",
+            "E"
+          ],
+          "pages": [
+            11,
+            12,
+            13,
+            14
+          ],
+          "explanation": "Örnek Node uygulaması server.js, bağımlılık/başlatma bilgisi taşıyan package.json ve döndürülen index.html içerir."
+        },
+        {
+          "question": "What does the Express route in the sample do?",
+          "options": {
+            "A": "Install the Node.js runtime for every request",
+            "B": "Build a Kubernetes cluster",
+            "C": "Return index.html for a request to the root path",
+            "D": "Compile the Java application"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            12,
+            14
+          ],
+          "explanation": "Express HTTP endpoint'i statik HTML döndürür; server başlatma ayrı listen çağrısıdır."
+        },
+        {
+          "question": "Which Python pairing is given for dependency declaration and installation?",
+          "options": {
+            "A": "package.json and Maven",
+            "B": "requirements.txt and pip",
+            "C": "pom.xml and npm",
+            "D": "go.mod and Gradle"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            16
+          ],
+          "explanation": "Python bağımlılıkları requirements.txt ile belirtilip pip ile kurulabilir; runtime da image içinde gerekir."
+        },
+        {
+          "question": "What must be available to run the compiled Java application described?",
+          "options": {
+            "A": "Only the original source with no JVM",
+            "B": "Only a Go compiler with no Java binaries",
+            "C": "Only npm's package-lock file",
+            "D": "Compiled classes and the JVM"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            17
+          ],
+          "explanation": "Java source önce derlenir; çalıştırma için compiled binary ve JVM gerekir, source zorunlu değildir."
+        },
+        {
+          "question": "Which two statements describe the Go application example?",
+          "options": {
+            "A": "Static assets can be embedded in that binary",
+            "B": "A JVM is always required to execute it",
+            "C": "Every request must download all Go source code",
+            "D": "Source and dependencies are compiled into a binary"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "Go örneğinde kaynak/bağımlılıklar binary'ye derlenir ve asset'ler içine gömülebilir."
+        }
+      ]
+    },
+    {
+      "id": "T01-03",
+      "title": "System dependencies and container configuration",
+      "source": "containeried/T-DVCNTA-B-m1-l1-en-file-2.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two examples are system dependencies discussed in the lesson?",
+          "options": {
+            "A": "An HTTP response status code",
+            "B": "ImageMagick for image processing",
+            "C": "A Kubernetes label selector",
+            "D": "A headless browser for HTML-to-PDF conversion"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            19
+          ],
+          "explanation": "Uygulama library'leri dışında browser, font ve image işleme aracı gibi sistem bağımlılıkları gerekebilir."
+        },
+        {
+          "question": "What does the container entrypoint describe conceptually?",
+          "options": {
+            "A": "Which Git branch must be merged",
+            "B": "Which database document receives a write",
+            "C": "Which program starts when the container starts",
+            "D": "Which registry scans every image"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            21
+          ],
+          "explanation": "Entrypoint çalışma anında başlatılacak programı belirtir; paket içeriği kadar başlatma konfigürasyonu da gerekir."
+        },
+        {
+          "question": "Which three settings are listed alongside the startup command?",
+          "options": {
+            "A": "Cloud billing currency",
+            "B": "Working directory",
+            "C": "Git pull-request approval count",
+            "D": "Environment variables",
+            "E": "User identity inside the container"
+          },
+          "answers": [
+            "B",
+            "D",
+            "E"
+          ],
+          "pages": [
+            21
+          ],
+          "explanation": "Env, çalışma dizini ve container içindeki user başlangıç davranışını belirler."
+        },
+        {
+          "question": "Why does the lesson recommend explicitly setting a non-root user?",
+          "options": {
+            "A": "Avoid unnecessary system-administrator privileges for the application",
+            "B": "Eliminate the need for application dependencies",
+            "C": "Make the image independent of any runtime contract",
+            "D": "Guarantee every network request succeeds"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            21
+          ],
+          "explanation": "Ders root varsayılanına güvenmemeyi ve uygulamayı gereksiz yönetici yetkisiyle çalıştırmamayı vurgular."
+        },
+        {
+          "question": "What is the minimal image example described in the summary?",
+          "options": {
+            "A": "A mandatory package manager and interactive shell",
+            "B": "One program file and configuration to run it",
+            "C": "Every source repository in the organization",
+            "D": "A complete build toolchain for every programming language"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            20,
+            22
+          ],
+          "explanation": "Her image tüm dosya türlerini içermez; tek binary ve çalıştırma komutu yeterli olan uygulamalar olabilir."
+        }
+      ]
+    },
+    {
+      "id": "T02-01",
+      "title": "Docker build stages and filesystem instructions",
+      "source": "containeried/T-DVCNTA-B-m1-l2-en-file-3.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two inputs does Docker Build use in the lesson?",
+          "options": {
+            "A": "Application source",
+            "B": "A required Firestore document",
+            "C": "A Cloud Scheduler invoice",
+            "D": "A Dockerfile"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Docker Build kaynak ve Dockerfile talimatlarından container image oluşturur."
+        },
+        {
+          "question": "What does FROM do in the illustrated build process?",
+          "options": {
+            "A": "Copy source files from the working directory",
+            "B": "Start a stage from a base image",
+            "C": "Run the application for every production request",
+            "D": "Assign the application an external DNS name"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "FROM registry'deki base image ile stage başlatır; sonraki talimatlar bu stage üzerinde çalışır."
+        },
+        {
+          "question": "What does COPY bring into the staged image?",
+          "options": {
+            "A": "Every file from every remote VM automatically",
+            "B": "Files from the build context",
+            "C": "Only the process's live memory",
+            "D": "Only IAM role definitions"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Build context kaynak dosya kümesidir; COPY bu kümeden dosya taşır."
+        },
+        {
+          "question": "Which two tasks are examples for RUN?",
+          "options": {
+            "A": "Choose a production traffic percentage without deploying",
+            "B": "Compile source into binaries",
+            "C": "Declare the Kubernetes Service's stable IP",
+            "D": "Install system or library dependencies"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "RUN build aşamasında image ortamındaki programı çalıştırıp dosyaları değiştirebilir."
+        },
+        {
+          "question": "How does the lesson contrast Dockerfiles and Buildpacks?",
+          "options": {
+            "A": "Neither approach produces a container image",
+            "B": "Buildpacks require a handwritten Dockerfile for every build",
+            "C": "Dockerfiles only define HTTP routes",
+            "D": "Dockerfiles explicitly script the build; Buildpacks use detection to package source"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Dockerfile ayrıntılı esneklik sunar; Buildpacks uygun build adımlarını algılayarak paketlemeyi kolaylaştırır."
+        }
+      ]
+    },
+    {
+      "id": "T02-02",
+      "title": "Dockerfile runtime configuration and build sequence",
+      "source": "containeried/T-DVCNTA-B-m1-l2-en-file-3.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which instruction sets environment-variable defaults in the image?",
+          "options": {
+            "A": "ENV",
+            "B": "COPY",
+            "C": "RUN",
+            "D": "FROM"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "ENV container konfigürasyonuna environment değerleri ekler; COPY dosya kopyalar."
+        },
+        {
+          "question": "Which instruction sets the working directory?",
+          "options": {
+            "A": "EXPOSE",
+            "B": "FROM",
+            "C": "USER",
+            "D": "WORKDIR"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            5,
+            10
+          ],
+          "explanation": "WORKDIR komutların/uygulamanın çalışma dizinini ayarlar; örnekte /app kullanılır."
+        },
+        {
+          "question": "Which instruction sets the user used to start the program?",
+          "options": {
+            "A": "FROM",
+            "B": "USER",
+            "C": "CMD",
+            "D": "COPY"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "USER süreç kimliğini belirler; runtime komutu CMD/ENTRYPOINT tarafındadır."
+        },
+        {
+          "question": "Which two statements match the runtime-command discussion?",
+          "options": {
+            "A": "CMD supplies execution defaults",
+            "B": "RUN is the production request handler declaration",
+            "C": "COPY alone specifies which process must start",
+            "D": "ENTRYPOINT identifies the executable to start"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "ENTRYPOINT ve CMD çalıştırma konfigürasyonudur; RUN build zamanında çalışır."
+        },
+        {
+          "question": "Why does the sample install production dependencies before setting its start command?",
+          "options": {
+            "A": "Dependencies exist only in Dockerfile comments",
+            "B": "The production server must run throughout image compilation",
+            "C": "A start command automatically downloads every missing dependency",
+            "D": "The application needs runtime libraries available in the built image"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            5,
+            6
+          ],
+          "explanation": "Örnekte npm install production bağımlılıklarını kurar; sonrasında node server.js başlatma ayarı verilir."
+        }
+      ]
+    },
+    {
+      "id": "T03-01",
+      "title": "Buildpacks, builders and detection",
+      "source": "containeried/T-DVCNTA-B-m1-l4-en-file-6.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What is the key convenience of Buildpacks in this lesson?",
+          "options": {
+            "A": "Require users to manually construct every filesystem layer",
+            "B": "Avoid producing any container image",
+            "C": "Replace source code with an IAM role",
+            "D": "Build an image from source without writing a Dockerfile"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            2
+          ],
+          "explanation": "Buildpacks Dockerfile yazmadan kaynak kodu container image'a çevirir."
+        },
+        {
+          "question": "How are buildpacks distributed and executed?",
+          "options": {
+            "A": "Only as SQL stored procedures",
+            "B": "Inside OCI images called builders",
+            "C": "Only inside Kubernetes Secret objects",
+            "D": "As physical VM disks without image metadata"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Builder bir OCI image'dır ve bir veya daha fazla buildpack içerebilir."
+        },
+        {
+          "question": "What is the detect phase responsible for?",
+          "options": {
+            "A": "Decide whether a buildpack applies to the source",
+            "B": "Deploy the final image to production unconditionally",
+            "C": "Start a permanent HTTP load balancer",
+            "D": "Rotate all database credentials"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Detect uygunluğu belirler; başarısız algılanan buildpack'in build aşaması atlanır."
+        },
+        {
+          "question": "Which two files may a Python buildpack look for in the lesson's example?",
+          "options": {
+            "A": "pom.xml",
+            "B": "requirements.txt",
+            "C": "server.class",
+            "D": "setup.py"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Python algılama örneği requirements.txt/setup.py; Node örneği package-lock.json kontrolünü anlatır."
+        },
+        {
+          "question": "Which two activities belong to the build phase?",
+          "options": {
+            "A": "Set entrypoint and startup scripts",
+            "B": "Approve every production change on behalf of a user",
+            "C": "Guarantee all application tests pass without running them",
+            "D": "Install dependencies or compile code as needed"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Build phase build/runtime ortamını kurar, gerektiğinde derler ve başlatma ayarlarını üretir."
+        }
+      ]
+    },
+    {
+      "id": "T03-02",
+      "title": "Pack tooling and builder selection",
+      "source": "containeried/T-DVCNTA-B-m1-l4-en-file-6.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What does the pack CLI need to turn a source directory into an image?",
+          "options": {
+            "A": "A running production GKE cluster in every case",
+            "B": "A builder",
+            "C": "An existing handwritten Dockerfile in every case",
+            "D": "An already deployed Cloud Run URL in every case"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "pack builder kullanarak yerel kaynak dizininden image üretir; zorunlu production deployment yoktur."
+        },
+        {
+          "question": "Which two arguments identify the builder and source directory in the example?",
+          "options": {
+            "A": "--builder",
+            "B": "--replicas",
+            "C": "--path",
+            "D": "--targetPort"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Örnekte --builder builder image'ını, --path kaynak dizinini belirtir."
+        },
+        {
+          "question": "Which three builder providers are named?",
+          "options": {
+            "A": "Heroku",
+            "B": "Google Cloud",
+            "C": "Cloud Armor",
+            "D": "Cloud DNS",
+            "E": "Paketo"
+          },
+          "answers": [
+            "A",
+            "B",
+            "E"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Ders farklı sağlayıcı builder'larının pack ile kullanılabileceğini belirtir."
+        },
+        {
+          "question": "Which sequence matches the three activated Node.js buildpacks in the example?",
+          "options": {
+            "A": "Deploy a load balancer, delete source, compile a kernel",
+            "B": "Install Node.js, run npm install, configure startup",
+            "C": "Rotate keys, create a database, remove the runtime",
+            "D": "Start production first, then choose a language"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Uygun buildpack'ler runtime, dependencies ve container configuration görevlerini tamamlar."
+        },
+        {
+          "question": "Which two Google Cloud buildpack properties are stated?",
+          "options": {
+            "A": "The project is open source",
+            "B": "Cloud Run source deployments use it to build images",
+            "C": "It is usable only for Node.js",
+            "D": "It always requires a user-maintained Dockerfile"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Google Cloud buildpacks açık kaynaktır ve Cloud Run source akışında kullanılır; ders birden fazla dil listeler."
+        }
+      ]
+    },
+    {
+      "id": "T04-01",
+      "title": "Skaffold workflow and configuration",
+      "source": "containeried/T-DVCNTA-B-m1-l6-en-file-7.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What is Skaffold's role in the lesson?",
+          "options": {
+            "A": "Replace the container registry with a database",
+            "B": "Orchestrate continuous development, build, test and deployment workflows",
+            "C": "Execute only SQL migrations",
+            "D": "Act as the Linux kernel inside every container"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            2
+          ],
+          "explanation": "Skaffold taşınabilir declarative konfigürasyonla geliştirme/CI/CD akışını koordine eder."
+        },
+        {
+          "question": "Which two features help the local development loop?",
+          "options": {
+            "A": "Require a full production rollout after every keystroke",
+            "B": "Sync changed files that do not need rebuilding",
+            "C": "Disable tests whenever files change",
+            "D": "Tail container logs and forward ports"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            3,
+            4
+          ],
+          "explanation": "File sync gereksiz build'i azaltır; log tail ve port forwarding yerel gözlemlemeyi kolaylaştırır."
+        },
+        {
+          "question": "What is the purpose of skaffold.yaml's build section?",
+          "options": {
+            "A": "Define artifacts and how their images are built",
+            "B": "Assign a static IP to every Pod",
+            "C": "Store all application runtime data",
+            "D": "Define only users allowed to sign in"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "build.artifacts image'ları, context'i ve builder/Dockerfile ayarını tanımlar."
+        },
+        {
+          "question": "Which two mechanisms help manage environment differences in the sample discussion?",
+          "options": {
+            "A": "A requirement to duplicate every common file manually",
+            "B": "Skaffold profiles",
+            "C": "Hard-coding all production passwords into images",
+            "D": "Kustomize bases and overlays"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            5,
+            6
+          ],
+          "explanation": "Kustomize ortak base üzerine overlay uygular; profiles ortam bazlı build/test/deploy ayarlarını tutabilir."
+        },
+        {
+          "question": "What command initializes the configuration through a wizard?",
+          "options": {
+            "A": "kubectl delete",
+            "B": "skaffold init",
+            "C": "gcloud auth revoke",
+            "D": "docker push"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "skaffold init proje kökünde başlangıç skaffold.yaml dosyasını üretmeye yardımcı olur."
+        }
+      ]
+    },
+    {
+      "id": "T04-02",
+      "title": "Cloud Build, artifact storage and build steps",
+      "source": "containeried/T-DVCNTA-B-m1-l6-en-file-7.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which pairing distinguishes building from artifact storage?",
+          "options": {
+            "A": "Cloud Build is a database; Artifact Registry is a scheduler",
+            "B": "Cloud Build executes builds; Artifact Registry stores resulting images/packages",
+            "C": "Artifact Registry compiles source; Cloud Build only stores passwords",
+            "D": "Cloud Logging runs all containers; Artifact Registry routes HTTP"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            7,
+            8,
+            9
+          ],
+          "explanation": "Build yürütme ve artifact saklama ayrı görevlerdir."
+        },
+        {
+          "question": "Which two tasks can a build configuration include?",
+          "options": {
+            "A": "An instruction to bypass all registry authorization",
+            "B": "A guarantee that untested code is correct",
+            "C": "Static analysis and dependency fetching",
+            "D": "Unit and integration tests"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Cloud Build task'ları test, analiz, bağımlılık ve artifact oluşturma adımlarını tarif edebilir."
+        },
+        {
+          "question": "What does the name field of a Cloud Build step identify?",
+          "options": {
+            "A": "The application's final public DNS name",
+            "B": "The builder container image that runs the step",
+            "C": "The user's billing display name",
+            "D": "The Kubernetes namespace in all cases"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "name adımı çalıştıran builder image'ını; args bu builder'a verilen argümanları belirtir."
+        },
+        {
+          "question": "What is the role of a step's args field?",
+          "options": {
+            "A": "Declare all network firewall rules",
+            "B": "Replace the source repository's access policy",
+            "C": "Store the output image's binary contents",
+            "D": "Pass arguments to the builder's entrypoint"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "args liste halinde komut argümanları taşır; entrypoint ayrıca belirtilebilir."
+        },
+        {
+          "question": "Which two prerequisites or observability details are stated for builds?",
+          "options": {
+            "A": "Build logs are necessarily unavailable to the developer",
+            "B": "A build can never run in the user's project",
+            "C": "Access build logs through Cloud Logging",
+            "D": "Enable the Cloud Build API"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Ders build kaynaklarının kullanıcı projesinde çalıştığını ve logların Cloud Logging'de olduğunu anlatır."
+        }
+      ]
+    },
+    {
+      "id": "T04-03",
+      "title": "Manual builds and trigger variants",
+      "source": "containeried/T-DVCNTA-B-m1-l6-en-file-7.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which command starts the illustrated manual build from local source?",
+          "options": {
+            "A": "gcloud builds submit",
+            "B": "docker stop",
+            "C": "kubectl get services",
+            "D": "gcloud run services update-traffic"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "builds submit kaynakları yükler ve Dockerfile veya build config'e göre build başlatır."
+        },
+        {
+          "question": "Which two trigger selection details are listed?",
+          "options": {
+            "A": "Only the developer's preferred editor font",
+            "B": "Only a container's temporary process ID",
+            "C": "A source repository and branch/tag expression",
+            "D": "The triggering event and build configuration"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            14,
+            15
+          ],
+          "explanation": "Trigger hangi repo/branch/tag olayıyla hangi build yapılandırmasının çalışacağını belirler."
+        },
+        {
+          "question": "What must be done before building from the external repositories discussed?",
+          "options": {
+            "A": "Publish every repository publicly",
+            "B": "Delete all branch references",
+            "C": "Connect the repository to Cloud Build",
+            "D": "Disable the repository's commit history"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            13,
+            15
+          ],
+          "explanation": "GitHub/Bitbucket gibi kaynaklarla bağlantı kurulmalıdır; kamuya açma şartı değildir."
+        },
+        {
+          "question": "Which trigger type responds to messages from events such as image pushes or storage changes?",
+          "options": {
+            "A": "A Dockerfile USER instruction",
+            "B": "A Kubernetes readiness probe",
+            "C": "A manual-only trigger with no event input",
+            "D": "Pub/Sub trigger"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            16
+          ],
+          "explanation": "Pub/Sub trigger registry/storage gibi kaynaklardan gelen mesajlarla build başlatabilir."
+        },
+        {
+          "question": "Which two other trigger types are described on page 16?",
+          "options": {
+            "A": "Manual triggers for an explicitly started pipeline",
+            "B": "Triggers activated by every local keyboard press without configuration",
+            "C": "Webhook triggers receiving authenticated events at a custom URL",
+            "D": "Triggers requiring a new operating system for every build"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            16
+          ],
+          "explanation": "Manual belirli branch/tag akışını elle başlatır; webhook dış kaynak yönetimi sistemlerini bağlar."
+        }
+      ]
+    },
+    {
+      "id": "T05-01",
+      "title": "Minimal images, Distroless and multi-stage builds",
+      "source": "containeried/T-DVCNTA-B-m1-l7-en-file-8.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Why is the sample Node.js base image much larger than the application?",
+          "options": {
+            "A": "The application's single HTML file accounts for nearly all the size",
+            "B": "The runtime image contains every production database",
+            "C": "It includes build tools and many system packages",
+            "D": "The registry inserts all users' home directories"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            2,
+            3
+          ],
+          "explanation": "Örnek base image compiler, package manager ve yardımcı araçlar taşır; bunların tümü runtime'da gerekli değildir."
+        },
+        {
+          "question": "What is the intended role of the Distroless image in the lesson?",
+          "options": {
+            "A": "Provide minimal runtime dependencies for the final image",
+            "B": "Automatically fix all vulnerabilities without rebuilding",
+            "C": "Provide every compiler and interactive debugging tool",
+            "D": "Replace the application binary with an empty filesystem"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            4,
+            7
+          ],
+          "explanation": "Distroless final runtime image'ını küçültür; build toolchain ayrı stage'de kalır."
+        },
+        {
+          "question": "Which two actions create the illustrated multi-stage result?",
+          "options": {
+            "A": "Remove all libraries even if needed at runtime",
+            "B": "Copy application files and dependencies from the build stage",
+            "C": "Start a second stage with another FROM",
+            "D": "Copy the entire developer laptop into the runtime stage"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            5,
+            6
+          ],
+          "explanation": "İkinci FROM yeni stage açar; COPY --from=build gereken çıktıları final stage'e taşır."
+        },
+        {
+          "question": "What does COPY --from=build refer to in the example?",
+          "options": {
+            "A": "A mandatory Git branch named build",
+            "B": "The application's production HTTP route",
+            "C": "The previously named build stage",
+            "D": "A Cloud Build billing account"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "--from stage kaynağını seçer; normal build-context kopyasından farklıdır."
+        },
+        {
+          "question": "Which two benefits are linked to a smaller final image?",
+          "options": {
+            "A": "Automatic elimination of IAM requirements",
+            "B": "Less upload/download time",
+            "C": "Less attack surface from unnecessary tools",
+            "D": "Guaranteed absence of all vulnerabilities"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            3,
+            10
+          ],
+          "explanation": "Küçük image aktarımı hızlandırır ve gereksiz binary'leri azaltır; mutlak güvenlik garantisi vermez."
+        }
+      ]
+    },
+    {
+      "id": "T05-02",
+      "title": "Signals, privileges and build caching",
+      "source": "containeried/T-DVCNTA-B-m1-l7-en-file-8.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Why does the lesson emphasize the application's PID 1 behavior?",
+          "options": {
+            "A": "PID 1 automatically grants all Google Cloud roles",
+            "B": "PID 1 makes all file writes persistent",
+            "C": "Only PID 1 can download an image from a registry",
+            "D": "Termination signals must reach the process so it can shut down gracefully"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Ana sürece sinyal ulaşması ve signal handler kaydı graceful shutdown için önemlidir; shell wrapper ayrımı kaynak notlarında açıklanır."
+        },
+        {
+          "question": "What must application code do in addition to receiving termination signals?",
+          "options": {
+            "A": "Always ignore termination requests",
+            "B": "Delete the image registry",
+            "C": "Register and implement signal handlers",
+            "D": "Rewrite the Dockerfile during shutdown"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Ders PID 1 için handler'ların kendiliğinden kaydolmadığını vurgular."
+        },
+        {
+          "question": "Which two practices reduce unnecessary privilege or tooling in the runtime container?",
+          "options": {
+            "A": "Remove unnecessary tools and avoid sudo access",
+            "B": "Grant every process system-administrator permissions",
+            "C": "Keep all build tools only for convenience in production",
+            "D": "Run the application as non-root"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Non-root ve gereksiz araçların kaldırılması saldırı yüzeyini/etki alanını azaltır; read-only çalışma da değerlendirilir."
+        },
+        {
+          "question": "Where should frequently changing steps be placed to improve the sequential build cache in the lesson?",
+          "options": {
+            "A": "Near the bottom of the Dockerfile",
+            "B": "Before every stable dependency-install step",
+            "C": "Always before FROM",
+            "D": "Only in the registry's access policy"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Erken değişiklik sonraki cache kullanımını bozar; sık değişen source adımları sona yakın tutulur."
+        },
+        {
+          "question": "If only Step 3 changes in the illustrated sequence, which earlier work can be reused?",
+          "options": {
+            "A": "The base image and unchanged Steps 1 and 2",
+            "B": "Only the changed source file's previous checksum",
+            "C": "Only Step 3's old output",
+            "D": "Nothing, even if all earlier inputs match"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Dersin sıralı cache örneğinde önceki değişmeyen adımlar yeniden kullanılabilir."
+        }
+      ]
+    },
+    {
+      "id": "T05-03",
+      "title": "Vulnerability scans and patching pipelines",
+      "source": "containeried/T-DVCNTA-B-m1-l7-en-file-8.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What happens when automatic scanning is enabled and a new image is pushed in the lesson?",
+          "options": {
+            "A": "The scanner automatically rewrites all application source",
+            "B": "The image is scanned and vulnerability metadata is recorded",
+            "C": "All running revisions are deleted",
+            "D": "The image is proven permanently safe"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Container Analysis tarama metadata'sı üretir; düzeltme için rebuild/deploy akışı gerekir."
+        },
+        {
+          "question": "Which two sources can supply vulnerability information for the patching workflow?",
+          "options": {
+            "A": "Only a user's guess about image size",
+            "B": "A job fetching scan metadata",
+            "C": "Only the number of Dockerfile comments",
+            "D": "Pub/Sub vulnerability notifications"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Metadata sorgusu veya Pub/Sub bildirimi uygun fix olduğunda rebuild'i tetikleyebilir."
+        },
+        {
+          "question": "Which sequence matches the recommended patch rollout?",
+          "options": {
+            "A": "Scan once and never rebuild again",
+            "B": "Publish to production before building the fix",
+            "C": "Rebuild with fixes, deploy to staging, test, then deploy to production",
+            "D": "Delete the registry instead of testing the patch"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "CI/CD düzeltmeli image üretir; staging doğrulaması production öncesindedir."
+        },
+        {
+          "question": "Which IAM role is assigned to the build account in the on-demand scan example?",
+          "options": {
+            "A": "roles/run.invoker",
+            "B": "roles/secretmanager.secretAccessor",
+            "C": "roles/cloudfunctions.viewer",
+            "D": "roles/ondemandscanning.admin"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            13
+          ],
+          "explanation": "Ders örneği build'i yapan hesabın On-Demand Scanning Admin rolünü belirtir; hesap bağlamı önemlidir."
+        },
+        {
+          "question": "What should the build do when the configured vulnerability severity threshold is reached?",
+          "options": {
+            "A": "Fail the build before pushing the image",
+            "B": "Rename the image without rebuilding",
+            "C": "Ignore the scan result and always push",
+            "D": "Automatically disable every future scan"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            13
+          ],
+          "explanation": "Severity kontrolü build gate oluşturur; eşik aşılırsa upload öncesinde akış durdurulur."
+        }
+      ]
+    },
+    {
+      "id": "T06-01",
+      "title": "Cloud Run workflows, HTTPS and service ports",
+      "source": "containeried/T-DVCNTA-B-m2-l1-en-file-10.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two deployment workflows does Cloud Run support in the lesson?",
+          "options": {
+            "A": "Deploy only a raw VM disk",
+            "B": "Deploy only a Kubernetes control plane",
+            "C": "Deploy source that Buildpacks turns into an image",
+            "D": "Deploy a prebuilt container image"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            3,
+            4,
+            5
+          ],
+          "explanation": "Container akışı image içeriği üzerinde kontrol, source akışı otomatik paketleme sağlar."
+        },
+        {
+          "question": "What does the service application need to do in the illustrated container workflow?",
+          "options": {
+            "A": "Run only once and exit before receiving requests",
+            "B": "Require the caller to compile its source code",
+            "C": "Start a server that listens for web requests",
+            "D": "Implement its own global load balancer inside every process"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            4,
+            7
+          ],
+          "explanation": "Bu gereksinim service içindir; jobs işini tamamlayıp çıkar ve HTTP server şartıyla karıştırılmaz."
+        },
+        {
+          "question": "Which two HTTPS responsibilities does Cloud Run handle?",
+          "options": {
+            "A": "Decrypt incoming requests and forward them to the application",
+            "B": "Require the application to terminate public TLS itself in all cases",
+            "C": "Store every response permanently in the container image",
+            "D": "Provision TLS configuration and a certificate"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            6,
+            7
+          ],
+          "explanation": "Ders TLS termination'ı platformda, iç uygulamaya iletimi HTTP olarak gösterir."
+        },
+        {
+          "question": "What does page 7 say about port 8080?",
+          "options": {
+            "A": "It is a configurable default listening port",
+            "B": "It is a mandatory database port",
+            "C": "It is the public TLS certificate's serial number",
+            "D": "It is the only possible port with no configuration option"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "8080 varsayılandır; uygulama ile Cloud Run port ayarı uyumlu olacak şekilde değiştirilebilir."
+        },
+        {
+          "question": "What does a source-based workflow delegate to the platform?",
+          "options": {
+            "A": "Automatically approving production changes",
+            "B": "Building and packaging source and dependencies into an image",
+            "C": "Writing all application business logic",
+            "D": "Choosing every customer-facing API behavior"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Source deployment container paketleme işini Buildpacks'e devreder; uygulama kodu geliştiricide kalır."
+        }
+      ]
+    },
+    {
+      "id": "T06-02",
+      "title": "Services, jobs, runtime packaging and billing models",
+      "source": "containeried/T-DVCNTA-B-m2-l1-en-file-10.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What distinction does page 6 make between a service and a job?",
+          "options": {
+            "A": "Jobs must always run a public HTTP server",
+            "B": "Services respond to requests/events; jobs perform work and quit",
+            "C": "Services can never receive events",
+            "D": "Both always require manual VM provisioning"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Ders services ile jobs davranışını ayırır; sonraki HTTP açıklamaları service senaryosundadır."
+        },
+        {
+          "question": "Which runtime target does the lesson specify for packaged application binaries?",
+          "options": {
+            "A": "Only 32-bit DOS",
+            "B": "Only a browser's JavaScript sandbox",
+            "C": "Only a developer's native macOS executable",
+            "D": "64-bit Linux"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Kaynak ders 64-bit Linux binary/container hedefini belirtir; bu soru dersin runtime anlatımına aittir."
+        },
+        {
+          "question": "In the request-based model illustrated, which three periods are billable?",
+          "options": {
+            "A": "Every idle interval is necessarily billed identically",
+            "B": "Time before the application is deployed",
+            "C": "Startup",
+            "D": "Handling requests",
+            "E": "Shutdown"
+          },
+          "answers": [
+            "C",
+            "D",
+            "E"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Ders request-based modelde başlangıç, istek işleme ve kapanışı ayırır; başka model tüm lifecycle'ı kapsar."
+        },
+        {
+          "question": "What distinguishes the alternative billing model described?",
+          "options": {
+            "A": "All steady-state workloads are free",
+            "B": "No CPU is ever allocated between requests",
+            "C": "CPU remains allocated and charging covers the full container lifecycle",
+            "D": "Only source-file count determines charges"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "PDF alternatif modelde idle dönem dahil lifecycle ücretlendirmesini anlatır; fiyat rakamı veya tasarruf garantisi verilmez."
+        },
+        {
+          "question": "Which two resources affect the container-time price described in the lesson?",
+          "options": {
+            "A": "The number of comments in the Dockerfile",
+            "B": "Allocated memory",
+            "C": "Allocated vCPUs",
+            "D": "The length of the service display name"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Ders compute fiyatının CPU ve memory tahsisine bağlı olduğunu belirtir; güncel fiyat hesabı değildir."
+        }
+      ]
+    },
+    {
+      "id": "T07-01",
+      "title": "REST, ecommerce, microservices and event processing",
+      "source": "containeried/T-DVCNTA-B-m2-l3-en-file-11.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What persists data for the REST API example?",
+          "options": {
+            "A": "Only the container's PID number",
+            "B": "Only a client-side DNS cache",
+            "C": "Only the request handler's stack memory",
+            "D": "A database connected to the Cloud Run service"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            2
+          ],
+          "explanation": "REST/API hizmeti kalıcı veri için database'e bağlanır; container belleği durable storage değildir."
+        },
+        {
+          "question": "Which two ecommerce components have the stated roles?",
+          "options": {
+            "A": "Cloud CDN improves content delivery performance",
+            "B": "Cloud Armor filters malicious inbound traffic with policies",
+            "C": "Cloud CDN stores the application's relational transactions",
+            "D": "Redis replaces the TLS certificate issuer"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Şekilde CDN performans, Armor trafik filtreleme, Redis session ve relational database ayrı roller taşır."
+        },
+        {
+          "question": "Which two communication approaches are described for microservices?",
+          "options": {
+            "A": "Only shared source-code files with no network",
+            "B": "REST or gRPC request/response",
+            "C": "Asynchronous messages through Pub/Sub",
+            "D": "Only direct access to another container's memory"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Senkron API ve asenkron broker farklı iletişim seçenekleridir; Pub/Sub push HTTP endpoint'e iletir."
+        },
+        {
+          "question": "How does Pub/Sub integrate with the Cloud Run service in the example?",
+          "options": {
+            "A": "Push subscriptions forward messages as HTTP requests, optionally authenticated",
+            "B": "The service can only receive messages by downloading a VM disk",
+            "C": "The service must always read a local Unix socket shared with Pub/Sub",
+            "D": "Pub/Sub compiles the service's source on each message"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "PDF push subscription ve opsiyonel kimlik doğrulama anlatır; delivery garantisinden exactly-once iş sonucu çıkarılmaz."
+        },
+        {
+          "question": "What fans out the converted scan to downstream processors in the event example?",
+          "options": {
+            "A": "An IAM role copied into the scan file",
+            "B": "A mutable image tag stored only in memory",
+            "C": "A manual browser refresh from every downstream user",
+            "D": "A Pub/Sub message published after conversion"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Storage upload dönüşümü tetikler; conversion sonrası Pub/Sub mesajı watermark servisi ve anomaly VM akışını başlatır."
+        }
+      ]
+    },
+    {
+      "id": "T07-02",
+      "title": "Scheduling, revisions and autoscaling",
+      "source": "containeried/T-DVCNTA-B-m2-l3-en-file-11.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Why does the lesson use Cloud Scheduler rather than an in-container timer for future work?",
+          "options": {
+            "A": "Cloud Run does not accept authenticated requests",
+            "B": "The container may stop before its internal timer needs to run",
+            "C": "Internal timers automatically create persistent VMs",
+            "D": "Cloud Scheduler is required to compile every image"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Container yaşamı gelecekteki zamanlayıcı görevine garanti değildir; dış scheduler HTTP isteğiyle tetikler."
+        },
+        {
+          "question": "What must a scheduled service invocation respect?",
+          "options": {
+            "A": "Its configured request timeout",
+            "B": "An unlimited execution duration guaranteed by cron",
+            "C": "Only the registry's image label color",
+            "D": "Only the source repository's filename length"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Schedule görevi başlatır; service isteğinin timeout sınırını kaldırmaz."
+        },
+        {
+          "question": "Which two components form an immutable service revision?",
+          "options": {
+            "A": "Service configuration such as environment and memory settings",
+            "B": "Every client's browser cache",
+            "C": "The entire physical region",
+            "D": "Container image"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Revision image ve servis ayarlarını kapsar; değişiklik yeni revision oluşturur."
+        },
+        {
+          "question": "How can a team reduce rollout risk using revisions?",
+          "options": {
+            "A": "Edit the old immutable revision in place",
+            "B": "Force every client to use untested code at once",
+            "C": "Delete the previous revision before observing errors",
+            "D": "Send a chosen percentage to the new revision and retain rollback to the previous one"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Trafik yüzdesiyle aşamalı geçiş ve önceki revision'a dönüş desteklenir."
+        },
+        {
+          "question": "Which three factors beyond incoming request rate influence scaling in the lesson?",
+          "options": {
+            "A": "CPU utilization",
+            "B": "Maximum concurrency",
+            "C": "The spelling of the image tag",
+            "D": "The number of source-code comments",
+            "E": "Minimum and maximum instance settings"
+          },
+          "answers": [
+            "A",
+            "B",
+            "E"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "CPU, concurrency ve instance sınırları kapasite kararını etkiler; concurrency instance başına paralel isteği belirler."
+        }
+      ]
+    },
+    {
+      "id": "T07-03",
+      "title": "Availability, regional routing and portability",
+      "source": "containeried/T-DVCNTA-B-m2-l3-en-file-11.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "How does a regional Cloud Run service improve resilience to a zone failure?",
+          "options": {
+            "A": "Run only on the developer's laptop",
+            "B": "Distribute containers across multiple zones in that region",
+            "C": "Automatically move the entire database to every continent",
+            "D": "Require every instance to run in one fixed zone"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Ders bölge içinde birden fazla zona dağılımı anlatır; bu kendiliğinden çok bölge deployment demek değildir."
+        },
+        {
+          "question": "What places one global IP in front of several regional Cloud Run services?",
+          "options": {
+            "A": "A Kubernetes containerPort field",
+            "B": "An npm dependency lockfile",
+            "C": "A Dockerfile COPY instruction",
+            "D": "A global external Application Load Balancer"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Global external Application Load Balancer ayrı regional hizmetleri tek global uçta toplar."
+        },
+        {
+          "question": "Which two benefits are associated with the multi-region load-balancing setup?",
+          "options": {
+            "A": "Improved availability",
+            "B": "Guaranteed zero downstream database latency",
+            "C": "Removal of all application state-management needs",
+            "D": "Lower latency by routing clients toward a nearby region"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Yakın bölgeye yönlendirme gecikmeyi azaltabilir ve availability'yi destekler; database/state tasarımı yine gerekir."
+        },
+        {
+          "question": "What two portability foundations does the lesson identify?",
+          "options": {
+            "A": "Dependence on proprietary physical server serial numbers",
+            "B": "Container packaging",
+            "C": "A requirement to store all state in container-local memory",
+            "D": "Compatibility with Knative's platform model"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Ders container formatı ve Knative uyumluluğunu taşınabilirlik gerekçesi olarak verir; dış servis bağımlılıkları ayrı değerlendirilir."
+        },
+        {
+          "question": "Why consider downstream capacity when setting maximum instances?",
+          "options": {
+            "A": "Downstream services receive no traffic during scaling",
+            "B": "Autoscaling removes all compute costs",
+            "C": "Setting max instances automatically increases every database's throughput",
+            "D": "Rapid service scaling can overload systems that cannot scale at the same rate"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            13
+          ],
+          "explanation": "Ölçekleme maliyeti ve downstream throughput uyuşmazlığı önemlidir; maximum instance ayarı yükü sınırlamaya yardımcıdır."
+        }
+      ]
+    },
+    {
+      "id": "T08-01",
+      "title": "GKE control plane, nodes and Pods",
+      "source": "containeried/T-DVCNTA-B-m2-l4-en-file-12.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two cluster-management benefits are named for GKE?",
+          "options": {
+            "A": "A requirement to manage every control-plane VM manually",
+            "B": "A guarantee that application bugs cannot occur",
+            "C": "Automatic node software upgrades",
+            "D": "Automatic repair to maintain node health"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "GKE cluster yönetimi, autoscaling, repair, upgrade ve logging/monitoring sunar; uygulama doğruluğunu garanti etmez."
+        },
+        {
+          "question": "What is the role of kube-apiserver in the control plane?",
+          "options": {
+            "A": "Serve only static HTML to end users",
+            "B": "Handle API requests as the cluster communication hub",
+            "C": "Store every image as a registry layer",
+            "D": "Replace the container runtime on each node"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Control plane API server cluster bileşenlerinin ve istemcilerin ortak API ucudur."
+        },
+        {
+          "question": "What does kubelet do on a node?",
+          "options": {
+            "A": "Replace the Deployment's desired replica count with zero",
+            "B": "Assign DNS names to every external company",
+            "C": "Build every application's source image itself",
+            "D": "Communicate with the control plane and run scheduled containers"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Node agent kubelet planlanan container'ların çalıştırılmasından sorumludur; scheduler/control plane görevleri ayrıdır."
+        },
+        {
+          "question": "Which two properties describe a Pod?",
+          "options": {
+            "A": "An image registry repository containing all versions",
+            "B": "One or more containers sharing storage and network resources",
+            "C": "A permanent physical server",
+            "D": "The smallest deployable compute unit in Kubernetes"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Pod bir veya daha fazla container'ı ortak kaynaklarla bir araya getirir; çoğunlukla Deployment/Job gibi workload kaynakları oluşturur."
+        },
+        {
+          "question": "What is the lesson's regional-versus-zonal control-plane distinction?",
+          "options": {
+            "A": "Regional clusters have no control plane",
+            "B": "Both types use the developer's browser as the control plane",
+            "C": "Regional clusters have replicas across zones; zonal clusters have a control plane in one zone",
+            "D": "Zonal clusters always span every global region"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Özet sayfası regional control-plane replikasyonunu zonal tek-zon modeliyle ayırır."
+        }
+      ]
+    },
+    {
+      "id": "T08-02",
+      "title": "Deployments, ReplicaSets and desired state",
+      "source": "containeried/T-DVCNTA-B-m2-l4-en-file-12.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What does a Deployment declaratively specify?",
+          "options": {
+            "A": "Only the registry's billing address",
+            "B": "The desired state of an application's Pods",
+            "C": "Only a list of historical HTTP responses",
+            "D": "Only the host's firmware version"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Deployment desired state bildirir; controller mevcut durumu hedef duruma yaklaştırır."
+        },
+        {
+          "question": "What is a ReplicaSet's purpose in the lesson?",
+          "options": {
+            "A": "Rotate application passwords every second",
+            "B": "Persist every container log forever",
+            "C": "Allocate one physical data center per request",
+            "D": "Maintain a stable number of replica Pods"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "ReplicaSet istenen sayıda replica Pod'un çalışmasını korur."
+        },
+        {
+          "question": "Which two manifest concepts identify and describe the Pods to manage?",
+          "options": {
+            "A": "A Pod template describing labels and containers",
+            "B": "A selector matching Pod labels",
+            "C": "An image's file size alone",
+            "D": "A developer's console theme"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Selector etiketle eşleşir, template Pod içeriğini tanımlar; slayttaki YAML yazım hataları aynen öğretilmez."
+        },
+        {
+          "question": "How many Pod replicas are intended by the lesson's example?",
+          "options": {
+            "A": "Four",
+            "B": "Eight",
+            "C": "One",
+            "D": "Two"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Örnekte replicas: 4 vardır; bu değer container sayısı değildir."
+        },
+        {
+          "question": "What does the Deployment controller do when actual state differs from desired state?",
+          "options": {
+            "A": "Require each client to manually recreate all Pods",
+            "B": "Change the image registry's role instead of Pods",
+            "C": "Change actual state toward the desired state at a controlled rate",
+            "D": "Treat the first observed state as immutable forever"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Declarative yaklaşımda controller hedefe doğru uzlaştırma yapar; her adımı kullanıcı elle işletmez."
+        }
+      ]
+    },
+    {
+      "id": "T08-03",
+      "title": "Service selectors, stable endpoints and ports",
+      "source": "containeried/T-DVCNTA-B-m2-l4-en-file-12.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Why use a Service instead of directly depending on Pod IP addresses?",
+          "options": {
+            "A": "Pod IPs can change when ephemeral Pods are replaced",
+            "B": "Service IPs necessarily change with every request",
+            "C": "Pods never have network addresses",
+            "D": "Services compile every request into a new container image"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Service, değişen Pod üyeleri önünde kararlı endpoint ve load balancing sağlar."
+        },
+        {
+          "question": "What determines the member Pods in the selector-based example?",
+          "options": {
+            "A": "All nodes with more than one CPU",
+            "B": "Pods labeled role: web",
+            "C": "Every Pod whose name contains the word frontend",
+            "D": "Only Pods with an image tag ending in latest"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Service selector role: web etiketine uyan Pod'ları seçer; isim benzerliği yeterli değildir."
+        },
+        {
+          "question": "Which Service type is used for external access in the example?",
+          "options": {
+            "A": "A ConfigMap-only type",
+            "B": "ClusterIP",
+            "C": "LoadBalancer",
+            "D": "An image-builder type"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Örnek LoadBalancer tipidir; ClusterIP ve NodePort da ayrı yaygın Service türleri olarak anılır."
+        },
+        {
+          "question": "Which mapping correctly distinguishes port and targetPort?",
+          "options": {
+            "A": "Both are mandatory Git branch names",
+            "B": "port is always a filesystem path; targetPort is an image tag",
+            "C": "targetPort is always the client's random source port",
+            "D": "port is the Service port; targetPort is the destination Pod port"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "İstek Service port'una gelir, üye Pod'un targetPort'una yönlendirilir; örnekte ikisi de 80'dir."
+        },
+        {
+          "question": "Which two properties describe the Service in the lesson?",
+          "options": {
+            "A": "Load balancing across its member Pods",
+            "B": "A stable IP for the Service's lifetime",
+            "C": "A guarantee that each member Pod keeps the same IP forever",
+            "D": "A requirement that every Pod run on the same node"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Endpoint kararlılığı Service ömrü içindir; Pod üyeleri ve IP'leri değişebilir."
+        }
+      ]
+    },
+    {
+      "id": "T08-04",
+      "title": "Volumes and the GKE delivery workflow",
+      "source": "containeried/T-DVCNTA-B-m2-l4-en-file-12.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "How does a Pod use a volume?",
+          "options": {
+            "A": "Declare the volume and mount it at a path in containers that need it",
+            "B": "Automatically share every host directory without a mount",
+            "C": "Use the volume name as a replacement for its image",
+            "D": "Store files only inside an IAM policy"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Pod volume'u belirtir; ilgili container'larda mount path tanımlanır."
+        },
+        {
+          "question": "Which two storage-lifetime statements match the lesson's core distinction?",
+          "options": {
+            "A": "Durable storage can outlive the Pod",
+            "B": "Every volume is necessarily permanent",
+            "C": "Ephemeral storage can end with the Pod",
+            "D": "Every mounted Secret object must be deleted when one Pod stops"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Ephemeral ve persistent yaşam döngüsü ayrıdır. Secret/ConfigMap API nesnesini Pod'a mount edilen görünümle karıştırmamak gerekir; kaynak notu bu hatayı açıklar."
+        },
+        {
+          "question": "What is Cloud Code in the development workflow?",
+          "options": {
+            "A": "The Kubernetes kernel module",
+            "B": "A replacement for all application code",
+            "C": "IDE plugins that help develop and inspect Google Cloud workloads",
+            "D": "A container registry that only stores archives"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Cloud Code IDE entegrasyonu ve Kubernetes/Cloud Run explorer araçları sunar."
+        },
+        {
+          "question": "Which two artifact destinations appear after the build?",
+          "options": {
+            "A": "Container images in Artifact Registry",
+            "B": "All source only in a caller's ID token",
+            "C": "Other build artifacts in Cloud Storage",
+            "D": "Every artifact only in ephemeral Pod memory"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Örnek CI akışı image ve diğer artifact'leri farklı depolarda saklar."
+        },
+        {
+          "question": "What happens between staging and production in the described delivery flow?",
+          "options": {
+            "A": "Production is always deployed before any staging tests",
+            "B": "Successful checks and approval precede Cloud Deploy promotion",
+            "C": "The source repository is deleted after every commit",
+            "D": "The running image is edited manually in place"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Ders akışında staging/test sonrası onayla production promotion yapılır; bu bir çalışma akışı örneğidir."
+        }
+      ]
+    },
+    {
+      "id": "T09-01",
+      "title": "Container-Optimized OS characteristics",
+      "source": "containeried/T-DVCNTA-B-m2-l5-en-file-13.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What is Container-Optimized OS in the lesson?",
+          "options": {
+            "A": "A managed relational database engine",
+            "B": "A Compute Engine VM operating-system image optimized for containers",
+            "C": "A programming-language compiler",
+            "D": "A browser extension for container logs"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            2
+          ],
+          "explanation": "COS, container iş yükleri için optimize Compute Engine işletim sistemi image'ıdır."
+        },
+        {
+          "question": "Which project is named as its open-source basis?",
+          "options": {
+            "A": "Chromium OS",
+            "B": "Apache Spark",
+            "C": "PostgreSQL",
+            "D": "Node.js"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            2
+          ],
+          "explanation": "Ders COS'un Google tarafından bakılan Chromium OS tabanını belirtir."
+        },
+        {
+          "question": "Which two security-oriented benefits are listed?",
+          "options": {
+            "A": "A small footprint and reduced attack surface",
+            "B": "A requirement that every application run with unrestricted host access",
+            "C": "Locked-down firewall and security settings by default",
+            "D": "A built-in guarantee against every future vulnerability"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Az bileşen ve kapalı varsayılan ayarlar güvenlik yüzeyini küçültür; mutlak güvenlik sözü değildir."
+        },
+        {
+          "question": "Which two preinstalled components are named in the lesson?",
+          "options": {
+            "A": "cloud-init",
+            "B": "Every third-party kernel driver",
+            "C": "A mandatory application-specific SQL schema",
+            "D": "Docker runtime"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "PDF Docker runtime ve cloud-init ile minimum host setup anlatır; sürüme bağlı örnektir."
+        },
+        {
+          "question": "In the course's update description, what activates downloaded updates?",
+          "options": {
+            "A": "Changing the image's display title",
+            "B": "Adding a source-code comment",
+            "C": "A reboot",
+            "D": "Renaming a container label"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "PDF background update indirmesinden sonra reboot gerektirdiğini söyler; güncel bütün COS sürümlerine genellenmez."
+        }
+      ]
+    },
+    {
+      "id": "T09-02",
+      "title": "Container-Optimized OS limitations and workload choice",
+      "source": "containeried/T-DVCNTA-B-m2-l5-en-file-13.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which host-level limitation is stated in the lesson?",
+          "options": {
+            "A": "No networking support of any kind",
+            "B": "No ability to execute containers",
+            "C": "A requirement to build every image on the host",
+            "D": "No included package manager for installing software directly on the host"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Ders host package manager olmadığını belirtir; container içindeki araçlarla host kurulumu farklıdır."
+        },
+        {
+          "question": "How can debugging/admin tools be used in the example despite that limitation?",
+          "options": {
+            "A": "Use a toolbox in an isolated container",
+            "B": "Rewrite the host kernel for every debug session",
+            "C": "Disable all container isolation permanently",
+            "D": "Install every tool directly with the missing host package manager"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "PDF CoreOS toolbox örneğiyle araçları izole container'da çalıştırmayı anlatır."
+        },
+        {
+          "question": "Which two requirements make COS a poor fit according to the lesson?",
+          "options": {
+            "A": "Running a non-containerized application",
+            "B": "Wanting a smaller host attack surface",
+            "C": "Needing unavailable third-party kernel modules or drivers",
+            "D": "Running a container with minimal host setup"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            3,
+            5
+          ],
+          "explanation": "Ders container dışı uygulamalar ve gerekli olmayan/kurulamayan kernel eklerini uygunluk sınırı olarak verir."
+        },
+        {
+          "question": "Which deployment-support requirement conflicts with the lesson's stated scope?",
+          "options": {
+            "A": "Running containers on Compute Engine",
+            "B": "Using a small-footprint OS for containers",
+            "C": "Running Kubernetes on Compute Engine instances",
+            "D": "Full support for the OS image on platforms outside Google Cloud"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            3,
+            4,
+            5
+          ],
+          "explanation": "Kaynak PDF Google Cloud dışı destek gereksinimini uygunsuzluk nedeni sayar; bu soru ders kapsamındadır."
+        },
+        {
+          "question": "Which two situations are positive use cases listed for COS?",
+          "options": {
+            "A": "Run Kubernetes on Compute Engine instances",
+            "B": "Run Docker containers with minimal setup",
+            "C": "Require an unrestricted general-purpose host package environment",
+            "D": "Run only a legacy non-containerized desktop application"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Minimal kurulum ve container/Kubernetes host senaryoları uygun kullanım örnekleridir."
+        }
+      ]
     }
   ]
 }

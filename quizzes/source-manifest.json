@@ -105,6 +105,51 @@
       "path": "cloudRunFunctions/M5_Best_Practices_for_Functions.pdf",
       "pages": 22,
       "sha256": "df43f9e3e8d4964f6f11f4a4fb887c4e8a2316a370c157783501dfa1fd67489d"
+    },
+    {
+      "path": "containeried/T-DVCNTA-B-m1-l1-en-file-2.en.pdf",
+      "pages": 22,
+      "sha256": "c732c72d3b40df2ce6bbc0dd066a04b366fa85cb2693f9acadc46823e379c1f0"
+    },
+    {
+      "path": "containeried/T-DVCNTA-B-m1-l2-en-file-3.en.pdf",
+      "pages": 11,
+      "sha256": "e4cb9109168d849c6d088334482cc3a086fb556b2b2d5b39c75c7a379a184580"
+    },
+    {
+      "path": "containeried/T-DVCNTA-B-m1-l4-en-file-6.en.pdf",
+      "pages": 9,
+      "sha256": "9b3066ac3e0a0c0b40d193bf4b0a972e312701fe52c3764d071f64d25bff3274"
+    },
+    {
+      "path": "containeried/T-DVCNTA-B-m1-l6-en-file-7.en.pdf",
+      "pages": 16,
+      "sha256": "1301117c9370295159e4e0449af50b08f1cdf95062d3f96b2d3d8a8ab1340a30"
+    },
+    {
+      "path": "containeried/T-DVCNTA-B-m1-l7-en-file-8.en.pdf",
+      "pages": 13,
+      "sha256": "66b22b34bf61a0117f2a2791d8ebda4a037685ed3b8db93722dc6057e0a948fd"
+    },
+    {
+      "path": "containeried/T-DVCNTA-B-m2-l1-en-file-10.en.pdf",
+      "pages": 10,
+      "sha256": "95be5c8dc83ef2746e5447862ca6a17c642ddd855c23a223433090f3eb62ac1e"
+    },
+    {
+      "path": "containeried/T-DVCNTA-B-m2-l3-en-file-11.en.pdf",
+      "pages": 14,
+      "sha256": "420b922be3c6c4beeede636fab0b2c276934ce3b06bafd0529efd146b945c9b7"
+    },
+    {
+      "path": "containeried/T-DVCNTA-B-m2-l4-en-file-12.en.pdf",
+      "pages": 12,
+      "sha256": "92fc048a952414c49118d9da55e4392db5d3bcb1309d6008b1329484d830ef4d"
+    },
+    {
+      "path": "containeried/T-DVCNTA-B-m2-l5-en-file-13.en.pdf",
+      "pages": 5,
+      "sha256": "1a03f8f90f7a01cd85c2875c369caaf598adcfd02c998c49c8bc17cc4c5ea0bd"
     }
   ],
   "supplemental_sources": [
@@ -136,6 +181,26 @@
     {
       "url": "https://docs.cloud.google.com/eventarc/docs/cloudevents",
       "checked_on": "2026-09-19"
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+      "checked_on": "2026-09-19",
+      "purpose": "Clarify containeried PDF examples in SOURCE-NOTES.md"
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+      "checked_on": "2026-09-19",
+      "purpose": "Clarify containeried PDF examples in SOURCE-NOTES.md"
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/storage/volumes/",
+      "checked_on": "2026-09-19",
+      "purpose": "Clarify containeried PDF examples in SOURCE-NOTES.md"
+    },
+    {
+      "url": "https://docs.docker.com/reference/dockerfile/",
+      "checked_on": "2026-09-19",
+      "purpose": "Clarify containeried PDF examples in SOURCE-NOTES.md"
     }
   ]
 }

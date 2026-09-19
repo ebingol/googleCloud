@@ -1,6 +1,6 @@
 # Beş soruluk quizler
 
-**102 quiz · 510 soru · 4 bölüm · 21 PDF modülü + paylaşılan quiz**
+**126 quiz · 630 soru · 5 bölüm · 30 PDF dosyası + paylaşılan quiz**
 
 Sorular İngilizce, açıklamalar Türkçe. Her set beş sorudur. `Select two/three` sorularında istenen sayıda seçenek işaretle; tam doğru seçenek kümesi 1 puan, diğer cevaplar 0 puandır. Toplam 5 puan üzerinden değerlendirilir.
 
@@ -135,3 +135,34 @@ Sorular yüklenen PDF sürümlerine göre hazırlanmış özgün çalışma soru
 | C05-03 | Cold starts, object reuse and networking | [Çöz](cloudRunFunctions/C05-03.md) | [Kontrol et](answers/cloudRunFunctions/C05-03.md) |
 | C05-04 | Retry configuration and failure handling | [Çöz](cloudRunFunctions/C05-04.md) | [Kontrol et](answers/cloudRunFunctions/C05-04.md) |
 | C05-05 | Configuration, scaling and traffic splitting | [Çöz](cloudRunFunctions/C05-05.md) | [Kontrol et](answers/cloudRunFunctions/C05-05.md) |
+
+## Containers, Cloud Run ve GKE
+
+2 ana modüle ait 9 ders PDF’si · 24 quiz · 120 soru. [Bölüm ve kaynak notları](containeried/README.md).
+
+| Quiz | Konu | Sorular | Cevaplar |
+|---|---|---|---|
+| T01-01 | Images, runtime containers and execution environments | [Çöz](containeried/T01-01.md) | [Kontrol et](answers/containeried/T01-01.md) |
+| T01-02 | Language runtimes, dependencies and application assets | [Çöz](containeried/T01-02.md) | [Kontrol et](answers/containeried/T01-02.md) |
+| T01-03 | System dependencies and container configuration | [Çöz](containeried/T01-03.md) | [Kontrol et](answers/containeried/T01-03.md) |
+| T02-01 | Docker build stages and filesystem instructions | [Çöz](containeried/T02-01.md) | [Kontrol et](answers/containeried/T02-01.md) |
+| T02-02 | Dockerfile runtime configuration and build sequence | [Çöz](containeried/T02-02.md) | [Kontrol et](answers/containeried/T02-02.md) |
+| T03-01 | Buildpacks, builders and detection | [Çöz](containeried/T03-01.md) | [Kontrol et](answers/containeried/T03-01.md) |
+| T03-02 | Pack tooling and builder selection | [Çöz](containeried/T03-02.md) | [Kontrol et](answers/containeried/T03-02.md) |
+| T04-01 | Skaffold workflow and configuration | [Çöz](containeried/T04-01.md) | [Kontrol et](answers/containeried/T04-01.md) |
+| T04-02 | Cloud Build, artifact storage and build steps | [Çöz](containeried/T04-02.md) | [Kontrol et](answers/containeried/T04-02.md) |
+| T04-03 | Manual builds and trigger variants | [Çöz](containeried/T04-03.md) | [Kontrol et](answers/containeried/T04-03.md) |
+| T05-01 | Minimal images, Distroless and multi-stage builds | [Çöz](containeried/T05-01.md) | [Kontrol et](answers/containeried/T05-01.md) |
+| T05-02 | Signals, privileges and build caching | [Çöz](containeried/T05-02.md) | [Kontrol et](answers/containeried/T05-02.md) |
+| T05-03 | Vulnerability scans and patching pipelines | [Çöz](containeried/T05-03.md) | [Kontrol et](answers/containeried/T05-03.md) |
+| T06-01 | Cloud Run workflows, HTTPS and service ports | [Çöz](containeried/T06-01.md) | [Kontrol et](answers/containeried/T06-01.md) |
+| T06-02 | Services, jobs, runtime packaging and billing models | [Çöz](containeried/T06-02.md) | [Kontrol et](answers/containeried/T06-02.md) |
+| T07-01 | REST, ecommerce, microservices and event processing | [Çöz](containeried/T07-01.md) | [Kontrol et](answers/containeried/T07-01.md) |
+| T07-02 | Scheduling, revisions and autoscaling | [Çöz](containeried/T07-02.md) | [Kontrol et](answers/containeried/T07-02.md) |
+| T07-03 | Availability, regional routing and portability | [Çöz](containeried/T07-03.md) | [Kontrol et](answers/containeried/T07-03.md) |
+| T08-01 | GKE control plane, nodes and Pods | [Çöz](containeried/T08-01.md) | [Kontrol et](answers/containeried/T08-01.md) |
+| T08-02 | Deployments, ReplicaSets and desired state | [Çöz](containeried/T08-02.md) | [Kontrol et](answers/containeried/T08-02.md) |
+| T08-03 | Service selectors, stable endpoints and ports | [Çöz](containeried/T08-03.md) | [Kontrol et](answers/containeried/T08-03.md) |
+| T08-04 | Volumes and the GKE delivery workflow | [Çöz](containeried/T08-04.md) | [Kontrol et](answers/containeried/T08-04.md) |
+| T09-01 | Container-Optimized OS characteristics | [Çöz](containeried/T09-01.md) | [Kontrol et](answers/containeried/T09-01.md) |
+| T09-02 | Container-Optimized OS limitations and workload choice | [Çöz](containeried/T09-02.md) | [Kontrol et](answers/containeried/T09-02.md) |

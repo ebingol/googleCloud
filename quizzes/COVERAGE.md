@@ -106,3 +106,27 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 | C05-03 | Cold starts, object reuse and networking | 8, 9 |
 | C05-04 | Retry configuration and failure handling | 11, 12, 13 |
 | C05-05 | Configuration, scaling and traffic splitting | 16, 18, 19, 20 |
+| T01-01 | Images, runtime containers and execution environments | 4, 5, 6, 7, 8, 9 |
+| T01-02 | Language runtimes, dependencies and application assets | 11, 12, 13, 14, 16, 17, 18 |
+| T01-03 | System dependencies and container configuration | 19, 20, 21, 22 |
+| T02-01 | Docker build stages and filesystem instructions | 3, 4, 7, 8, 9 |
+| T02-02 | Dockerfile runtime configuration and build sequence | 5, 6, 10 |
+| T03-01 | Buildpacks, builders and detection | 2, 3, 4 |
+| T03-02 | Pack tooling and builder selection | 5, 6, 7, 8 |
+| T04-01 | Skaffold workflow and configuration | 2, 3, 4, 5, 6 |
+| T04-02 | Cloud Build, artifact storage and build steps | 7, 8, 9, 11 |
+| T04-03 | Manual builds and trigger variants | 12, 13, 14, 15, 16 |
+| T05-01 | Minimal images, Distroless and multi-stage builds | 2, 3, 4, 5, 6, 7, 10 |
+| T05-02 | Signals, privileges and build caching | 8, 9, 10 |
+| T05-03 | Vulnerability scans and patching pipelines | 11, 12, 13 |
+| T06-01 | Cloud Run workflows, HTTPS and service ports | 3, 4, 5, 6, 7 |
+| T06-02 | Services, jobs, runtime packaging and billing models | 6, 8, 9 |
+| T07-01 | REST, ecommerce, microservices and event processing | 2, 3, 4, 5 |
+| T07-02 | Scheduling, revisions and autoscaling | 6, 8, 9 |
+| T07-03 | Availability, regional routing and portability | 10, 11, 12, 13 |
+| T08-01 | GKE control plane, nodes and Pods | 3, 4, 5, 12 |
+| T08-02 | Deployments, ReplicaSets and desired state | 6 |
+| T08-03 | Service selectors, stable endpoints and ports | 7, 8 |
+| T08-04 | Volumes and the GKE delivery workflow | 9, 10, 11 |
+| T09-01 | Container-Optimized OS characteristics | 2, 3 |
+| T09-02 | Container-Optimized OS limitations and workload choice | 3, 4, 5 |

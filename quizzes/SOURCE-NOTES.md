@@ -54,3 +54,18 @@ O01 setlerinin kaynağı Introduction to Microservices PDF’idir. OQ setleri pa
 - M5 s. 16’daki varsayılan tek istek ifadesi bütün güncel konfigürasyonlara genellenmedi. C05-05 concurrency güvenliği, min/max instance ayrımı, geçici limit aşımı ve immutable revision davranışını ölçer.
 
 Bu bölüm için kurs quiz sonucu henüz paylaşılmadı. Başarı puanı veya çözülmüş durum uydurulmadı; takip tablosu boş satırlarla genişletildi.
+
+## 11. Containers, Cloud Run ve GKE: örnekleri doğru yorumlama
+
+T01–T09, `containeried/` klasöründeki 9 PDF’ye (112 sayfa) dayanan 24 set / 120 sorudur. Dosya adları korunmuştur; T01–T05 ilk ana modülü, T06–T09 ikinci ana modülü kapsar. Sayfa numaraları PDF dosyasındaki 1 tabanlı sayfalardır. Başlık, gündem ve tekrar slaytları ayrı konu sayılmadı.
+
+- T01 kaynağı s. 12–13: Node örneğinde `_dirname` ve büyük harfle yazılmış package alanları görülür. Bunlar çalıştırılabilir kod olarak çoğaltılmadı; dosyaların görevleri ve bağımlılık/runtime ayrımı soruldu. PORT ile 8080 fallback'i, sabit 8080 zorunluluğuyla karıştırılmadı.
+- T04 kaynağı s. 11: Docker build örneğinin argümanlarında image tag öncesi `-t` görünmüyor. Örnek kopyalanıp çalıştırılacak komut olarak sunulmadı. S. 13 yalnız Dockerfile/build config derken s. 14 Buildpacks seçeneğini de listeler; sorularda yalnız iki yöntem varmış gibi bir çıkarım yapılmadı. Skaffold API sürümü, eski beta komutlar ve repository ürün adları ders sürümüne aittir.
+- T05 kaynağı s. 8: Sadece CMD/ENTRYPOINT yazmak bütün shell-wrapper biçimlerinde sinyallerin uygulamaya ulaşacağını garanti etmez. Docker belgesi exec ve shell biçimlerini ayırır; shell form ENTRYPOINT uygulamayı PID 1 yapmayabilir. Sorular sinyalin ana sürece ulaşması ve handler kaydı üzerinde durur. [Dockerfile reference](https://docs.docker.com/reference/dockerfile/).
+- T06 kaynağı s. 6 services ve jobs ayrımını yapar; s. 7 HTTP dinleme gereksinimi services bağlamındadır. Jobs için aynı zorunluluk çıkarılmadı. Fiyatlama soruları PDF’deki iki modelin kavramsal farkını ölçer, güncel fiyat teklifi değildir.
+- T07 kaynağı s. 4’teki Pub/Sub delivery ifadesinden exactly-once iş sonucu türetilmedi. Bölge içi çok-zon dağılımı, kendiliğinden çok-bölge deployment olarak yorumlanmadı; s. 11’de global load balancer ve ayrı regional services gerekir.
+- T08 kaynağı s. 6–8: Slaytlarda `apiVersion: v1.1`, Deployment örneğinde `Metadata` ve eksik selector yapısı var. Resmî Deployment örneği `apiVersion: apps/v1`, küçük harfli `metadata` ve `spec.selector.matchLabels` kullanır; Service örneği `apiVersion: v1` kullanır. Sorular hatalı YAML'ı ezberletmez; replicas, selector, template, port/targetPort ayrımını ölçer. [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) · [Service](https://kubernetes.io/docs/concepts/services-networking/service/).
+- T08 kaynağı s. 9: Pod içindeki mount görünümü ile Secret/ConfigMap API nesnesinin ömrü ayrıdır. Pod silinince bu API nesnelerinin mutlaka silineceği sonucu çıkarılmaz. Volume, gereken container’a ayrıca mount edilir; bütün container’larda kendiliğinden görünür değildir. Ephemeral storage ile Pod’dan bağımsız durable storage ayrımı korunur. [Volumes](https://kubernetes.io/docs/concepts/storage/volumes/).
+- T09’daki COS güncelleme, runtime, toolbox ve destek sınırlamaları PDF’ye göre sorulur. Haftalık güncelleme veya üçüncü taraf driver kapsamı bütün güncel sürümlere koşulsuz genellenmez.
+
+Resmî bağlantılar 19 Eylül 2026 tarihinde kaynak çelişkilerini açıklamak için kontrol edildi. Bu bölüm için sınav sonucu paylaşılmadı; yeni quizlerin çözüm durumu boş bırakıldı.
