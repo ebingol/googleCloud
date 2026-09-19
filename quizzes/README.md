@@ -1,6 +1,6 @@
 # Beş soruluk quizler
 
-**69 quiz · 345 soru · 2 bölüm · 15 modül**
+**77 quiz · 385 soru · 3 bölüm · 16 PDF modülü + paylaşılan quiz**
 
 Sorular İngilizce, açıklamalar Türkçe. Her set beş sorudur. `Select two/three` sorularında istenen sayıda seçenek işaretle; tam doğru seçenek kümesi 1 puan, diğer cevaplar 0 puandır. Toplam 5 puan üzerinden değerlendirilir.
 
@@ -88,3 +88,18 @@ Sorular yüklenen PDF sürümlerine göre hazırlanmış özgün çalışma soru
 | U07-02 | Zero-shot, one-shot, few-shot and role prompts | [Çöz](fundamentals/U07-02.md) | [Kontrol et](answers/fundamentals/U07-02.md) |
 | U07-03 | Prompt preamble, input and iterative context | [Çöz](fundamentals/U07-03.md) | [Kontrol et](answers/fundamentals/U07-03.md) |
 | U07-04 | Prompt engineering best practices and the Sasha example | [Çöz](fundamentals/U07-04.md) | [Kontrol et](answers/fundamentals/U07-04.md) |
+
+## Orchestration
+
+4 PDF seti + 4 paylaşılan quiz/resmî doküman seti. [Bölüm ve sonuç analizi](orchestration/README.md).
+
+| Quiz | Konu | Sorular | Cevaplar |
+|---|---|---|---|
+| O01-01 | Monoliths, SOA and the Enterprise Service Bus | [Çöz](orchestration/O01-01.md) | [Kontrol et](answers/orchestration/O01-01.md) |
+| O01-02 | Microservice boundaries and choosing a starting architecture | [Çöz](orchestration/O01-02.md) | [Kontrol et](answers/orchestration/O01-02.md) |
+| O01-03 | Development, technology choice and independent scaling | [Çöz](orchestration/O01-03.md) | [Kontrol et](answers/orchestration/O01-03.md) |
+| O01-04 | Operational burden, network latency, testing and debugging | [Çöz](orchestration/O01-04.md) | [Kontrol et](answers/orchestration/O01-04.md) |
+| OQ-01 | Cloud Tasks: delivery, scheduling, destinations and identity | [Çöz](orchestration/OQ-01.md) | [Kontrol et](answers/orchestration/OQ-01.md) |
+| OQ-02 | Choreography versus orchestration | [Çöz](orchestration/OQ-02.md) | [Kontrol et](answers/orchestration/OQ-02.md) |
+| OQ-03 | Workflows: execution state and long-running coordination | [Çöz](orchestration/OQ-03.md) | [Kontrol et](answers/orchestration/OQ-03.md) |
+| OQ-04 | Eventarc Standard: CloudEvents, Audit Logs and Pub/Sub | [Çöz](orchestration/OQ-04.md) | [Kontrol et](answers/orchestration/OQ-04.md) |

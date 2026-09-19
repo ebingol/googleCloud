@@ -1,5 +1,5 @@
 {
-  "basis": "Uploaded course PDFs; 1-based PDF file pages",
+  "basis": "Course PDFs with 1-based file pages; supplemental user-submitted quiz and official documentation are identified separately",
   "sources": [
     {
       "path": "foundations/Module1-BestPracticesForCloudApplicationDevelopment.pdf",
@@ -75,6 +75,42 @@
       "path": "fundamentals/M7 _ Prompt Engineering v5.2 _ ILT.pdf",
       "pages": 38,
       "sha256": "7de425893d9a257615d66da171c81b5293de324f204385668e874c17d9b197ad"
+    },
+    {
+      "path": "orchestration/Module1-IntroductionToMicroservices.pdf",
+      "pages": 16,
+      "sha256": "2f8a762dae6f465bb705eb890ba95bcfb70b65e82661a0e7f288034959228289"
+    }
+  ],
+  "supplemental_sources": [
+    {
+      "path": "quizzes/orchestration-quiz-results.txt",
+      "type": "user_submitted_quiz",
+      "sha256": "b5da87cfb54ab5ab4c036aa043fea9c03a527ac98c863d0b54030055e6a9fb44"
+    },
+    {
+      "url": "https://docs.cloud.google.com/tasks/docs/dual-overview",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "url": "https://docs.cloud.google.com/tasks/docs/creating-http-target-tasks",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "url": "https://docs.cloud.google.com/workflows/docs/overview",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "url": "https://docs.cloud.google.com/workflows/docs/access-execution-results",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "url": "https://docs.cloud.google.com/eventarc/standard/docs/overview",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "url": "https://docs.cloud.google.com/eventarc/docs/cloudevents",
+      "checked_on": "2026-09-19"
     }
   ]
 }

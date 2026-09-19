@@ -1,6 +1,6 @@
 # Kapsam haritası
 
-Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunun iki kursta anlatılan sürümleri ayrı tutulmuştur. Kapak, gündem, tekrar slaytları ve laboratuvar yönergesi ayrı bir sınav konusu sayılmaz. Sorular bilgi ve ayrıntı örneklemesidir; her cümle için soru üretilmiş değildir.
+Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunun farklı kurslarda anlatılan sürümleri ayrı tutulmuştur. Kapak, gündem, tekrar slaytları ve laboratuvar yönergesi ayrı bir sınav konusu sayılmaz. Sorular bilgi ve ayrıntı örneklemesidir; her cümle için soru üretilmiş değildir.
 
 | Quiz | Konu grubu | Kaynak sayfaları |
 |---|---|---|
@@ -73,3 +73,11 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 | U07-02 | Zero-shot, one-shot, few-shot and role prompts | 21, 22, 23, 24, 25 |
 | U07-03 | Prompt preamble, input and iterative context | 26, 27, 28, 29, 30 |
 | U07-04 | Prompt engineering best practices and the Sasha example | 32, 33, 34, 35, 37, 38 |
+| O01-01 | Monoliths, SOA and the Enterprise Service Bus | 4, 5, 6 |
+| O01-02 | Microservice boundaries and choosing a starting architecture | 7, 8 |
+| O01-03 | Development, technology choice and independent scaling | 10, 11, 12 |
+| O01-04 | Operational burden, network latency, testing and debugging | 10, 14, 15 |
+| OQ-01 | Cloud Tasks: delivery, scheduling, destinations and identity | Paylaşılan quiz + resmî web kaynakları; PDF sayfası yok |
+| OQ-02 | Choreography versus orchestration | Paylaşılan quiz + resmî web kaynakları; PDF sayfası yok |
+| OQ-03 | Workflows: execution state and long-running coordination | Paylaşılan quiz + resmî web kaynakları; PDF sayfası yok |
+| OQ-04 | Eventarc Standard: CloudEvents, Audit Logs and Pub/Sub | Paylaşılan quiz + resmî web kaynakları; PDF sayfası yok |

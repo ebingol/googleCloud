@@ -1,0 +1,61 @@
+Quiz: Choreography and Orchestration
+Your score: 75% Passing score: 75%
+Congratulations! You passed this assessment.
+check
+1.
+
+Which of the following are features of Cloud Tasks? Select two.
+
+HTTP destinations may be called by automatically attaching a token for the Cloud Tasks service account.
+check
+At-least-once delivery is guaranteed.
+Correct!
+check
+Tasks can be scheduled for delivery at a future time.
+Correct!
+
+The creator of a task has no control over which endpoint receives the task.
+check
+2.
+
+Which of the following are benefits of the service choreography pattern? Select two.
+check
+Services are loosely coupled.
+Correct! Each service works independently with service choreography.
+
+An event producer maintains full control over downstream operations.
+check
+Service choreography allows for decentralized control.
+Correct! With service orchestration, shared management of the central orchestration process can be difficult, but with service choreography, management occurs at the service level.
+
+Business logic is easy to understand.
+check
+3.
+
+Which of the following are features of Workflows? Select two.
+check
+The state of each workflow execution is observable.
+Correct!
+
+A workflow provides a decentralized view of event communication.
+
+A workflow is appropriate only for simple business processes.
+check
+Workflows supports long-running processes.
+Correct!
+close
+4.
+
+Which of the following are features of Eventarc? Select two.
+info
+Note: To get credit for a multiple-select question, you must select all of the correct options and none of the incorrect ones.
+close
+Event formats are flexible as long as the formatting is identical for all events of a particular type.
+Incorrect. With Eventarc, all events must use the standard CloudEvents format.
+
+Applications handle events by monitoring the events that are published to an event queue.
+check
+Eventarc can generate events for entries written to Cloud Audit Logs.
+Correct!
+
+Pub/Sub is the transport layer.

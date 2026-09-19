@@ -6166,6 +6166,862 @@
           "explanation": "Sasha örneğinin yanıtı hub-and-spoke'tur. Bu, her gerçek ağ için tek doğru tasarım veya otomatik merkezi firewall garantisi değildir."
         }
       ]
+    },
+    {
+      "id": "O01-01",
+      "title": "Monoliths, SOA and the Enterprise Service Bus",
+      "source": "orchestration/Module1-IntroductionToMicroservices.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which combination characterizes the traditional monolith described in the PDF?",
+          "options": {
+            "A": "Only independently deployable services with separate databases",
+            "B": "A decentralized collection of unrelated APIs",
+            "C": "Only an event router without business logic",
+            "D": "UI, business logic and data access in one large application"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Monolit UI, iş mantığı ve veri erişimini tek büyük uygulamada toplar; sıkı bağımlılıklar bakım ve değişiklik riskini artırır."
+        },
+        {
+          "question": "What should each service in the described SOA implement?",
+          "options": {
+            "A": "Every enterprise function in one component",
+            "B": "Exactly one database column",
+            "C": "A discrete business function",
+            "D": "Only a network transport protocol"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "SOA yeniden kullanılabilir servislerle ayrı iş fonksiyonlarını modeller; kapsam genellikle işletme düzeyindedir."
+        },
+        {
+          "question": "Which two responsibilities are attributed to the ESB?",
+          "options": {
+            "A": "Independent ownership of every service's business logic",
+            "B": "Protocol and data transformation",
+            "C": "Message routing",
+            "D": "Eliminating the need to test integrations"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "ESB yönlendirme ve dönüşüm yapar; bağlantı/güvenlik yönetimi de anlatılır. Entegrasyon testine gerek kalmadığı sonucu çıkmaz."
+        },
+        {
+          "question": "Why could ESB integration work delay multiple application teams?",
+          "options": {
+            "A": "Every service was guaranteed to deploy independently of integrations",
+            "B": "SOA prohibited communication between teams",
+            "C": "A central team became a shared integration bottleneck",
+            "D": "No service needed message transformation"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Bütün ekiplerin merkezi ESB entegrasyonuna ihtiyaç duyması iş kuyruğu ve gecikme yaratabilir; karmaşıklık tamamen yok olmaz, ESB'ye taşınabilir."
+        },
+        {
+          "question": "Which two risks of changing the ESB are explicitly discussed?",
+          "options": {
+            "A": "Every update automatically isolates all failures",
+            "B": "Changing one integration may destabilize other applications",
+            "C": "Updating ESB software may break existing integrations",
+            "D": "All integration tests become unnecessary after the first release"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Paylaşılan entegrasyonlar ve ESB yazılım güncellemeleri başka uygulamaları etkileyebilir; bu yüzden kapsamlı test gerekir."
+        }
+      ]
+    },
+    {
+      "id": "O01-02",
+      "title": "Microservice boundaries and choosing a starting architecture",
+      "source": "orchestration/Module1-IntroductionToMicroservices.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two properties define microservices in the module?",
+          "options": {
+            "A": "Loose coupling",
+            "B": "One mandatory central ESB controlling every change",
+            "C": "Separate services with limited scope",
+            "D": "One inseparable deployment unit for all business domains"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Mikroservisler sınırlı kapsamlı ve gevşek bağlı servislerdir; merkezi ESB veya tek dağıtım birimi zorunlu değildir."
+        },
+        {
+          "question": "How are orders, products and reviews modeled in the decomposition example?",
+          "options": {
+            "A": "Only separate UI screens over unchanged tightly coupled code",
+            "B": "A single shared data-access component used directly by all callers",
+            "C": "A single service with three names",
+            "D": "Separate services, each with its own database"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Şekil Orders, Products ve Reviews servislerini kendi veritabanlarıyla gösterir. Bu, bu örneğin sınırlandırma yaklaşımıdır."
+        },
+        {
+          "question": "What do callers typically use to invoke a microservice's operations?",
+          "options": {
+            "A": "A shared copy of its in-memory objects",
+            "B": "The implementation language's private classes",
+            "C": "Direct access to all internal database tables",
+            "D": "Its defined API interface"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Servisin dış arayüzü, genellikle API, çağrıyı tanımlar; iç kod/veritabanına bağlanmak kapsüllemeyi zayıflatır."
+        },
+        {
+          "question": "Which three conditions support starting directly with microservices in the module?",
+          "options": {
+            "A": "Requiring all changes to ship as one inseparable release",
+            "B": "Understanding the problem domain",
+            "C": "Having no idea how to define service boundaries",
+            "D": "Planning to grow the team",
+            "E": "Needing agile service delivery"
+          },
+          "answers": [
+            "B",
+            "D",
+            "E"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Alan bilgisi sınır tasarımını, agile delivery bağımsız sürümleri, büyüyen ekip ise küçük ekip sahipliğini destekler."
+        },
+        {
+          "question": "A team does not yet understand its problem domain well. What starting approach does the module allow?",
+          "options": {
+            "A": "Build a modular monolith and separate services as understanding improves",
+            "B": "Create arbitrary service boundaries immediately and never revise them",
+            "C": "Require an enterprise ESB before any code can be written",
+            "D": "Avoid modularity because future migration is impossible"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Doküman monolitle başlayıp deneyim arttıkça ayrıştırmayı kabul eder; başlangıçta modüler tasarım ileride taşımayı kolaylaştırır."
+        }
+      ]
+    },
+    {
+      "id": "O01-03",
+      "title": "Development, technology choice and independent scaling",
+      "source": "orchestration/Module1-IntroductionToMicroservices.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two advantages are linked to a smaller microservice codebase?",
+          "options": {
+            "A": "Easier unit testing with clear boundaries",
+            "B": "A guarantee that interface changes cannot affect callers",
+            "C": "Automatic elimination of distributed integration testing",
+            "D": "Easier understanding and updates"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Küçük kod ve net sınırlar anlama/güncelleme ile unit test'i kolaylaştırır; sistemler arası test veya API uyumu sorununu yok etmez."
+        },
+        {
+          "question": "When can updating one service affect other services despite independent deployment?",
+          "options": {
+            "A": "When a breaking change is made to its interface",
+            "B": "Only when all services use the same database engine",
+            "C": "Whenever its internal variable names change without interface changes",
+            "D": "Whenever internal code is refactored while preserving API behavior"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Bağımsız deployment, breaking API değişikliğinin tüketicilere etkisini ortadan kaldırmaz. İç uygulama ayrıntıları arayüz korunursa gizlenebilir."
+        },
+        {
+          "question": "Why can services use different programming languages and frameworks?",
+          "options": {
+            "A": "All services share the same language runtime in one process",
+            "B": "The ESB requires identical technology stacks",
+            "C": "Callers depend on API interfaces rather than internal implementation technology",
+            "D": "Every caller must compile the callee's source code"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "API sınırı dil/framework ayrıntısını tüketiciden ayırır; ekip hizmetine uygun teknoloji seçebilir."
+        },
+        {
+          "question": "A Java orders service calls a Python product service hosted on another platform. Which principle permits this?",
+          "options": {
+            "A": "The caller must be rewritten in Python first",
+            "B": "The two services must share one database driver",
+            "C": "Both services must run in the same process",
+            "D": "API-based communication across platform boundaries"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Modül HTTP API'leriyle farklı platform ve dillerdeki servislerin iletişimini anlatır; aynı process veya dil gerekmez."
+        },
+        {
+          "question": "Only the orders service experiences a traffic spike. What scaling approach matches the module?",
+          "options": {
+            "A": "Add capacity to orders independently and reduce it as traffic falls",
+            "B": "Always merge orders and reviews into one deployment",
+            "C": "Scale every service to the orders peak permanently",
+            "D": "Keep every service at a fixed maximum allocation"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Servis bazlı kapasite, yalnız ihtiyaç duyulan yere kaynak ayırır; mevcut trafiğe göre ölçekleme maliyeti optimize edebilir."
+        }
+      ]
+    },
+    {
+      "id": "O01-04",
+      "title": "Operational burden, network latency, testing and debugging",
+      "source": "orchestration/Module1-IntroductionToMicroservices.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two challenges follow from having many deployable services?",
+          "options": {
+            "A": "Greater operational skill requirements",
+            "B": "Removal of all cross-service dependencies",
+            "C": "More deployments and potential failure points",
+            "D": "No need for authorization consistency"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Servis başına kod basitleşse de dağıtılan birim sayısı ve operasyon yükü artar; ortak güvenlik/raporlama tutarlılığı gerekir."
+        },
+        {
+          "question": "Which three activities does the PDF identify as crucial to automate?",
+          "options": {
+            "A": "Every API change without compatibility checks",
+            "B": "Testing",
+            "C": "Every business decision without review",
+            "D": "Builds",
+            "E": "Deployments"
+          },
+          "answers": [
+            "B",
+            "D",
+            "E"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Build, test ve deployment otomasyonu çok sayıda servisin sağlığını/verimliliğini yönetmek için önemlidir."
+        },
+        {
+          "question": "Why can an operation involving many microservice calls gain significant latency?",
+          "options": {
+            "A": "Network communication is always faster than local calls",
+            "B": "Microservices eliminate the need to transfer data",
+            "C": "Network calls replace many in-process calls",
+            "D": "Every API call necessarily removes all serialization overhead"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            15
+          ],
+          "explanation": "Monolitteki aynı-process çağrılar ağ çağrılarına dönüşebilir; çok adımda bu gecikmeler birikir."
+        },
+        {
+          "question": "Why can integration tests be harder even when individual unit tests are simpler?",
+          "options": {
+            "A": "Testing the whole system may require modeling the distributed production deployment",
+            "B": "Only the largest service needs to be tested",
+            "C": "Integration testing is unnecessary if services use APIs",
+            "D": "Unit tests automatically prove all network interactions correct"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            10,
+            15
+          ],
+          "explanation": "Unit test sınır içini, integration test servisler arası bütünü ölçer; dağıtık ortamın modellenmesi ek zorluk getirir."
+        },
+        {
+          "question": "Why is debugging a request that crosses many services challenging?",
+          "options": {
+            "A": "All services necessarily use the same process stack",
+            "B": "Independent deployment prevents any distributed failures",
+            "C": "Separate logs automatically create a complete end-to-end trace",
+            "D": "Each service may produce separate logs, making the full call path hard to trace"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            14,
+            15
+          ],
+          "explanation": "Dağınık loglar uçtan uca çağrı takibini zorlaştırır; tutarlı logging/reporting ve operasyonel disiplin önem kazanır."
+        }
+      ]
+    },
+    {
+      "id": "OQ-01",
+      "title": "Cloud Tasks: delivery, scheduling, destinations and identity",
+      "source": "quizzes/orchestration-quiz-results.txt",
+      "source_kind": "submitted_quiz_and_official_docs",
+      "questions": [
+        {
+          "question": "Which two Cloud Tasks features were accepted in your submitted quiz?",
+          "options": {
+            "A": "The task creator has no control over its destination",
+            "B": "Exactly-once execution of every handler is guaranteed",
+            "C": "Scheduling a task for future delivery",
+            "D": "At-least-once delivery"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [],
+          "explanation": "Paylaşılan quizde kabul edilen ikili at-least-once delivery ve geleceğe zamanlamadır. Exactly-once sonucu çıkarılamaz.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 1"
+            }
+          ]
+        },
+        {
+          "question": "A task might be executed more than once. Which handler property avoids duplicate side effects?",
+          "options": {
+            "A": "Assuming every delivery is unique",
+            "B": "Idempotency",
+            "C": "Generating a new irreversible charge for every retry",
+            "D": "Disabling all authentication"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [],
+          "explanation": "Tekrarlı yürütme olasılığı nedeniyle handler idempotent tasarlanır; aynı işi yeniden almak zararlı sonucu tekrar üretmemelidir.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, ilgili bölüm"
+            },
+            {
+              "url": "https://docs.cloud.google.com/tasks/docs/dual-overview",
+              "label": "tasks-overview",
+              "checked_on": "2026-09-19"
+            }
+          ]
+        },
+        {
+          "question": "Using CreateTask for an HTTP task, what does the creator specify?",
+          "options": {
+            "A": "Only a topic, with no control over the handler",
+            "B": "The service and handler that should process it",
+            "C": "Only a workflow's current execution state",
+            "D": "Only an event schema, with no destination"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [],
+          "explanation": "CreateTask akışında hedef servis/handler belirtilir. Task'ı üretenin hedef üzerinde kontrolü yok ifadesi bu modele uymaz.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, ilgili bölüm"
+            },
+            {
+              "url": "https://docs.cloud.google.com/tasks/docs/creating-http-target-tasks",
+              "label": "tasks-http",
+              "checked_on": "2026-09-19"
+            }
+          ]
+        },
+        {
+          "question": "What does a future scheduling time allow?",
+          "options": {
+            "A": "Remove all possible retries",
+            "B": "Guarantee exactly-once handler execution",
+            "C": "Defer delivery until a later scheduled time",
+            "D": "Convert a task into a broadcast to every service"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [],
+          "explanation": "Geleceğe zamanlama ne zaman gönderileceğini düzenler; duplicate, retry veya fan-out için tek başına garanti değildir.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 1"
+            }
+          ]
+        },
+        {
+          "question": "Which identity distinction is accurate for authenticated HTTP tasks?",
+          "options": {
+            "A": "Cloud Tasks cannot attach authentication tokens to HTTP requests",
+            "B": "The configured service-account identity used for the token is distinct from the Cloud Tasks service agent's role in creating tokens",
+            "C": "The service agent's identity must always be the target-caller identity",
+            "D": "Adding a token automatically grants every target permission"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [],
+          "explanation": "Token yapılandırmasındaki hesap ile platformun service agent rolünü ayır. Kimlikli HTTP çağrısı desteklenir; gerekli IAM izinleri ayrıca gerekir.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, ilgili bölüm"
+            },
+            {
+              "url": "https://docs.cloud.google.com/tasks/docs/creating-http-target-tasks",
+              "label": "tasks-http",
+              "checked_on": "2026-09-19"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OQ-02",
+      "title": "Choreography versus orchestration",
+      "source": "quizzes/orchestration-quiz-results.txt",
+      "source_kind": "submitted_quiz_and_official_docs",
+      "questions": [
+        {
+          "question": "Which two choreography benefits were accepted in your quiz?",
+          "options": {
+            "A": "Loosely coupled services",
+            "B": "Decentralized control",
+            "C": "The producer maintains full control over every downstream step",
+            "D": "The entire business process is always easy to understand"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [],
+          "explanation": "Quiz choreography için gevşek bağlılık ve merkezi olmayan yönetimi kabul eder; üretici bütün sonraki adımları yönetmez.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 2"
+            }
+          ]
+        },
+        {
+          "question": "A producer publishes an event and independent services react. Where does control primarily reside in choreography?",
+          "options": {
+            "A": "Only in a mandatory central orchestrator",
+            "B": "In one shared application process",
+            "C": "At the participating service level",
+            "D": "In a single producer that invokes every downstream operation"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [],
+          "explanation": "Paylaşılan açıklama yönetimin servis düzeyinde olduğunu belirtir. Merkezî tüm-adım yönetimi orchestration tarafındaki ayrımdır.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 2"
+            }
+          ]
+        },
+        {
+          "question": "Why is full producer control over downstream operations not a choreography benefit?",
+          "options": {
+            "A": "All consumers must run in the producer's process",
+            "B": "Independent consumers determine their reactions to events",
+            "C": "No consumer is allowed to react without a central workflow definition",
+            "D": "Every event must contain all consumers' private code"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [],
+          "explanation": "Gevşek bağlı tüketiciler kendi tepkilerini yönetir; üreticinin bütün downstream akışı kontrol etmesi choreography'nin avantajı değildir.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 2"
+            }
+          ]
+        },
+        {
+          "question": "Which claim should not be inferred from decentralized control?",
+          "options": {
+            "A": "Control can live at service level",
+            "B": "The complete business process is always easy to follow",
+            "C": "Services can be loosely coupled",
+            "D": "Services can operate independently"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [],
+          "explanation": "Quiz business logic'in kolay anlaşılmasını kabul edilen faydalar arasına koymaz. Dağıtık kontrol bütünü gözlemlemeyi zorlaştırabilir.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 2"
+            }
+          ]
+        },
+        {
+          "question": "A team wants a centrally defined sequence coordinating several services. Which pattern best matches?",
+          "options": {
+            "A": "A single local retry loop with no process definition",
+            "B": "Pure decentralized choreography with no coordinator",
+            "C": "Independent event reactions without shared sequencing",
+            "D": "Service orchestration"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [],
+          "explanation": "Workflows merkezî tanımlı adım akışını koordine eden orchestration örneğidir; bağımsız tepkilerle aynı kontrol modeli değildir.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, ilgili bölüm"
+            },
+            {
+              "url": "https://docs.cloud.google.com/workflows/docs/overview",
+              "label": "workflows",
+              "checked_on": "2026-09-19"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OQ-03",
+      "title": "Workflows: execution state and long-running coordination",
+      "source": "quizzes/orchestration-quiz-results.txt",
+      "source_kind": "submitted_quiz_and_official_docs",
+      "questions": [
+        {
+          "question": "Which two Workflows features were accepted in your quiz?",
+          "options": {
+            "A": "A decentralized view with no central workflow definition",
+            "B": "Observable state for each execution",
+            "C": "Only simple business processes are appropriate",
+            "D": "Support for long-running processes"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [],
+          "explanation": "Quiz execution durumunun izlenebilirliğini ve uzun süren süreç desteğini kabul eder; yalnız basit süreçlerle sınırlı değildir.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 3"
+            }
+          ]
+        },
+        {
+          "question": "A business process includes waits and retries across several services. Which product most directly coordinates the process?",
+          "options": {
+            "A": "Cloud Storage used only to retain objects",
+            "B": "A service's local log file",
+            "C": "Cloud Tasks used only to deliver one HTTP task",
+            "D": "Workflows"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [],
+          "explanation": "Workflows adımları ve bekleme/retry durumunu koordine eder; tek task teslimi uçtan uca süreç koordinasyonu değildir.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, ilgili bölüm"
+            },
+            {
+              "url": "https://docs.cloud.google.com/workflows/docs/overview",
+              "label": "workflows",
+              "checked_on": "2026-09-19"
+            }
+          ]
+        },
+        {
+          "question": "A team needs to inspect a workflow run's current or final step. Which feature addresses this need?",
+          "options": {
+            "A": "Only a queue's destination URL",
+            "B": "Execution state and execution results",
+            "C": "Only an event's arbitrary payload format",
+            "D": "Only a project's display name"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [],
+          "explanation": "Execution sonuçları/durumu belirli çalışmanın mevcut veya son adımını incelemeyi sağlar.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, ilgili bölüm"
+            },
+            {
+              "url": "https://docs.cloud.google.com/workflows/docs/access-execution-results",
+              "label": "execution-results",
+              "checked_on": "2026-09-19"
+            }
+          ]
+        },
+        {
+          "question": "Which statement misrepresents Workflows according to the submitted quiz?",
+          "options": {
+            "A": "A workflow execution has observable state",
+            "B": "It is appropriate only for simple business processes",
+            "C": "A defined workflow coordinates processing",
+            "D": "Long-running processes are supported"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [],
+          "explanation": "Only simple ifadesi gereksiz bir kısıttır; quiz uzun süreçleri ve izlenebilir execution durumunu doğrular.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 3"
+            }
+          ]
+        },
+        {
+          "question": "What does observing a workflow execution let you distinguish?",
+          "options": {
+            "A": "A guarantee that every possible business input is valid",
+            "B": "A guarantee that no step will ever retry",
+            "C": "The progress/state of that run rather than merely knowing an event was emitted",
+            "D": "A guarantee that all external services will succeed"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [],
+          "explanation": "Execution görünürlüğü çalışmanın durumunu izletir; downstream başarı, retry yokluğu veya tüm girdilerin doğruluğunu garanti etmez.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OQ-04",
+      "title": "Eventarc Standard: CloudEvents, Audit Logs and Pub/Sub",
+      "source": "quizzes/orchestration-quiz-results.txt",
+      "source_kind": "submitted_quiz_and_official_docs",
+      "questions": [
+        {
+          "question": "Which event-format statement corrects the mistake in your submitted quiz?",
+          "options": {
+            "A": "Only events from the same producer need a shared format",
+            "B": "Eventarc delivers events in the standard CloudEvents format",
+            "C": "Any arbitrary format is acceptable if events of the same type match",
+            "D": "Each receiver invents an unrelated envelope format"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [],
+          "explanation": "Aynı tip olayların kendi aralarında tutarlı olması yetmez; quiz CloudEvents standardını ister. Envelope standardı ile payload içeriğini karıştırma.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 4"
+            },
+            {
+              "url": "https://docs.cloud.google.com/eventarc/docs/cloudevents",
+              "label": "cloudevents",
+              "checked_on": "2026-09-19"
+            }
+          ]
+        },
+        {
+          "question": "Which two statements form the expected correct pair for your Eventarc question in its Standard context?",
+          "options": {
+            "A": "Any per-type custom event format is sufficient",
+            "B": "Pub/Sub is the transport layer",
+            "C": "Consumers must monitor an event queue themselves",
+            "D": "Cloud Audit Logs entries can be event sources"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [],
+          "explanation": "Paylaşımda Audit Logs doğrulanmıştır. Resmî Standard dokümanı Pub/Sub taşıma katmanını da doğrular; format seçeneği yanlıştır.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 4"
+            },
+            {
+              "url": "https://docs.cloud.google.com/eventarc/standard/docs/overview",
+              "label": "eventarc",
+              "checked_on": "2026-09-19"
+            }
+          ]
+        },
+        {
+          "question": "An Audit Logs entry is written. Under what condition does the described Eventarc trigger route it?",
+          "options": {
+            "A": "Every log entry must always be sent to every destination",
+            "B": "It matches the trigger's filter criteria",
+            "C": "The event producer embeds every downstream service's implementation",
+            "D": "A developer manually copies it to the receiver"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [],
+          "explanation": "Audit Logs tabanlı trigger eşleşen kayıtları route eder; bütün logları koşulsuz bütün hedeflere dağıtmaz.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, ilgili bölüm"
+            },
+            {
+              "url": "https://docs.cloud.google.com/eventarc/standard/docs/overview",
+              "label": "eventarc",
+              "checked_on": "2026-09-19"
+            }
+          ]
+        },
+        {
+          "question": "For a Cloud Run event receiver, which interaction matches Eventarc delivery?",
+          "options": {
+            "A": "Every producer must call the receiver's internal functions",
+            "B": "The receiver must directly scan all source audit-log files",
+            "C": "Application code must continuously poll Eventarc's event queue",
+            "D": "Eventarc routes matching events to the configured receiver"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [],
+          "explanation": "Cloud Run alıcısına olay teslim edilir. Quizdeki uygulamanın kuyruğu izlemesi ifadesi bu delivery modelinin açıklaması değildir.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, ilgili bölüm"
+            },
+            {
+              "url": "https://docs.cloud.google.com/eventarc/standard/docs/overview",
+              "label": "eventarc",
+              "checked_on": "2026-09-19"
+            }
+          ]
+        },
+        {
+          "question": "Which pairing correctly separates event representation from transport in this course context?",
+          "options": {
+            "A": "Cloud Audit Logs: transport for all events; CloudEvents: destination identity",
+            "B": "CloudEvents: database engine; Pub/Sub: authentication token",
+            "C": "CloudEvents: event format; Pub/Sub: transport",
+            "D": "Pub/Sub: event-format standard; CloudEvents: transport queue"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [],
+          "explanation": "Sınav için temel ayrım format=CloudEvents, taşıma=Pub/Sub'tır; Audit Logs olay kaynağı olabilir. Pub/Sub ifadesi burada Eventarc Standard kapsamındadır.",
+          "source_refs": [
+            {
+              "path": "quizzes/orchestration-quiz-results.txt",
+              "label": "Paylaşılan quiz, soru 4"
+            },
+            {
+              "url": "https://docs.cloud.google.com/eventarc/standard/docs/overview",
+              "label": "eventarc",
+              "checked_on": "2026-09-19"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

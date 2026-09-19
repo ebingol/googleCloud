@@ -53,3 +53,13 @@ CI/CD sorusunun doğru iki cevabı paylaşımda açıkça işaretli değil. Kurs
 - Q2: Hata gruplama ve stack trace için servis seçimi.
 - Q3: Cloud Build build-step davranışı, iki doğru özellik.
 - Henüz kullanıcı yanıtı yok; başlangıç ustalık puanı atanmadı.
+
+### Orchestration — paylaşılan kurs quizi
+
+- Tarih: 19 Eylül 2026. Sonuç: %75, geçme sınırı %75 (3/4 doğru).
+- Cloud Tasks, choreography, Workflows: başarılı; eminlik düzeyi paylaşılmadı.
+- Eventarc: özel format seçeneği yanlış; Audit Logs seçeneği doğru. Pub/Sub taşıma seçeneği eksik.
+- Öncelik: CloudEvents formatı / Pub/Sub taşıması / Audit Logs kaynağı / hedefe olay teslimi ayrımı.
+- Hedef set: OQ-04; destekleyici setler OQ-01, OQ-02, OQ-03. Yeni 8 set henüz çözülmedi; eski quiz puanı yeni setlere aktarılmadı.
+- Planlanan aralıklı tekrarlar: 20 Eylül, 22 Eylül, 26 Eylül ve 3 Ekim 2026 (1/3/7/14 gün). Bu tarihler çalışma kaydıdır; otomatik bildirim kurulmadı.
+- Kaynak/kimlik belirsizliği: Cloud Tasks token seçeneği yanlış kabul edilmedi; service account ve service agent ayrımı [bölüm analizinde](quizzes/orchestration/README.md).

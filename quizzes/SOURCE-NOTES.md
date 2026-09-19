@@ -34,4 +34,8 @@ Aynı modülün sonundaki hub-and-spoke önerisi yalnız Sasha örneğinin cevab
 
 ## 8. Kapsam ve izlenebilirlik
 
-İki bölümün 15 modülü konu gruplarına ayrılmıştır. Kapak, gündem, tekrarlanan özet sayfaları ve laboratuvar yönergeleri ayrı soru seti oluşturmaz. Her cümleyi ezberleten eksiksiz bir soru dökümü olduğu iddia edilmez. [Kapsam haritası](COVERAGE.md) setleri listeler. [Kaynak manifesti](source-manifest.json) PDF sayfa sayılarını ve SHA-256 özetlerini kaydeder. Cevap anahtarları konu açıklamasıyla birlikte soru bazında PDF sayfasına bağlanır.
+İlk iki bölümün 15 modülü konu gruplarına ayrılmıştır. Kapak, gündem, tekrarlanan özet sayfaları ve laboratuvar yönergeleri ayrı soru seti oluşturmaz. Her cümleyi ezberleten eksiksiz bir soru dökümü olduğu iddia edilmez. [Kapsam haritası](COVERAGE.md) setleri listeler. [Kaynak manifesti](source-manifest.json) PDF sayfa sayılarını ve SHA-256 özetlerini kaydeder. Cevap anahtarları konu açıklamasıyla birlikte soru bazında PDF sayfasına bağlanır.
+
+## 9. Orchestration kaynak kapsamı
+
+O01 setlerinin kaynağı Introduction to Microservices PDF’idir. OQ setleri paylaşılan quiz ve resmî dokümanlarla desteklenir. Eventarc taşıma soruları Standard kapsamındadır. Cloud Tasks token seçeneğinin işaretlenmemiş olması onun yanlışlığını kanıtlamaz; [bölüm analizi](orchestration/README.md) kimlik ayrımını açıklar.

@@ -2,9 +2,9 @@
 
 ## Quiz çöz
 
-[**Quiz dizinini aç: 69 set / 345 soru**](quizzes/README.md)
+[**Quiz dizinini aç: 77 set / 385 soru**](quizzes/README.md)
 
-Foundations: 32 set / 160 soru. Fundamentals: 37 set / 185 soru. Her set 5 sorudur; cevap ve Türkçe açıklamalar ayrı dosyalardadır. Sorular PDF sayfa referanslarıyla hazırlanmıştır.
+Foundations: 32 set / 160 soru. Fundamentals: 37 set / 185 soru. Orchestration: 8 set / 40 soru. Her set 5 sorudur; cevap ve Türkçe açıklamalar ayrı dosyalardadır. PDF soruları sayfa referanslıdır; ek quiz konuları kaynak türü ve resmî doküman bağlantılarıyla belirtilmiştir.
 
 - [Kapsam haritası](quizzes/COVERAGE.md)
 - [Kaynak farklılıkları](quizzes/SOURCE-NOTES.md)
@@ -18,3 +18,6 @@ Foundations: 32 set / 160 soru. Fundamentals: 37 set / 185 soru. Her set 5 sorud
 - `sinav-tekrar-takibi.md`: Üç haftalık çalışma planı ve tekrar kaydı.
 
 Quiz geri bildirimlerindeki bilinen çelişkiler tekrar takip dosyasında kayıtlıdır.
+
+- `orchestration/`: Introduction to Microservices PDF’i.
+- [Orchestration quizleri ve sonuç analizi](quizzes/orchestration/README.md)
