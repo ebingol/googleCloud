@@ -1,6 +1,6 @@
 # Beş soruluk quizler
 
-**126 quiz · 630 soru · 5 bölüm · 30 PDF dosyası + paylaşılan quiz**
+**152 quiz · 760 soru · 6 bölüm · 43 PDF dosyası (41 benzersiz) + paylaşılan quiz**
 
 Sorular İngilizce, açıklamalar Türkçe. Her set beş sorudur. `Select two/three` sorularında istenen sayıda seçenek işaretle; tam doğru seçenek kümesi 1 puan, diğer cevaplar 0 puandır. Toplam 5 puan üzerinden değerlendirilir.
 
@@ -166,3 +166,36 @@ Sorular yüklenen PDF sürümlerine göre hazırlanmış özgün çalışma soru
 | T08-04 | Volumes and the GKE delivery workflow | [Çöz](containeried/T08-04.md) | [Kontrol et](answers/containeried/T08-04.md) |
 | T09-01 | Container-Optimized OS characteristics | [Çöz](containeried/T09-01.md) | [Kontrol et](answers/containeried/T09-01.md) |
 | T09-02 | Container-Optimized OS limitations and workload choice | [Çöz](containeried/T09-02.md) | [Kontrol et](answers/containeried/T09-02.md) |
+
+## Cloud Run
+
+3 ana modül · 11 benzersiz ders PDF’si · 26 quiz · 130 soru. [Bölüm ve kaynak notları](cloudRun/README.md).
+
+| Quiz | Konu | Sorular | Cevaplar |
+|---|---|---|---|
+| R01-01 | Regional services, revisions and instances | [Çöz](cloudRun/R01-01.md) | [Kontrol et](answers/cloudRun/R01-01.md) |
+| R01-02 | Jobs, executions and task outcomes | [Çöz](cloudRun/R01-02.md) | [Kontrol et](answers/cloudRun/R01-02.md) |
+| R02-01 | Startup, probes and internal image storage | [Çöz](cloudRun/R02-01.md) | [Kontrol et](answers/cloudRun/R02-01.md) |
+| R02-02 | Idle behavior, CPU allocation and warm instances | [Çöz](cloudRun/R02-02.md) | [Kontrol et](answers/cloudRun/R02-02.md) |
+| R02-03 | SIGTERM, cleanup and abrupt failures | [Çöz](cloudRun/R02-03.md) | [Kontrol et](answers/cloudRun/R02-03.md) |
+| R03-01 | Scale to zero, queuing and instance boundaries | [Çöz](cloudRun/R03-01.md) | [Kontrol et](answers/cloudRun/R03-01.md) |
+| R03-02 | Concurrency and load testing | [Çöz](cloudRun/R03-02.md) | [Kontrol et](answers/cloudRun/R03-02.md) |
+| R04-01 | API authorization and IAM bindings | [Çöz](cloudRun/R04-01.md) | [Kontrol et](answers/cloudRun/R04-01.md) |
+| R04-02 | Invocation permissions and network ingress | [Çöz](cloudRun/R04-02.md) | [Kontrol et](answers/cloudRun/R04-02.md) |
+| R04-03 | Private VPC connectivity and connectors | [Çöz](cloudRun/R04-03.md) | [Kontrol et](answers/cloudRun/R04-03.md) |
+| R05-01 | Service identity and API access tokens | [Çöz](cloudRun/R05-01.md) | [Kontrol et](answers/cloudRun/R05-01.md) |
+| R05-02 | Synchronous calls and caller authorization | [Çöz](cloudRun/R05-02.md) | [Kontrol et](answers/cloudRun/R05-02.md) |
+| R06-01 | Hierarchy and inherited allow policies | [Çöz](cloudRun/R06-01.md) | [Kontrol et](answers/cloudRun/R06-01.md) |
+| R07-01 | Least privilege and IAM role types | [Çöz](cloudRun/R07-01.md) | [Kontrol et](answers/cloudRun/R07-01.md) |
+| R08-01 | Environment variables and configuration precedence | [Çöz](cloudRun/R08-01.md) | [Kontrol et](answers/cloudRun/R08-01.md) |
+| R08-02 | Secret versions, mounts and IAM | [Çöz](cloudRun/R08-02.md) | [Kontrol et](answers/cloudRun/R08-02.md) |
+| R09-01 | Workload fit and the container runtime contract | [Çöz](cloudRun/R09-01.md) | [Kontrol et](answers/cloudRun/R09-01.md) |
+| R09-02 | Execution environments and storage lifetime | [Çöz](cloudRun/R09-02.md) | [Kontrol et](answers/cloudRun/R09-02.md) |
+| R09-03 | Cloud Code, emulation and local testing | [Çöz](cloudRun/R09-03.md) | [Kontrol et](answers/cloudRun/R09-03.md) |
+| R10-01 | Image builds, source deployment and repositories | [Çöz](cloudRun/R10-01.md) | [Kontrol et](answers/cloudRun/R10-01.md) |
+| R10-02 | Revision creation and retained configuration | [Çöz](cloudRun/R10-02.md) | [Kontrol et](answers/cloudRun/R10-02.md) |
+| R10-03 | Readiness, no-traffic deployment and revision pinning | [Çöz](cloudRun/R10-03.md) | [Kontrol et](answers/cloudRun/R10-03.md) |
+| R10-04 | Revision tags, traffic percentages and session affinity | [Çöz](cloudRun/R10-04.md) | [Kontrol et](answers/cloudRun/R10-04.md) |
+| R11-01 | Memorystore networking and integration setup | [Çöz](cloudRun/R11-01.md) | [Kontrol et](answers/cloudRun/R11-01.md) |
+| R11-02 | Authenticated Pub/Sub push and acknowledgements | [Çöz](cloudRun/R11-02.md) | [Kontrol et](answers/cloudRun/R11-02.md) |
+| R11-03 | Cloud SQL paths, credentials and connection pools | [Çöz](cloudRun/R11-03.md) | [Kontrol et](answers/cloudRun/R11-03.md) |

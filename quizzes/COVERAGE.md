@@ -130,3 +130,29 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 | T08-04 | Volumes and the GKE delivery workflow | 9, 10, 11 |
 | T09-01 | Container-Optimized OS characteristics | 2, 3 |
 | T09-02 | Container-Optimized OS limitations and workload choice | 3, 4, 5 |
+| R01-01 | Regional services, revisions and instances | 3, 4, 5, 7 |
+| R01-02 | Jobs, executions and task outcomes | 6, 8 |
+| R02-01 | Startup, probes and internal image storage | 5, 7, 8 |
+| R02-02 | Idle behavior, CPU allocation and warm instances | 9, 10, 11 |
+| R02-03 | SIGTERM, cleanup and abrupt failures | 12, 13, 15 |
+| R03-01 | Scale to zero, queuing and instance boundaries | 2, 3, 4, 5, 6 |
+| R03-02 | Concurrency and load testing | 7, 8 |
+| R04-01 | API authorization and IAM bindings | 3, 4, 6, 7, 8 |
+| R04-02 | Invocation permissions and network ingress | 9, 10, 11, 12 |
+| R04-03 | Private VPC connectivity and connectors | 13, 14 |
+| R05-01 | Service identity and API access tokens | 7, 8, 9, 10, 11 |
+| R05-02 | Synchronous calls and caller authorization | 12, 13, 14 |
+| R06-01 | Hierarchy and inherited allow policies | 3, 5, 6, 7 |
+| R07-01 | Least privilege and IAM role types | 3, 5, 6, 7 |
+| R08-01 | Environment variables and configuration precedence | 3, 4 |
+| R08-02 | Secret versions, mounts and IAM | 5, 6, 7 |
+| R09-01 | Workload fit and the container runtime contract | 3, 6, 7 |
+| R09-02 | Execution environments and storage lifetime | 8, 9 |
+| R09-03 | Cloud Code, emulation and local testing | 10, 11, 12, 14, 15 |
+| R10-01 | Image builds, source deployment and repositories | 3, 4, 5, 6 |
+| R10-02 | Revision creation and retained configuration | 7, 8, 9, 10, 11, 13 |
+| R10-03 | Readiness, no-traffic deployment and revision pinning | 14, 15, 16 |
+| R10-04 | Revision tags, traffic percentages and session affinity | 17, 18 |
+| R11-01 | Memorystore networking and integration setup | 4, 5, 6 |
+| R11-02 | Authenticated Pub/Sub push and acknowledgements | 7, 8 |
+| R11-03 | Cloud SQL paths, credentials and connection pools | 9, 10 |

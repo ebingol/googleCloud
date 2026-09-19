@@ -150,6 +150,73 @@
       "path": "containeried/T-DVCNTA-B-m2-l5-en-file-13.en.pdf",
       "pages": 5,
       "sha256": "1a03f8f90f7a01cd85c2875c369caaf598adcfd02c998c49c8bc17cc4c5ea0bd"
+    },
+    {
+      "path": "cloudRun/T-DVCRUN-B-m1-l2-file-en-3.en.pdf",
+      "pages": 8,
+      "sha256": "14723f3003f7c643920c94cc5a376b8414f043ac93793eabeb28485b8e82fb22"
+    },
+    {
+      "path": "cloudRun/T-DVCRUN-B-m1-l3-file-en-4.en.pdf",
+      "pages": 16,
+      "sha256": "c70b65199084a6ad6fd55f7032e6a6e3c8f5981c2c438c886bca8924d7796c6d"
+    },
+    {
+      "path": "cloudRun/T-DVCRUN-B-m1-l4-file-en-5-new.en.pdf",
+      "pages": 9,
+      "sha256": "f112a0b0fc7e8f713052cdc9297fba0ea16bf8f52c2ae6e7cff1de9198e85836"
+    },
+    {
+      "path": "cloudRun/T-DVCRUN-B-m1-l5-file-en-6.en.pdf",
+      "pages": 15,
+      "sha256": "0e153b840232a60dac17169a5eb237e7983d790adb95dd8e014e49bba84d20b6"
+    },
+    {
+      "path": "cloudRun/T-DVCRUN-B-m2-l1-file-en-8-new.en.pdf",
+      "pages": 14,
+      "sha256": "7aabf6fd580198592f2e2fae897f8c1fc755b97b9e5f1613ff15048ed42c0091"
+    },
+    {
+      "path": "cloudRun/T-DVCRUN-B-m2-l2-file-en-9.en.pdf",
+      "pages": 7,
+      "sha256": "7e50cd28ed603e74d6525b6b2d4befb7a96b83ac27dcdd06b037e56ffc201389"
+    },
+    {
+      "path": "cloudRun/T-DVCRUN-B-m2-l3-file-en-10.en.pdf",
+      "pages": 8,
+      "sha256": "b976aaccbbe016cc4f5267fc87dc51c20cb53531d0c23f01e669e1fd4da7acb9"
+    },
+    {
+      "path": "cloudRun/T-DVCRUN-B-m2-l5-file-en-11.en.pdf",
+      "pages": 8,
+      "sha256": "1b3d95d38878f1f836e2ddc3e8d88193a2cf20bce4f152e0aa4f38fab5ceb9af"
+    },
+    {
+      "path": "cloudRun/T-DVCRUN-B-m3-l1-file-en-13-new.en.pdf",
+      "pages": 16,
+      "sha256": "3a2905fc6c5097e82af045123515b91503dfe8f5963b16811fbbf2c649ed0e32"
+    },
+    {
+      "path": "cloudRun/T-DVCRUN-B-m3-l2-file-en-14.en.pdf",
+      "pages": 19,
+      "sha256": "dcdef1fefd62115c6657dcd44d24b0117e330149d7042d92193815d3b84aca28"
+    },
+    {
+      "path": "cloudRun/T-DVCRUN-B-m3-l3-file-en-15.en.pdf",
+      "pages": 11,
+      "sha256": "02098a141ed6ed9cc26f90a4d7389e0a6d6b09ca42fd16f4a772ca058bcd4889"
+    },
+    {
+      "path": "cloudRun/fil5bL-T-DVCRUN-B-m3-l1-file-en-13-new.en.pdf",
+      "duplicate_of": "cloudRun/T-DVCRUN-B-m3-l1-file-en-13-new.en.pdf",
+      "pages": 16,
+      "sha256": "3a2905fc6c5097e82af045123515b91503dfe8f5963b16811fbbf2c649ed0e32"
+    },
+    {
+      "path": "cloudRun/tHifym-T-DVCRUN-B-m3-l2-file-en-14.en.pdf",
+      "duplicate_of": "cloudRun/T-DVCRUN-B-m3-l2-file-en-14.en.pdf",
+      "pages": 19,
+      "sha256": "dcdef1fefd62115c6657dcd44d24b0117e330149d7042d92193815d3b84aca28"
     }
   ],
   "supplemental_sources": [
@@ -201,6 +268,31 @@
       "url": "https://docs.docker.com/reference/dockerfile/",
       "checked_on": "2026-09-19",
       "purpose": "Clarify containeried PDF examples in SOURCE-NOTES.md"
+    },
+    {
+      "url": "https://docs.cloud.google.com/run/docs/securing/service-identity",
+      "checked_on": "2026-09-20",
+      "purpose": "Clarify cloudRun PDF scope differences in SOURCE-NOTES.md"
+    },
+    {
+      "url": "https://docs.cloud.google.com/sql/docs/mysql/connect-run",
+      "checked_on": "2026-09-20",
+      "purpose": "Clarify cloudRun PDF scope differences in SOURCE-NOTES.md"
+    },
+    {
+      "url": "https://docs.cloud.google.com/run/docs/configuring/billing-settings",
+      "checked_on": "2026-09-20",
+      "purpose": "Clarify cloudRun PDF scope differences in SOURCE-NOTES.md"
+    },
+    {
+      "url": "https://docs.cloud.google.com/run/docs/configuring/services/containers",
+      "checked_on": "2026-09-20",
+      "purpose": "Clarify cloudRun PDF scope differences in SOURCE-NOTES.md"
+    },
+    {
+      "url": "https://docs.cloud.google.com/iam/docs/deny-overview",
+      "checked_on": "2026-09-20",
+      "purpose": "Clarify cloudRun PDF scope differences in SOURCE-NOTES.md"
     }
   ]
 }

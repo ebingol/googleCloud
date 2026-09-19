@@ -11489,6 +11489,2357 @@
           "explanation": "Minimal kurulum ve container/Kubernetes host senaryoları uygun kullanım örnekleridir."
         }
       ]
+    },
+    {
+      "id": "R01-01",
+      "title": "Regional services, revisions and instances",
+      "source": "cloudRun/T-DVCRUN-B-m1-l2-file-en-3.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two statements describe a Cloud Run service in the lesson?",
+          "options": {
+            "A": "It is a regional resource",
+            "B": "It exposes a unique endpoint",
+            "C": "It is identical to one permanent container instance",
+            "D": "It must span all regions automatically"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Service bölgesel kaynaktır; endpoint'i container instance sayısından bağımsızdır."
+        },
+        {
+          "question": "What two components define a revision?",
+          "options": {
+            "A": "All revisions of every other service",
+            "B": "Configuration such as memory and environment variables",
+            "C": "A specific container image",
+            "D": "Only the current instance's temporary files"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Revision image ve çalışma ayarlarının immutable bileşimidir."
+        },
+        {
+          "question": "What happens when changed application code is deployed to the same service?",
+          "options": {
+            "A": "A new revision is created",
+            "B": "Every previous revision is immediately deleted",
+            "C": "The service must always get a new endpoint",
+            "D": "The existing revision's image is edited in place"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Değişiklik yeni revision üretir; önceki revision değiştirilemez."
+        },
+        {
+          "question": "What does the concurrency setting limit?",
+          "options": {
+            "A": "The number of regions in the project",
+            "B": "Parallel requests per container instance",
+            "C": "Only the number of job executions per day",
+            "D": "The number of revisions retained forever"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Concurrency instance başına paralel istek sayısıdır; toplam instance sayısından farklıdır."
+        },
+        {
+          "question": "Which statement explains zonal resilience for a busy regional service?",
+          "options": {
+            "A": "Instances can be distributed across zones in the chosen region",
+            "B": "Every request creates a service in another continent",
+            "C": "One zone's failure always deletes all regional revisions",
+            "D": "Each service must be pinned to one physical host forever"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            3,
+            7
+          ],
+          "explanation": "Ders aynı bölgedeki zonlara dağılımı anlatır; kendiliğinden çok-bölge servis oluşmaz."
+        }
+      ]
+    },
+    {
+      "id": "R01-02",
+      "title": "Jobs, executions and task outcomes",
+      "source": "cloudRun/T-DVCRUN-B-m1-l2-file-en-3.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "How does the lesson distinguish a job from a request-serving service?",
+          "options": {
+            "A": "A job must always expose a public web server",
+            "B": "A job is an immutable traffic percentage",
+            "C": "A job is only a container registry tag",
+            "D": "A job performs work and exits when done"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            6,
+            8
+          ],
+          "explanation": "Jobs tamamlanabilir işi çalıştırır; service sürekli gelen istek/event akışını karşılar."
+        },
+        {
+          "question": "What is created when a job is run?",
+          "options": {
+            "A": "A new source repository",
+            "B": "A replacement organization resource",
+            "C": "A new public service URL in every region",
+            "D": "A job execution containing its tasks"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Job tanımı ile her çalıştırmada oluşan execution ayrıdır."
+        },
+        {
+          "question": "Which condition makes the described job execution successful?",
+          "options": {
+            "A": "The job name remains unchanged",
+            "B": "At least one task starts, regardless of results",
+            "C": "Only the first task completes successfully",
+            "D": "All tasks complete successfully"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Execution başarısı tüm task'ların başarısını gerektirir; başlamak bitirmek değildir."
+        },
+        {
+          "question": "Which two settings help handle task failures?",
+          "options": {
+            "A": "Retry counts",
+            "B": "HTTP traffic percentages across service revisions",
+            "C": "A public allUsers binding on every task",
+            "D": "Task timeouts"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Task timeout ve retry ayarları job başarısızlık yönetimini etkiler."
+        },
+        {
+          "question": "What runs for each task in the described model?",
+          "options": {
+            "A": "Every revision of the service simultaneously",
+            "B": "One container instance",
+            "C": "One mandatory entire Kubernetes cluster",
+            "D": "Only an IAM policy with no code execution"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Ders her task'ın bir container instance çalıştırdığını; job'ın birden çok bağımsız task içerebildiğini belirtir."
+        }
+      ]
+    },
+    {
+      "id": "R02-01",
+      "title": "Startup, probes and internal image storage",
+      "source": "cloudRun/T-DVCRUN-B-m1-l3-file-en-4.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which lifecycle sequence is described?",
+          "options": {
+            "A": "Building, merging, billing, archiving only",
+            "B": "Starting, serving requests, idle, shutting down, stopped",
+            "C": "Idle, immutable, public, regional only",
+            "D": "Downloading, permanently running, never stopping"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Ders beş çalışma durumunu ayrı ele alır; idle ile stopped aynı değildir."
+        },
+        {
+          "question": "Which two steps precede forwarding requests to a newly starting container?",
+          "options": {
+            "A": "Wait for the application to become ready to accept connections",
+            "B": "Materialize its filesystem from the image and run the entrypoint",
+            "C": "Delete all previous service revisions",
+            "D": "Require the container to provision a public TLS certificate"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Filesystem ve process başlatılır; readiness/startup kontrolünden sonra trafik iletilir."
+        },
+        {
+          "question": "Why should the application avoid opening its listener before it is ready?",
+          "options": {
+            "A": "An open port disables request timeouts",
+            "B": "The registry will otherwise delete the image",
+            "C": "The listener can signal that it is ready for incoming traffic",
+            "D": "Opening the port automatically performs all database migrations"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Ders TCP bağlantısının readiness işareti olabileceğini söyler; erken dinleme hazır olmayan uygulamaya trafik getirebilir."
+        },
+        {
+          "question": "Where is an image copied from during deployment in the example?",
+          "options": {
+            "A": "Artifact Registry",
+            "B": "The client's request body",
+            "C": "A Pub/Sub subscription's acknowledgement deadline",
+            "D": "Only another running instance's writable filesystem"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Deploy sırasında registry image'ı Cloud Run iç deposuna kopyalanır."
+        },
+        {
+          "question": "Where does Cloud Run obtain the image when starting later instances in the described model?",
+          "options": {
+            "A": "Only the developer's local Docker cache",
+            "B": "It must rebuild source for every instance",
+            "C": "Its internal image storage",
+            "D": "Only the oldest active instance's process memory"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Sonraki instance başlangıçları iç kopyayı kullanır; registry erişimi ile runtime başlangıcı ayrıdır."
+        }
+      ]
+    },
+    {
+      "id": "R02-02",
+      "title": "Idle behavior, CPU allocation and warm instances",
+      "source": "cloudRun/T-DVCRUN-B-m1-l3-file-en-4.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What makes a container idle in the lesson's lifecycle model?",
+          "options": {
+            "A": "It has no image associated with it",
+            "B": "It is not handling requests",
+            "C": "It is permanently deleted",
+            "D": "It has lost all IAM bindings"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            9,
+            10
+          ],
+          "explanation": "Idle instance varlığını sürdürebilir ama o anda request işlemez."
+        },
+        {
+          "question": "Which two limitations are described for an idle instance with throttled CPU?",
+          "options": {
+            "A": "It is guaranteed to run every scheduled timer",
+            "B": "Its memory is automatically copied to every other instance",
+            "C": "Background work cannot be relied on to progress normally",
+            "D": "The instance may be shut down"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "CPU throttling ve kapanma olasılığı background timer'ı güvenilir iş kuyruğu yapmaz."
+        },
+        {
+          "question": "What changes when the CPU-always-allocated option described in the PDF is selected?",
+          "options": {
+            "A": "Every idle period is guaranteed free",
+            "B": "CPU is available outside requests and billing covers the instance lifecycle",
+            "C": "The instance can never be terminated",
+            "D": "The container automatically gains extra database permissions"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "CPU erişimi ve billing modeli birlikte değişir; instance kalıcılığı garanti edilmez."
+        },
+        {
+          "question": "What happens when an idle instance receives another request in the described model?",
+          "options": {
+            "A": "All service revisions are replaced",
+            "B": "The source code must always be rebuilt",
+            "C": "The request is always rejected without retry",
+            "D": "CPU becomes available again and the instance resumes serving"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Warm instance idle/serving geçişlerini tekrar yaşayabilir; her dönüş cold start değildir."
+        },
+        {
+          "question": "Which setting keeps some instances ready instead of scaling fully to zero?",
+          "options": {
+            "A": "The service account display name",
+            "B": "Minimum instances",
+            "C": "Maximum request body size",
+            "D": "Artifact Registry tag retention"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Minimum instance ayarı hazır kapasite tutar; bu kapasitenin maliyeti autoscaling dersinde ayrıca açıklanır."
+        }
+      ]
+    },
+    {
+      "id": "R02-03",
+      "title": "SIGTERM, cleanup and abrupt failures",
+      "source": "cloudRun/T-DVCRUN-B-m1-l3-file-en-4.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which signal should the application handle for graceful shutdown in the lesson?",
+          "options": {
+            "A": "SIGTERM",
+            "B": "SIGSTOP as a successful HTTP response",
+            "C": "SIGKILL as a catchable cleanup hook",
+            "D": "A Pub/Sub ACK string"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            12,
+            13
+          ],
+          "explanation": "SIGTERM yaklaşan kapanmayı bildirir; uygulama cleanup handler'ı kaydetmelidir."
+        },
+        {
+          "question": "How much cleanup time does the PDF state after SIGTERM?",
+          "options": {
+            "A": "100 milliseconds",
+            "B": "One hour",
+            "C": "10 seconds",
+            "D": "15 minutes"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Ders 10 saniyelik pencere verir; bu soru kaynak PDF'nin sayısal ayrıntısıdır."
+        },
+        {
+          "question": "Which three cleanup actions are suggested?",
+          "options": {
+            "A": "Begin a new long-running batch after termination",
+            "B": "Write a useful shutdown log",
+            "C": "Close database connections and file descriptors",
+            "D": "Flush buffered data",
+            "E": "Delete the entire deployment history"
+          },
+          "answers": [
+            "B",
+            "C",
+            "D"
+          ],
+          "pages": [
+            13
+          ],
+          "explanation": "Bağlantı kapama downstream limitlerini korur; buffer ve log işlemleri düzgün kapanmaya yardım eder."
+        },
+        {
+          "question": "Which two events can abruptly stop an instance serving requests?",
+          "options": {
+            "A": "A new request arriving while capacity is available",
+            "B": "Exceeding the memory limit",
+            "C": "Application exit or crash",
+            "D": "A harmless change to a repository README"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            15
+          ],
+          "explanation": "Crash/OOM normal idle kapanışından farklıdır; devam eden istekler etkilenir."
+        },
+        {
+          "question": "What happens to in-flight requests if their container stops unexpectedly?",
+          "options": {
+            "A": "They automatically become successful responses",
+            "B": "They are guaranteed to finish in the stopped process",
+            "C": "Their state is always copied to another instance with no application support",
+            "D": "They terminate with an error, while new requests may wait for a replacement"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            15
+          ],
+          "explanation": "Ders in-flight isteklerin hata verdiğini ve replacement başlangıcının yeni isteklere bekleme ekleyebileceğini belirtir."
+        }
+      ]
+    },
+    {
+      "id": "R03-01",
+      "title": "Scale to zero, queuing and instance boundaries",
+      "source": "cloudRun/T-DVCRUN-B-m1-l4-file-en-5-new.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What does scale to zero mean?",
+          "options": {
+            "A": "IAM permissions reset to zero after each request",
+            "B": "The image is removed from every registry",
+            "C": "The service endpoint is permanently deleted",
+            "D": "No request-serving instances remain when demand disappears and minimum settings allow it"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Scale to zero instance kapasitesiyle ilgilidir; service kaynağı ve endpoint kalır."
+        },
+        {
+          "question": "Why may initial requests wait after scaling to zero?",
+          "options": {
+            "A": "They queue while an instance starts",
+            "B": "Every request requires a human deployment approval",
+            "C": "The image must be rewritten in another language",
+            "D": "The API permanently rejects traffic until midnight"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Cold start sırasında geçici queue beklemesi oluşur."
+        },
+        {
+          "question": "Which two statements about minimum instances match the lesson?",
+          "options": {
+            "A": "Idle minimum instances incur charges",
+            "B": "They keep capacity warm and ready",
+            "C": "They prevent every possible future cold start",
+            "D": "They are always free because no requests are active"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Minimum kapasite latency'yi azaltabilir ama maliyeti vardır; tüm cold start'ları yok etmez."
+        },
+        {
+          "question": "Why set maximum instances when using a constrained database?",
+          "options": {
+            "A": "Limit load and connection pressure on the downstream system",
+            "B": "Guarantee the database's throughput automatically scales infinitely",
+            "C": "Eliminate all request queuing under every load",
+            "D": "Make the service independent of network latency"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Max instances maliyet/downstream kapasite uyumuna yardımcıdır; çok düşük ayar istek karşılama kapasitesini azaltır."
+        },
+        {
+          "question": "Which three factors affect autoscaling besides incoming request rate?",
+          "options": {
+            "A": "CPU utilization",
+            "B": "Maximum concurrency",
+            "C": "The alphabetical order of revision names",
+            "D": "The number of comments in source code",
+            "E": "Minimum and maximum instance settings"
+          },
+          "answers": [
+            "A",
+            "B",
+            "E"
+          ],
+          "pages": [
+            2
+          ],
+          "explanation": "Ders CPU hedefi, concurrency ve instance sınırlarını ölçeklemenin girdileri olarak sayar."
+        }
+      ]
+    },
+    {
+      "id": "R03-02",
+      "title": "Concurrency and load testing",
+      "source": "cloudRun/T-DVCRUN-B-m1-l4-file-en-5-new.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What does maximum concurrency configure?",
+          "options": {
+            "A": "The upper bound of simultaneous requests per instance",
+            "B": "The number of service accounts attached to one request",
+            "C": "The maximum number of regions per organization",
+            "D": "The number of retained image tags"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Concurrency instance başına paralel işlem sınırıdır; Cloud Run bu üst sınıra kadar kullanımı ayarlar."
+        },
+        {
+          "question": "Which two cases support concurrency 1 in the lesson?",
+          "options": {
+            "A": "Global state is unsafe to share across simultaneous requests",
+            "B": "All requests are proven lightweight and independent",
+            "C": "The goal is to force every instance to serve 1000 requests at once",
+            "D": "Each request uses most of the instance's CPU or memory"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Yoğun request veya eşzamanlılığa güvenli olmayan state için düşük concurrency uygun olabilir."
+        },
+        {
+          "question": "According to page 7, which default/maximum pairing is stated?",
+          "options": {
+            "A": "Default 1; maximum 80",
+            "B": "Default 1000; maximum 80",
+            "C": "Default 80; maximum 100000",
+            "D": "Default 80; maximum 1000"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "PDF 80 varsayılan ve 1000 üst sınır verir. Bu soru ders sürümünü ölçer; güncel her deployment varsayılanı diye genellenmez."
+        },
+        {
+          "question": "Which two risks can higher concurrency increase?",
+          "options": {
+            "A": "The need for a new region after every response",
+            "B": "Pressure on downstream connections and services",
+            "C": "The number of immutable source files inside every image automatically",
+            "D": "Per-instance memory demand"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            7,
+            8
+          ],
+          "explanation": "Her request ek bellek/bağlantı tüketebilir; yüksek concurrency downstream yükünü artırabilir."
+        },
+        {
+          "question": "How should a team choose a stable concurrency setting in the lesson?",
+          "options": {
+            "A": "Load-test expected traffic and resource behavior",
+            "B": "Disable all monitoring before changing it",
+            "C": "Choose a value based only on the service's name",
+            "D": "Always select the largest possible number without measurement"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Yük testi stack, shared state, CPU/memory ve downstream etkilerini değerlendirmeye yarar."
+        }
+      ]
+    },
+    {
+      "id": "R04-01",
+      "title": "API authorization and IAM bindings",
+      "source": "cloudRun/T-DVCRUN-B-m1-l5-file-en-6.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What happens when gcloud run deploy is executed in the example?",
+          "options": {
+            "A": "It calls the Cloud Run management API",
+            "B": "It only changes a local file without contacting Google Cloud",
+            "C": "It rewrites every API in the project",
+            "D": "It bypasses IAM by directly modifying a VM disk"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            3,
+            4
+          ],
+          "explanation": "Console, CLI, Terraform ve client library altyapı işlemlerini API çağrılarıyla yapar."
+        },
+        {
+          "question": "What does a policy binding associate?",
+          "options": {
+            "A": "An image layer with a CPU core",
+            "B": "A region with a mandatory public password",
+            "C": "A role with one or more principals",
+            "D": "A request timeout with a storage bucket size"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Binding role/principal ilişkisi kurar; rol izin kümesidir."
+        },
+        {
+          "question": "Which permission is associated with Pub/Sub Publisher in the example?",
+          "options": {
+            "A": "pubsub.topics.publish",
+            "B": "run.services.delete",
+            "C": "storage.buckets.create",
+            "D": "cloudsql.instances.update"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Publisher topic'e mesaj gönderme iznini içerir; farklı servis yönetim izinleriyle karıştırılmaz."
+        },
+        {
+          "question": "Which resource's IAM policy is central to the topic-level publish example?",
+          "options": {
+            "A": "Only the caller's source-code file",
+            "B": "Only the developer's terminal configuration",
+            "C": "The target Pub/Sub topic",
+            "D": "Only the container's local /tmp directory"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            6,
+            8
+          ],
+          "explanation": "Rol hedef resource'a bağlı policy'de verilir; üst kaynak inheritance ayrıca sonraki derste anlatılır."
+        },
+        {
+          "question": "Can the same principal have more than one role in a policy?",
+          "options": {
+            "A": "Only after deleting the target resource",
+            "B": "No, one role per person for the entire organization forever",
+            "C": "Only if the application runs as root inside its container",
+            "D": "Yes, through multiple role bindings"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Aynı principal farklı binding'lerde farklı roller alabilir."
+        }
+      ]
+    },
+    {
+      "id": "R04-02",
+      "title": "Invocation permissions and network ingress",
+      "source": "cloudRun/T-DVCRUN-B-m1-l5-file-en-6.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which binding allows unauthenticated invocation in the lesson's public-service example?",
+          "options": {
+            "A": "allUsers with roles/run.invoker on the service",
+            "B": "allUsers with Artifact Registry Writer only",
+            "C": "The application's internal Linux USER set to root",
+            "D": "Only a service account's browser password"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Örnekte allUsers/Cloud Run Invoker kullanılır; erişimde ingress ve organizasyon kısıtları da ayrı katmanlardır."
+        },
+        {
+          "question": "Which scope grants a role across the project's services and jobs in the described model?",
+          "options": {
+            "A": "Only one revision's temporary filesystem",
+            "B": "Only a single request header with no IAM binding",
+            "C": "Only the local Docker image's metadata",
+            "D": "Project-level IAM"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Proje düzeyi grant alt kaynakları kapsar; tek resource grant daha dardır."
+        },
+        {
+          "question": "Which two access controls are described as independent layers?",
+          "options": {
+            "A": "Network ingress restrictions",
+            "B": "The editor's syntax highlighting",
+            "C": "The source repository's README title",
+            "D": "IAM identity/permission checks"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "İstek ağdan ulaşabilmeli ve gereken IAM koşullarını sağlamalıdır; biri diğerinin yerine geçmez."
+        },
+        {
+          "question": "Which ingress setting admits external load-balancer traffic but blocks direct internet access to the service URL?",
+          "options": {
+            "A": "A Dockerfile ENV directive",
+            "B": "Internal and Cloud Load Balancing",
+            "C": "Internal only",
+            "D": "All"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            11,
+            12
+          ],
+          "explanation": "Bu seçenek internal kaynaklara ek olarak dış HTTP(S) load balancer yolunu kabul eder, doğrudan internet yolunu açmaz."
+        },
+        {
+          "question": "What is the least restrictive ingress setting listed?",
+          "options": {
+            "A": "Internal",
+            "B": "All",
+            "C": "Internal and Cloud Load Balancing",
+            "D": "No-traffic revision deployment"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "All internet dahil ağ girişini kabul eder; tek başına IAM'i kaldırdığı anlamına gelmez."
+        }
+      ]
+    },
+    {
+      "id": "R04-03",
+      "title": "Private VPC connectivity and connectors",
+      "source": "cloudRun/T-DVCRUN-B-m1-l5-file-en-6.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two capabilities does Serverless VPC Access provide in the lesson?",
+          "options": {
+            "A": "Replace application client libraries with firewall rules",
+            "B": "Automatically grant all database privileges",
+            "C": "Keep access to internal resources off the public internet",
+            "D": "Reach internal IP addresses and DNS names"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            13
+          ],
+          "explanation": "Connector özel ağa yol sağlar; uygulama protokolü ve yetkilendirmesi ayrıca gerekir."
+        },
+        {
+          "question": "What regional relationship is required for the connector in this setup?",
+          "options": {
+            "A": "Only the connector's display name must match",
+            "B": "It must be in an unrelated continent",
+            "C": "Its location is determined by the user's browser timezone",
+            "D": "The connector region matches the service or job region"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Connector ve onu kullanan iş yükü bölgesi eşleşir."
+        },
+        {
+          "question": "Which CIDR requirement is stated on page 14?",
+          "options": {
+            "A": "Any overlapping /32 already assigned to a VM",
+            "B": "A shared /0 route used as a subnet",
+            "C": "No address range is needed for this connector model",
+            "D": "An unused, non-overlapping /28 dedicated to the connector"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "PDF /28 subnet veya CIDR'nin connector'a özel olmasını ister; diğer kaynaklarla çakışmamalıdır."
+        },
+        {
+          "question": "Which two steps are needed beyond simply deciding to use a connector?",
+          "options": {
+            "A": "Make every internal resource publicly accessible",
+            "B": "Configure the service or job to use it",
+            "C": "Rename all service revisions to match the subnet",
+            "D": "Enable the Serverless VPC Access API and create the connector"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Connector oluşturma ve workload'a bağlama ayrı işlemlerdir; örnek --vpc-connector bayrağını kullanır."
+        },
+        {
+          "question": "What can restrict which VPC resources the connector reaches?",
+          "options": {
+            "A": "Changing HTTP response text",
+            "B": "Adding comments to the Dockerfile",
+            "C": "Changing a secret's display label",
+            "D": "Firewall rules"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Ağ kaynaklarına erişim firewall ile daraltılabilir; IAM yetkisi ayrı kalır."
+        }
+      ]
+    },
+    {
+      "id": "R05-01",
+      "title": "Service identity and API access tokens",
+      "source": "cloudRun/T-DVCRUN-B-m2-l1-file-en-8-new.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What is a service account meant to identify?",
+          "options": {
+            "A": "Only a human signing in with a browser password",
+            "B": "Only a database row",
+            "C": "A machine, application or service",
+            "D": "Only a public DNS zone"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Service account insan dışı iş yükü kimliğidir ve benzersiz email ile tanınır."
+        },
+        {
+          "question": "Which two characteristics distinguish it from a human account in the lesson?",
+          "options": {
+            "A": "It automatically belongs to the user's Workspace domain",
+            "B": "It has no browser-sign-in password",
+            "C": "Other identities can be authorized to act on its behalf",
+            "D": "It must log in with browser cookies before every request"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Service account browser login kimliği değildir; yetkiyle impersonation/hesap adına işlem mümkündür."
+        },
+        {
+          "question": "What is a Cloud Run service identity?",
+          "options": {
+            "A": "The service account linked to the running service or job",
+            "B": "A container's local UNIX username",
+            "C": "Always the human who last edited the Dockerfile",
+            "D": "The ID of the oldest revision"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Runtime kimliği Cloud Run'a bağlı service account'tur; deployer ve Linux user ayrı kavramlardır."
+        },
+        {
+          "question": "Which token is used for most Google API calls in the Pub/Sub example?",
+          "options": {
+            "A": "An HTTP session cookie from the developer's browser",
+            "B": "OAuth 2.0 access token",
+            "C": "A container image digest",
+            "D": "A database password substituted as an IAM token"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Client library runtime service account için access token alır; hedef API IAM izinlerini kontrol eder."
+        },
+        {
+          "question": "Which two production identity practices are recommended?",
+          "options": {
+            "A": "Relying on automatic broad privileges without review",
+            "B": "One project-wide Owner account for every workload",
+            "C": "Only permissions needed by that service",
+            "D": "A user-managed identity for each service"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            8,
+            9,
+            11
+          ],
+          "explanation": "Per-service hesap ve minimum yetki bağımlılık erişimini daraltır; otomatik Editor varsayımı kaynak notlarında ayrılır."
+        }
+      ]
+    },
+    {
+      "id": "R05-02",
+      "title": "Synchronous calls and caller authorization",
+      "source": "cloudRun/T-DVCRUN-B-m2-l1-file-en-8-new.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "How does synchronous service-to-service communication work in the example?",
+          "options": {
+            "A": "Always deploy a new revision before each call",
+            "B": "Replace every request with a source repository commit",
+            "C": "Write directly into another container's private memory",
+            "D": "Call the receiving service's endpoint directly over HTTP"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Senkron iletişim alıcı HTTP endpoint'ine çağrıdır; asynchronous araçlar ayrı listelenir."
+        },
+        {
+          "question": "Which role is granted to the calling identity on the receiving service?",
+          "options": {
+            "A": "roles/secretmanager.admin",
+            "B": "roles/artifactregistry.writer",
+            "C": "roles/cloudsql.admin",
+            "D": "roles/run.invoker"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            12,
+            13
+          ],
+          "explanation": "Çağıran hesabın alıcı üzerinde invoke yetkisi gerekir; registry/database yönetim rolü bu amaçta değildir."
+        },
+        {
+          "question": "Where is the caller's invocation grant attached in the example?",
+          "options": {
+            "A": "Only the sending HTTP client's timeout configuration",
+            "B": "Only the caller's Dockerfile",
+            "C": "Only the registry image's tag",
+            "D": "The receiving service's IAM policy"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            12,
+            13
+          ],
+          "explanation": "Policy alıcı kaynağındadır; principal çağıran servisin service account'udur."
+        },
+        {
+          "question": "What proof of identity does the calling service present?",
+          "options": {
+            "A": "A Google-signed OpenID Connect ID token",
+            "B": "An image manifest instead of a token",
+            "C": "The caller's plain-text account password",
+            "D": "Only the public service display name"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Bu akış ID token kullanır; Google API access token akışıyla karıştırılmamalıdır."
+        },
+        {
+          "question": "Which two services are listed among asynchronous communication options?",
+          "options": {
+            "A": "Pub/Sub",
+            "B": "Cloud Tasks",
+            "C": "Cloud KMS as a message queue",
+            "D": "Artifact Registry as the HTTP request handler"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Ders Pub/Sub, Tasks, Scheduler ve Eventarc'ı asenkron/scheduled tetikleme seçenekleri olarak listeler."
+        }
+      ]
+    },
+    {
+      "id": "R06-01",
+      "title": "Hierarchy and inherited allow policies",
+      "source": "cloudRun/T-DVCRUN-B-m2-l2-file-en-9.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which hierarchy is shown from broadest to narrower scope?",
+          "options": {
+            "A": "Organization, optional folder, project, resource",
+            "B": "Revision, image, billing account, source file",
+            "C": "Container, folder, node, runtime",
+            "D": "Resource, project, organization, folder"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Organization kök, folder isteğe bağlı gruplama, project kaynak organizasyon tabanıdır."
+        },
+        {
+          "question": "What can folders represent in the lesson?",
+          "options": {
+            "A": "Only immutable container images",
+            "B": "Departments, teams or business units",
+            "C": "Only a particular programming language runtime",
+            "D": "Only one HTTP connection at a time"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Folder proje gruplarını organizasyon yapısıyla eşleyebilir."
+        },
+        {
+          "question": "Where could Pub/Sub Publisher be granted to cover all topics in a project?",
+          "options": {
+            "A": "Only on one topic's local data file",
+            "B": "On the parent project",
+            "C": "Only on the developer's CLI executable",
+            "D": "Only inside the message body"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Üst kaynak allow binding'i alt topic'lere miras kalır; topic'e özel grant daha sınırlıdır."
+        },
+        {
+          "question": "In the allow-policy model discussed, what contributes to the effective resource policy?",
+          "options": {
+            "A": "Bindings on the resource and its ancestors",
+            "B": "Only the image's default environment variables",
+            "C": "Only the resource's newest local binding",
+            "D": "Only the first IAM role ever created"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Effective allow izinleri ancestor ve resource binding'lerini birleştirir; deny kuralları bu basit modelin dışındadır."
+        },
+        {
+          "question": "Can deleting a local allow binding remove an independently inherited project grant?",
+          "options": {
+            "A": "No; the ancestor grant still applies in this allow-policy model",
+            "B": "Only if the caller changes its HTTP method",
+            "C": "Yes; any local deletion erases every ancestor policy",
+            "D": "Yes; a Pod restart removes inherited permissions"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            6,
+            7
+          ],
+          "explanation": "Local allow'ı silmek üstteki allow grant'ini silmez. Ayrı IAM deny mekanizmasının varlığı kaynak notlarında açıklanır."
+        }
+      ]
+    },
+    {
+      "id": "R07-01",
+      "title": "Least privilege and IAM role types",
+      "source": "cloudRun/T-DVCRUN-B-m2-l3-file-en-10.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which three roles are classified as basic roles?",
+          "options": {
+            "A": "Editor",
+            "B": "Pub/Sub Publisher",
+            "C": "Viewer",
+            "D": "Owner",
+            "E": "Cloud Tasks Enqueuer"
+          },
+          "answers": [
+            "A",
+            "C",
+            "D"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Basic roller geniş servis kapsamına sahiptir; predefined/custom roller daha dar izin seçimine yardımcı olur."
+        },
+        {
+          "question": "Who manages the predefined roles described in the lesson?",
+          "options": {
+            "A": "Only the container's root user",
+            "B": "Google Cloud",
+            "C": "Only the source-code formatter",
+            "D": "Only each application's HTTP client"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Predefined roller Google Cloud tarafından yönetilir; custom izin listesi kullanıcı tarafından belirlenir."
+        },
+        {
+          "question": "When is a custom role the relevant category?",
+          "options": {
+            "A": "A container must choose a listening port",
+            "B": "Only a public display name needs changing",
+            "C": "A specific user-selected permission set is needed",
+            "D": "Every service must get all project permissions"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Custom rol kullanım senaryosuna göre izin kümesi oluşturur."
+        },
+        {
+          "question": "Which sequence applies least privilege to a Cloud Run service?",
+          "options": {
+            "A": "Create an account, assign it as service identity, grant needed roles on target resources",
+            "B": "Grant Owner to every user, then disable audit logs",
+            "C": "Make all target resources public to avoid IAM errors",
+            "D": "Use the deployer's password inside the image"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            5,
+            6
+          ],
+          "explanation": "Kimlik yaratma, runtime'a bağlama ve dar resource grant'leri ayrı adımlardır."
+        },
+        {
+          "question": "A new account in the lesson has no relevant grants and publishing fails. What is the focused fix?",
+          "options": {
+            "A": "Increase maximum concurrency",
+            "B": "Grant project Owner to every service account",
+            "C": "Grant Pub/Sub Publisher on the required topic",
+            "D": "Change the container's Linux user to root"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Hedef topic'te gerekli role binding eklenir; networking/CPU/Linux yetkisi IAM publishing iznini sağlamaz."
+        }
+      ]
+    },
+    {
+      "id": "R08-01",
+      "title": "Environment variables and configuration precedence",
+      "source": "cloudRun/T-DVCRUN-B-m2-l5-file-en-11.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "How are Cloud Run environment settings represented?",
+          "options": {
+            "A": "Key-value pairs injected into the application container",
+            "B": "Only encrypted TLS certificates",
+            "C": "Only image registry tag names",
+            "D": "Only source-code comments"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Environment değerleri runtime koduna erişilebilir key-value konfigürasyonudur."
+        },
+        {
+          "question": "Which value wins when a Cloud Run setting has the same name as a Dockerfile ENV default?",
+          "options": {
+            "A": "The variable is automatically deleted",
+            "B": "A random value is chosen on each request",
+            "C": "The Cloud Run service/job setting",
+            "D": "The Dockerfile always overrides deployment settings"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Deploy/resource düzeyindeki değer image varsayılanını override eder."
+        },
+        {
+          "question": "Which Python expression reads an environment variable in the lesson?",
+          "options": {
+            "A": "process.env.key",
+            "B": "docker.inspect('key')",
+            "C": "os.environ.get('key')",
+            "D": "System.getenv('key')"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Python os.environ.get, Node process.env, Java System.getenv kullanır."
+        },
+        {
+          "question": "Which two language/accessor pairings match the PDF?",
+          "options": {
+            "A": "Java: os.environ.get()",
+            "B": "Python: process.env",
+            "C": "Java: System.getenv()",
+            "D": "Node.js: process.env"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Accessor dilin runtime API'sine göre seçilir."
+        },
+        {
+          "question": "Can every possible environment-variable name be set by the user?",
+          "options": {
+            "A": "Only names also used as image tags may be set",
+            "B": "No; the runtime contract reserves some names",
+            "C": "Yes; there are never any reserved variables",
+            "D": "Only variables beginning with every project's ID are permitted"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Bazı environment isimleri reserved'dır; ders bunların runtime contract'ta tanımlandığını belirtir."
+        }
+      ]
+    },
+    {
+      "id": "R08-02",
+      "title": "Secret versions, mounts and IAM",
+      "source": "cloudRun/T-DVCRUN-B-m2-l5-file-en-11.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which part of a secret stores the actual API key or password?",
+          "options": {
+            "A": "Only the replication-location identifier",
+            "B": "A secret version",
+            "C": "Only its label metadata",
+            "D": "Only the IAM role's title"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Secret metadata ve versions kapsar; hassas içerik secret version'da string/binary olarak saklanır."
+        },
+        {
+          "question": "Which two methods expose the secret to the workload?",
+          "options": {
+            "A": "A mandatory public URL parameter",
+            "B": "A source-code comment committed to the repository",
+            "C": "Mounted volume file",
+            "D": "Environment variable"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Secret dosya veya environment üzerinden verilebilir; erişim yetkisi ayrıca gerekir."
+        },
+        {
+          "question": "When is a secret environment variable resolved in the described model?",
+          "options": {
+            "A": "Automatically after every network packet",
+            "B": "At instance startup",
+            "C": "Only when the source code is committed",
+            "D": "Never; only the name is available"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Instance başlangıcında çözülür; ders belirli version'a pinlemeyi önerir."
+        },
+        {
+          "question": "Which statement correctly scopes latest-version reads through a mounted secret?",
+          "options": {
+            "A": "Every process environment changes instantly on rotation",
+            "B": "A mount pinned to version 1 always changes itself to version 2",
+            "C": "No IAM permission is needed when using a file",
+            "D": "A mount configured to follow latest can fetch that version on file reads"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Volume latest takibi destekler; sabit version ayarıyla latest aynı değildir."
+        },
+        {
+          "question": "Which role does the service identity need on the secret?",
+          "options": {
+            "A": "Artifact Registry Writer alone",
+            "B": "Project Viewer alone",
+            "C": "Cloud Run Invoker alone",
+            "D": "Secret Manager Secret Accessor"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Secret içeriğini okumak için runtime kimliğine secretAccessor verilir; yalnız deployer grant'i yeterli değildir."
+        }
+      ]
+    },
+    {
+      "id": "R09-01",
+      "title": "Workload fit and the container runtime contract",
+      "source": "cloudRun/T-DVCRUN-B-m3-l1-file-en-13-new.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two workload properties fit the lesson's Cloud Run criteria?",
+          "options": {
+            "A": "Requires one permanent local machine for all state",
+            "B": "Depends on a non-containerizable desktop session",
+            "C": "Can handle multiple simultaneous instances",
+            "D": "Does not require its local filesystem to persist across instance lifetimes"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Scale-out ve ephemeral local storage koşulları uygulama tasarımına yansır; durable state dış depoda tutulabilir."
+        },
+        {
+          "question": "What should a service do within its request timeout?",
+          "options": {
+            "A": "Wait forever because the platform guarantees no timeouts",
+            "B": "Only acknowledge that the source image exists",
+            "C": "Return a response, accounting for instance startup time in the described limit",
+            "D": "Start a new unbounded background thread and never respond"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Ders response deadline'a startup süresini de dahil eder; süre aşımı 504 olarak anlatılır."
+        },
+        {
+          "question": "Which exit-code pairing applies to jobs?",
+          "options": {
+            "A": "HTTP 200 as the only process exit code",
+            "B": "Non-zero for success; 0 for failure",
+            "C": "0 for success; non-zero for failure",
+            "D": "Every process exit code is ignored"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Job task sonucu process exit code'uyla bildirilir; HTTP handler yanıtıyla aynı mekanizma değildir."
+        },
+        {
+          "question": "What should a job avoid doing merely to satisfy the service contract?",
+          "options": {
+            "A": "Exiting when its work completes",
+            "B": "Reporting failure with a non-zero exit code",
+            "C": "Starting a request-serving web server",
+            "D": "Using a container image"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Jobs tamamlanma odaklıdır; service port dinleme şartı job'a uygulanmaz."
+        },
+        {
+          "question": "For HTTP/2 traffic forwarded by Cloud Run in the lesson, what must the container handle?",
+          "options": {
+            "A": "Only files copied to a local directory",
+            "B": "Only raw encrypted TLS records with no decryption upstream",
+            "C": "HTTP/2 cleartext after platform TLS termination",
+            "D": "Only SQL wire-protocol messages"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            6,
+            7
+          ],
+          "explanation": "TLS Cloud Run'da sonlanır; container HTTP/2 cleartext (h2c) tarafını karşılar."
+        }
+      ]
+    },
+    {
+      "id": "R09-02",
+      "title": "Execution environments and storage lifetime",
+      "source": "cloudRun/T-DVCRUN-B-m3-l1-file-en-13-new.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two second-generation benefits are named in the course?",
+          "options": {
+            "A": "Full Linux system-call compatibility",
+            "B": "Network filesystem support",
+            "C": "Permanent persistence of every local temporary file",
+            "D": "A guarantee of no CPU charges"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Ders ikinci nesli full Linux ve network filesystem desteğiyle ayırır; fiyatlama/durability ayrı konulardır."
+        },
+        {
+          "question": "Which execution environment does the PDF assign to jobs?",
+          "options": {
+            "A": "Second generation, not selectable as first generation",
+            "B": "First generation only",
+            "C": "A mandatory local laptop runtime",
+            "D": "No container execution environment"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Kaynak ders jobs için second generation belirtir; services environment seçimini ayrı anlatır."
+        },
+        {
+          "question": "What resource does writing to the illustrated in-memory filesystem consume?",
+          "options": {
+            "A": "Only the image registry's storage quota",
+            "B": "Only the caller's browser memory",
+            "C": "The instance's allocated memory",
+            "D": "No resource at all"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Yerel yazılabilir filesystem bellek kullanır; büyük geçici dosyalar memory baskısı yaratır."
+        },
+        {
+          "question": "Which two storage statements match the lesson?",
+          "options": {
+            "A": "Every database must be embedded in the image",
+            "B": "Filestore or another network filesystem can preserve data outside the instance",
+            "C": "A local cache automatically survives every redeployment",
+            "D": "Local file data disappears when the instance stops"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Ephemeral local alan ile dış persistent depolama ayrılır; network filesystem için ders ikinci nesli ister."
+        },
+        {
+          "question": "What does the lesson use to expose Cloud Storage as a mounted filesystem?",
+          "options": {
+            "A": "A Pub/Sub acknowledgement deadline",
+            "B": "Cloud Run Invoker",
+            "C": "Cloud Storage FUSE",
+            "D": "A traffic tag"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "FUSE mount görünümü sunar; object storage ile genel POSIX filesystem semantiğinin eşit olduğu sonucu çıkarılmaz."
+        }
+      ]
+    },
+    {
+      "id": "R09-03",
+      "title": "Cloud Code, emulation and local testing",
+      "source": "cloudRun/T-DVCRUN-B-m3-l1-file-en-13-new.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What is Cloud Code in the lesson?",
+          "options": {
+            "A": "The container's mandatory production operating system",
+            "B": "IDE plugins for developing, debugging and deploying cloud applications",
+            "C": "A database backup format",
+            "D": "An IAM role replacing all permissions"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            10,
+            11
+          ],
+          "explanation": "Cloud Code IDE desteği, template, log ve deployment akışı sağlar."
+        },
+        {
+          "question": "Which two actions prepare the illustrated VS Code local workflow?",
+          "options": {
+            "A": "Install a local image builder such as Docker",
+            "B": "Require a production rollout for every local test",
+            "C": "Delete all source files before running the emulator",
+            "D": "Install the Cloud Code extension"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            11,
+            12
+          ],
+          "explanation": "Extension ve builder kurulduktan sonra Cloud Run Emulator ile build/run yapılır."
+        },
+        {
+          "question": "What output lets the developer test the locally built application?",
+          "options": {
+            "A": "Only an immutable role name",
+            "B": "Only the remote registry's billing page",
+            "C": "A local application URL",
+            "D": "A required approval email sent to every user"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            12
+          ],
+          "explanation": "Emulator başarılı build/run sonrası uygulama URL'sini gösterir; tarayıcı/HTTP istemcisiyle test edilir."
+        },
+        {
+          "question": "Which two build locations are offered in the deployment walkthrough?",
+          "options": {
+            "A": "Build only inside the end user's browser",
+            "B": "Build only after all production requests complete",
+            "C": "Build locally",
+            "D": "Build remotely with Cloud Build"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Cloud Code deployment image'ı yerel veya Cloud Build ile oluşturup registry'ye gönderir."
+        },
+        {
+          "question": "Which configuration is essential when running the image locally with Docker?",
+          "options": {
+            "A": "The maximum number of retained secret versions only",
+            "B": "The production traffic split percentage only",
+            "C": "The organization's folder display name only",
+            "D": "The port the application listens on and exposes for testing"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            15
+          ],
+          "explanation": "Yerel container'ın dinleme portu ve erişim eşlemesi testte gerekir; cloud IAM/emulator tüm production koşullarını otomatik doğrulamaz."
+        }
+      ]
+    },
+    {
+      "id": "R10-01",
+      "title": "Image builds, source deployment and repositories",
+      "source": "cloudRun/T-DVCRUN-B-m3-l2-file-en-14.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two commands match local image build and upload?",
+          "options": {
+            "A": "gcloud secrets versions access",
+            "B": "gcloud run jobs execute",
+            "C": "docker build",
+            "D": "docker push"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            3
+          ],
+          "explanation": "Yerel build ve registry push ayrı işlemlerdir; remote build için gcloud builds submit kullanılabilir."
+        },
+        {
+          "question": "How does the lesson's source deployment choose its builder?",
+          "options": {
+            "A": "Always ignore a present Dockerfile",
+            "B": "Skip image creation entirely",
+            "C": "Use a Dockerfile if present; otherwise use Google Cloud buildpacks",
+            "D": "Require the developer to first create a VM disk"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            3,
+            4
+          ],
+          "explanation": "gcloud run deploy --source kaynak kodu image'a dönüştürür; Dockerfile yoksa buildpacks devreye girer."
+        },
+        {
+          "question": "Which repository type stores container images in Artifact Registry?",
+          "options": {
+            "A": "Docker repository",
+            "B": "Only an npm repository",
+            "C": "Only a PyPI repository",
+            "D": "Only a Maven repository"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Artifact Registry çok formatlıdır; container image için Docker repository kullanılır."
+        },
+        {
+          "question": "What is required to deploy an image from another Google Cloud project?",
+          "options": {
+            "A": "The same human owner email in every case",
+            "B": "The correct IAM access to that image repository",
+            "C": "An identical project display name",
+            "D": "Disabling authentication on the deployed application"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Cross-project image kullanımı gerekli registry izinleriyle mümkündür; invocation public yapmak bunu sağlamaz."
+        },
+        {
+          "question": "How can the described deployment consume images hosted in another registry?",
+          "options": {
+            "A": "Replace the image with a Pub/Sub topic name",
+            "B": "Use an Artifact Registry remote repository when supported",
+            "C": "Put the image's bytes in a secret environment variable",
+            "D": "Treat every arbitrary URL as an already-authorized local image"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Ders remote repository yolunu anlatır; gerektiğinde image'ı Artifact Registry'ye push etmek de seçenek olarak verilir."
+        }
+      ]
+    },
+    {
+      "id": "R10-02",
+      "title": "Revision creation and retained configuration",
+      "source": "cloudRun/T-DVCRUN-B-m3-l2-file-en-14.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What does the deploy command receive to identify a prebuilt image?",
+          "options": {
+            "A": "Only a local process ID",
+            "B": "Only the runtime service account's password",
+            "C": "The image's repository URL",
+            "D": "Only an HTTP response body"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            7,
+            8,
+            9
+          ],
+          "explanation": "Image URL'si deployment girdisidir; Cloud Run image'ı çekip kendi kopyasını saklar."
+        },
+        {
+          "question": "Which sequence updates application code through a new revision?",
+          "options": {
+            "A": "Modify source, build image, push image, deploy to the service",
+            "B": "Delete the old service endpoint before compiling",
+            "C": "Edit the active immutable revision's filesystem permanently",
+            "D": "Only change a client browser bookmark"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Uygulama değişikliği build/push/deploy akışından geçer; revision yerinde değişmez."
+        },
+        {
+          "question": "Does changing the revision's environment configuration require a new application image?",
+          "options": {
+            "A": "No new revision is ever created by environment changes",
+            "B": "No; a new revision can use the same image with changed configuration",
+            "C": "Environment variables are global across every revision automatically",
+            "D": "Yes; every environment value must be compiled into source"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            11,
+            13
+          ],
+          "explanation": "Aynı image ile farklı revision-scoped environment ayarı yeni revision oluşturabilir."
+        },
+        {
+          "question": "Which two settings are included in the revision configuration examples?",
+          "options": {
+            "A": "Every client's local browser storage",
+            "B": "CPU/memory and request timeout",
+            "C": "Every project's unrelated IAM policy",
+            "D": "Container entrypoint and arguments"
+          },
+          "answers": [
+            "B",
+            "D"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Image ve runtime ayarları revision kapsamındadır; tüm servis metadata değişiklikleriyle aynı tutulmaz."
+        },
+        {
+          "question": "How are configuration values carried into subsequent revisions in the lesson?",
+          "options": {
+            "A": "All secrets become public automatically",
+            "B": "They remain unless explicitly changed",
+            "C": "Only the source filename is retained",
+            "D": "Every setting is reset randomly after each deployment"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            11
+          ],
+          "explanation": "Önceki konfigürasyon yeni revision'a aktarılır; gerekli değişiklik açıkça yapılır."
+        }
+      ]
+    },
+    {
+      "id": "R10-03",
+      "title": "Readiness, no-traffic deployment and revision pinning",
+      "source": "cloudRun/T-DVCRUN-B-m3-l2-file-en-14.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "While the new revision's instances start, what happens to existing request traffic in the walkthrough?",
+          "options": {
+            "A": "All traffic is sent to unready instances immediately",
+            "B": "The service endpoint must change",
+            "C": "All clients must always receive errors until startup ends",
+            "D": "The current revision continues serving"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            14
+          ],
+          "explanation": "Mevcut revision yeni kapasite hazır olana kadar request almaya devam eder."
+        },
+        {
+          "question": "What happens after traffic moves between revisions in the described rollout?",
+          "options": {
+            "A": "All instances become one shared process",
+            "B": "The new revision cannot scale beyond one instance",
+            "C": "Previous revision instances must stay at peak count forever",
+            "D": "Both revisions autoscale independently as their traffic changes"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            15
+          ],
+          "explanation": "Yeni revision talebe göre artabilir; önceki trafik azalınca idle olup sıfıra inebilir."
+        },
+        {
+          "question": "Which flag deploys the new revision without assigning it normal service traffic initially?",
+          "options": {
+            "A": "--allow-unauthenticated",
+            "B": "--no-traffic",
+            "C": "--vpc-connector",
+            "D": "--set-env-vars"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            15
+          ],
+          "explanation": "--no-traffic deployment ile canlı trafiğe geçişi ayırır; sonrasında yüzde ayarlanabilir."
+        },
+        {
+          "question": "What does pinning 100% of traffic to a specific revision achieve?",
+          "options": {
+            "A": "New deployments do not automatically receive that service traffic until routing changes",
+            "B": "Every future image must be identical",
+            "C": "The service can no longer be invoked",
+            "D": "The pinned revision becomes editable in place"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            16
+          ],
+          "explanation": "Pinning rollout ve deployment'ı ayırır; rollback veya test öncesi kararlı trafik için kullanılır."
+        },
+        {
+          "question": "Which two uses of pinning are described?",
+          "options": {
+            "A": "Keep traffic stable while testing a newer revision",
+            "B": "Roll back to a previous revision",
+            "C": "Grant the new revision broader IAM privileges",
+            "D": "Increase the database's hard connection limit"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            16
+          ],
+          "explanation": "Pinning trafik yönlendirmesidir; yetki ve database kapasite ayarı değildir."
+        }
+      ]
+    },
+    {
+      "id": "R10-04",
+      "title": "Revision tags, traffic percentages and session affinity",
+      "source": "cloudRun/T-DVCRUN-B-m3-l2-file-en-14.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "What does a revision tag provide?",
+          "options": {
+            "A": "A specific URL for accessing that revision",
+            "B": "A new human user account",
+            "C": "A guarantee of public access bypassing IAM",
+            "D": "A mutable replacement for the revision's image digest"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            17
+          ],
+          "explanation": "Tag revision'a özel test URL'si verir; normal servis trafiğini atamadan erişilebilir ve auth koşulları devam eder."
+        },
+        {
+          "question": "In the example, how is the green tag reflected in the test URL?",
+          "options": {
+            "A": "A required /green database path after every API request",
+            "B": "A green--- prefix before the service hostname",
+            "C": "A changed TLS protocol named green",
+            "D": "A different Cloud Run region called green"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            17
+          ],
+          "explanation": "PDF örneği green---hello-xyz-uc.a.run.app URL biçimini gösterir."
+        },
+        {
+          "question": "What does a 10%/90% traffic configuration represent?",
+          "options": {
+            "A": "The required memory allocation of each instance",
+            "B": "The exact percentage of source-code files in each image",
+            "C": "A guaranteed per-client assignment that never changes",
+            "D": "The configured share of requests routed to each revision"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "Yüzdeler revision trafik payıdır; tek client için sabit yönlendirme garantisi değildir."
+        },
+        {
+          "question": "What happens to requests already being processed during a traffic change in the lesson?",
+          "options": {
+            "A": "They all turn into successful responses regardless of application results",
+            "B": "Every in-flight request is forcibly restarted at byte zero",
+            "C": "They continue rather than being deliberately dropped by the routing update",
+            "D": "They instantly move their process memory to another revision"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "Routing geçişi anlık değildir; mevcut request'ler tamamlanmaya devam eder, uygulama hataları ayrı konudur."
+        },
+        {
+          "question": "What guarantee does session affinity provide in the lesson?",
+          "options": {
+            "A": "Absolute permanent pinning under all scaling and failure events",
+            "B": "Automatic durable storage of all session data",
+            "C": "Best effort to route a client's requests to the same instance",
+            "D": "A guarantee that only one instance ever runs"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            18
+          ],
+          "explanation": "Affinity best-effort'tür; state persistence veya hata halinde aynı instance garantisi değildir."
+        }
+      ]
+    },
+    {
+      "id": "R11-01",
+      "title": "Memorystore networking and integration setup",
+      "source": "cloudRun/T-DVCRUN-B-m3-l3-file-en-15.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two settings are required in the manual Redis connectivity example?",
+          "options": {
+            "A": "An allUsers invocation grant on the Redis datastore",
+            "B": "A production traffic tag named redis in every revision",
+            "C": "A connector attached to Redis's authorized VPC network",
+            "D": "Redis host and port configuration"
+          },
+          "answers": [
+            "C",
+            "D"
+          ],
+          "pages": [
+            4,
+            5
+          ],
+          "explanation": "Özel ağ yolu ile application client'ın host/port bilgisi ayrı gereksinimlerdir."
+        },
+        {
+          "question": "What regional relationship is stated for the Redis connector?",
+          "options": {
+            "A": "Only the registry's region matters",
+            "B": "The region is selected from the caller's browser language",
+            "C": "Always a different region from the service",
+            "D": "Same region as the Cloud Run service"
+          },
+          "answers": [
+            "D"
+          ],
+          "pages": [
+            4
+          ],
+          "explanation": "Connector workload bölgesinde oluşturulur ve Redis'in authorized VPC ağına bağlanır."
+        },
+        {
+          "question": "Which two environment variables appear in the example?",
+          "options": {
+            "A": "CLOUDSQLIMAGE",
+            "B": "REDISPORT",
+            "C": "REDISHOST",
+            "D": "REVISIONPASSWORD"
+          },
+          "answers": [
+            "B",
+            "C"
+          ],
+          "pages": [
+            5
+          ],
+          "explanation": "Client REDISHOST/REDISPORT değerleriyle Redis'e bağlanır; connector adı deploy argümanıdır."
+        },
+        {
+          "question": "What does the described Redis integration automate?",
+          "options": {
+            "A": "Create/configure Redis, networking and environment settings",
+            "B": "Rewrite all application logic automatically",
+            "C": "Replace Redis with Artifact Registry",
+            "D": "Make Redis publicly accessible without authentication by definition"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Ders integration özelliğinin ilgili kaynakları ve bağlantı ayarlarını hazırladığını anlatır."
+        },
+        {
+          "question": "What Cloud Run resource change accompanies that integration in the course?",
+          "options": {
+            "A": "Deletion of all service identities",
+            "B": "A new service revision",
+            "C": "A mandatory new organization",
+            "D": "Removal of every historical image"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            6
+          ],
+          "explanation": "Integration servis konfigürasyonunu değiştirir ve ders yeni revision oluştuğunu belirtir."
+        }
+      ]
+    },
+    {
+      "id": "R11-02",
+      "title": "Authenticated Pub/Sub push and acknowledgements",
+      "source": "cloudRun/T-DVCRUN-B-m3-l3-file-en-15.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "How does Pub/Sub deliver messages to the service in this integration?",
+          "options": {
+            "A": "HTTP requests to the configured endpoint",
+            "B": "A mandatory pull loop reading the image registry",
+            "C": "Direct writes into the container's RAM",
+            "D": "A separate VM disk mounted on every request"
+          },
+          "answers": [
+            "A"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "Push subscription mesajı service endpoint'ine HTTP olarak iletir; handler payload'ı çıkarır."
+        },
+        {
+          "question": "Which two subscription settings support a private receiver?",
+          "options": {
+            "A": "A service account authorized to invoke it",
+            "B": "A forced allUsers grant on the receiver",
+            "C": "The developer's browser cookie",
+            "D": "The Cloud Run service endpoint URL"
+          },
+          "answers": [
+            "A",
+            "D"
+          ],
+          "pages": [
+            7,
+            8
+          ],
+          "explanation": "Push kimliği roles/run.invoker alır ve subscription'a atanır; endpoint'in public olması gerekmez."
+        },
+        {
+          "question": "Which responses are success acknowledgements in the examples?",
+          "options": {
+            "A": "Only HTTP 404",
+            "B": "HTTP 200 or 204",
+            "C": "No response until the instance is stopped",
+            "D": "HTTP 400 or 500"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Ders 200/204'ü başarılı işleme ACK'i, 400/500'ü retry nedeni olarak örnekler."
+        },
+        {
+          "question": "What happens when the message is not acknowledged by the applicable deadline?",
+          "options": {
+            "A": "It is guaranteed to count as a successful transaction",
+            "B": "It can be redelivered, invoking the service again",
+            "C": "The service's IAM policy is automatically removed",
+            "D": "The message changes into a new container image"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            7
+          ],
+          "explanation": "ACK gelmezse redelivery mümkündür; işleyici duplicate side effect'i dikkate almalıdır. PDF 600 saniyeyi maksimum olarak belirtir."
+        },
+        {
+          "question": "Which role is assigned to the push identity in the lesson?",
+          "options": {
+            "A": "Artifact Registry Writer",
+            "B": "Cloud Run Invoker",
+            "C": "Cloud SQL Admin",
+            "D": "Secret Manager Admin"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            8
+          ],
+          "explanation": "Push delivery kimliğine alıcı üzerinde invoke izni verilir; başka kaynakları yönetme yetkisi gerekmez."
+        }
+      ]
+    },
+    {
+      "id": "R11-03",
+      "title": "Cloud SQL paths, credentials and connection pools",
+      "source": "cloudRun/T-DVCRUN-B-m3-l3-file-en-15.en.pdf",
+      "source_kind": "pdf",
+      "questions": [
+        {
+          "question": "Which two pieces of configuration are described for attaching Cloud SQL access?",
+          "options": {
+            "A": "The Cloud SQL instance connection name",
+            "B": "Only a Cloud Run traffic tag with no database information",
+            "C": "Appropriate Cloud SQL permissions on the service identity",
+            "D": "A public browser password for every request"
+          },
+          "answers": [
+            "A",
+            "C"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "IAM bağlantı yetkisi ve instance connection name gerekir; database kullanıcı/credential bilgisi de application tarafında ayrı olabilir."
+        },
+        {
+          "question": "Which flag appears in the service update example?",
+          "options": {
+            "A": "--remove-all-secrets",
+            "B": "--add-cloudsql-instances",
+            "C": "--pin-every-request",
+            "D": "--concurrency-only"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            9
+          ],
+          "explanation": "Komut service'e Cloud SQL instance connection bilgisini ekler."
+        },
+        {
+          "question": "Which path pairing matches the lesson?",
+          "options": {
+            "A": "Public IP means no encryption is possible",
+            "B": "Both paths require embedding the database server in the application image",
+            "C": "Private IP through VPC connectivity; public IP using the authenticated proxy/connector setup",
+            "D": "Private IP always directly over the public internet"
+          },
+          "answers": [
+            "C"
+          ],
+          "pages": [
+            9,
+            10
+          ],
+          "explanation": "PDF özel IP için Serverless VPC Access, public yol için Auth Proxy/connector anlatır; bunlar tüm güncel seçeneklerin eksiksiz listesi değildir."
+        },
+        {
+          "question": "Where should sensitive database credentials be stored in the described application design?",
+          "options": {
+            "A": "An unauthenticated URL query string",
+            "B": "Secret Manager, exposed through configured secret access",
+            "C": "A public container image label",
+            "D": "Every source-code comment in the repository"
+          },
+          "answers": [
+            "B"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Credential secret olarak saklanıp env veya volume ile verilir; runtime identity'ye gerekli erişim tanımlanır."
+        },
+        {
+          "question": "Which two problems do connection pools help address?",
+          "options": {
+            "A": "Reconnect broken database client connections",
+            "B": "Limit open connections from application instances",
+            "C": "Make every query automatically idempotent",
+            "D": "Guarantee an unlimited database connection budget"
+          },
+          "answers": [
+            "A",
+            "B"
+          ],
+          "pages": [
+            10
+          ],
+          "explanation": "Pool bağlantı yeniden kullanımı ve sınırlandırması sağlar. PDF'deki service başına 100 ifadesinin kapsam hatası kaynak notlarında düzeltilmiştir."
+        }
+      ]
     }
   ]
 }
