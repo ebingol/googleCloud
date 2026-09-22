@@ -1,6 +1,8 @@
 # Google Cloud — üç haftalık sınav hazırlığı
 
-Başlangıç: 19 Eylül 2026. Sınav adı ve tarihi henüz belirtilmedi.
+Başlangıç: 19 Eylül 2026. Sınav: Professional Cloud Developer; kesin tarih bilinmiyor. 20 Eylül'de yaklaşık üç hafta kaldığı belirtildi.
+
+**Güncel plan:** Kullanıcı 20 Eylül'de her gün bir quiz klasörü ve bir senaryo seti istedi. [Strateji](quizzes/scenarios/STRATEGY.md) ve [devam notu](quizzes/scenarios/HANDOFF.md) aşağıdaki ilk planın yerini alır. Aşağıdaki değerlendirmeler tarihsel kayıt olarak korunmuştur; “henüz okunmadı/yanıt yok” ifadeleri ilgili eski oturumun durumudur.
 
 ## Kaynaklar ve sınırlar
 
@@ -28,7 +30,7 @@ Cloud Run gRPC destekler: https://docs.cloud.google.com/run/docs/triggering/grpc
 19 Eylül 2026 tarihinde resmi dokümanla doğrulandı. Quizdeki “Cloud Run cannot accept requests over gRPC” geri bildirimi güvenilir kabul edilmemeli.
 CI/CD sorusunun doğru iki cevabı paylaşımda açıkça işaretli değil. Kurs PDF'siyle doğrulamadan kesin cevap anahtarı yazılmayacak. Feature branch sürümleri hakkındaki kurs açıklaması evrensel teknik yasak olarak öğretilmeyecek.
 
-## Çalışma düzeni
+## İlk çalışma düzeni — 20 Eylül'de güncellendi
 
 - Günlük hedef: yaklaşık 20–30 dakika; kullanıcı geldiğinde oturum yürütülür.
 - Her oturum: 3 eski soru, 5–7 hedef soru, 2 karma senaryo.
@@ -63,3 +65,8 @@ CI/CD sorusunun doğru iki cevabı paylaşımda açıkça işaretli değil. Kurs
 - Hedef set: OQ-04; destekleyici setler OQ-01, OQ-02, OQ-03. Yeni 8 set henüz çözülmedi; eski quiz puanı yeni setlere aktarılmadı.
 - Planlanan aralıklı tekrarlar: 20 Eylül, 22 Eylül, 26 Eylül ve 3 Ekim 2026 (1/3/7/14 gün). Bu tarihler çalışma kaydıdır; otomatik bildirim kurulmadı.
 - Kaynak/kimlik belirsizliği: Cloud Tasks token seçeneği yanlış kabul edilmedi; service account ve service agent ayrımı [bölüm analizinde](quizzes/orchestration/README.md).
+
+
+## 22 Eylül 2026 — konu tamamlama ve senaryo kapsamı
+
+Kullanıcı Cloud Run, Cloud Run functions ve GKE konularının sorularını tamamladığını bildirdi. Tamamlama kullanıcı beyanı olarak kaydedildi; yeni set bazlı puan veya süre yok. GKE beyanı containeried klasörünün tamamına genellenmedi. PCD-S02, kullanıcının talebiyle 5 Cloud Run + 5 Cloud Run functions + 5 GKE sorusu olarak güncellendi; bu senaryo henüz çözülmedi. Güncel devam notu: [HANDOFF](quizzes/scenarios/HANDOFF.md).

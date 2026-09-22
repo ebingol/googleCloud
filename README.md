@@ -1,5 +1,7 @@
 # Google Cloud sınav hazırlığı
 
+**Yeni sohbette devam:** [Son durum ve sıradaki adım](quizzes/scenarios/HANDOFF.md) · [Günlük klasör + senaryo stratejisi](quizzes/scenarios/STRATEGY.md)
+
 ## Quiz çöz
 
 [**Quiz dizinini aç: 152 set / 760 soru**](quizzes/README.md)
@@ -9,6 +11,12 @@ Foundations: 32 set / 160 soru. Fundamentals: 37 set / 185 soru. Orchestration: 
 - [Kapsam haritası](quizzes/COVERAGE.md)
 - [Kaynak farklılıkları](quizzes/SOURCE-NOTES.md)
 - [Çözüm takip tablosu](quizzes/progress.csv)
+
+## PCD senaryo pratiği
+
+[**İlk karma pilotu çöz: PCD-S01, 15 soru**](quizzes/scenarios/PCD-S01.md) · [Senaryo dizini ve takip](quizzes/scenarios/README.md)
+
+Ders tekrar bankasına ek, ayrı bir seridir. Senaryo soruları, güven düzeyiyle değerlendirme ve ayrı kaynaklı cevap anahtarı içerir.
 
 ## Ders kaynakları
 

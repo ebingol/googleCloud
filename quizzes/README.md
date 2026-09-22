@@ -10,6 +10,10 @@ Sorular yüklenen PDF sürümlerine göre hazırlanmış özgün çalışma soru
 
 [Kaynak farklılıkları ve sürüm notları](SOURCE-NOTES.md) · [Boş çözüm takip tablosu](progress.csv)
 
+## Ek seri: PCD senaryoları
+
+[PCD-S01 — 15 soruluk karma pilot](scenarios/PCD-S01.md) · [Senaryo dizini](scenarios/README.md). Bu ayrı seri yukarıdaki beş soruluk quiz toplamına dahil değildir.
+
 ## Foundations
 
 | Quiz | Konu | Sorular | Cevaplar |
