@@ -4,11 +4,15 @@ Son güncelleme: 22 Eylül 2026. Hedef Professional Cloud Developer; önceki kul
 
 ## Kullanıcının son kararı
 
+**Son düzeltme:** Cümleleri kısaltma; kullanıcı uzun İngilizce senaryolara alışmak istiyor. S02 çok kolay bulundu. Sonraki setlerde yakın, makul seçenekler ve çok koşullu kararlarla zorluğu artır; gerçek sınavla eşdeğerlik iddia etme. Q12 readiness/liveness/startup ayrımına hakim olmadığını kullanıcı açıkça belirtti; teknik eksik olarak takip et.
+
 22 Eylül güncellemesi: Kullanıcı **Cloud Run, Cloud Run functions ve GKE konularının sorularını tamamladığını** bildirdi. Güncel senaryo tercihi bu üç alandan eşit dağılımdır. Tamamlama kullanıcı beyanıdır; set bazında yeni puan/süre bildirilmedi. GKE konusu tamamlandı beyanını containeried klasörünün tümünü bitirdiği şeklinde genişletme.
 
 Önceki genel düzen: Her gün **bir klasör ders quizi + bir yeni senaryo seti**. Ders soruları İngilizceye alışmak için de değerli. Her gün aynı soruları istemiyor; yeni konular ile gecikmeli tekrar dengelensin. [Strateji](STRATEGY.md) güncel çalışma düzenidir.
 
 ## Doğrulanmış durum
+
+- PCD-S02 kullanıcı beyanı: 14/15 (%93,3), 20 dakika; yalnız Q12 yanlış. Soru dosyası yeniden okundu, cevap alanları boş; seçilen yanlış şık/gerekçe bilinmiyor. Seçenek bazında doğrulanmış bağımsız sonuç diye sunma. [Sonuç](results/PCD-S02-attempt-01.md).
 
 - PCD-S01 bağımsız ilk deneme: 11/15, 20 dakika. [Sonuç](results/PCD-S01-attempt-01.md).
 - PCD-R01 hedefli tekrar: 4/5, süre bildirilmedi; zorlayıcı bulundu. [Sonuç](results/PCD-R01-attempt-01.md). 5. soruda C yerine A gerekiyor.
@@ -34,7 +38,7 @@ Diğer kaynak konumları: [teknik tekrar rehberi](PCD-S01-review-guide.md). Revi
 
 1. Bu dosya, STRATEGY ve QUESTION-LOG'u oku; yeni setten önce kaynak kapsamı ve eski soruları kontrol et.
 2. Kullanıcı yeni kaydettiği cevapları kontrol ettirmek istiyorsa önce o dosyaları değerlendir. Klasörün kaldığı set belli değilse kısa bir soru sor; tamamlanmışlık uydurma.
-3. **PCD-S02, 15 soru hazır:** [soru dosyası](PCD-S02.md). Henüz çözülmedi; cevap, süre ve puan yok. Kullanıcı kaydettiğini söylediğinde dosyayı yeniden oku. Bundan sonraki yeni günlük set ID'si PCD-S03.
+3. **PCD-S02, 15 soru hazır:** [soru dosyası](PCD-S02.md). Kullanıcı 14/15 ve 20 dakika bildirdi; Q12 yanlış. Dosyada cevaplar boş; Q12 yanlış seçimi bilinmiyor. Kullanıcı cevapları sonradan kaydederse dosyayı yeniden oku. Bundan sonraki yeni günlük set ID'si PCD-S03.
 4. Kaynak kontrolü, ayrı Türkçe cevap dosyası, soru günlüğü ve senaryo dizini güncellemesi birlikte yapılmalı. Cevapları soru dosyasında gösterme.
 5. Kullanıcı “bitti, save ettim” dediğinde dosyayı yeniden oku; önceki ekrana veya mesajdaki varsayıma göre puanlama yapma.
 
@@ -46,13 +50,14 @@ Diğer kaynak konumları: [teknik tekrar rehberi](PCD-S01-review-guide.md). Revi
 | Workspace / sıralama ve paylaşım | 20 Eylül | 23 Eylül | Seçim doğru, teknik gerekçe güçlendirilmeli |
 | Concurrency / session affinity | 20 Eylül | 23 Eylül | Hedefli soruda doğru; farklı İngilizce ifadeler işlendi |
 | Revision tag ve revision bileşenleri | 20 Eylül | 23 Eylül | Rehberli öğrenildi |
+| GKE readiness / liveness / startup | 22 Eylül | 25 Eylül, sonra 29 Eylül | S02 Q12 yanlış; kullanıcı kavram eksikliğini belirtti, yanlış şık bilinmiyor, açıklama sonrası teyit yok |
 | Eventarc CloudEvents / Pub/Sub / Audit Logs | 19 Eylül kaydı | 22 Eylül | Önce eski orchestration sonuçlarını kontrol et |
 
 Tarihler hatırlatma otomasyonu değildir. Kullanıcı daha sonra gelirse zamanı gelenleri yeni setin iki tekrar yerine dağıt; hepsini aynı gün yığma. Başarıya göre sonraki kontrolü güncelle.
 
 ## Oturum kapanışı
 
-22 Eylül: PCD-S02 önce Cloud Run ağırlıklı oluşturuldu; kullanıcı kapsamı Cloud Run, Cloud Run functions ve GKE olarak düzeltti. Soru alanlarının boş olduğu kontrol edilerek aynı dosya güncellendi. **Nihai sürüm: 5 + 5 + 5, karışık sırada 15 İngilizce soru; ayrı Türkçe kaynaklı anahtar.** İlk taslaktaki soru numaraları değişti; yalnız güncel anahtarla değerlendir. Güncel Cloud Run soruları 1/4/7/10/13; functions 2/5/8/11/14; GKE 3/6/9/12/15. Eski Eventarc tekrar sorusu çıkarıldı; tekrar kuyruğu sonuçlanmış sayılmadı. GKE readiness/HPA ayrıntıları ek resmî kaynak olarak etiketlendi. Kullanıcı bu yeni sınavı henüz cevaplamadı; süre ve puan yok. Yeni sonuç dosyası cevaplar gelince oluşturulacak. Sonraki yeni set PCD-S03; önce S02 değerlendirmesi yapılmalı.
+22 Eylül: PCD-S02 önce Cloud Run ağırlıklı oluşturuldu; kullanıcı kapsamı Cloud Run, Cloud Run functions ve GKE olarak düzeltti. Soru alanlarının boş olduğu kontrol edilerek aynı dosya güncellendi. **Nihai sürüm: 5 + 5 + 5, karışık sırada 15 İngilizce soru; ayrı Türkçe kaynaklı anahtar.** İlk taslaktaki soru numaraları değişti; yalnız güncel anahtarla değerlendir. Güncel Cloud Run soruları 1/4/7/10/13; functions 2/5/8/11/14; GKE 3/6/9/12/15. Eski Eventarc tekrar sorusu çıkarıldı; tekrar kuyruğu sonuçlanmış sayılmadı. GKE readiness/HPA ayrıntıları ek resmî kaynak olarak etiketlendi. Kullanıcı daha sonra yalnız Q12 yanlış, 20 dakika bildirdi: 14/15. Sonuç dosyası kullanıcı beyanı olarak oluşturuldu. Q12 readiness/liveness/startup ayrımı açıklandı; kavrayış teyidi yok. Kullanıcı odaklanma güçlüğü ve yorgunluk bildirdi; ardından cümleleri kısaltmayı açıkça reddetti ve Q12 probe kavramlarına hakim olmadığını söyledi. Hata kullanıcı beyanıyla teknik kavram eksikliği olarak kaydedildi. S02 çok kolay bulundu. Sonraki set PCD-S03; uzun İngilizce senaryoları koru, yakın seçenekler ve çok koşullu kararlarla zorluğu artır.
 
 İlk deneme puanını koru, rehberli düzeltmeyi ayrı yaz. Hangi dosyada kalındığını, yeni kelimeleri, yeni kapsamı ve gelecek set ID'sini güncelle. Tam soru geçmişi [QUESTION-LOG](QUESTION-LOG.md); eski oturum notları kökteki `sinav-tekrar-takibi.md` içindedir.
 

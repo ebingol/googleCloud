@@ -44,18 +44,20 @@ Yeni soru eklerken format: `ID | konu/karar/belirleyici koşul | yeni/karma/geci
 
 | ID | Konu / ölçülen karar / belirleyici koşul | Tür / benzerlik | İlk sonuç |
 |---|---|---|---|
-| S02-01 | Cloud Run service/job; 80 dakika, HTTP yok, bitince çıkış | Yeni; R01-02, eski senaryoda yok | Henüz çözülmedi |
-| S02-02 | Functions HTTP webhook; aynı istekte doğrulama yanıtı | Yeni; C01-02, S01 event koordinasyonundan farklı | Henüz çözülmedi |
-| S02-03 | GKE Service selector yanlış; Ready Pod etiketleriyle eşleştirme | Yeni; T08-03 | Henüz çözülmedi |
-| S02-04 | Cloud Run port açık ama initialization bitmemiş; HTTP startup | Yeni; S01-12 min instances kararından farklı | Henüz çözülmedi |
-| S02-05 | Functions /tmp dosyaları birikiyor; hata dahil cleanup | Yeni; C05-01 | Henüz çözülmedi |
-| S02-06 | GKE v2 rollout; tek Pod yerine Deployment template güncelleme | Karma; S01-02 rollout + T08-02 controller | Henüz çözülmedi |
-| S02-07 | Cloud Run/Cloud SQL; process havuzu ve bağlantı iadesi | Yeni; R11-03, transaction ölçmüyor | Henüz çözülmedi |
-| S02-08 | Functions; geçersiz olay kalıcı kaydı ve transient retry ayrımı | Karma; S01-10 event güvenilirliği + C05-04 | Henüz çözülmedi |
-| S02-09 | GKE emptyDir kaybı; retained PVC ile Pod replacement | Yeni; T08-04 | Henüz çözülmedi |
-| S02-10 | Cloud Run dış LB girişi, direct internet engeli; IAM korunacak | Yeni; S01-06 token kararından farklı ağ katmanı | Henüz çözülmedi |
-| S02-11 | Functions; mevcut kayıtlı handler ile entry point uyuşmazlığı | Yeni senaryo; C01-05 kaynakları 21 Eylülde konuşuldu, bağımsız puan yok | Henüz çözülmedi |
-| S02-12 | GKE geçici dependency kaybı; restart gerekmiyor, readiness | Yeni; T08-03 ilişkili, probe ayrıntısı ek resmî kaynak | Henüz çözülmedi |
-| S02-13 | Cloud Run secret env; sürüm sabitleme ve rollback | Karma; S01-01 secret + S01-02 rollout | Henüz çözülmedi |
-| S02-14 | Functions Firestore update; girdi değişmediyse yazmadan dön | Karma; C04-03 + S01-10 olay güvenilirliği, dedup ezberi değil | Henüz çözülmedi |
-| S02-15 | GKE HPA CPU utilization; CPU request eksik | Yeni; HPA ek resmî kaynak | Henüz çözülmedi |
+| S02-01 | Cloud Run service/job; 80 dakika, HTTP yok, bitince çıkış | Yeni; R01-02, eski senaryoda yok | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-02 | Functions HTTP webhook; aynı istekte doğrulama yanıtı | Yeni; C01-02, S01 event koordinasyonundan farklı | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-03 | GKE Service selector yanlış; Ready Pod etiketleriyle eşleştirme | Yeni; T08-03 | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-04 | Cloud Run port açık ama initialization bitmemiş; HTTP startup | Yeni; S01-12 min instances kararından farklı | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-05 | Functions /tmp dosyaları birikiyor; hata dahil cleanup | Yeni; C05-01 | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-06 | GKE v2 rollout; tek Pod yerine Deployment template güncelleme | Karma; S01-02 rollout + T08-02 controller | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-07 | Cloud Run/Cloud SQL; process havuzu ve bağlantı iadesi | Yeni; R11-03, transaction ölçmüyor | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-08 | Functions; geçersiz olay kalıcı kaydı ve transient retry ayrımı | Karma; S01-10 event güvenilirliği + C05-04 | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-09 | GKE emptyDir kaybı; retained PVC ile Pod replacement | Yeni; T08-04 | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-10 | Cloud Run dış LB girişi, direct internet engeli; IAM korunacak | Yeni; S01-06 token kararından farklı ağ katmanı | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-11 | Functions; mevcut kayıtlı handler ile entry point uyuşmazlığı | Yeni senaryo; C01-05 kaynakları 21 Eylülde konuşuldu, bağımsız puan yok | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-12 | GKE geçici dependency kaybı; restart gerekmiyor, readiness | Yeni; T08-03 ilişkili, probe ayrıntısı ek resmî kaynak | Yanlış (kullanıcı beyanı); probe kavram eksikliği bildirildi, seçilen şık bilinmiyor |
+| S02-13 | Cloud Run secret env; sürüm sabitleme ve rollback | Karma; S01-01 secret + S01-02 rollout | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-14 | Functions Firestore update; girdi değişmediyse yazmadan dön | Karma; C04-03 + S01-10 olay güvenilirliği, dedup ezberi değil | Doğru (kullanıcı beyanı); şık kaydı yok |
+| S02-15 | GKE HPA CPU utilization; CPU request eksik | Yeni; HPA ek resmî kaynak | Doğru (kullanıcı beyanı); şık kaydı yok |
+
+22 Eylül sonuç güncellemesi: 14/15, 20 dakika; kaynak kullanıcı beyanı. Soru dosyası cevapları boş, anahtar kullanıcı cevabı olarak aktarılmadı. Q12 açıklaması ilk sonucu değiştirmez.

@@ -10,7 +10,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 |---|---|---|---|---|
 | PCD-S01 | IAM, Cloud Run, CI/CD, veri ve event; her alandan 3 soru | 30 dakika | [Çöz](PCD-S01.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S01.md) |
 | PCD-R01 | İlk setteki dört tekrar konusu; İngilizce yorumlama, 5 soru | Süresiz | [Çöz](PCD-R01.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-R01.md) |
-| PCD-S02 | Cloud Run / Cloud Run functions / GKE, 5’er soru; hazır, henüz çözülmedi | 30 dakika | [Çöz](PCD-S02.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S02.md) |
+| PCD-S02 | Cloud Run / Cloud Run functions / GKE, 5’er soru; kullanıcı beyanıyla 14/15 | 30 dakika | [Çöz](PCD-S02.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S02.md) |
 
 **İlk set sonrası:** [Doküman sayfaları, ilgili quizler ve bugünkü çalışma sırası](PCD-S01-review-guide.md).
 
@@ -26,6 +26,8 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 |---|---|---|---|---|---|
 | PCD-S01 | İlk | 20 Eylül 2026 | 11 / 15 (%73,3) | 20 dakika | Secret rolleri; build adımları arasında dosya paylaşımı; servis çağrı yetkisi ve ID token; concurrency / session affinity |
 | PCD-R01 | İlk | 20 Eylül 2026 | 4 / 5 (%80) | Bildirilmedi | ID token audience; custom audiences ifadesi; teknik gerekçeyi açık yazma. [Değerlendirme](results/PCD-R01-attempt-01.md) |
+
+| PCD-S02 | İlk bildirilen; kullanıcı beyanı | 22 Eylül 2026 | 14 / 15 (%93,3) | 20 dakika | Q12 readiness/liveness; cevap alanları boş, seçilen şık bilinmiyor. [Sonuç](results/PCD-S02-attempt-01.md) |
 
 ## Kapsam
 

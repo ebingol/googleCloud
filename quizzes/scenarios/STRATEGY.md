@@ -74,7 +74,7 @@ Her soru için `QUESTION-LOG.md` içinde konu, ölçülen karar, belirleyici ko�
 
 ## PCD-S02 — güncel kapsam, 22 Eylül
 
-[PCD-S02](PCD-S02.md) hazır; henüz çözülmedi. Kullanıcının kapsam düzeltmesiyle 5 Cloud Run + 5 Cloud Run functions + 5 GKE olarak yeniden düzenlendi. İlk Cloud Run ağırlıklı taslağın boş cevap alanları kontrol edildi; kullanıcı yanıtı değiştirilmedi.
+[PCD-S02](PCD-S02.md) kullanıcı beyanıyla 14/15, 20 dakikada tamamlandı; Q12 yanlış. Dosyadaki cevap alanları boş, şık bazında kontrol yapılmadı. Kullanıcının kapsam düzeltmesiyle 5 Cloud Run + 5 Cloud Run functions + 5 GKE olarak yeniden düzenlendi. İlk Cloud Run ağırlıklı taslağın boş cevap alanları kontrol edildi; kullanıcı yanıtı değiştirilmedi.
 
 - Cloud Run: service/job, startup probe, Cloud SQL havuzu, ingress/IAM, secret sürümü/rollback.
 - Cloud Run functions: HTTP webhook, geçici dosya temizliği, kalıcı/geçici hata ayrımı, entry point, Firestore kendi kendini tetikleme döngüsü.
@@ -83,3 +83,13 @@ Her soru için `QUESTION-LOG.md` içinde konu, ölçülen karar, belirleyici ko�
 Q6/Q8/Q13/Q14 karma; diğer 11 soru önceki çözülmüş senaryolarda ölçülmeyen kararlardır. Yeni kullanıcı kapsamı nedeniyle bu sette zorunlu gecikmeli tekrar yok; eski Eventarc tekrar taslağı kaldırıldı. Audience/concurrency/workspace tekrar kuyruğu korunuyor, çözülmüş sayılmıyor. HPA ve Kubernetes probe davranışları ek resmî kaynak olarak ayrıştırıldı.
 
 Sonraki yeni set ID'si PCD-S03. Yeni seti S02 sonuçlarına ve kullanıcının o günkü tercihine göre hazırla.
+
+## 22 Eylül — kullanıcının düzelttiği uzunluk ve zorluk tercihi
+
+**Cümleleri kısaltma.** Kullanıcı uzun İngilizce senaryolara alışmak istiyor; yorgunluk/odaklanma geri bildirimi sadeleştirme talebi değildi. Önceki 2–3 kısa cümle önerisi iptal edildi.
+
+Kullanıcı S02'yi çok kolay buldu ve gerçek sınavın daha zor olacağını düşünüyor. Hazırlayan değerlendirmesi: bazı yanlış seçenekler açıkça ilgisizdi ve doğru cevap tek ipucuyla bulunabiliyordu. 14/15 sonucu korunur; gerçek sınav zorluğuyla kalibre edilmiş başarı veya hazır olma kanıtı sayılmaz.
+
+Sonraki setlerde uzunluk ve İngilizce okuma yükünü koru; makul ve birbirine yakın alternatifler, birden çok belirleyici koşul, servisler arası etkileşim ve maliyet/güvenilirlik/operasyon yükü ödünleşimleri kullan. Zorluğu gereksiz kelime veya belirsizlikle artırma; koşullarla tek en iyi cevap belirlenebilsin. Gerçek sınavla eşdeğer zorluk iddiası kullanma.
+
+Q12: Kullanıcı readiness/liveness/startup probe konularına tam hakim olmadığını açıkça belirtti. Hata sınıfı kullanıcı beyanıyla teknik kavram eksikliği; yorgunluğa atfetme. Seçilen yanlış şık hâlâ bilinmiyor. Açıklama sonrası kavrayış veya kalıcılık henüz doğrulanmadı.
