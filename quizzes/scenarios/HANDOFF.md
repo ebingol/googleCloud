@@ -1,6 +1,6 @@
 # Yeni sohbet buradan devam etsin
 
-Son güncelleme: 22 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
+Son güncelleme: 23 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
 
 ## Kullanıcının son kararı
 
@@ -38,7 +38,7 @@ Diğer kaynak konumları: [teknik tekrar rehberi](PCD-S01-review-guide.md). Revi
 
 1. Bu dosya, STRATEGY ve QUESTION-LOG'u oku; yeni setten önce kaynak kapsamı ve eski soruları kontrol et.
 2. Kullanıcı yeni kaydettiği cevapları kontrol ettirmek istiyorsa önce o dosyaları değerlendir. Klasörün kaldığı set belli değilse kısa bir soru sor; tamamlanmışlık uydurma.
-3. **PCD-S02, 15 soru hazır:** [soru dosyası](PCD-S02.md). Kullanıcı 14/15 ve 20 dakika bildirdi; Q12 yanlış. Dosyada cevaplar boş; Q12 yanlış seçimi bilinmiyor. Kullanıcı cevapları sonradan kaydederse dosyayı yeniden oku. Bundan sonraki yeni günlük set ID'si PCD-S03.
+3. **Güncel çözüm bekleyen set [PCD-S03](PCD-S03.md):** 15 soru, 5+5+5, 23 Eylül. Cevaplar boş; sonuç yok. Kullanıcı kaydettikten sonra yeniden oku. Önceki **PCD-S02:** [soru dosyası](PCD-S02.md). Kullanıcı 14/15 ve 20 dakika bildirdi; Q12 yanlış. Dosyada cevaplar boş; Q12 yanlış seçimi bilinmiyor. Kullanıcı cevapları sonradan kaydederse dosyayı yeniden oku. PCD-S03 23 Eylülde hazırlandı; henüz çözülmedi. Sonraki üretilecek yeni günlük set ID’si PCD-S04.
 4. Kaynak kontrolü, ayrı Türkçe cevap dosyası, soru günlüğü ve senaryo dizini güncellemesi birlikte yapılmalı. Cevapları soru dosyasında gösterme.
 5. Kullanıcı “bitti, save ettim” dediğinde dosyayı yeniden oku; önceki ekrana veya mesajdaki varsayıma göre puanlama yapma.
 
@@ -98,3 +98,20 @@ Geçme yüzdesi devamı: Kullanıcı internette söylenenleri tekrar kontrol etm
 ## Event kaynakları slaytı — 21 Eylül
 
 Kullanıcı Eventarc, Pub/Sub, Cloud Logging, Scheduler, Tasks ve Gmail içeren slaytın yoğun İngilizcesini ve her bağlantının mekanik olarak nasıl çalıştığını sordu. Türkçe sadeleştirme ve kaynak → aracı → function akışlarıyla açıklama hazırlandı: doğrudan olay/Audit Logs → Eventarc; özel kaynak, Logging sink, Scheduler ve Gmail → Pub/Sub → Eventarc → event function; Cloud Tasks → HTTP function. Gmail bildirimi tam e-posta değil değişiklik haberi, ayrıntılar Gmail API ile alınır. Trigger bağlantılarının önceden yapılandırıldığı ve Functions Framework'ün gelen isteği kullanıcı fonksiyonuna aktardığı ayrıştırıldı. Kavrayış teyidi veya yeni quiz sonucu yok. Ek resmî kaynaklar: https://docs.cloud.google.com/run/docs/function-triggers , https://docs.cloud.google.com/eventarc/standard/docs/run/event-routing-options , https://docs.cloud.google.com/logging/docs/routing/overview , https://developers.google.com/workspace/gmail/api/guides/push .
+
+
+## 22 Eylül — probe kavramlarının açıklanması
+
+Kullanıcı liveness/startup/readiness için ayrıca açıklama istedi. Kubernetes bağlamında kontrol amacı, başarısızlığın trafik/restart etkisi, startup tamamlanana kadar diğer probe’ların beklemesi ve geçici downstream arızası ile process deadlock ayrımı örneklerle açıklandı. Kaynak: https://kubernetes.io/docs/concepts/workloads/pods/probes/ ve https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/ . Açıklama öğrenme desteğidir; kavrayış veya gecikmeli kalıcılık henüz teyit edilmedi. S02 ilk sonuç 14/15 olarak korunur.
+
+Probe uygulaması devamı: Kullanıcı metotlardan teşhisin nasıl konduğunu sordu. Uygulamanın health endpoint mantığını yazması ve kubelet’in HTTP sonucu/timeout üzerinden YAML probe türüne göre davranması; startup tamamlanma durumu, yerel liveness kontrolünün kapsamı ve readiness için gerekli dependency kontrolü örnek kodla anlatıldı. Örnek öğretici sözde koddur, repoya çalışır uygulama eklenmedi. Kavrayış teyidi henüz yok.
+
+## 23 Eylül — PCD-S03 hazırlandı, çözüm bekleniyor
+
+Kullanıcı “yeni sınav hazırlayalım” dedi. Mevcut tercihlerle [PCD-S03](PCD-S03.md) oluşturuldu: 15 uzun İngilizce senaryo, 30 dakika çalışma hedefi; Cloud Run 2/6/8/11/15, Functions 3/5/9/12/14, GKE 1/4/7/10/13. İki çoklu seçim sorusu Q4 ve Q10. [Türkçe anahtar](../answers/scenarios/PCD-S03.md) ayrı; her cevabın gerekçesi, alternatiflerin elenmesi, belirleyici İngilizce ifade, ek resmî kaynak ve sınav rehberi eşleştirmesi mevcut.
+
+9 yeni karar, 4 karma, 2 gecikmeli uygulama. Q2 tag hedefi/audience birleşimi; Q8 concurrency’nin CPU hotspot/performans uygulaması. Bunlar hazırlanmış sorular; çözülmüş veya kalıcılığı doğrulanmış değiller. Workspace kuyruğu korunur. Probe kontrolü 25 Eylül olarak korunur; açıklamanın ertesi günü aynı kararı yeniden sormadık. Q14 parser ve Q15 Direct VPC konuları çıkarılmış S02 taslağıyla ilişkili olarak açıkça işaretlendi; hiç görülmemiş kavram iddiası yapılmadı.
+
+Kaynaklar 23 Eylülde Google Cloud ve Kubernetes resmî web belgelerinden kontrol edildi; PDF sayfası doğrulandığı iddia edilmedi. GKE kapsamına ConfigMap subPath, WIF, PDB, NetworkPolicy ve scheduling ayrıntıları eklendi. Bu içerikler tüm GKE ders PDF’lerinin zaten kapsadığı veya kullanıcının önceden öğrendiği varsayımıyla değerlendirilmemeli.
+
+**Durum:** Yalnız hazırlık tamamlandı. Kullanıcı cevabı, süre veya yeni puan yok; sonuç dosyası oluşturulmadı. S01/R01/S02 ilk sonuçları değişmedi. “Bitti, kaydettim” gelince S03 dosyasını yeniden oku ve ilk denemeyi ayrı kaydet. Sonraki yeni set ID’si PCD-S04; S03 çözülmeden yeni sonuç varsayma. Yeni dil ifadeleri soru/anahtarda afresh, propagate, headroom; kullanıcının bunlarda zorlandığı henüz bildirilmedi. Otomasyon kurulmadı.

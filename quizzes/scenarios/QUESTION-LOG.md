@@ -61,3 +61,27 @@ Yeni soru eklerken format: `ID | konu/karar/belirleyici koşul | yeni/karma/geci
 | S02-15 | GKE HPA CPU utilization; CPU request eksik | Yeni; HPA ek resmî kaynak | Doğru (kullanıcı beyanı); şık kaydı yok |
 
 22 Eylül sonuç güncellemesi: 14/15, 20 dakika; kaynak kullanıcı beyanı. Soru dosyası cevapları boş, anahtar kullanıcı cevabı olarak aktarılmadı. Q12 açıklaması ilk sonucu değiştirmez.
+
+## PCD-S03 — 23 Eylül 2026
+
+[Sorular](PCD-S03.md) · [Anahtar](../answers/scenarios/PCD-S03.md). 5 Cloud Run + 5 Functions + 5 GKE; 9 yeni karar + 4 karma + 2 gecikmeli uygulama. Uzun İngilizce senaryolar ve koşullara göre alternatif eleme korundu. Kaynaklar güncel resmî web belgeleri; anahtarda ek kaynak etiketi var. Yeni karar etiketi hiç görülmemiş tüm kavramlar anlamına gelmez.
+
+| ID | Konu / ölçülen karar / belirleyici koşul | Tür / benzerlik | İlk sonuç |
+|---|---|---|---|
+| S03-01 | GKE ConfigMap; subPath güncellenmez, restart olmadan dosya projection ve yeniden okuma | Yeni; S02-06 rollout yerine canlı dosya yenilemesi | Henüz çözülmedi |
+| S03-02 | Cloud Run candidate tag destination ile normal service audience ayrımı; Invoker hazır | Gecikmeli tekrar; R01-05 + rehberli R10-04, yeni birleşik uygulama | Henüz çözülmedi |
+| S03-03 | Functions upload Promise tamamlanmadan handler dönüşü; sonucu Promise ile bağlama | Yeni; C05-01; S02-08 hata sınıflamasından farklı completion kararı | Henüz çözülmedi |
+| S03-04 | GKE dedicated KSA ve bucket üzerinde direct federated principal grant birlikte | Karma; S01-11 ADC/identity + GKE WIF | Henüz çözülmedi |
+| S03-05 | Functions gecikmiş Storage event; saklanan generation ile doğru input bytes seçme | Yeni; S01-10 dedup sorusundan farklı, dedup zaten sağlanmış | Henüz çözülmedi |
+| S03-06 | Cloud Run proxy ingress bind 0.0.0.0 ve aynı instance localhost sidecar | Yeni; R09-01 runtime contract genişletmesi | Henüz çözülmedi |
+| S03-07 | GKE voluntary eviction; 3 sağlıklı Pod, minAvailable 2; rollout ayarı yeterli değil | Yeni; S02-06 rollout mekanizmasından farklı eviction bütçesi | Henüz çözülmedi |
+| S03-08 | Cloud Run tek CPU hotspot; çok vCPU ortalaması ve concurrency ile request scaling | Gecikmeli uygulama; R01-04/S01-07 concurrency, yeni performans bağlamı | Henüz çözülmedi |
+| S03-09 | Functions sıra dışı Firestore snapshots; sürüm karşılaştırma ve atomik summary update | Karma; S01-09 transaction + S01-10 event; S02-14 self-loop kararından farklı | Henüz çözülmedi |
+| S03-10 | GKE NetworkPolicy; source egress ve destination ingress izinleri birlikte | Karma; S02-10 ağ erişim katmanı + Pod selector, yeni GKE mekanizması | Henüz çözülmedi |
+| S03-11 | Cloud Run 504 işlemi iptal/rollback etmez; retry öncesi sonuç belirsizliği | Yeni timeout teşhisi; S01-10 idempotency ile ilişkili, yalnız dedup tasarımı sorulmuyor | Henüz çözülmedi |
+| S03-12 | Functions source build denied principal; builder/runtime ayrımı ve prod-data sınırı | Karma; S01-01 runtime kimlik + C01-06 build | Henüz çözülmedi |
+| S03-13 | GKE Pending CPU; gerçek kullanım değil requests, tek node kapasitesi | Yeni; S02-15 HPA utilization değil scheduler kapasitesi | Henüz çözülmedi |
+| S03-14 | Functions Pub/Sub CloudEvent adapter testi; zarf/base64/business JSON ayrımı | Yeni ölçülen adapter test kararı; S02 çıkarılan parser taslağıyla ilişkili, hiç görülmemiş konu iddiası yok | Henüz çözülmedi |
+| S03-15 | Cloud Run public API static egress; private-ranges-only mevcut NAT yolunu atlıyor | Yeni ölçülen egress karar; S02 çıkarılan Direct VPC taslağıyla ilişkili | Henüz çözülmedi |
+
+Q2/Q8 yalnız hazırlandı; audience/concurrency kalıcılığı doğrulanmadı. Probe tekrarı 25 Eylül; workspace ve diğer bekleyen kararlar çözülmüş sayılmadı.

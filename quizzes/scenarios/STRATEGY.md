@@ -93,3 +93,7 @@ Kullanıcı S02'yi çok kolay buldu ve gerçek sınavın daha zor olacağını d
 Sonraki setlerde uzunluk ve İngilizce okuma yükünü koru; makul ve birbirine yakın alternatifler, birden çok belirleyici koşul, servisler arası etkileşim ve maliyet/güvenilirlik/operasyon yükü ödünleşimleri kullan. Zorluğu gereksiz kelime veya belirsizlikle artırma; koşullarla tek en iyi cevap belirlenebilsin. Gerçek sınavla eşdeğer zorluk iddiası kullanma.
 
 Q12: Kullanıcı readiness/liveness/startup probe konularına tam hakim olmadığını açıkça belirtti. Hata sınıfı kullanıcı beyanıyla teknik kavram eksikliği; yorgunluğa atfetme. Seçilen yanlış şık hâlâ bilinmiyor. Açıklama sonrası kavrayış veya kalıcılık henüz doğrulanmadı.
+
+## 23 Eylül — yeni set kaydı
+
+PCD-S03 oluşturuldu; 5+5+5 kapsam, 9 yeni karar + 4 karma + 2 gecikmeli uygulama. Henüz çözülmedi. Güncel çalışma dosyası [PCD-S03](PCD-S03.md); sonraki üretilecek set PCD-S04. Ayrıntılar HANDOFF ve QUESTION-LOG içinde. Eski tarihli set ID notları geçmiş planı anlatır.

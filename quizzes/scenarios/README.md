@@ -2,7 +2,7 @@
 
 [Yeni sohbet için devam notu](HANDOFF.md) · [Günlük çalışma ve soru üretme stratejisi](STRATEGY.md) · [Soru geçmişi — hazırlayan için](QUESTION-LOG.md)
 
-**2 senaryo seti + 1 pekiştirme seti · 35 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
+**3 senaryo seti + 1 pekiştirme seti · 50 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
 
 Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgündür, gerçek sınav sorusu değildir. Amaç birkaç gereksinimi birlikte değerlendirmek ve makul alternatifleri elemektir. Pilotun zorluğu henüz öğrenci sonuçlarıyla kalibre edilmemiştir.
 
@@ -11,6 +11,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 | PCD-S01 | IAM, Cloud Run, CI/CD, veri ve event; her alandan 3 soru | 30 dakika | [Çöz](PCD-S01.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S01.md) |
 | PCD-R01 | İlk setteki dört tekrar konusu; İngilizce yorumlama, 5 soru | Süresiz | [Çöz](PCD-R01.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-R01.md) |
 | PCD-S02 | Cloud Run / Cloud Run functions / GKE, 5’er soru; kullanıcı beyanıyla 14/15 | 30 dakika | [Çöz](PCD-S02.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S02.md) |
+| PCD-S03 | Cloud Run / Functions / GKE, 5’er soru; çok koşullu yeni set, henüz çözülmedi | 30 dakika | [Çöz](PCD-S03.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S03.md) |
 
 **İlk set sonrası:** [Doküman sayfaları, ilgili quizler ve bugünkü çalışma sırası](PCD-S01-review-guide.md).
 
@@ -26,7 +27,6 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 |---|---|---|---|---|---|
 | PCD-S01 | İlk | 20 Eylül 2026 | 11 / 15 (%73,3) | 20 dakika | Secret rolleri; build adımları arasında dosya paylaşımı; servis çağrı yetkisi ve ID token; concurrency / session affinity |
 | PCD-R01 | İlk | 20 Eylül 2026 | 4 / 5 (%80) | Bildirilmedi | ID token audience; custom audiences ifadesi; teknik gerekçeyi açık yazma. [Değerlendirme](results/PCD-R01-attempt-01.md) |
-
 | PCD-S02 | İlk bildirilen; kullanıcı beyanı | 22 Eylül 2026 | 14 / 15 (%93,3) | 20 dakika | Q12 readiness/liveness; cevap alanları boş, seçilen şık bilinmiyor. [Sonuç](results/PCD-S02-attempt-01.md) |
 
 ## Kapsam
