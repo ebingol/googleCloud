@@ -97,3 +97,13 @@ Q12: Kullanıcı readiness/liveness/startup probe konularına tam hakim olmadı�
 ## 23 Eylül — yeni set kaydı
 
 PCD-S03 oluşturuldu; 5+5+5 kapsam, 9 yeni karar + 4 karma + 2 gecikmeli uygulama. Henüz çözülmedi. Güncel çalışma dosyası [PCD-S03](PCD-S03.md); sonraki üretilecek set PCD-S04. Ayrıntılar HANDOFF ve QUESTION-LOG içinde. Eski tarihli set ID notları geçmiş planı anlatır.
+
+## 23 Eylül — S03 değerlendirme sonrası çalışma
+
+S03 ilk cevaplar 7/15, süre bildirilmedi. Kullanıcı koşulları soyutlama/çözüme eşleme güçlüğü bildirdi. Uzun İngilizce metin tercihi korunur; hedef / kısıt / zaten sağlanan durum çıkarma pratiği mevcut sorular üzerinden tek tek yapılır. Ek teknik kapsamın etkisini dil/yorumlama güçlüğünden ayır. Yeni sette hem kapsam hem karmaşıklığı birlikte artırarak sonucu yalnız okuma ölçümü sayma. Ayrıntılar sonuç ve HANDOFF dosyalarında.
+
+23 Eylül ek düzeltme: Kullanıcı PDB/eviction’ı bilmediğini belirtti; ek kaynak konuları önce öğretim, sonra uygulama şeklinde ele alınmalı. İngilizcede bilinen kavramı tanıma ile yeni teknik bilgi öğrenme ayrı izlenecek. Uzun İngilizce tercih değişmedi.
+
+## 24 Eylül — geniş kapsamlı 20 soru talebi
+
+Kullanıcı şimdi tüm konuları kapsayan 20 soruluk quiz istedi. Bu set için eski 15 soru ve Cloud Run/functions/GKE eşit dağılımı yerine resmî dört ana alana yakın 6/5/5/4 dağılımıyla S04 hazırlandı; 45 dakika kişisel çalışma hedefi. Dört ana alan örneklenir, tüm alt konular 20 soruyla tamamlandı sayılmaz. İngilizce uzun senaryo ve ayrı Türkçe kaynaklı anahtar korunur. Bilinmeyen teknik kavram B olarak işaretlenebilir; tanılama sonucunu yalnız dil becerisi sayma. Yeni quiz açıkça istendiği için hazırlanmıştır; önceden bilinmeyen ayrıntılar sonraki açıklamada önce öğretilir. 13 yeni karar, 6 karma ve 1 erken probe pekiştirmesi; bu set eski 9/4/2 sayısal kuralından farklıdır. Probe sorusu gecikmeli kalıcılık ölçümü değildir. Sonuç yok, sonraki yeni set S05.

@@ -68,20 +68,53 @@ Yeni soru eklerken format: `ID | konu/karar/belirleyici koşul | yeni/karma/geci
 
 | ID | Konu / ölçülen karar / belirleyici koşul | Tür / benzerlik | İlk sonuç |
 |---|---|---|---|
-| S03-01 | GKE ConfigMap; subPath güncellenmez, restart olmadan dosya projection ve yeniden okuma | Yeni; S02-06 rollout yerine canlı dosya yenilemesi | Henüz çözülmedi |
-| S03-02 | Cloud Run candidate tag destination ile normal service audience ayrımı; Invoker hazır | Gecikmeli tekrar; R01-05 + rehberli R10-04, yeni birleşik uygulama | Henüz çözülmedi |
-| S03-03 | Functions upload Promise tamamlanmadan handler dönüşü; sonucu Promise ile bağlama | Yeni; C05-01; S02-08 hata sınıflamasından farklı completion kararı | Henüz çözülmedi |
-| S03-04 | GKE dedicated KSA ve bucket üzerinde direct federated principal grant birlikte | Karma; S01-11 ADC/identity + GKE WIF | Henüz çözülmedi |
-| S03-05 | Functions gecikmiş Storage event; saklanan generation ile doğru input bytes seçme | Yeni; S01-10 dedup sorusundan farklı, dedup zaten sağlanmış | Henüz çözülmedi |
-| S03-06 | Cloud Run proxy ingress bind 0.0.0.0 ve aynı instance localhost sidecar | Yeni; R09-01 runtime contract genişletmesi | Henüz çözülmedi |
-| S03-07 | GKE voluntary eviction; 3 sağlıklı Pod, minAvailable 2; rollout ayarı yeterli değil | Yeni; S02-06 rollout mekanizmasından farklı eviction bütçesi | Henüz çözülmedi |
-| S03-08 | Cloud Run tek CPU hotspot; çok vCPU ortalaması ve concurrency ile request scaling | Gecikmeli uygulama; R01-04/S01-07 concurrency, yeni performans bağlamı | Henüz çözülmedi |
-| S03-09 | Functions sıra dışı Firestore snapshots; sürüm karşılaştırma ve atomik summary update | Karma; S01-09 transaction + S01-10 event; S02-14 self-loop kararından farklı | Henüz çözülmedi |
-| S03-10 | GKE NetworkPolicy; source egress ve destination ingress izinleri birlikte | Karma; S02-10 ağ erişim katmanı + Pod selector, yeni GKE mekanizması | Henüz çözülmedi |
-| S03-11 | Cloud Run 504 işlemi iptal/rollback etmez; retry öncesi sonuç belirsizliği | Yeni timeout teşhisi; S01-10 idempotency ile ilişkili, yalnız dedup tasarımı sorulmuyor | Henüz çözülmedi |
-| S03-12 | Functions source build denied principal; builder/runtime ayrımı ve prod-data sınırı | Karma; S01-01 runtime kimlik + C01-06 build | Henüz çözülmedi |
-| S03-13 | GKE Pending CPU; gerçek kullanım değil requests, tek node kapasitesi | Yeni; S02-15 HPA utilization değil scheduler kapasitesi | Henüz çözülmedi |
-| S03-14 | Functions Pub/Sub CloudEvent adapter testi; zarf/base64/business JSON ayrımı | Yeni ölçülen adapter test kararı; S02 çıkarılan parser taslağıyla ilişkili, hiç görülmemiş konu iddiası yok | Henüz çözülmedi |
-| S03-15 | Cloud Run public API static egress; private-ranges-only mevcut NAT yolunu atlıyor | Yeni ölçülen egress karar; S02 çıkarılan Direct VPC taslağıyla ilişkili | Henüz çözülmedi |
+| S03-01 | GKE ConfigMap; subPath güncellenmez, restart olmadan dosya projection ve yeniden okuma | Yeni; S02-06 rollout yerine canlı dosya yenilemesi | Yanlış; kullanıcı D, anahtar B |
+| S03-02 | Cloud Run candidate tag destination ile normal service audience ayrımı; Invoker hazır | Gecikmeli tekrar; R01-05 + rehberli R10-04, yeni birleşik uygulama | Yanlış; kullanıcı C, anahtar D |
+| S03-03 | Functions upload Promise tamamlanmadan handler dönüşü; sonucu Promise ile bağlama | Yeni; C05-01; S02-08 hata sınıflamasından farklı completion kararı | Yanlış; kullanıcı C, anahtar A |
+| S03-04 | GKE dedicated KSA ve bucket üzerinde direct federated principal grant birlikte | Karma; S01-11 ADC/identity + GKE WIF | Eksik seçim; kullanıcı D, anahtar C, D |
+| S03-05 | Functions gecikmiş Storage event; saklanan generation ile doğru input bytes seçme | Yeni; S01-10 dedup sorusundan farklı, dedup zaten sağlanmış | Yanlış; kullanıcı C, anahtar B |
+| S03-06 | Cloud Run proxy ingress bind 0.0.0.0 ve aynı instance localhost sidecar | Yeni; R09-01 runtime contract genişletmesi | Yanlış; kullanıcı B, anahtar C |
+| S03-07 | GKE voluntary eviction; 3 sağlıklı Pod, minAvailable 2; rollout ayarı yeterli değil | Yeni; S02-06 rollout mekanizmasından farklı eviction bütçesi | Yanlış; kullanıcı C, anahtar A |
+| S03-08 | Cloud Run tek CPU hotspot; çok vCPU ortalaması ve concurrency ile request scaling | Gecikmeli uygulama; R01-04/S01-07 concurrency, yeni performans bağlamı | Yanlış; kullanıcı A, anahtar D |
+| S03-09 | Functions sıra dışı Firestore snapshots; sürüm karşılaştırma ve atomik summary update | Karma; S01-09 transaction + S01-10 event; S02-14 self-loop kararından farklı | Doğru; kullanıcı C, anahtar C |
+| S03-10 | GKE NetworkPolicy; source egress ve destination ingress izinleri birlikte | Karma; S02-10 ağ erişim katmanı + Pod selector, yeni GKE mekanizması | Doğru; kullanıcı A, B, anahtar A, B |
+| S03-11 | Cloud Run 504 işlemi iptal/rollback etmez; retry öncesi sonuç belirsizliği | Yeni timeout teşhisi; S01-10 idempotency ile ilişkili, yalnız dedup tasarımı sorulmuyor | Doğru; kullanıcı B, anahtar B |
+| S03-12 | Functions source build denied principal; builder/runtime ayrımı ve prod-data sınırı | Karma; S01-01 runtime kimlik + C01-06 build | Doğru; kullanıcı D, anahtar D |
+| S03-13 | GKE Pending CPU; gerçek kullanım değil requests, tek node kapasitesi | Yeni; S02-15 HPA utilization değil scheduler kapasitesi | Doğru; kullanıcı A, anahtar A |
+| S03-14 | Functions Pub/Sub CloudEvent adapter testi; zarf/base64/business JSON ayrımı | Yeni ölçülen adapter test kararı; S02 çıkarılan parser taslağıyla ilişkili, hiç görülmemiş konu iddiası yok | Doğru; kullanıcı C, anahtar C |
+| S03-15 | Cloud Run public API static egress; private-ranges-only mevcut NAT yolunu atlıyor | Yeni ölçülen egress karar; S02 çıkarılan Direct VPC taslağıyla ilişkili | Doğru; kullanıcı B, anahtar B |
 
-Q2/Q8 yalnız hazırlandı; audience/concurrency kalıcılığı doğrulanmadı. Probe tekrarı 25 Eylül; workspace ve diğer bekleyen kararlar çözülmüş sayılmadı.
+23 Eylül: Q2 C (anahtar D), Q8 A (anahtar D); yeni uygulamalarda tam doğru yok. Q2’de audience parçası doğru, tag hedeflemesi eksik; önceki tüm bilgiyi unuttuğu çıkarılamaz. Probe tekrarı 25 Eylül; workspace ve diğer bekleyen kararlar çözülmüş sayılmadı.
+
+S03 ilk cevaplar: 7/15 (%46,7), süre bildirilmedi. [Sonuç](results/PCD-S03-attempt-01.md). Kullanıcı soyutlama/eşleştirme güçlüğü bildirdi; hata nedenleri rehberli ayrıştırılacak.
+
+23 Eylül S03 Q1–Q8 tekrar: 1 B, 2 B, 3 A, 4 A+D, 5 D, 6 A, 7 D, 8 A → 2/8 (Q1/Q3 doğru). İlk sonuç sütunları korunur. [Ayrı kayıt](results/PCD-S03-retry-01.md). Gerekçe ve gecikmeli kalıcılık doğrulanmadı.
+
+## PCD-S04 — 24 Eylül 2026
+
+[Sorular](PCD-S04.md) · [Anahtar](../answers/scenarios/PCD-S04.md). Kullanıcının tüm konulardan 20 soru talebi, eski 15 soru/5+5+5 dağılımının önüne geçti. Dört ana alan 6/5/5/4; bütün alt maddeleri ölçme iddiası yok. 13 yeni karar + 6 karma + 1 erken pekiştirme. Yeni etiketi eski ders quizlerinde kavramın hiç bulunmadığı anlamına gelmez. Kaynaklar ek resmî web belgeleri. S01/S02/S03 tam metinleri ve S03 sonuçları kontrol edildi; puanlar korunur.
+
+| ID | Konu / ölçülen karar / belirleyici koşul | Tür / benzerlik | İlk sonuç |
+|---|---|---|---|
+| S04-01 | Bigtable timestamp hotspot; dengeli device prefix + zaman aralığı | Yeni; F03-02/U04-06 ile ders bağlantısı | Henüz çözülmedi |
+| S04-02 | Cloud Build iki bağımsız check compile sonrası; package ikisini bekler | Karma; S01-03 workspace zaten işler, S01-13 failure flag değil DAG | Henüz çözülmedi |
+| S04-03 | Test edilen digest ile gcloud deploy; mutable tag race ve rebuild yasak | Yeni karar; S02-06 image rollout değil artifact kimliği | Henüz çözülmedi |
+| S04-04 | Pub/Sub her takıma tüm event; bağımsız subscription ve grup içi load sharing | Yeni; S01-10 duplicate kararından farklı fan-out | Henüz çözülmedi |
+| S04-05 | Cloud SQL regional HA; synchronous zonal failover, schema korunacak | Yeni; S01-14 global Spanner scale kararı değil | Henüz çözülmedi |
+| S04-06 | Firestore server emulator env; yerel endpoint ve production parity sınırı | Yeni; F02-03 emulator ders bağlantısı | Henüz çözülmedi |
+| S04-07 | GKE rollout dört available, bir surge; maxUnavailable 0 / surge 1 | Karma; S02-06 rollout + S03-07 eviction ayrımı | Henüz çözülmedi |
+| S04-08 | Storage create-only upload; generationMatch 0 ve uncertain response doğrulama | Karma; S03-05 generation okuma yerine atomic create, S03-11 uncertain result | Henüz çözülmedi |
+| S04-09 | Apigee partner interval quota; burst policy zaten var | Yeni; F01-04 genel gateway'den ayrıntı | Henüz çözülmedi |
+| S04-10 | Gemini test generation; contract oracle, time/API kontrolü, boundary tests | Yeni; AI destekli test değerlendirmesi | Henüz çözülmedi |
+| S04-11 | Eventarc Storage finalized + doğru bucket; metadata event ayrımı | Yeni; S03-14 payload parser değil trigger filter | Henüz çözülmedi |
+| S04-12 | Servisler arası trace context propagation ve span parent | Yeni ölçülen karar; S02 çıkarılmış Trace taslağıyla konu ilişkisi | Henüz çözülmedi |
+| S04-13 | External CI WIF; repo claim restriction + repository IAM | Karma; S03-04 GKE KSA yerine external OIDC trust boundary | Henüz çözülmedi |
+| S04-14 | Test onayı digest attestation; Binary Authorization admission gate | Yeni; S01-13 pipeline failure gate yerine cluster enforcement | Henüz çözülmedi |
+| S04-15 | Cloud Run idle CPU, disposable refresh; min instance zaten var, billing değişimi | Yeni ölçülen karar; S02 çıkarılan idle CPU taslağı, S01-12 cold start değil | Henüz çözülmedi |
+| S04-16 | Firestore retried callback dış ödeme; durable pending record + provider key | Karma; S01-09/10 atomik dedup'tan dış sistem crash penceresine genişleme | Henüz çözülmedi |
+| S04-17 | Storage retention lock; admin süreyi azaltamamalı | Yeni; U04-01 lifecycle/versioning ayrımı | Henüz çözülmedi |
+| S04-18 | Build secret; build identity specific secret + availableSecrets/secretEnv | Karma; S01-01 runtime secret + S03-12 build identity, yeni injection kararı | Henüz çözülmedi |
+| S04-19 | GKE startup liveness'ı bekletir; steady deadlock hızını koruma | Erken pekiştirme; S02-12 ve 22 Eylül probe açıklaması, 25 Eylül kontrolünden erken | Henüz çözülmedi |
+| S04-20 | Compute Engine compatible custom OS/kernel ve container yasağı | Yeni; S02-01 Run job değil host OS gereksinimi | Henüz çözülmedi |
+
+Probe, workspace veya diğer tekrar kuyruğu yalnız soru hazırlandı diye tamamlanmadı. S04 sonucu yok; yeni set ID'si S05.

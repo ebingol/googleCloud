@@ -1,8 +1,10 @@
 # Yeni sohbet buradan devam etsin
 
-Son güncelleme: 23 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
+Son güncelleme: 24 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
 
 ## Kullanıcının son kararı
+
+23 Eylül ek beyan: Kullanıcı PDF'lerden asistana hazırlattığı yaklaşık 600–700 sorunun yaklaşık 300'ünü çözdüğünü söyledi. Bu kullanıcı beyanıdır; set bazında puan veya yeni klasör tamamlanması doğrulanmadı. Çalışmayı yalnız son senaryo setleri üzerinden özetleme.
 
 **Son düzeltme:** Cümleleri kısaltma; kullanıcı uzun İngilizce senaryolara alışmak istiyor. S02 çok kolay bulundu. Sonraki setlerde yakın, makul seçenekler ve çok koşullu kararlarla zorluğu artır; gerçek sınavla eşdeğerlik iddia etme. Q12 readiness/liveness/startup ayrımına hakim olmadığını kullanıcı açıkça belirtti; teknik eksik olarak takip et.
 
@@ -36,9 +38,11 @@ Diğer kaynak konumları: [teknik tekrar rehberi](PCD-S01-review-guide.md). Revi
 
 ## Sonraki sohbetin ilk işi
 
+**24 Eylül güncel öncelik:** Kullanıcı tüm konulardan 20 soru istedi; [PCD-S04](PCD-S04.md) hazırlandı ve çözüm bekleniyor. Cevap kaydettiğini bildirirse S04'ü yeniden oku. Dört ana alan 6/5/5/4, 45 dakika hedef; yalnız önceki üç compute alanıyla sınırlı değil. S03 ilk 7/15 ve tekrar 2/8 korunur. Aşağıdaki eski S03 inceleme önceliği bu yeni kullanıcı talebinden öncedir. Sonraki üretilecek yeni set ID'si S05.
+
 1. Bu dosya, STRATEGY ve QUESTION-LOG'u oku; yeni setten önce kaynak kapsamı ve eski soruları kontrol et.
 2. Kullanıcı yeni kaydettiği cevapları kontrol ettirmek istiyorsa önce o dosyaları değerlendir. Klasörün kaldığı set belli değilse kısa bir soru sor; tamamlanmışlık uydurma.
-3. **Güncel çözüm bekleyen set [PCD-S03](PCD-S03.md):** 15 soru, 5+5+5, 23 Eylül. Cevaplar boş; sonuç yok. Kullanıcı kaydettikten sonra yeniden oku. Önceki **PCD-S02:** [soru dosyası](PCD-S02.md). Kullanıcı 14/15 ve 20 dakika bildirdi; Q12 yanlış. Dosyada cevaplar boş; Q12 yanlış seçimi bilinmiyor. Kullanıcı cevapları sonradan kaydederse dosyayı yeniden oku. PCD-S03 23 Eylülde hazırlandı; henüz çözülmedi. Sonraki üretilecek yeni günlük set ID’si PCD-S04.
+3. **Güncel değerlendirme [PCD-S03](results/PCD-S03-attempt-01.md):** Sohbette gönderilen cevaplar 7/15, süre bildirilmedi. Soru dosyası boş; asıl ilk seçim kaydı sonuç dosyasında. Q1 üzerinden koşul çıkarma için tek soruluk rehberli kontrolle devam et. Önceki **PCD-S02:** [soru dosyası](PCD-S02.md). Kullanıcı 14/15 ve 20 dakika bildirdi; Q12 yanlış. Dosyada cevaplar boş; Q12 yanlış seçimi bilinmiyor. Kullanıcı cevapları sonradan kaydederse dosyayı yeniden oku. PCD-S03 23 Eylülde hazırlandı ve ilk cevapları 7/15 olarak değerlendirildi. Sonraki üretilecek yeni günlük set ID’si PCD-S04.
 4. Kaynak kontrolü, ayrı Türkçe cevap dosyası, soru günlüğü ve senaryo dizini güncellemesi birlikte yapılmalı. Cevapları soru dosyasında gösterme.
 5. Kullanıcı “bitti, save ettim” dediğinde dosyayı yeniden oku; önceki ekrana veya mesajdaki varsayıma göre puanlama yapma.
 
@@ -115,3 +119,69 @@ Kullanıcı “yeni sınav hazırlayalım” dedi. Mevcut tercihlerle [PCD-S03](
 Kaynaklar 23 Eylülde Google Cloud ve Kubernetes resmî web belgelerinden kontrol edildi; PDF sayfası doğrulandığı iddia edilmedi. GKE kapsamına ConfigMap subPath, WIF, PDB, NetworkPolicy ve scheduling ayrıntıları eklendi. Bu içerikler tüm GKE ders PDF’lerinin zaten kapsadığı veya kullanıcının önceden öğrendiği varsayımıyla değerlendirilmemeli.
 
 **Durum:** Yalnız hazırlık tamamlandı. Kullanıcı cevabı, süre veya yeni puan yok; sonuç dosyası oluşturulmadı. S01/R01/S02 ilk sonuçları değişmedi. “Bitti, kaydettim” gelince S03 dosyasını yeniden oku ve ilk denemeyi ayrı kaydet. Sonraki yeni set ID’si PCD-S04; S03 çözülmeden yeni sonuç varsayma. Yeni dil ifadeleri soru/anahtarda afresh, propagate, headroom; kullanıcının bunlarda zorlandığı henüz bildirilmedi. Otomasyon kurulmadı.
+
+## 23 Eylül — S03 ilk cevaplar: 7/15, rehberli ayrıştırma bekleniyor
+
+Kullanıcı cevapları sohbette gönderdi: 1 D, 2 C, 3 C, 4 yalnız D, 5 C, 6 B, 7 C, 8 A, 9 C, 10 A+B, 11 B, 12 D, 13 A, 14 C, 15 B. Güncel sorular/anahtar yeniden okundu. **7/15 (%46,7)**; Q4 eksik küme, Q9–15 hepsi doğru. Süre/güven/gerekçe/dış destek bildirilmedi. [Kalıcı ilk cevap kaydı](results/PCD-S03-attempt-01.md); soru dosyası boş bırakıldı. Yukarıdaki “henüz çözülmedi” hazırlık notları bu sonuçtan öncedir.
+
+Kullanıcı çok zorlandığını, okuduğunu soyutlayıp çözüm pattern’ına eşleyemediğini söyledi. Bu öz değerlendirme kaydedildi; teknik ve dil nedenleri kesinleştirilmedi. Set, seçenek zorluğuna ek olarak yeni teknik kapsam getirdi; özellikle subPath/WIF/PDB. S02 ile skor farkını doğrudan gerileme sayma. Q2 seçimi doğru audience içeriyor ama candidate tag hedeflemesini kaçırıyor; Q4 doğru D yanında C eksik. Audience tamamen unutuldu veya yönerge kesin atlandı deme. Q8 yeni performans uygulaması yanlış; teknik gerekçesi bilinmiyor.
+
+Sonraki adım: yeni sınav üretmek yerine mevcut uzun İngilizce senaryolardan hedef / kısıt / zaten sağlanmış durum çıkarma pratiği. İlk rehberli kontrol Q1’de “must not require a Pod restart” ifadesinin neyi yasakladığı. Tek soru sorup cevabı bekle. Henüz bu kontrole kullanıcı yanıtı veya kavrayış teyidi yok; ilk 7/15 sonradan değiştirilmez. Gerektiğinde teknik bilgi ayrıca öğretilir; okuma güçlüğü varsayımıyla tüm yanlışları açıklama. Probe ve workspace kuyrukları korunur. Sonraki yeni set ID’si S04, öncelik S03 incelemesi.
+
+## 23 Eylül — e-postadaki kaynakların incelenmesi
+
+Kullanıcı meslektaşlarının kaynaklarını incelememi istedi. İnceleme açık sayfalar ve örneklerle sınırlı; hiçbir deneme gönderilmedi, satın alma yapılmadı, yeni kullanıcı sonucu yok.
+
+- [Google sertifika sayfası](https://cloud.google.com/learn/certification/cloud-developer): 2 saat, 50–60 soru. Bağlantılı [güncel rehber](https://services.google.com/fh/files/misc/professional_cloud_developer_exam_guide_english.pdf) dört alanı yaklaşık %32/%23/%24/%21 olarak veriyor; kapsam yalnız compute değil.
+- [Resmî örnek form](https://docs.google.com/forms/d/e/1FAIpQLSfFeB8zBNi2q-ar0V7iIguhk2e6P-UkrJ8OJfg6n0k6HcYLDQ/viewform) Google sayfasından doğrulandı. Açılış açıklaması örneklerin kapsam/zorluk veya sınav başarısı göstergesi olmadığını söylüyor. Sorular ilerletilip çözülmedi.
+- [CertificationPractice](https://certificationpractice.com/practice-exams/google-cloud-professional-cloud-developer): açık 20 örneğin metin/seçenekleri okundu; tam bankaya/anahtara onay verilmedi. İki saatlik deneme ihtiyacına aday; soru kalitesi değişken.
+- [ExamTopics](https://www.examtopics.com/exams/google/professional-cloud-developer/view/), [ITExams](https://www.itexams.com/exam/Professional-Cloud-Developer), [SlideShare](https://www.slideshare.net/slideshow/gcpprofessionalclouddeveloperexamv2221139taqwljpdf/254464375): ilk örneklerde tekrar saptandı; ayrı benzersiz bankalar gibi sayma. Tüm bankaların aynı olduğu veya e-postadaki %40 hata oranı doğrulanmadı.
+- [SkillCertPro](https://skillcertpro.com/product/google-cloud-certified-professional-cloud-developer-practice-exam-test/): yalnız satış sayfası incelendi; 1050 soru/18 deneme ve eski gerçek sınavlardan alındığı iddiası satıcı beyanıdır. Banka kalitesi/fiyatı doğrulanmadı; satın alma önerilmedi.
+- LearnGood: ilk Google giriş erişimi otomatik onay incelemesince reddedildi; kullanıcı açık izin verdi ve ardından girişi kendisi tamamlayıp “hazır” dedi. Giriş engeli artık yok. Aşağıdaki içerik incelemesi tamamlandı.
+- Maildeki YouTube videosu web aracıyla açılamadı, içerik doğrulanmadı.
+
+Teknik kontrol: CertificationPractice Q16'nın retry limitleri için yeterli bağlam vermediği değerlendirmesi, [Google Cloud Storage retry belgesi](https://docs.cloud.google.com/storage/docs/retry-strategy) ile karşılaştırıldı; değerler kütüphaneye göre farklı. Kesin yanlış anahtar tespiti değil, soru belirsizliği. Sonraki kullanıcı isteği kaynak incelemesiyse buradan devam et; S03 öğrenme kontrolü hâlâ bekliyor.
+
+### LearnGood giriş sonrası örneklem incelemesi
+
+23 Eylül: [Kurs özeti](https://learngood.com/#/user/course/Google%20Cloud%20Developer) 199 soru ve 2026-05-31 güncelleme tarihi gösteriyor. Süreli test kurulumunda varsayılan Standard / Medium / 2 saat / 50 soru görüldü; test başlatılmadı. Mevcut oturumda sorular okunabildi; tüm özelliklerin herkes için ücretsiz olduğu doğrulanmadı.
+
+Dört bölümden 30 farklı soru kökü ve seçenek okundu: Q1–8, Q49–53, Q100–105, Q141–146, Q195–199. Cevap seçilmedi/Submit yapılmadı; cevap anahtarları ve açıklamalar incelenmedi, kullanıcı puanı üretilmedi. Şık sıraları yeniden ziyarette değişiyor; ileride harfle değil içerikle referans ver. Çoğu kısa kavram sorusu, bazı yakın seçenekli sorularda belirleyici koşul eksik. Q196 hibrit mimaride genel olarak en kritik başlangıç faktörünü soruyor; ağ/compliance önceliği senaryoyla belirlenmemiş.
+
+Teknik bulgular: Q141 serverless/container ayrımını birbirini dışlayan kategoriler gibi kuruyor; [Cloud Run belgesi](https://docs.cloud.google.com/run/docs/overview/what-is-cloud-run) container çalıştırdığını doğruluyor. Q199 bir seçenekte lifecycle kurallarına erişim örüntülerine göre otomatik sınıf geçişi atfediyor. [Lifecycle koşulları](https://docs.cloud.google.com/storage/docs/lifecycle) doğrudan son erişim koşulu sunmuyor; erişime göre otomatik geçiş [Autoclass](https://docs.cloud.google.com/storage/docs/autoclass) özelliği. Bunlar soru/seçenek ifadesi bulguları; anahtar görülmeden “site bunu doğru işaretliyor” deme.
+
+Konu etiketleri %33/%26/%19/%22; aynı gün erişilen resmî rehber %32/%23/%24/%21. Güncellik/kapsam kontrolü gerekli. Değerlendirme: temel kavram tekrarı ve süre pratiğine yardımcı aday; gerçek sınava yakınlık, tüm bankanın doğruluğu veya tamamının kolay olduğu doğrulanmadı. Kullanıcının 300 soru ilerlemesi ve S03 ilk sonucu değişmedi.
+
+## 23 Eylül — S03 yanlışlarının ilk tekrarı
+
+Kullanıcı “yapamayacağım burada ezber de çok yok” diye güçlük bildirdikten sonra ilk sekiz soruyu yeniden çözdü: 1 B, 2 B, 3 A, 4 A+D, 5 D, 6 A, 7 D, 8 A. **2/8 doğru (Q1/Q3).** [Ayrı tekrar kaydı](results/PCD-S03-retry-01.md). Önceki ilk deneme **7/15 korunur**; birleşik 9/15 bağımsız puan yazma. Süre/gerekçe/kaynak kullanımı bildirilmedi. Aynı sorular, önceki değerlendirme/kısmi açıklama sonrası; gecikmeli kalıcılık değil.
+
+Güncel öğretim önceliği Q2: kullanıcı C’den B’ye geçti; audience ve tag destination parçalarını aynı seçenekte birleştirme ayrımı. Kısa çözümlü örnekle nereye gidilir / token hangi servis için ayrımı gösterilecek. Q4 artık iki seçim içeriyor; yalnız yönerge sorunu deneme, node vs workload kimliğini kontrol et. Q1/Q3 seçimleri düzeldi ama gerekçeli kavrayış teyidi yok. Eski “Q1 ile başla” önerisi yerine Q2’den devam et. Tek seferde en fazla birkaç ayrım; uzun İngilizce soruları kısaltma tercihi yok. Kullanıcıyı tekrar tekrar sınamak yerine önce örnek çözüm gösterme yaklaşımı korunur.
+
+## 23 Eylül — kullanıcı tüm cevapların açıklamasını istedi
+
+Kullanıcı Q2 için “bunu bilmek gerekiyordu” diyerek teknik önbilgi gereğini vurguladı; ardından tüm cevapları açıklayarak istedi. Güncel talep, tek soru/az sayıda açıklama tercihinin önüne geçer. Q1–Q8 için teknik kural, senaryoya uygulama ve seçtiği alternatifin elenmesi; Q9–Q15 için daha kısa açıklama hazırlanıyor. Q2’nin tag destination/normal service audience kuralı yalnız okuma ile türetilemez; önceki soyutlama ağırlıklı çerçeve bu açıdan düzeltildi. Diğer teknik boşluklar da kullanıcının okuma becerisine yüklenmemeli.
+
+Resmî kaynaklar yeniden açılarak kontrol edildi. Bu açıklamalar rehberli öğrenmedir; ilk 7/15 ve tekrar 2/8 korunur. Açıklama sonrası kavrayış veya kalıcılık henüz teyit edilmedi. Kullanıcı istemeden yeni quiz veya otomasyon oluşturma.
+
+## 23 Eylül — single-threaded ve concurrency ayrımı
+
+Kullanıcı “single threadedda nasıl concurrency 1’den fazla olur” diye sordu. Q8 için eksik kavramsal bağlantı: thread’in aynı anda kod yürütmesi ile instance’a yönlendirilmiş/henüz bitmemiş istek sayısı farklıdır. Async I/O sırasında tek thread başka isteğe ilerleyebilir; CPU-bound bloklayıcı işte diğer istekler bekleyebilir. Cloud Run concurrency ayarı üst sınırdır, thread oluşturmaz veya uygulamayı otomatik paralelleştirmez. Cloud Run resmi concurrency belgesinin Node.js async ve multi-vCPU hotspot bölümleri tekrar doğrulandı: https://docs.cloud.google.com/run/docs/about-concurrency . Açıklama sonrası kavrayış teyidi yok; ilk ve tekrar puanları değişmedi.
+
+## 23 Eylül — teknik eksik ve dil güçlüğü ayrımı netleşti
+
+Kullanıcı single-threaded/concurrency açıklaması için “anladım” dedi; bu anlık kavrayış beyanıdır, bağımsız kontrol veya kalıcılık kanıtı değildir. İngilizce nedeniyle bazen bildiğini senaryoda tanıyamadığını, ayrıca PodDisruptionBudget ve eviction kavramlarını bilmediğini açıkça belirtti. Q7 için teknik kavram eksikliği kullanıcı beyanıyla doğrulandı. Bunların eğitimde yer almadığını ve başkalarının da eksik kapsamdan söz ettiğini belirtti; tüm eğitim materyalinde yokluk veya diğer insanların genellemesi ayrıca doğrulanmadı. PDB zaten S03’e ek resmî kaynak olarak eklenmişti; bunu önceden öğrenilmiş konu sayma.
+
+Eviction (Pod’un sonlandırılıp node’dan çıkarılması), node drain (bakım için node’u boşaltma), Deployment’ın replacement oluşturması ve PDB’nin Eviction API üzerinden gönüllü kesintilere sınır koyması 3 Pod / minAvailable 2 örneğiyle açıklanıyor. PDB otomatik ölçekleme yapmaz ve ani node kaybını önlemez. Kaynaklar: https://kubernetes.io/docs/concepts/workloads/pods/disruptions/ ve https://kubernetes.io/docs/concepts/scheduling-eviction/api-eviction/ . PDB açıklaması sonrası kavrayış teyidi henüz yok. İlk 7/15 ve tekrar 2/8 korunur.
+
+Çalışma yaklaşımı: kullanıcının bilmediğini belirttiği ek kapsamı önce kısa teknik konu anlatımıyla öğret; sonra senaryoda uygula. Bildiği konuda İngilizce koşul çıkarma çalışmasını ayrı yürüt. Yeni konuyu sessizce eski bilgi testi gibi değerlendirme; sırf dil sorunu olarak açıklama.
+
+## 24 Eylül — sınav deneyimi e-postası tekrar paylaşıldı
+
+Kullanıcı kaynak ve sınav deneyimi içeren e-postanın tam metnini paylaştı; yeni soru veya deneme istemedi. Paylaşılan https://services.google.com/fh/files/misc/042426_professional_cloud_developer_exam_guide_english.pdf yeniden okundu: dört alan yaklaşık %32/%23/%24/%21. Resmî sertifika sayfası yeniden kontrol edildi: 2 saat, 50–60 tek/çoklu seçim sorusu. E-postadaki zorluğa bağlı soru sayısı, %40 yanlış cevap ve LearnGood'un sınavla birebir örtüşmesi kişisel değerlendirmelerdir; doğrulanmış genel bilgiler sayılmadı. Önceki kaynak incelemesi korunur, bu oturumda bankalar tekrar incelenmedi. Teknik önbilgi eksiklerini önce öğretme yaklaşımı geçerli; yeni puan, tamamlanma veya otomasyon yok.
+
+## 24 Eylül — PCD-S04 hazırlandı
+
+Sonraki kullanıcı mesajında tüm konulardan 20 soru açıkça istendi. [S04](PCD-S04.md) oluşturuldu: 18 tek seçim, 2 çift seçim (Q13/Q18); uzun İngilizce sorular, boş cevap/güven/koşul alanları, 45 dakika çalışma hedefi. [Türkçe anahtar](../answers/scenarios/PCD-S04.md) ayrı; her soruda gerekçe, alternatif eleme, İngilizce belirleyici ifade, ek resmî web kaynağı ve rehber alanı var. Dört ana alanın örneklemi; tüm alt konuları ölçme iddiası yok, kalan alt kapsam anahtarda belirtiliyor.
+
+Tasarım Q1/5/9/13/17/20; geliştirme-test Q2/6/10/14/18; deployment Q3/7/11/15/19; entegrasyon Q4/8/12/16. Teknik konu bilinmiyorsa B notu ile dil güçlüğünden ayrılacak. 13 yeni karar, 6 karma, 1 erken pekiştirme. Q19 probe 25 Eylül kontrolünden erken; gecikmeli kalıcılık sayma. S02 çıkarılmış idle CPU/Trace taslaklarıyla Q15/Q12 ilişkisi günlüğe işlendi. Soru geçmişi, dizin ve strateji güncellendi. Yalnız hazırlık tamamlandı; kullanıcı seçimi/süre/puan yok, sonuç dosyası oluşturulmadı. Eski ilk denemeler korunur, otomasyon yok. Sonraki yeni set ID'si S05.
