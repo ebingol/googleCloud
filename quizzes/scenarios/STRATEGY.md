@@ -117,3 +117,10 @@ Sonraki kapsam planlamasında Gemini Cloud Assist / Code Assist / uygulamada AI 
 ## 25 Eylül — S05 uzun paragraf tercihi
 
 Kullanıcının açık talebiyle S05 20 soru ve 50 dakika kişisel çalışma hedefiyle hazırlandı. Her İngilizce soru gövdesi 104–118 kelime; koşullar hedef, kısıt ve zaten sağlanan durum ayrımıyla yazıldı. Yeni teknik konular teknik eksik olarak işaretlenebilir; salt okuma testi değildir. Dört ana alan 6/5/5/4; bütün alt başlıklar ölçülmedi. 10 yeni ölçüm + 9 karma + 1 pekiştirme; ayrıntılar QUESTION-LOG içinde. S04 ve S05 henüz çözülmedi. Sonraki yeni set S06; yeni quizden önce gelen sonuçları ve bilinmeyen kavramları değerlendir.
+
+
+## 25 Eylül — S06 ve sonraki setlerde öncelik
+
+Kullanıcının son talebi: daha uzun İngilizce paragraflar, daha çetrefilli/yakın seçenekler; birincil kapsam dayanağı güncel resmî exam guide. Sınav deneyimi aktarımları ürün kotasına dönüştürülmez. Her soruya rehber maddesi ve resmî teknik kaynak bağla; en yakın yanlış seçeneği eleyen koşulu anahtarda açıkla. Uzunluğu dolgu cümleleriyle, zorluğu belirsizlikle artırma.
+
+S06 20 soru, 6/5/5/4 birincil alan örneklemi, 18 tek + Q6/Q18 çift seçim olarak hazır. 11 yeni ölçüm + 9 karma; gecikmeli tekrar yok. Gövdeler 125–143 kelime. Kullanıcı süreyi kaydeder; 50 dakika zorunlu bitiş sınırı değil. S05 ilk 17/20 ve 70–80 dakika korunur; açıklama sonrası doğru kontroller bağımsız puan değildir. S06 sonucu henüz yok; sonraki yeni set S07.

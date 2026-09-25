@@ -2,7 +2,7 @@
 
 [Yeni sohbet için devam notu](HANDOFF.md) · [Günlük çalışma ve soru üretme stratejisi](STRATEGY.md) · [Soru geçmişi — hazırlayan için](QUESTION-LOG.md)
 
-**5 senaryo seti + 1 pekiştirme seti · 90 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
+**6 senaryo seti + 1 pekiştirme seti · 110 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
 
 Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgündür, gerçek sınav sorusu değildir. Amaç birkaç gereksinimi birlikte değerlendirmek ve makul alternatifleri elemektir. Pilotun zorluğu henüz öğrenci sonuçlarıyla kalibre edilmemiştir.
 
@@ -13,7 +13,8 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 | PCD-S02 | Cloud Run / Cloud Run functions / GKE, 5’er soru; kullanıcı beyanıyla 14/15 | 30 dakika | [Çöz](PCD-S02.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S02.md) |
 | PCD-S03 | Cloud Run / Functions / GKE, 5’er soru; ilk bildirilen cevaplar 7/15 | 30 dakika | [Çöz](PCD-S03.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S03.md) |
 | PCD-S04 | Dört resmî ana alandan 20 karma soru; 6 tasarım + 5 geliştirme/test + 5 deployment + 4 entegrasyon; çözüm bekleniyor | 45 dakika | [Çöz](PCD-S04.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S04.md) |
-| PCD-S05 | Daha uzun paragraflı 20 soru; Gemini, Workstations, Memorystore, API performansı ve karma mimari; çözüm bekleniyor | 50 dakika | [Çöz](PCD-S05.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S05.md) |
+| PCD-S05 | Daha uzun paragraflı 20 soru; Gemini, Workstations, Memorystore, API performansı ve karma mimari; ilk cevaplar 17/20, 70–80 dakika | 50 dakika | [Çöz](PCD-S05.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S05.md) |
+| PCD-S06 | Exam guide öncelikli 20 soru; daha uzun paragraflar ve yakın alternatifler; çözüm bekleniyor | Süreyi kaydet | [Çöz](PCD-S06.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S06.md) |
 
 **İlk set sonrası:** [Doküman sayfaları, ilgili quizler ve bugünkü çalışma sırası](PCD-S01-review-guide.md).
 
@@ -21,7 +22,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 
 1. İlk turda cevap anahtarını ve kaynakları açmadan çöz.
 2. Her cevapta E/K/T güven düzeyi ve kararı belirleyen koşulu bir cümleyle yaz; kararsız olduğunda yakın alternatifi de belirt.
-3. İstersen cevapları sohbette beşli gruplar halinde gönder; S04/S05 için son grup 16–20.
+3. İstersen cevapları sohbette beşli gruplar halinde gönder; S04/S05/S06 için son grup 16–20.
 4. Anahtarla kontrol ettikten sonra yanlışları ve tahminle doğruları tekrar listesine al.
 5. İlerlemeni aşağıya kaydet; tekrar çözümündeki ezber etkisini ilk denemeden ayır.
 
@@ -32,6 +33,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 | PCD-S02 | İlk bildirilen; kullanıcı beyanı | 22 Eylül 2026 | 14 / 15 (%93,3) | 20 dakika | Q12 readiness/liveness; cevap alanları boş, seçilen şık bilinmiyor. [Sonuç](results/PCD-S02-attempt-01.md) |
 | PCD-S03 | İlk bildirilen cevaplar | 23 Eylül 2026 | 7 / 15 (%46,7) | Bildirilmedi | Q1–Q8 yanlış/eksik; Q9–Q15 doğru. [Sonuç](results/PCD-S03-attempt-01.md) |
 | PCD-S03 | Q1–Q8 tekrar; önceki geri bildirim sonrası | 23 Eylül 2026 | 2 / 8 | Bildirilmedi | Q1/Q3 düzeldi; ilk 7/15 korunur. [Tekrar](results/PCD-S03-retry-01.md) |
+| PCD-S05 | İlk bildirilen cevaplar | 25 Eylül 2026 | 17 / 20 (%85) | 70–80 dakika | Q3 schema uyumu; Q15 termination/PDB; Q18 build cache. Rehberli kontroller ilk puanı değiştirmez. [Sonuç](results/PCD-S05-attempt-01.md) |
 
 ## Kapsam
 
@@ -40,3 +42,5 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 [Ana quiz dizini](../README.md) · [Repo ana sayfası](../../README.md)
 
 24 Eylül: S04 dört ana alanı resmî ağırlıklara yakın örnekler; bütün alt konuları ölçtüğü iddia edilmez. Soru bazında kaynaklar ve ölçülmeyen alt kapsam cevap dosyasındadır. Önceki set puanları değişmedi.
+
+25 Eylül: S06 için birincil dayanak güncel exam guide; soru bazındaki rehber maddeleri, resmî kaynaklar ve ölçülmeyen alt kapsam ayrı anahtarda. S05 ilk sonucu korunur.

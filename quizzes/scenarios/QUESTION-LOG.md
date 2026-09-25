@@ -126,25 +126,57 @@ Probe, workspace veya diğer tekrar kuyruğu yalnız soru hazırlandı diye tama
 
 | ID | Konu / ölçülen karar | Tür / benzerlik | İlk sonuç |
 |---|---|---|---|
-| S05-01 | Memorystore cache-aside, tenant key ve kontrollü fallback | Yeni; S01-07 process shared-state hatası yerine dağıtık cache tasarımı | Henüz çözülmedi |
-| S05-02 | Cloud Workstations servis seçimi ve merkezi ortam | Yeni | Henüz çözülmedi |
-| S05-03 | Canary ortak şema, expand-contract ve rollback | Karma; S01-02 rollout ve rehberli R10-04 traffic migration üzerine veri uyumluluğu, eski sorunun aynısı değil | Henüz çözülmedi |
-| S05-04 | Vision API offline batching/LRO ve kısmi retry | Yeni ölçüm; 25 Eylül konuşmasında async/sync ayrımı açıklandı | Henüz çözülmedi |
-| S05-05 | Memorystore HA ile durability ayrımı | Karma; S04-05 Cloud SQL HA bilgisini Redis’e yanlış genellememe | Henüz çözülmedi |
-| S05-06 | Workstations persistent home ve image toolchain | Yeni; Q2 servis seçiminden farklı yaşam döngüsü kararı | Henüz çözülmedi |
-| S05-07 | GKE HPA external backlog vs CPU/node scaling | Karma; S02-15 HPA kaynak koşullarından farklı talep metriği | Henüz çözülmedi |
-| S05-08 | BigQuery pagination token ve streaming tüketim | Yeni | Henüz çözülmedi |
-| S05-09 | Spanner exact timestamp vs relative staleness | Yeni ölçüm; Gemini rehberindeki staleness konusu konuşuldu | Henüz çözülmedi |
-| S05-10 | Gemini Code Assist bağlam ve pinned API doğrulama | Karma; S04-10 test oracle yerine implementation context | Henüz çözülmedi |
-| S05-11 | Cloud Run secret volume latest vs startup env | Karma; S02 pinned secret/rollback yerine canlı rotation gereksinimi | Henüz çözülmedi |
-| S05-12 | Spanner Query Stats vs tracing teşhis katmanı | Karma; S04-12 propagation tamam, Gemini metninde bu ayrım görüldü | Henüz çözülmedi |
-| S05-13 | Airflow mevcut DAG migration vs Workflows | Yeni; S01-15 yeni workflow callback tasarımından farklı migration | Henüz çözülmedi |
-| S05-14 | Gemini Code Assist vs Cloud Assist ürün rolü | Yeni ölçüm; 25 Eylül konuşmasında ürün ayrımı açıklandı | Henüz çözülmedi |
-| S05-15 | GKE preStop + SIGTERM ortak termination bütçesi | Karma; S03-07 PDB ve S02 çıkarılmış SIGTERM taslağı, yeni hook bütçesi | Henüz çözülmedi |
-| S05-16 | API retry jitter, deadline ve layered retry | Karma; S03-11/S04-08 uncertain write yerine idempotent GET retry orchestration | Henüz çözülmedi |
-| S05-17 | Storage Autoclass erişim paterni vs age lifecycle | Yeni; S04-17 retention kararından farklı maliyet/erişim tasarımı | Henüz çözülmedi |
-| S05-18 | Cloud Build Docker layer ordering ve remote cache | Yeni; S04-02 step DAG ve S04-03 artifact kimliğinden farklı cache kararı | Henüz çözülmedi |
-| S05-19 | API Gateway backend identity ve service-level Invoker | Pekiştirme; S01-06/R01-03 invoker yönü gateway üzerinde, yeni temel karar sayılmaz | Henüz çözülmedi |
-| S05-20 | IAM inherited allow daraltma ve bucket scope | Karma; S01-01 secret least privilege üzerine inherited izin kaldırma | Henüz çözülmedi |
+| S05-01 | Memorystore cache-aside, tenant key ve kontrollü fallback | Yeni; S01-07 process shared-state hatası yerine dağıtık cache tasarımı | Doğru |
+| S05-02 | Cloud Workstations servis seçimi ve merkezi ortam | Yeni | Doğru |
+| S05-03 | Canary ortak şema, expand-contract ve rollback | Karma; S01-02 rollout ve rehberli R10-04 traffic migration üzerine veri uyumluluğu, eski sorunun aynısı değil | Yanlış; kullanıcı A, anahtar D |
+| S05-04 | Vision API offline batching/LRO ve kısmi retry | Yeni ölçüm; 25 Eylül konuşmasında async/sync ayrımı açıklandı | Doğru |
+| S05-05 | Memorystore HA ile durability ayrımı | Karma; S04-05 Cloud SQL HA bilgisini Redis’e yanlış genellememe | Doğru |
+| S05-06 | Workstations persistent home ve image toolchain | Yeni; Q2 servis seçiminden farklı yaşam döngüsü kararı | Doğru |
+| S05-07 | GKE HPA external backlog vs CPU/node scaling | Karma; S02-15 HPA kaynak koşullarından farklı talep metriği | Doğru |
+| S05-08 | BigQuery pagination token ve streaming tüketim | Yeni | Doğru |
+| S05-09 | Spanner exact timestamp vs relative staleness | Yeni ölçüm; Gemini rehberindeki staleness konusu konuşuldu | Doğru |
+| S05-10 | Gemini Code Assist bağlam ve pinned API doğrulama | Karma; S04-10 test oracle yerine implementation context | Doğru |
+| S05-11 | Cloud Run secret volume latest vs startup env | Karma; S02 pinned secret/rollback yerine canlı rotation gereksinimi | Doğru |
+| S05-12 | Spanner Query Stats vs tracing teşhis katmanı | Karma; S04-12 propagation tamam, Gemini metninde bu ayrım görüldü | Doğru |
+| S05-13 | Airflow mevcut DAG migration vs Workflows | Yeni; S01-15 yeni workflow callback tasarımından farklı migration | Doğru |
+| S05-14 | Gemini Code Assist vs Cloud Assist ürün rolü | Yeni ölçüm; 25 Eylül konuşmasında ürün ayrımı açıklandı | Doğru |
+| S05-15 | GKE preStop + SIGTERM ortak termination bütçesi | Karma; S03-07 PDB ve S02 çıkarılmış SIGTERM taslağı, yeni hook bütçesi | Yanlış; kullanıcı B, anahtar D |
+| S05-16 | API retry jitter, deadline ve layered retry | Karma; S03-11/S04-08 uncertain write yerine idempotent GET retry orchestration | Doğru |
+| S05-17 | Storage Autoclass erişim paterni vs age lifecycle | Yeni; S04-17 retention kararından farklı maliyet/erişim tasarımı | Doğru |
+| S05-18 | Cloud Build Docker layer ordering ve remote cache | Yeni; S04-02 step DAG ve S04-03 artifact kimliğinden farklı cache kararı | Yanlış; kullanıcı B, D, anahtar C, D |
+| S05-19 | API Gateway backend identity ve service-level Invoker | Pekiştirme; S01-06/R01-03 invoker yönü gateway üzerinde, yeni temel karar sayılmaz | Doğru |
+| S05-20 | IAM inherited allow daraltma ve bucket scope | Karma; S01-01 secret least privilege üzerine inherited izin kaldırma | Doğru |
 
 Yalnız hazırlık tamamlandı; tekrar kuyruğunda başarı/kalıcılık teyidi yok. Sonraki yeni set S06.
+
+25 Eylül S05 ilk cevaplar: **17/20 (%85), 70–80 dakika**. [Kayıt](results/PCD-S05-attempt-01.md). Q3/Q15/Q18 yanlış; ilk seçimler korundu. Gerekçe/güven ve bağımsız koşullar bilinmiyor. Açıklama sonrası kalıcılık teyidi yok.
+
+
+## PCD-S06 — 25 Eylül 2026
+
+[Sorular](PCD-S06.md) · [Anahtar](../answers/scenarios/PCD-S06.md). Kullanıcı daha uzun paragraflar, daha çetrefilli şıklar ve öncelikli dayanak olarak exam guide istedi. 20 soru; 18 tek + Q6/Q18 çift seçim. Birincil alan örneklemi 6/5/5/4; 11 yeni ölçüm + 9 karma, gecikmeli tekrar yok. Yeni ölçüm, kavramın ders bankasında/konuşmada hiç görülmediği anlamına gelmez. S05 Q3/Q15/Q18 anlık açıklamaları isim değiştirilerek tekrarlanmadı.
+
+| ID | Konu / ölçülen karar | Tür / benzerlik | İlk sonuç |
+|---|---|---|---|
+| S06-01 | Cloud Tasks schedule/rate/concurrency seçimi | Yeni; S01-15 callback workflow yerine zamanlanmış tek hedef dispatch | Henüz çözülmedi |
+| S06-02 | ADC credential-source precedence ve IDE environment | Karma; S01-11 CLI/ADC ayrımına environment precedence ekleniyor | Henüz çözülmedi |
+| S06-03 | Cloud Run cross-project image pull kimliği | Karma; S03-12 builder/runtime ayrımına platform service agent ekleniyor; S02 çıkarılmış taslakta konu vardı | Henüz çözülmedi |
+| S06-04 | Pub/Sub ordering scope ve regional publishing | Yeni ölçüm; Gemini setinde ordering bölgesellik konusu incelendi; S04-04 fan-out değil | Henüz çözülmedi |
+| S06-05 | Storage signed GET URL kapsam ve expiry | Yeni; S03-05 object generation ve Gemini POST policy konuşmasından farklı download yetkisi | Henüz çözülmedi |
+| S06-06 | AI IDE/MCP tool yüzeyi ve credential sınırı | Yeni; S05-10 context seçimi yerine MCP execution permissions | Henüz çözülmedi |
+| S06-07 | GKE memory request/limit ve OOM teşhisi | Karma; S03-13 CPU scheduling üzerine per-container memory failure | Henüz çözülmedi |
+| S06-08 | Cloud SQL Auth Proxy ile private network reachability | Karma; S02-07 connection pool değil ağ önkoşulu; Gemini private-pool topoloji incelemesiyle ilişkili | Henüz çözülmedi |
+| S06-09 | Bigtable replicated instance app-profile consistency | Yeni; S04-01 row-key hotspot değil replicated routing; S05-09 Spanner snapshot’tan farklı | Henüz çözülmedi |
+| S06-10 | Cloud Build integration-test isolation ve failure preservation | Karma; S01-13 gate ve S04-02 dependency sırasına eşzamanlı test isolation ekleniyor | Henüz çözülmedi |
+| S06-11 | Apigee API contract versioning ve backend routing | Yeni; S04-09 quota parametresi değil birlikte yaşayan API contract | Henüz çözülmedi |
+| S06-12 | Observability metric cardinality ve structured logs | Yeni; S04-12 trace propagation/S05-12 Query Stats yerine label tasarımı | Henüz çözülmedi |
+| S06-13 | KMS rotation ile eski ciphertext migration ayrımı | Yeni; S05-11 secret rotation yerine encryption-key lifecycle | Henüz çözülmedi |
+| S06-14 | Cloud Build provenance output ve verification gate | Karma; S04-14 admission attestation yerine builder provenance üretimi | Henüz çözülmedi |
+| S06-15 | Cloud Run HTTP/2 h2c ve TLS termination | Yeni; S03-06 bind/sidecar port yerine transport protocol sınırı | Henüz çözülmedi |
+| S06-16 | BigQuery Storage Write API pending streams atomic commit | Yeni; S05-08 result pagination değil batch write visibility | Henüz çözülmedi |
+| S06-17 | Storage lifecycle Delete ile retention birleşimi | Karma; S04-17 lock ve S05-17 Autoclass yerine retention/deletion etkileşimi | Henüz çözülmedi |
+| S06-18 | Artifact Analysis bulgusundan rebuild ve verified rollout | Karma; S04-03 digest kimliği yeni vulnerability-remediation bağlamında; S05-18 layer cache tekrarı değil | Henüz çözülmedi |
+| S06-19 | GKE regular init container ve shared emptyDir | Karma; S02-04 startup ve S02-09 volume lifetime üzerine process-start dependency; aynı probe sorusu değil | Henüz çözülmedi |
+| S06-20 | Firestore index exemptions ve write fanout | Yeni; S04-06 emulator/S04-16 transaction değil schema-index tasarımı | Henüz çözülmedi |
+
+S06 yalnız hazırlandı; yeni kullanıcı yanıtı/süre/puan yok. Sonraki yeni set S07.

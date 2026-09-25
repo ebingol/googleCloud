@@ -4,7 +4,7 @@ Son güncelleme: 25 Eylül 2026. Hedef Professional Cloud Developer; önceki kul
 
 ## Kullanıcının son kararı
 
-**25 Eylül güncel:** Kullanıcının talebiyle [PCD-S05](PCD-S05.md) hazır: 20 soru, daha uzun İngilizce paragraflar (104–118 kelime), ayrı kaynaklı [Türkçe anahtar](../answers/scenarios/PCD-S05.md), 50 dakika kişisel hedef. S04 ve S05 çözüm bekliyor; S04’ü 26 Eylülde çözme planı korunur. Yeni sonuç veya kalıcılık kanıtı yok. Sonraki üretilecek set S06.
+**25 Eylül güncel:** Kullanıcı daha uzun paragraf, daha çetrefilli seçenek ve birincil kaynak olarak exam guide istedi. [S06](PCD-S06.md) ve ayrı kaynaklı [anahtarı](../answers/scenarios/PCD-S06.md) hazır; henüz çözülmedi. 20 soru (Q6/Q18 çift seçim), 6/5/5/4 ana alan örneklemi; soru gövdeleri 125–143 kelime. Süre kaydedilecek; önceki 50 dakika zorunlu sınır değil. S05 ilk **17/20, 70–80 dakika** korunur; Q3/Q15/Q18 sonrasında rehberli doğru kontroller var, bağımsız/gecikmeli teyit yok. S04 sonucu hâlâ bildirilmedi. Sonraki yeni set S07.
 
 23 Eylül ek beyan: Kullanıcı PDF'lerden asistana hazırlattığı yaklaşık 600–700 sorunun yaklaşık 300'ünü çözdüğünü söyledi. Bu kullanıcı beyanıdır; set bazında puan veya yeni klasör tamamlanması doğrulanmadı. Çalışmayı yalnız son senaryo setleri üzerinden özetleme.
 
@@ -237,3 +237,61 @@ S04 dört ana alandan örneklem; Workstations, Memorystore doğrudan ölçülmü
 Kullanıcı “evet s05 de yapalım bir de paragraflar daha uzun olsun” dedi. S05 oluşturuldu: 18 tek seçim + Q16/Q18 iki seçim; 20 soru, 6/5/5/4 birincil alan örneklemi. Gemini bağlam/ürün rolü, Workstations ortam/persistence, Memorystore cache/HA, Vision batching, BigQuery pagination, Spanner snapshot/teşhis, retry, build cache, Run/GKE deployment ve IAM yer alıyor. Airflow/Composer ek ürün olarak etiketlendi; Vision genel API verimliliğine eşlendi. 10 yeni ölçüm + 9 karma + 1 Invoker pekiştirmesi; önce konuşulan kararlar günlüğe açıkça işlendi. Tüm alt konular veya gerçek sınavla aynı zorluk iddiası yok.
 
 Anahtar her sorunun gerekçesini, yanlış seçeneklerin nedenlerini, belirleyici İngilizce koşulu ve resmî kaynağı içerir. Q3 schema compatibility ve Q1 cache fallback gibi mimari çözümler belgelerdeki davranışlardan yapılan çıkarım olarak ayrıştırıldı. Numaralar, seçim sayıları, cevap alanları, yerel bağlantılar ve paragraf uzunluğu kontrol edildi. S04 ve eski sonuç dosyaları değiştirilmedi; sonuç dosyası üretilmedi. Bu oturumda commit/push yapılmadı, otomasyon yok.
+
+
+### 25 Eylül — S05 ilk cevaplar değerlendirildi
+
+Kullanıcı 20 cevap ve 70–80 dakika bildirdi. 17/20 (%85); Q3 A, Q15 B, Q18 B+D yanlış, doğruları D/D/C+D. Çoklu seçim tam küme kuralı uygulandı; Q16 B+E doğru. İlk seçimler ayrı sonuç dosyasına kaydedildi; quiz cevap alanlarına anahtar yazılmadı. İlk cevaplar açıklama sonrası değiştirilmeyecek. Alan örneklemi 6/6 tasarım, 4/5 geliştirme-test, 3/5 deployment, 4/4 entegrasyon. Güven, gerekçe, yardım/mola koşulları belirtilmedi. Kalın yazılan üç seçimin anlamı varsayılmadı.
+
+Kısa açıklama odağı: shared DB schema uyumluluğu; preStop+SIGTERM ortak grace budget ve PDB ayrımı; dependency layer cache ile eski final image'ı yeniden deploy etme ayrımı. Açıklama sonrası öğrenme teyidi yok. Süre 50 dakikalık kişisel hedeften 20–30 dakika uzun; soru başı 3,5–4 dakika. Uzun paragraf tercihi korunur, bu setten gerçek sınav sonucu tahmin edilmez. S04 hâlâ değerlendirilmedi. Otomasyon kurulmadı.
+
+
+### 25 Eylül — S05 hata çalışması: ifade ve yaşam döngüsü
+
+Kullanıcı Q3'te “additive schema changes” ifadesini anlamadığını açıkça söyledi. Mevcut kolonu koruyup yenisini eklemek, backfill/uyumlu yazma geçişi ve eski kolonu en son kaldırmak örnekle açıklandı. Bu yanlışta ifade bilgisi eksikliği doğrulandı; tüm mimari bilgisi eksik veya tam demek için veri yok. İlk 17/20 değişmedi.
+
+Ardından kullanıcı rollback, Pod açılma/kapanma ve maintenance süreçlerini karıştırdığını belirterek anlatım istedi. GKE/Kubernetes üzerinden 3 replica örneğiyle startup/readiness/liveness, RollingUpdate maxSurge/maxUnavailable, rollback'in Pod template'i geri alıp DB'yi geri almaması, node cordon/drain/uncordon ve Eviction API/PDB ayrımı anlatılıyor. Normal tek uygulama container'ının graceful termination akışı: grace countdown ve trafik endpoint güncellemeleri, preStop, SIGTERM, uygulama drain, gerekirse SIGKILL. preStop ve drain aynı bütçededir. PDB rollout controller'ını veya direkt Pod silmeyi sınırlandırmaz ve shutdown timeout'u uzatmaz; ani node kaybını önlemez. Belgeler: Kubernetes Deployment, Pod Lifecycle, probes, configure-pdb, safely-drain-node (25 Eylül tekrar okundu). Açıklama sonrası kavrayış/bağımsız uygulama henüz doğrulanmadı; yeni puan yok.
+
+
+### 25 Eylül — PDB rehberli kontrol
+
+Konu anlatımından sonra 3 sağlıklı Pod/minAvailable 2 örneğinde ilk Pod tahliye edilmiş, replacement henüz Ready değilken ikinci tahliyenin mümkün olup olmadığı soruldu. Kullanıcı “hayır” diyerek doğru yanıtladı. Bu açıklama sonrası tek adımlı rehberli kontrol başarısıdır; bağımsız sınav/kalıcılık veya tüm rollback/shutdown konularında ustalık sayılmaz. S05 ilk 17/20 değişmez.
+
+
+### 25 Eylül — graceful termination rehberli kontrol
+
+Kullanıcı preStop 20 saniye + uygulama drain 25 saniye için PDB'nin ek süre sağlamayacağını ve graceful termination süresinin 45 saniye olması gerektiğini doğru belirtti. 45 saniyenin hesaplanan ihtiyaç olduğu, pratikte payla örneğin terminationGracePeriodSeconds: 60 seçileceği açıklanıyor. İki rehberli yaşam döngüsü kontrolü doğru; bağımsız veya gecikmeli kalıcılık kanıtı değil. İlk S05 17/20 korunur.
+
+
+### S05 Q3 — rehberli rollback kontrolü
+
+Kullanıcı, v2 geçişinde name kolonu silindikten sonra v1 Pod'larını geri getirmenin sorunu düzeltmeyeceğini “hayır kolon silinmiş bir kere” yanıtıyla doğru açıkladı. Uygulama rollback'i ile veritabanı şema değişikliğinin geri alınması ayrımında açıklama sonrası gerekçeli doğru yanıt var. Additive schema changes ifadesinin önceki belirsizliğinden sonra anlık uygulama başarısı; bağımsız/gecikmeli kalıcılık sayılmaz. İlk S05 17/20 korunur.
+
+
+### S05 Q18 — rehberli image/cache kontrolü
+
+Kullanıcı uygulama kodu değiştiğinde build atlanıp eski image tekrar deploy edilirse yeni kodun ulaşmayacağı sorusuna “hayır” diyerek doğru yanıt verdi. Eski final image ile yeni kodu build etme ayrımında açıklama sonrası doğru kontrol; Docker layer sırası ve cache invalidation bilgisi henüz ayrıca uygulanmadı. İlk S05 17/20 korunur; bağımsız/gecikmeli başarı sayılmaz.
+
+
+### S05 Q18 — npm ci kavramı
+
+Kullanıcı lockfile değiştiğinde dependency layer tekrar kullanımı kontrol sorusuna cevap vermeden “npm ci ne yapıyordu” diye sordu. Komut açıklamasına ihtiyaç var; cache invalidation sorusu henüz yanıtlanmadı. npm ci'nin lockfile'a göre temiz bağımlılık kurulumu, mevcut node_modules'u kaldırma, package.json/lock uyuşmazlığında hata verme ve dosyaları güncellememe davranışı resmî npm belgesinden kontrol edilerek açıklanıyor: https://docs.npmjs.com/cli/v11/commands/npm-ci . İlk puan ve rehberli/bağımsız ayrımı korunur.
+
+
+### S05 Q18 — Dockerfile ve cache yeniden anlatımı
+
+Kullanıcı “burada npm ci çalışmayacak mı” diyerek Dockerfile kurallarını tekrar istedi. Cache hit durumunda RUN npm ci'nin yeniden yürütülmediği, önceki kurulmuş dosya sistemi sonucunun kullanıldığı; cache yoksa/önceki girdiler değişirse çalıştığı açıklanıyor. FROM/WORKDIR/COPY/RUN/CMD, build-vs-runtime ayrımı, COPY kaynak/hedef ve build context, manifest→install→source sırası, .dockerignore node_modules, fresh worker için cache erişimi ele alınıyor. Resmî Docker cache invalidation/optimize ve Dockerfile reference belgeleri kontrol edildi. Cache sorusuna bağımsız yeni yanıt henüz yok; ilk 17/20 değişmez.
+
+
+### S05 Q18 — cache ve yeni kaynak kodu rehberli kontrolü
+
+Doğru Dockerfile sıralaması (manifest/lock → npm ci → source), erişilebilir cache ve yalnız server.js değişikliği koşullarında npm ci yeniden çalışmadan yeni kodun image'a girip girmeyeceği soruldu. Kullanıcı “girer” diyerek doğru yanıtladı. Cache edilmiş dependency sonucu ile yeni source COPY adımını bir arada uygulayabildi; açıklama sonrası rehberli kontrol, bağımsız/gecikmeli kalıcılık değil. Lockfile değişikliği sorusuna ayrı yanıt henüz yok. S05 ilk 17/20 korunur.
+
+
+### 25 Eylül — S06 exam guide öncelikli yeni set
+
+Kullanıcı açıkça daha uzun paragraflar, çetrefilli şıklar ve öncelik olarak exam guide belirtti. Resmî sertifika sayfasının bağladığı PDF tekrar kontrol edildi (%32/%23/%24/%21); S06 6/5/5/4 örneklemle hazırlandı. 11 yeni ölçüm + 9 karma; bilerek gecikmeli tekrar yok. S05 Q3/Q15/Q18 anlık çalışma kararları isim değişikliğiyle yeniden sorulmadı. Yeni kararlar için yalnız hazırlık tamamlandı.
+
+Sorular 125–143 kelime (ortalama yaklaşık 132); S05 ortalama 111. 18 tek + 2 çift seçim (Q6/Q18). Yakın seçeneklerin karşılamadığı gereksinim anahtarda açıklanıyor; her soruda rehber maddesi ve resmî kaynak var. MCP erişim sınırı, integration-test isolation ve API versioning gibi tasarımlar kaynak davranışlarından çıkarım olarak belirtiliyor. Ek sınav deneyimi ürünü önceliklendirmesi yapılmadı. Dört alan örnekleniyor; 4.2 bu sette bağımsız ölçülmedi, diğer eksik alt kapsam anahtarda açıklandı.
+
+Süreyi kaydetme istendi; daha uzun yükte 50 dakika zorunlu sınır dayatılmadı. Numaralar, seçenek/anahtar eşleşmesi, boş cevap alanları, yerel linkler ve uzunluk kontrol edildi. Soru/anahtar ve README/QUESTION-LOG/STRATEGY/HANDOFF güncellendi. Önceki kullanıcı cevapları değişmedi, S06 sonuç dosyası yok, otomasyon veya commit/push yapılmadı.
