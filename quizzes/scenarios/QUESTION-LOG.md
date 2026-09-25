@@ -118,3 +118,33 @@ S03 ilk cevaplar: 7/15 (%46,7), süre bildirilmedi. [Sonuç](results/PCD-S03-att
 | S04-20 | Compute Engine compatible custom OS/kernel ve container yasağı | Yeni; S02-01 Run job değil host OS gereksinimi | Henüz çözülmedi |
 
 Probe, workspace veya diğer tekrar kuyruğu yalnız soru hazırlandı diye tamamlanmadı. S04 sonucu yok; yeni set ID'si S05.
+
+
+## PCD-S05 — 25 Eylül 2026
+
+[Sorular](PCD-S05.md) · [Anahtar](../answers/scenarios/PCD-S05.md). Kullanıcı uzun paragraflı yeni S05 istedi. 20 soru; 18 tek + 2 çift seçim (Q16/Q18); 50 dakika kişisel hedef. Dört ana alan 6/5/5/4; 10 yeni ölçüm + 9 karma + 1 pekiştirme. Yeni ölçüm, daha önce hiç açıklama yapılmadığı anlamına gelmez. S04 değiştirilmedi; iki set için de sonuç yok. Airflow ek ürün kapsamı, Vision genel API performansı uygulamasıdır.
+
+| ID | Konu / ölçülen karar | Tür / benzerlik | İlk sonuç |
+|---|---|---|---|
+| S05-01 | Memorystore cache-aside, tenant key ve kontrollü fallback | Yeni; S01-07 process shared-state hatası yerine dağıtık cache tasarımı | Henüz çözülmedi |
+| S05-02 | Cloud Workstations servis seçimi ve merkezi ortam | Yeni | Henüz çözülmedi |
+| S05-03 | Canary ortak şema, expand-contract ve rollback | Karma; S01-02 rollout ve rehberli R10-04 traffic migration üzerine veri uyumluluğu, eski sorunun aynısı değil | Henüz çözülmedi |
+| S05-04 | Vision API offline batching/LRO ve kısmi retry | Yeni ölçüm; 25 Eylül konuşmasında async/sync ayrımı açıklandı | Henüz çözülmedi |
+| S05-05 | Memorystore HA ile durability ayrımı | Karma; S04-05 Cloud SQL HA bilgisini Redis’e yanlış genellememe | Henüz çözülmedi |
+| S05-06 | Workstations persistent home ve image toolchain | Yeni; Q2 servis seçiminden farklı yaşam döngüsü kararı | Henüz çözülmedi |
+| S05-07 | GKE HPA external backlog vs CPU/node scaling | Karma; S02-15 HPA kaynak koşullarından farklı talep metriği | Henüz çözülmedi |
+| S05-08 | BigQuery pagination token ve streaming tüketim | Yeni | Henüz çözülmedi |
+| S05-09 | Spanner exact timestamp vs relative staleness | Yeni ölçüm; Gemini rehberindeki staleness konusu konuşuldu | Henüz çözülmedi |
+| S05-10 | Gemini Code Assist bağlam ve pinned API doğrulama | Karma; S04-10 test oracle yerine implementation context | Henüz çözülmedi |
+| S05-11 | Cloud Run secret volume latest vs startup env | Karma; S02 pinned secret/rollback yerine canlı rotation gereksinimi | Henüz çözülmedi |
+| S05-12 | Spanner Query Stats vs tracing teşhis katmanı | Karma; S04-12 propagation tamam, Gemini metninde bu ayrım görüldü | Henüz çözülmedi |
+| S05-13 | Airflow mevcut DAG migration vs Workflows | Yeni; S01-15 yeni workflow callback tasarımından farklı migration | Henüz çözülmedi |
+| S05-14 | Gemini Code Assist vs Cloud Assist ürün rolü | Yeni ölçüm; 25 Eylül konuşmasında ürün ayrımı açıklandı | Henüz çözülmedi |
+| S05-15 | GKE preStop + SIGTERM ortak termination bütçesi | Karma; S03-07 PDB ve S02 çıkarılmış SIGTERM taslağı, yeni hook bütçesi | Henüz çözülmedi |
+| S05-16 | API retry jitter, deadline ve layered retry | Karma; S03-11/S04-08 uncertain write yerine idempotent GET retry orchestration | Henüz çözülmedi |
+| S05-17 | Storage Autoclass erişim paterni vs age lifecycle | Yeni; S04-17 retention kararından farklı maliyet/erişim tasarımı | Henüz çözülmedi |
+| S05-18 | Cloud Build Docker layer ordering ve remote cache | Yeni; S04-02 step DAG ve S04-03 artifact kimliğinden farklı cache kararı | Henüz çözülmedi |
+| S05-19 | API Gateway backend identity ve service-level Invoker | Pekiştirme; S01-06/R01-03 invoker yönü gateway üzerinde, yeni temel karar sayılmaz | Henüz çözülmedi |
+| S05-20 | IAM inherited allow daraltma ve bucket scope | Karma; S01-01 secret least privilege üzerine inherited izin kaldırma | Henüz çözülmedi |
+
+Yalnız hazırlık tamamlandı; tekrar kuyruğunda başarı/kalıcılık teyidi yok. Sonraki yeni set S06.

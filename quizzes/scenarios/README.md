@@ -2,7 +2,7 @@
 
 [Yeni sohbet için devam notu](HANDOFF.md) · [Günlük çalışma ve soru üretme stratejisi](STRATEGY.md) · [Soru geçmişi — hazırlayan için](QUESTION-LOG.md)
 
-**4 senaryo seti + 1 pekiştirme seti · 70 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
+**5 senaryo seti + 1 pekiştirme seti · 90 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
 
 Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgündür, gerçek sınav sorusu değildir. Amaç birkaç gereksinimi birlikte değerlendirmek ve makul alternatifleri elemektir. Pilotun zorluğu henüz öğrenci sonuçlarıyla kalibre edilmemiştir.
 
@@ -13,6 +13,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 | PCD-S02 | Cloud Run / Cloud Run functions / GKE, 5’er soru; kullanıcı beyanıyla 14/15 | 30 dakika | [Çöz](PCD-S02.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S02.md) |
 | PCD-S03 | Cloud Run / Functions / GKE, 5’er soru; ilk bildirilen cevaplar 7/15 | 30 dakika | [Çöz](PCD-S03.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S03.md) |
 | PCD-S04 | Dört resmî ana alandan 20 karma soru; 6 tasarım + 5 geliştirme/test + 5 deployment + 4 entegrasyon; çözüm bekleniyor | 45 dakika | [Çöz](PCD-S04.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S04.md) |
+| PCD-S05 | Daha uzun paragraflı 20 soru; Gemini, Workstations, Memorystore, API performansı ve karma mimari; çözüm bekleniyor | 50 dakika | [Çöz](PCD-S05.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S05.md) |
 
 **İlk set sonrası:** [Doküman sayfaları, ilgili quizler ve bugünkü çalışma sırası](PCD-S01-review-guide.md).
 
@@ -20,7 +21,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 
 1. İlk turda cevap anahtarını ve kaynakları açmadan çöz.
 2. Her cevapta E/K/T güven düzeyi ve kararı belirleyen koşulu bir cümleyle yaz; kararsız olduğunda yakın alternatifi de belirt.
-3. İstersen cevapları sohbette beşli gruplar halinde gönder; S04 için son grup 16–20.
+3. İstersen cevapları sohbette beşli gruplar halinde gönder; S04/S05 için son grup 16–20.
 4. Anahtarla kontrol ettikten sonra yanlışları ve tahminle doğruları tekrar listesine al.
 5. İlerlemeni aşağıya kaydet; tekrar çözümündeki ezber etkisini ilk denemeden ayır.
 

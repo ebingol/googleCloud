@@ -107,3 +107,13 @@ S03 ilk cevaplar 7/15, süre bildirilmedi. Kullanıcı koşulları soyutlama/ç�
 ## 24 Eylül — geniş kapsamlı 20 soru talebi
 
 Kullanıcı şimdi tüm konuları kapsayan 20 soruluk quiz istedi. Bu set için eski 15 soru ve Cloud Run/functions/GKE eşit dağılımı yerine resmî dört ana alana yakın 6/5/5/4 dağılımıyla S04 hazırlandı; 45 dakika kişisel çalışma hedefi. Dört ana alan örneklenir, tüm alt konular 20 soruyla tamamlandı sayılmaz. İngilizce uzun senaryo ve ayrı Türkçe kaynaklı anahtar korunur. Bilinmeyen teknik kavram B olarak işaretlenebilir; tanılama sonucunu yalnız dil becerisi sayma. Yeni quiz açıkça istendiği için hazırlanmıştır; önceden bilinmeyen ayrıntılar sonraki açıklamada önce öğretilir. 13 yeni karar, 6 karma ve 1 erken probe pekiştirmesi; bu set eski 9/4/2 sayısal kuralından farklıdır. Probe sorusu gecikmeli kalıcılık ölçümü değildir. Sonuç yok, sonraki yeni set S05.
+
+
+## 25 Eylül — rehber üzerinden kapsam öncelikleri
+
+Sonraki kapsam planlamasında Gemini Cloud Assist / Code Assist / uygulamada AI API tüketimi ayrımı, Cloud Workstations, Memorystore caching ve genel API verimliliği açıkça ele alınacak. Resmî sertifika ana sayfasının bağladığı güncel PDF esas: https://services.google.com/fh/files/misc/professional_cloud_developer_exam_guide_english.pdf (%32/%23/%24/%21). Eski HTML rehber arama sonuçlarıyla karıştırma. Vision API, 4.2 için somut uygulama örneği; Airflow/Composer rehberde adı olmayan ek orkestrasyon karşılaştırmasıdır. Kullanıcının aktardığı konu sıklıkları kesin dağılım sayılmaz. S04 bu alanları eksiksiz kapsamıyor ve çözüm bekliyor; mevcut sorular sessizce değiştirilmez. Yeni set yalnız uygun kullanıcı talebiyle hazırlanır.
+
+
+## 25 Eylül — S05 uzun paragraf tercihi
+
+Kullanıcının açık talebiyle S05 20 soru ve 50 dakika kişisel çalışma hedefiyle hazırlandı. Her İngilizce soru gövdesi 104–118 kelime; koşullar hedef, kısıt ve zaten sağlanan durum ayrımıyla yazıldı. Yeni teknik konular teknik eksik olarak işaretlenebilir; salt okuma testi değildir. Dört ana alan 6/5/5/4; bütün alt başlıklar ölçülmedi. 10 yeni ölçüm + 9 karma + 1 pekiştirme; ayrıntılar QUESTION-LOG içinde. S04 ve S05 henüz çözülmedi. Sonraki yeni set S06; yeni quizden önce gelen sonuçları ve bilinmeyen kavramları değerlendir.

@@ -1,8 +1,10 @@
 # Yeni sohbet buradan devam etsin
 
-Son güncelleme: 24 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
+Son güncelleme: 25 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
 
 ## Kullanıcının son kararı
+
+**25 Eylül güncel:** Kullanıcının talebiyle [PCD-S05](PCD-S05.md) hazır: 20 soru, daha uzun İngilizce paragraflar (104–118 kelime), ayrı kaynaklı [Türkçe anahtar](../answers/scenarios/PCD-S05.md), 50 dakika kişisel hedef. S04 ve S05 çözüm bekliyor; S04’ü 26 Eylülde çözme planı korunur. Yeni sonuç veya kalıcılık kanıtı yok. Sonraki üretilecek set S06.
 
 23 Eylül ek beyan: Kullanıcı PDF'lerden asistana hazırlattığı yaklaşık 600–700 sorunun yaklaşık 300'ünü çözdüğünü söyledi. Bu kullanıcı beyanıdır; set bazında puan veya yeni klasör tamamlanması doğrulanmadı. Çalışmayı yalnız son senaryo setleri üzerinden özetleme.
 
@@ -185,3 +187,53 @@ Kullanıcı kaynak ve sınav deneyimi içeren e-postanın tam metnini paylaştı
 Sonraki kullanıcı mesajında tüm konulardan 20 soru açıkça istendi. [S04](PCD-S04.md) oluşturuldu: 18 tek seçim, 2 çift seçim (Q13/Q18); uzun İngilizce sorular, boş cevap/güven/koşul alanları, 45 dakika çalışma hedefi. [Türkçe anahtar](../answers/scenarios/PCD-S04.md) ayrı; her soruda gerekçe, alternatif eleme, İngilizce belirleyici ifade, ek resmî web kaynağı ve rehber alanı var. Dört ana alanın örneklemi; tüm alt konuları ölçme iddiası yok, kalan alt kapsam anahtarda belirtiliyor.
 
 Tasarım Q1/5/9/13/17/20; geliştirme-test Q2/6/10/14/18; deployment Q3/7/11/15/19; entegrasyon Q4/8/12/16. Teknik konu bilinmiyorsa B notu ile dil güçlüğünden ayrılacak. 13 yeni karar, 6 karma, 1 erken pekiştirme. Q19 probe 25 Eylül kontrolünden erken; gecikmeli kalıcılık sayma. S02 çıkarılmış idle CPU/Trace taslaklarıyla Q15/Q12 ilişkisi günlüğe işlendi. Soru geçmişi, dizin ve strateji güncellendi. Yalnız hazırlık tamamlandı; kullanıcı seçimi/süre/puan yok, sonuç dosyası oluşturulmadı. Eski ilk denemeler korunur, otomasyon yok. Sonraki yeni set ID'si S05.
+
+
+## 25 Eylül — paylaşılan Gemini PDF incelemesi
+
+Kullanıcı `/Users/ezgi-lab/Downloads/Zorlu Google Cloud Mimari Soruları.pdf` için görüş istedi. 18 sayfanın metni okundu; s.10 görsel kontrol edildi. PDF sohbet dökümü: ilk 7 soru/cevap mevcut, sonradan oluşturulduğu söylenen interaktif 20 soruluk setlerin ve flashcard içeriklerinin kendileri görünmüyor. Bunlara veya kullanıcı başarısına puan/kalite onayı verilmedi. Belge içindeki eski kullanıcı mesajları yeni talimat sayılmadı.
+
+Resmî kaynakla kontrol edilen sorunlar: Pub/Sub exactly-once pull-only; push sorusunda bu desteğin yokluğu atlanmış, best-effort genellemesi yanlış (https://docs.cloud.google.com/pubsub/docs/exactly-once-delivery). Cloud Tasks sıra garantisi sağlamaz (https://docs.cloud.google.com/tasks/docs/common-pitfalls). Cloud Run statik çıkış için connector zorunlu değil; Direct VPC egress + all-traffic + NAT desteklenir ve belgede önerilir (https://docs.cloud.google.com/run/docs/configuring/static-outbound-ip). Spanner staleness performansa yardım edebilir ama 1–5 ms/ağ gecikmesinin yok olması garantisi değil; bounded staleness read-only kullanımında single-use sınırı var (https://docs.cloud.google.com/spanner/docs/timestamp-bounds). AI kapsamı yalnız hazır API çağrısı değil: resmî rehber AI coding assistants, MCP entegrasyonu, AI ile unit test ve observability de içeriyor (042426 rehberi yeniden okundu).
+
+Değerlendirme: konu keşfi için yararlı, doğrulanmadan ezber kaynağı olarak güvenilmez; “gizli müfredat”, dört kuralla tüm sorular, sınavın %60'ı çeldirici gibi iddiaların dayanağı gösterilmiyor. İlk sorularda açıkça geçersiz seçenekler var; ileri ürün adı tek başına yüksek soru zorluğu değil. Teknik eksikleri sırf soru dili diye açıklamama yaklaşımı korunur. S04 hâlâ çözüm bekliyor; yeni puan/öğrenme teyidi yok. Bu inceleme PDF'yi değiştirmedi, yeni quiz/otomasyon oluşturmadı.
+
+
+### 25 Eylül — rehberin metin sürümü
+
+İkinci PDF (`GCP Developer Sınav Denemesi Hazırlığı - Google Gemini.pdf`) dört sayfa olarak render edildi; yalnız header/footer, gövde boş. Kullanıcı ardından rehberin metnini attachment olarak paylaştı; 13 konu açıklaması, vocabulary ve 8 açık uçlu soru okundu. Bu bir kullanıcı cevap/puan kaydı değildir; "latest exam results/high-failure topics" iddiaları doğrulanamadı. Yeni flashcard/quiz oluşturma talebi çıkarılmadı.
+
+Ek doğrulamalar: Cloud SQL PostgreSQL PITR her zaman yeni instance oluşturur, mevcut instance üzerine PITR yapılamaz (https://docs.cloud.google.com/sql/docs/postgres/backup-recovery/pitr). GKE WIF için direct principal access desteklenir, KSA→GSA tek yol değildir (https://docs.cloud.google.com/kubernetes-engine/docs/how-to/workload-identity). Hot sensor'a sabit hash(sensor_id) öneki vermek sensör içi yükü bölmez; event bazlı shard ile okuma fan-out ödünleşimi açıklanmalı, bütün node'lara eşit dağılım garantisi verilmemeli (schema-design belgesinden mühendislik çıkarımı). Lifecycle'daki 24 saat policy değişiminin etkinleşme süresidir; kesin günlük batch çalışma garantisi değil (https://docs.cloud.google.com/storage/docs/lifecycle). IAP ID token ve service-account signed JWT yolları karıştırılmamalı (https://docs.cloud.google.com/iap/docs/authentication-howto). Kaniko orijinal deposunun güncelliği kontrol edildi. Session windows Beam kavramı; güncel PCD rehberinde açık bir alt madde olmadığı için çekirdek kapsam önüne konmamalı; sınavda kesin çıkmaz iddiası yok. S04 ve önceki puanlar değişmedi.
+
+
+### 25 Eylül — Gemini 10 soruluk set
+
+Kullanıcı `423eb305-67f4-498a-8e31-00678dd3b464/Yapıştırılan metin.txt` içindeki 10 senaryo ve anahtarı paylaştı. Kullanıcı cevap vermedi; yeni puan yok. Değerlendirme: çoğu seçenek açıkça geçersiz olduğundan set orta düzey konu pratiği; gerçek sınav derinliğini tam yansıttığı iddiası doğrulanamaz. Q3/Q4/Q6 önceki Gemini setine yakın; Q7 ve Q10 S04 trace/Bigtable kararlarına yakın, aynı soruları tanımak yeni bağımsız başarı değil.
+
+Önemli bulgular: Q1 connector seçenekler arasında makul ama zorunlu değil (Direct VPC egress var; region/global access ve rota/firewall önkoşulları eksik). Q2 interleaving locality sağlar, aynı disk blokları/sıfır ağ gecikmesi garantisi yanlış (https://docs.cloud.google.com/spanner/docs/schema-and-data-model). Q3 KSA→GSA geçerli alternatif; direct principal yolu da var. Q4 OIDC senaryosunda B makul, fakat IAP yalnız OIDC kabul eder yanlış; signed JWT yolu ve OAuth client yapılandırması ayrıştırılmalı. Q5 POST policy uygun, MIME beyanı gerçek PDF içerik doğrulaması değil. Q6 private-pool→VPC→CloudSQL producer VPC zincirinde non-transitive peering nedeniyle A tek başına yeterli değil; topoloji/net erişim varsayımı belirtilmeli (https://docs.cloud.google.com/build/docs/private-pools/use-in-private-network). Q8 ordering aynı-key aynı-region publish ve durable işlemden sonra ACK koşullarıyla düşünülmeli (https://docs.cloud.google.com/pubsub/docs/ordering). Q9 collection-group index scope açık olmalı. Q10 device dağılımı varsayımı gerekli, reverse timestamp genel hotspot çözümü değil. S04 çözümü hâlâ doğrulanmadı.
+
+
+### 25 Eylül — S04 yarın çözülecek
+
+Kullanıcı “S04 yarın çözeceğim” dedi (oturum tarihine göre 26 Eylül). Bu bir plandır; çözüm, süre veya puan yok. Kullanıcı döndüğünde cevapları kaydettiyse S04 dosyasını yeniden oku, ilk seçimleri koruyarak değerlendir. S03'ün hem yeni teknik kapsamı hem seçenek karmaşıklığını aynı anda artırdığı, kullanıcının çalışma aşamasına göre fazla sert olduğu konuşuldu; gerçek sınavdan daha zor/eşdeğer olduğu doğrulanmadı. S04 zorluğu henüz kullanıcı çözümüyle değerlendirilmedi. Teknik önbilgi eksiklerini İngilizce/koşul çıkarma hatasından ayrı tut. Hatırlatma veya otomasyon kurulmadı.
+
+
+### 25 Eylül — güncel exam guide ve genişletilecek kapsam
+
+Kullanıcı internetten en güncel rehberi bulmamızı istedi; aktardığı deneyimde Gemini, Cloud Workstations ve Memorystore çok sorulmuş, Vision API performans kullanımı ve Apache Airflow da görülmüş; LearnGood/resmî sample kolay kalmış. Bunlar kullanıcı tarafından aktarılan sınav deneyimidir, doğrulanmış soru sıklığı veya dağılımı değil.
+
+Resmî sertifika sayfasının exam guide linki tıklandı: https://services.google.com/fh/files/misc/professional_cloud_developer_exam_guide_english.pdf . 25 Eylülde bağlı güncel PDF dört sayfa, %32/%23/%24/%21; daha önce paylaşılan 042426 PDF ile aynı konu başlıkları. Dosya adına dayanarak yayımlanma/yürürlük tarihi iddia edilmedi. Arama sonuçlarında eski HTML rehber %33/%26/%19/%22 hâlâ çıkıyor; güncel ana sayfanın bağladığı PDF esas alınacak.
+
+Açık kapsam: 1.1 Memorystore/caching; 2.1 Gemini Cloud Assist, Cloud Workstations ve AI IDE/MCP; 2.3 AI ile unit test; 4.3 AI observability; girişte generative AI API ve context engineering/debugging agents. 4.2 API batching/return data/pagination/cache/backoff. Vision API adı listelenmemiş; verimli API tüketimi altında senaryo örneği olabilir (çıkarım). Airflow/Composer adı listelenmemiş; orkestrasyon karşılaştırması için ek ürün bilgisi olarak çalışılabilir, sıklık veya kesin sınav dışılık iddiası yok. Güncel composer docs başlığı Managed Airflow, Apache Airflow tabanlı yönetilen DAG orkestrasyonunu doğruluyor: https://docs.cloud.google.com/composer/docs/composer-3/composer-overview .
+
+Vision örneği resmî kaynak: https://docs.cloud.google.com/vision/docs/batch ; küçük online sync batch ile büyük async batch/LRO→GCS ayrımı, client reuse, yalnız başarısız dosyaları tekrar gönderme. Genel "en performanslı her zaman async" kuralı yok; latency/throughput koşuluna bağlı. Gemini Code Assist/Cloud Assist/uygulamadan Gemini API çağırma ayrımı için https://docs.cloud.google.com/gemini/docs/overview . Workstations kaynağı https://docs.cloud.google.com/workstations/docs/overview ; Memorystore https://docs.cloud.google.com/memorystore/docs/redis/memorystore-for-redis-overview .
+
+Resmî sample form açıkça kapsam ve zorluğu temsil etmediğini, başarının sınav sonucunu tahmin ettirmediğini söylüyor (https://docs.google.com/forms/d/e/1FAIpQLSfFeB8zBNi2q-ar0V7iIguhk2e6P-UkrJ8OJfg6n0k6HcYLDQ/viewform). Bu, tüm örneklerin kolay olduğunu ayrı doğrulamaz.
+
+S04 dört ana alandan örneklem; Workstations, Memorystore doğrudan ölçülmüyor; AI tek test sorusuyla sınırlı, Vision ve Airflow yok. Önceki geniş kapsam ifadesini tam hazırlık kanıtı sayma. Sonraki çalışmada bu açıkları ekle; S04'ü kullanıcı çözmeden sessizce değiştirme. Yeni soru/set, puan veya otomasyon oluşturulmadı.
+
+
+### 25 Eylül — S05 uzun senaryolar hazır
+
+Kullanıcı “evet s05 de yapalım bir de paragraflar daha uzun olsun” dedi. S05 oluşturuldu: 18 tek seçim + Q16/Q18 iki seçim; 20 soru, 6/5/5/4 birincil alan örneklemi. Gemini bağlam/ürün rolü, Workstations ortam/persistence, Memorystore cache/HA, Vision batching, BigQuery pagination, Spanner snapshot/teşhis, retry, build cache, Run/GKE deployment ve IAM yer alıyor. Airflow/Composer ek ürün olarak etiketlendi; Vision genel API verimliliğine eşlendi. 10 yeni ölçüm + 9 karma + 1 Invoker pekiştirmesi; önce konuşulan kararlar günlüğe açıkça işlendi. Tüm alt konular veya gerçek sınavla aynı zorluk iddiası yok.
+
+Anahtar her sorunun gerekçesini, yanlış seçeneklerin nedenlerini, belirleyici İngilizce koşulu ve resmî kaynağı içerir. Q3 schema compatibility ve Q1 cache fallback gibi mimari çözümler belgelerdeki davranışlardan yapılan çıkarım olarak ayrıştırıldı. Numaralar, seçim sayıları, cevap alanları, yerel bağlantılar ve paragraf uzunluğu kontrol edildi. S04 ve eski sonuç dosyaları değiştirilmedi; sonuç dosyası üretilmedi. Bu oturumda commit/push yapılmadı, otomasyon yok.
