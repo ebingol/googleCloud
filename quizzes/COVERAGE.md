@@ -156,3 +156,8 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 | R11-01 | Memorystore networking and integration setup | 4, 5, 6 |
 | R11-02 | Authenticated Pub/Sub push and acknowledgements | 7, 8 |
 | R11-03 | Cloud SQL paths, credentials and connection pools | 9, 10 |
+
+
+## Ayrı senaryo serisi — 26 Eylül 2026
+
+[S07](scenarios/PCD-S07.md), dört resmî ana alanı 6 tasarım / 5 geliştirme-test / 5 deployment / 4 entegrasyon sorusuyla örnekler. Soru bazındaki rehber maddeleri ve teknik web kaynakları [ayrı anahtarda](answers/scenarios/PCD-S07.md). Ders PDF sayfalarıyla eşleştirilmiş yeni beşlik set değildir; yukarıdaki ders kapsamı veya tamamlanma kayıtları değişmez. 20 soru bütün alt konuları kapsamaz; ölçülmeyen kapsam anahtarda açıklanır.

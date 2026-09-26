@@ -124,3 +124,13 @@ Kullanıcının açık talebiyle S05 20 soru ve 50 dakika kişisel çalışma he
 Kullanıcının son talebi: daha uzun İngilizce paragraflar, daha çetrefilli/yakın seçenekler; birincil kapsam dayanağı güncel resmî exam guide. Sınav deneyimi aktarımları ürün kotasına dönüştürülmez. Her soruya rehber maddesi ve resmî teknik kaynak bağla; en yakın yanlış seçeneği eleyen koşulu anahtarda açıkla. Uzunluğu dolgu cümleleriyle, zorluğu belirsizlikle artırma.
 
 S06 20 soru, 6/5/5/4 birincil alan örneklemi, 18 tek + Q6/Q18 çift seçim olarak hazır. 11 yeni ölçüm + 9 karma; gecikmeli tekrar yok. Gövdeler 125–143 kelime. Kullanıcı süreyi kaydeder; 50 dakika zorunlu bitiş sınırı değil. S05 ilk 17/20 ve 70–80 dakika korunur; açıklama sonrası doğru kontroller bağımsız puan değildir. S06 sonucu henüz yok; sonraki yeni set S07.
+
+
+## S06 geri bildirimi — koşulları çözümleme önceliği
+
+Kullanıcı S06'da anahtar kelime/best practice eşleştirmesine ağırlık verdiğini ve detaylı anlamanın çok zor olduğunu söyledi. Sonraki hata çalışmasında mevcut uzun metni koru; hedefi, karar değiştiren kısıtı ve yakın seçeneğin bozduğu şartı tek tek çıkarttır. Bu açıklama bütün teknik bilginin yeterli olduğunu göstermez; bilinmeyen kavramları ayrıca öğret. Yeni zor seti kendiliğinden üretme; kullanıcı isterse güncel talebi izle. 13/20 ilk sonuç değişmez; rehberli çözüm bağımsız başarı sayılmaz.
+
+
+## 26 Eylül — S07 hazırlığı
+
+Kullanıcının açık isteğiyle S07 hazırlandı: 20 uzun İngilizce senaryo, 18 tek + Q6/Q11 çift seçim, dört ana alan 6/5/5/4. 12 yeni ölçüm + 7 karma + S02 probe çalışmasına 4 gün sonra 1 farklı uygulama. Anahtar ayrı Türkçe, güncel resmî rehber ve birincil teknik belgelerle eşleştirilmiş. Süre kaydedilecek; zorunlu bitiş sınırı yok. S07 sonucu bekleniyor; sonraki yeni set S08. S06 Q20 incelemesi bekliyor, ilk puanlar korunur.

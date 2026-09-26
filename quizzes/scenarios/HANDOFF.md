@@ -1,10 +1,12 @@
 # Yeni sohbet buradan devam etsin
 
-Son güncelleme: 25 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
+Son güncelleme: 26 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
 
 ## Kullanıcının son kararı
 
-**25 Eylül güncel:** Kullanıcı daha uzun paragraf, daha çetrefilli seçenek ve birincil kaynak olarak exam guide istedi. [S06](PCD-S06.md) ve ayrı kaynaklı [anahtarı](../answers/scenarios/PCD-S06.md) hazır; henüz çözülmedi. 20 soru (Q6/Q18 çift seçim), 6/5/5/4 ana alan örneklemi; soru gövdeleri 125–143 kelime. Süre kaydedilecek; önceki 50 dakika zorunlu sınır değil. S05 ilk **17/20, 70–80 dakika** korunur; Q3/Q15/Q18 sonrasında rehberli doğru kontroller var, bağımsız/gecikmeli teyit yok. S04 sonucu hâlâ bildirilmedi. Sonraki yeni set S07.
+**26 Eylül güncel:** Kullanıcı S07 istedi; [PCD-S07](PCD-S07.md) ve [ayrı Türkçe anahtar](../answers/scenarios/PCD-S07.md) hazır. 20 uzun İngilizce senaryo, Q6/Q11 çift seçim, dört alan 6/5/5/4. Süreyi kaydet, zorunlu bitiş sınırı yok. S07 cevap/puan yok; sonraki yeni set S08. S06 yanlış incelemesinde Q1/3/5/14/17/18 açıklandı, kavrayış teyidi yok; **Q20 henüz incelenmedi**. Yeni set isteği aktif öncelik. İlk S06 13/20, 73 dakika ve S05 17/20 korunur.
+
+**25 Eylül güncel:** S06 ilk bildirilen cevaplar **13/20 (%65), 73 dakika**. Yanlışlar Q1 C→B, Q3 B→A, Q5 B→D, Q14 A→B, Q17 D→C, Q18 B+D→B+E, Q20 B→D. [İlk cevap kaydı](results/PCD-S06-attempt-01.md). Güven/gerekçe ve yardım koşulları bilinmiyor. Öncelik hata ayrımlarını çalışmak; teknik/dil nedeni henüz sınıflandırılmadı. S05 ilk 17/20 korunur. S04 sonucu hâlâ bildirilmedi. Uzun paragraf/yakın şık ve exam guide önceliği geçerli; sonraki yeni set S07.
 
 23 Eylül ek beyan: Kullanıcı PDF'lerden asistana hazırlattığı yaklaşık 600–700 sorunun yaklaşık 300'ünü çözdüğünü söyledi. Bu kullanıcı beyanıdır; set bazında puan veya yeni klasör tamamlanması doğrulanmadı. Çalışmayı yalnız son senaryo setleri üzerinden özetleme.
 
@@ -295,3 +297,65 @@ Kullanıcı açıkça daha uzun paragraflar, çetrefilli şıklar ve öncelik ol
 Sorular 125–143 kelime (ortalama yaklaşık 132); S05 ortalama 111. 18 tek + 2 çift seçim (Q6/Q18). Yakın seçeneklerin karşılamadığı gereksinim anahtarda açıklanıyor; her soruda rehber maddesi ve resmî kaynak var. MCP erişim sınırı, integration-test isolation ve API versioning gibi tasarımlar kaynak davranışlarından çıkarım olarak belirtiliyor. Ek sınav deneyimi ürünü önceliklendirmesi yapılmadı. Dört alan örnekleniyor; 4.2 bu sette bağımsız ölçülmedi, diğer eksik alt kapsam anahtarda açıklandı.
 
 Süreyi kaydetme istendi; daha uzun yükte 50 dakika zorunlu sınır dayatılmadı. Numaralar, seçenek/anahtar eşleşmesi, boş cevap alanları, yerel linkler ve uzunluk kontrol edildi. Soru/anahtar ve README/QUESTION-LOG/STRATEGY/HANDOFF güncellendi. Önceki kullanıcı cevapları değişmedi, S06 sonuç dosyası yok, otomasyon veya commit/push yapılmadı.
+
+### 25 Eylül — U03-05 Q5 soru dili
+
+Kullanıcı passthrough Network Load Balancer hakkındaki Q5 soru kökünü paylaştı. Soru Türkçeye çevrildi; property = özellik, is associated with = ile ilişkilidir, in the explanation = açıklamada ifadeleri açıklandı. Kullanıcı henüz seçenek veya sonuç bildirmedi; doğru seçenek açıklanmadı, puan ve tamamlanma kaydı değişmedi.
+
+U03-05 Q5 devamı: Kullanıcı “passthrough ne” diye teknik kavramı sordu. Passthrough'un istemci bağlantısını sonlandırıp yeni backend bağlantısı açmadan paketleri seçilen backend'e iletmesi, kaynak IP'yi koruması ve proxy bağlantı modeliyle farkı örnekle açıklandı. Resmî kaynaklar: https://docs.cloud.google.com/load-balancing/docs/passthrough-network-load-balancer ve https://docs.cloud.google.com/load-balancing/docs/internal . Kavrayış teyidi veya bağımsız cevap yok; puan değişmedi.
+
+
+### 25 Eylül — S06 ilk cevaplar değerlendirildi
+
+Kullanıcı 20 cevap ve 73 dakika bildirdi. 13/20 (%65); yanlışlar 1/3/5/14/17/18/20. Q18 B parçası doğru, D yanlış/E eksik; tam küme 0 puan. Q6 B+D doğru. İlk seçimler results/PCD-S06-attempt-01.md içinde korundu; soru dosyasına doğru cevaplar yazılmadı. Alan örneklemi tasarım 2/6, geliştirme-test 3/5, deployment 4/5, entegrasyon 4/4. Gerekçe/güven/yardım koşulları bilinmiyor; nedenler kesin tanılanmadı.
+
+İnceleme: Tasks queue-wide limit vs Workflows execution; Cloud Run service agent vs runtime SA; signed URL vs SA access token; provenance vs label/log; retention vs lifecycle deletion; fixed base rebuild sonrası yeni digest rollout; Firestore unused index exemption. Önce üç kısa ayrımla/gerekçeyle ilerle, yedi yanlışı tek uzun derse dönüştürme. S05'in 70–80 dakikasıyla aynı süre aralığında daha düşük doğruluk var; konu/zorluk farkı nedeniyle doğrudan gerileme veya sınav sonucu tahmini değil. Açıklama sonrası kavrayış teyidi henüz yok. Otomasyon veya commit/push yapılmadı.
+
+
+### S06 sonrası kullanıcı geri bildirimi — anahtar kelimeyle seçim
+
+Kullanıcı çok düşünemediğini, daha çok keyword yakalayıp sorudaki best practice'i bulmaya çalıştığını; soruları ayrıntılı anlamanın çok zor olduğunu belirtti. Zorluk artınca hata oranının arttığını gözlemledi. Bu kullanıcı öz değerlendirmesidir; bütün yanlışları kesin olarak dil/okuma kaynaklı sayma, teknik kavram eksikleri ayrıca kontrol edilmeli. Başka bir adayın da %65 yaptığını ve sınavda kaldığını aktardı; adayın puanının kaynağı/denemesi ve koşulları bilinmiyor, S06 ile eşdeğerlik veya geçme-kalma tahmini çıkarılmaz.
+
+Öncelik yeni zor set üretmek değil mevcut sorularda hedef, belirleyici kısıt ve seçeneklerin bozduğu şartı yavaşça ayırma çalışması. Uzun İngilizce metin tercihi korunur. İlk 13/20 ve 73 dakika değişmez; rehberli çalışmada süre baskısı uygulanmaz. Q1 üzerinden execution başına concurrency ile queue genelindeki sınır ayrımını kendi cümlesiyle açıklaması sonraki kontrol olabilir. Henüz bu yeni kontrolün yanıtı yok.
+
+
+### S06 yanlışları sırayla çalışma talebi
+
+Kullanıcı bazı sorularda iki yakın şık arasında kaldığını belirtti ve bütün yanlışlarını sırayla incelemek istedi. Sıra Q1→Q3→Q5→Q14→Q17→Q18→Q20. Tek tek ilerle, kullanıcı yanıtını bekle; yedi soruyu toplu uzun ders olarak verme. İlk Q1'de kullanıcının C seçimi ile B karşılaştırılıyor: execution başına limit, queue genelinde limit ve dispatch rate ayrımı. Yakın şıkların tam listesi kullanıcı tarafından bildirilmedi. İlk 13/20 korunur.
+
+
+### 26 Eylül — S06 Q3 rehberli incelemeye geçiş
+
+Kullanıcı Q1 kontrol sorusunu yanıtlamadan bir sonraki yanlış soruya geçmek istedi. Q1 açıklaması verildi fakat anlama kontrolü doğrulanmadı; tamamlandı/öğrenildi sayılmıyor. Q3 B→A: Cloud Run service agent ile runtime service account ayrımı, denied principal'dan yetki verilecek kimliği bulma anlatılıyor. Sıra bundan sonra Q5→Q14→Q17→Q18→Q20. İlk 13/20 ve 73 dakika korunur.
+
+
+### 26 Eylül — Q3 kimlik ayrımı henüz anlaşılmadı
+
+Kullanıcı service agent/runtime SA açıklamasına “anlamadım” dedi. Secret Manager kontrol sorusunu yanıtlamadı; doğru uygulama kaydı yok. İki kimlik, platformun image'ı alması ve çalışan uygulamanın API çağrısı olarak sade bir açılış sırasıyla tekrar açıklanıyor. Daha çok kimlik/rol ekleme; önce bu ikisini somutlaştır. İlk S06 13/20 değişmez.
+
+
+### 26 Eylül — S06 Q5 incelemesine geçiş
+
+Kullanıcı Q3 sadeleştirilmiş açıklamasından sonra sonraki yanlış soruya geçmek istedi. Q3 için açıklama sonrası anlama/bağımsız yanıt teyidi yok; öğrenildi sayılmıyor. Q5 B→D inceleniyor: browser'a normal service-account access token göndermek token'ı verilen object path'e daraltmaz; belirli object+GET+expiry için signed URL. Linkin paylaşılabilir bearer niteliği ve süre sınırı açıklanıyor. Sonraki sıra Q14→Q17→Q18→Q20. İlk S06 13/20 ve 73 dakika korunur.
+
+
+### 26 Eylül — S06 Q14 incelemesine geçiş
+
+Kullanıcı Q5 açıklaması sonrası sonraki yanlış soruya geçmek istedi; Q5 kavrayış/bağımsız kontrol teyidi yok. Q14 A→B inceleniyor: image commit label/push log ile Cloud Build-generated provenance ayrımı; images output ve options.requestedVerifyOption: VERIFIED. Provenance'ın build kökeni kaydı olduğu, tests/vulnerability-free garantisi olmadığı açıklanıyor. Sırada Q17→Q18→Q20 var. İlk S06 13/20, 73 dakika korunur.
+
+
+### 26 Eylül — S06 Q17 incelemesine geçiş
+
+Kullanıcı Q14 açıklaması sonrası sonraki soruya geçmek istedi; Q14 kavrayış kontrolü yok. Q17 D→C anlatılıyor: retention 90 gün minimum silme koruması, lifecycle Delete age30 silme mekanizması. Gün45'te retention engeller; 90 gün dolunca koşulları sağlayan lifecycle Delete asenkron gerçekleşebilir, tam gün/saniye garantisi yok. Retention expiry kendiliğinden silmez. Sırada Q18→Q20 kaldı. İlk 13/20 ve 73 dakika korunur.
+
+
+### 26 Eylül — S06 Q18 incelemesine geçiş
+
+Kullanıcı Q17 açıklamasından sonra sonraki soruya geçmek istedi; Q17 kavrayış teyidi yok. Q18 B+D→B+E inceleniyor: fixed base ile yeni application image üretmek B doğru; eski digest'i yeniden onaylamak içeriği düzeltmez. E yeni image için scan/test doğrulaması ve production rollout gerektirir. Scanner metadata güncellemesi paket yaması değildir; package-lock.json sorudaki OS paketini yönetmiyor. Sonraki yanlış Q20. İlk S06 13/20 ve 73 dakika korunur; Q18 açıklama sonrası kavrayış henüz doğrulanmadı.
+
+
+## 26 Eylül — S07 hazırlığı tamamlandı
+
+Kullanıcı “tamam 7. sınavı hazırla” dedi. Resmî sertifika sayfasının güncel bağlı rehberi tekrar kontrol edildi. S07 20 soru, 128–142 kelimelik gövdeler (ortalama 134,5), yakın ama koşullarla elenen seçenekler; 12 yeni ölçüm + 7 karma + 1 gecikmeli probe uygulaması. Her soru için Türkçe gerekçe, yanlış seçenek elemesi, belirleyici İngilizce koşul, rehber maddesi ve ek resmî kaynak var. Yapısal sayı/seçenek/anahtar/boş cevap alanı/yerel bağlantı kontrolleri geçti. Soru günlüğü, dizin ve kapsam notu güncellendi. Yeni quiz hazırlanmış olması çözüm veya kalıcılık kanıtı değildir.
+
+Q18 açıklaması sonrası kullanıcı stale kelimesini sordu: güncelliğini yitirmiş/eski kalmış; kesin yanlış veya expired ile eş anlamlı değil. Yeni uygulama yanıtı yok. S06 Q20 sonraki hata incelemesi olarak bekliyor; S04 sonucu bildirilmedi. Kullanıcı S07 ve ilgili çalışma kayıtları için commit/push istedi. Geçici tmp/ çıktıları bu kapsama dahil değil.
