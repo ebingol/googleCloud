@@ -2,7 +2,7 @@
 
 [Yeni sohbet için devam notu](HANDOFF.md) · [Günlük çalışma ve soru üretme stratejisi](STRATEGY.md) · [Soru geçmişi — hazırlayan için](QUESTION-LOG.md)
 
-**7 senaryo seti + 1 pekiştirme seti · 130 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
+**8 senaryo seti + 1 pekiştirme seti · 180 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
 
 Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgündür, gerçek sınav sorusu değildir. Amaç birkaç gereksinimi birlikte değerlendirmek ve makul alternatifleri elemektir. Pilotun zorluğu henüz öğrenci sonuçlarıyla kalibre edilmemiştir.
 
@@ -15,7 +15,8 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 | PCD-S04 | Dört resmî ana alandan 20 karma soru; 6 tasarım + 5 geliştirme/test + 5 deployment + 4 entegrasyon; çözüm bekleniyor | 45 dakika | [Çöz](PCD-S04.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S04.md) |
 | PCD-S05 | Daha uzun paragraflı 20 soru; Gemini, Workstations, Memorystore, API performansı ve karma mimari; ilk cevaplar 17/20, 70–80 dakika | 50 dakika | [Çöz](PCD-S05.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S05.md) |
 | PCD-S06 | Exam guide öncelikli 20 soru; daha uzun paragraflar ve yakın alternatifler; ilk cevaplar 13/20, 73 dakika | Süreyi kaydet | [Çöz](PCD-S06.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S06.md) |
-| PCD-S07 | Exam guide öncelikli 20 uzun senaryo; yakın seçenekler, 18 tek + 2 çift seçim; çözüm bekleniyor | Süreyi kaydet | [Çöz](PCD-S07.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S07.md) |
+| PCD-S07 | Exam guide öncelikli 20 uzun senaryo; yakın seçenekler, 18 tek + 2 çift seçim; Q1–Q12: 9/12; Q13 D açıklanmış, bağımsız seçim yok | Süreyi kaydet | [Çöz](PCD-S07.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S07.md) |
+| PCD-S08 | Öğretici 50 soru; rehberin 11 alt başlığı, 44 tek + 6 çift seçim; henüz çözülmedi | 10’luk bölümler; süreyi kaydet | [Çöz](PCD-S08.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S08.md) |
 
 **İlk set sonrası:** [Doküman sayfaları, ilgili quizler ve bugünkü çalışma sırası](PCD-S01-review-guide.md).
 
@@ -23,7 +24,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 
 1. İlk turda cevap anahtarını ve kaynakları açmadan çöz.
 2. Her cevapta E/K/T güven düzeyi ve kararı belirleyen koşulu bir cümleyle yaz; kararsız olduğunda yakın alternatifi de belirt.
-3. İstersen cevapları sohbette beşli gruplar halinde gönder; S04–S07 için son grup 16–20.
+3. İstersen cevapları sohbette beşli gruplar halinde gönder; S04–S07 için son grup 16–20; S08 toplam 50 soru, 10’luk bölümlerle de çözülebilir.
 4. Anahtarla kontrol ettikten sonra yanlışları ve tahminle doğruları tekrar listesine al.
 5. İlerlemeni aşağıya kaydet; tekrar çözümündeki ezber etkisini ilk denemeden ayır.
 
@@ -36,6 +37,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 | PCD-S03 | Q1–Q8 tekrar; önceki geri bildirim sonrası | 23 Eylül 2026 | 2 / 8 | Bildirilmedi | Q1/Q3 düzeldi; ilk 7/15 korunur. [Tekrar](results/PCD-S03-retry-01.md) |
 | PCD-S05 | İlk bildirilen cevaplar | 25 Eylül 2026 | 17 / 20 (%85) | 70–80 dakika | Q3 schema uyumu; Q15 termination/PDB; Q18 build cache. Rehberli kontroller ilk puanı değiştirmez. [Sonuç](results/PCD-S05-attempt-01.md) |
 | PCD-S06 | İlk bildirilen cevaplar | 25 Eylül 2026 | 13 / 20 (%65) | 73 dakika | Q1/3/5/14/17/18/20. [Sonuç](results/PCD-S06-attempt-01.md) |
+| PCD-S07 | İlk deneme, kısmi Q1–Q12 | 26–27 Eylül 2026 | 9 / 12 (%75); kalan 8 cevaplanmadı | Q1–Q11: 34:26; Q12 süresi yok | Q6/Q7/Q11; Q13 D açıklanmış, bağımsız seçim yok. [Kayıt](results/PCD-S07-attempt-01.md) |
 
 ## Kapsam
 
@@ -47,4 +49,8 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 
 25 Eylül: S06 için birincil dayanak güncel exam guide; soru bazındaki rehber maddeleri, resmî kaynaklar ve ölçülmeyen alt kapsam ayrı anahtarda. S05 ilk sonucu korunur.
 
-26 Eylül: S07 hazır; 128–142 kelimelik soru gövdeleri, Q6/Q11 çift seçim. Dört ana alan 6/5/5/4. Sonuç bildirilmedi. Rehber/kaynak eşleştirmesi ayrı anahtarda.
+26 Eylül: S07 hazır; 128–142 kelimelik soru gövdeleri, Q6/Q11 çift seçim. Dört ana alan 6/5/5/4. İlk 10 soru 8/10, 32 dakika; kalanlar bekliyor. Rehber/kaynak eşleştirmesi ayrı anahtarda.
+
+## S08 öğretici kapsam — 27 Eylül
+
+S08, güncel resmî rehberin dört ana alanındaki 11 alt başlığın her birinden soru içerir. Dağılım 16/12/12/10; kaynak ve konu haritası anahtardadır. Bazı ürün örnekleri açıklama notuyla kapsanır; her parametre ölçülmüş değildir. Sample’dan biraz zor hedefi doğrudan kalibre edilmemiştir. Önceki setlerdeki niş detaylar yerine temel kararlar ve açıkça etiketli pekiştirme tercih edilmiştir.

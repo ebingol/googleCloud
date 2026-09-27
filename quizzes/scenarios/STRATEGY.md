@@ -2,6 +2,12 @@
 
 Kararlaştırma: 20 Eylül 2026. Hedef: Professional Cloud Developer. Kullanıcı yaklaşık üç hafta kaldığını söyledi; kesin sınav tarihi bilinmiyor. Eski 20–30 dakikalık günlük plan yerine aşağıdaki düzen geçerli.
 
+## Güncel öncelik — 27 Eylül S08
+
+Kullanıcı öğretici, tüm rehbere yayılan ve sample’dan biraz zor bir sınav istedi. Bu tercih eski “giderek zorlaştır / her sette çoğunluk yeni ayrıntı” kurallarından önce gelir. S08 50 sorudur; dört alan 16/12/12/10, 11 alt başlığın hepsi, 44 tek/6 çift seçim. Uzun İngilizce korunur (93–108 kelime); temel karar ve küçük ek koşul tercih edilir. Bilinçli tekrarlar açıkça işaretlenir. Anahtar ayrı Türkçe; sade anlam, koşul, yakın yanlışın nedeni ve örnek içerir. Kapsam haritası doğrudan ölçüm ile tamamlayıcı notu ayırır.
+
+Öğretici tur 10’luk bölümlerle çözülebilir; süre kaydedilir, zorunlu bitiş yoktur. E/K/T güven düzeyi ve özellikle kararsızlarda kısa gerekçe alınır. Resmî sample soru içeriğine kayıt kapısı nedeniyle erişilmedi; zorluk eşdeğerliği iddia etme. S08 hazırlanmış fakat çözülmemiştir; sonraki yeni set S09. S07 ve eski ilk puanlar değişmez.
+
 ## Günlük düzen
 
 **22 Eylül kullanıcı güncellemesi:** Cloud Run, Cloud Run functions ve GKE konu soruları kullanıcı beyanına göre tamamlandı. Güncel 15 soruluk senaryo bu üç alandan 5'er soru içerecek. Bu istek, tek günlük klasörden en az altı yeni soru kuralından önce gelir. GKE tamamlanmasını tüm containeried klasörünün tamamlanması diye yorumlama; yeni puan bildirilmedi.
@@ -134,3 +140,12 @@ Kullanıcı S06'da anahtar kelime/best practice eşleştirmesine ağırlık verd
 ## 26 Eylül — S07 hazırlığı
 
 Kullanıcının açık isteğiyle S07 hazırlandı: 20 uzun İngilizce senaryo, 18 tek + Q6/Q11 çift seçim, dört ana alan 6/5/5/4. 12 yeni ölçüm + 7 karma + S02 probe çalışmasına 4 gün sonra 1 farklı uygulama. Anahtar ayrı Türkçe, güncel resmî rehber ve birincil teknik belgelerle eşleştirilmiş. Süre kaydedilecek; zorunlu bitiş sınırı yok. S07 sonucu bekleniyor; sonraki yeni set S08. S06 Q20 incelemesi bekliyor, ilk puanlar korunur.
+
+
+## 27 Eylül — Ürün bazında temel kullanım kurallarına geçiş
+
+Kullanıcı best practice'leri birlikte çalışmak istedi ve GKE temelinde eksik olabileceğini söyledi. Açık kapsam: GKE; Firestore/Cloud SQL; Cloud Run jobs task paylaşımı; cache; Cloud Build/deployment; Cloud Storage; Gemini/AI araçları, Cloud Workstations ve Google ekosistemini lokalden kullanma. Aktif öncelik bu öğretim; yeni zor deneme hazırlama veya S07'yi zorunlu sürdürme değil.
+
+Yöntem: sade Türkçe problem → hangi mekanizma → neden → hangi durumda geçersiz/eksik; sonra kısa uygulama ve gerektiğinde İngilizce ifade. Best practice'leri koşulsuz slogan yapma. Temel kuralları ileri ürün ayrıntılarından ayır. İlk GKE bölümü Deployment/Pod/Service ilişkisi ve üç kopyalı API örneği; sonra probes, requests/limits, autoscaling, rollout/termination, storage/config ve WIF/IAM. Diğer başlıklar henüz işlendi sayılmaz. Önceki GKE ders sorularının tamamlandığı kullanıcı beyanı, kavram hakimiyeti kanıtı değildir.
+
+S07 ilk Q1–Q12 9/12 korunur; Q13 doğru cevap açıklanmış rehberli çalışma, bağımsız seçim yok. Q14–Q20 ve S06 Q20 incelemesi bekliyor. Otomasyon/bildirim yok.

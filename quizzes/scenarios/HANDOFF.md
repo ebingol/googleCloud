@@ -1,10 +1,20 @@
 # Yeni sohbet buradan devam etsin
 
-Son güncelleme: 26 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
+Son güncelleme: 27 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
 
 ## Kullanıcının son kararı
 
-**26 Eylül güncel:** Kullanıcı S07 istedi; [PCD-S07](PCD-S07.md) ve [ayrı Türkçe anahtar](../answers/scenarios/PCD-S07.md) hazır. 20 uzun İngilizce senaryo, Q6/Q11 çift seçim, dört alan 6/5/5/4. Süreyi kaydet, zorunlu bitiş sınırı yok. S07 cevap/puan yok; sonraki yeni set S08. S06 yanlış incelemesinde Q1/3/5/14/17/18 açıklandı, kavrayış teyidi yok; **Q20 henüz incelenmedi**. Yeni set isteği aktif öncelik. İlk S06 13/20, 73 dakika ve S05 17/20 korunur.
+**27 Eylül en son tercih — S08 hazır:** Kullanıcı tüm exam guide kapsamına yayılan, daha öğretici ve sample’dan biraz zor bir sınav istedi. [PCD-S08](PCD-S08.md) 50 soru olarak hazırlandı; [ayrı Türkçe anahtar](../answers/scenarios/PCD-S08.md) sade anlam, karar kuralı, şık tuzağı, örnek ve kaynak içerir. Dört alan 16/12/12/10; 11 numaralı alt başlığın tümünde soru var. Ürün örneklerinin bazıları yalnız tamamlayıcı notta; bütün ürün ayrıntıları bağımsız ölçülmüş değildir. 44 tek + Q7/15/17/24/32/44 çift seçim; 93–108 kelimelik İngilizce gövdeler; 5 × 10 soru, süreyi kaydet, zorunlu bitiş yok. **Henüz hiçbir S08 cevabı veya sonucu yok.** Sonraki yeni set ID’si S09.
+
+Bu istek önceki zorluğu artırma tercihinin önündedir: temel best practice + en fazla küçük ek koşul; niş özellik/syntax tuzaklarıyla zorluk üretme. Bilinçli temel tekrarları yeni konu diye sayma. Resmî sample’ın soru sayfaları kayıt formu arkasında kaldı; soru içeriğiyle doğrudan kıyas yapılmadı. “Sample’dan biraz zor” tasarım hedefidir, doğrulanmış zorluk değil. İlk 10 cevap geldiğinde hem bilgi hem güven/İngilizce anlam üzerinden ayarla.
+
+S07 Q1–Q12 ilk 9/12, Q13 doğru D açıklanmış rehberli çalışma olarak korunur; Q14–20 cevap yok. S06 Q20 incelemesi bekliyor. S08 çözümü bunların tamamlandığı anlamına gelmez. Kullanıcı S08 ve ilgili çalışma kayıtları için commit/push istedi; geçici tmp/ çıktıları bu kapsama dahil değil.
+
+**27 Eylül önceki tercih:** Deneme akışından ürün bazında best practice öğretimine geçildi. Önce GKE temelleri; ardından Firestore/Cloud SQL, jobs, cache, build/deployment, Storage ve lokal geliştirme/Gemini/Workstations. Küçük bölümlerle neden-sonuç anlat; temel bilgi oturmadan niş detay yükleme.
+
+**27 Eylül güncel:** S07 Q12 ilk A, doğru; güncel kısmi 9/12 (%75). Q12 süresi yok; 34:26 yalnız Q1–Q11 için bilinen kesintili süre. **Aktif çalışma Q13:** kullanıcı doğru cevabı istedi; D açıklandı. İlk seçim yok, Q13 rehberli çalışma ve bağımsız puan dışında. Şimdi project/GKE/cluster/Pod/WIF temel ilişkileri anlatılıyor. Q14–Q20 henüz cevaplanmadı. Q11 Türkçe açıklama/şık çevirisi sonrası teknik kavrayış bağımsız doğrulanmadı.
+
+**26 Eylül güncel:** Kullanıcı S07 istedi; [PCD-S07](PCD-S07.md) ve [ayrı Türkçe anahtar](../answers/scenarios/PCD-S07.md) hazır. 20 uzun İngilizce senaryo, Q6/Q11 çift seçim, dört alan 6/5/5/4. Süreyi kaydet, zorunlu bitiş sınırı yok. S07 Q1–Q10 ilk cevapları **8/10 (%80), 32 dakika**; kullanıcı bırakması gerektiği için Q10 sonunda durdu. **Güncel devam noktası Q12:** Q11 D+E (doğru A+E), 2:26. Şu an 8/11, bildirilen çözüm süreleri toplamı 34:26; ara/sohbet hariç. Q12–Q20 cevaplanmadı, yanlış sayılmaz. Yanlışlar Q6 D+E→B+D ve Q7 B→C; ayrıntılı inceleme yok. [Kısmi kayıt](results/PCD-S07-attempt-01.md). Sonraki yeni set S08. S06 yanlış incelemesinde Q1/3/5/14/17/18 açıklandı, kavrayış teyidi yok; **Q20 henüz incelenmedi**. Yeni set isteği aktif öncelik. İlk S06 13/20, 73 dakika ve S05 17/20 korunur.
 
 **25 Eylül güncel:** S06 ilk bildirilen cevaplar **13/20 (%65), 73 dakika**. Yanlışlar Q1 C→B, Q3 B→A, Q5 B→D, Q14 A→B, Q17 D→C, Q18 B+D→B+E, Q20 B→D. [İlk cevap kaydı](results/PCD-S06-attempt-01.md). Güven/gerekçe ve yardım koşulları bilinmiyor. Öncelik hata ayrımlarını çalışmak; teknik/dil nedeni henüz sınıflandırılmadı. S05 ilk 17/20 korunur. S04 sonucu hâlâ bildirilmedi. Uzun paragraf/yakın şık ve exam guide önceliği geçerli; sonraki yeni set S07.
 
@@ -41,6 +51,8 @@ Custom audiences ders PDF'lerinde bulunmadı; resmî Cloud Run web dokümanında
 Diğer kaynak konumları: [teknik tekrar rehberi](PCD-S01-review-guide.md). Revision bileşenleri `cloudRun/T-DVCRUN-B-m1-l2-file-en-3.en.pdf` s.4 ve 8; traffic management/tagging `cloudRun/T-DVCRUN-B-m3-l2-file-en-14.en.pdf` s.17–18.
 
 ## Sonraki sohbetin ilk işi
+
+**Güncel başlangıç:** Kullanıcının yeni mesajına göre S08 cevaplarını değerlendir veya istediği temel konuyu anlat. Aşağıdaki tarihli S03/S04 öncelikleri tarihsel kayıttır; S08/S09 güncel durumunun önüne geçmez.
 
 **24 Eylül güncel öncelik:** Kullanıcı tüm konulardan 20 soru istedi; [PCD-S04](PCD-S04.md) hazırlandı ve çözüm bekleniyor. Cevap kaydettiğini bildirirse S04'ü yeniden oku. Dört ana alan 6/5/5/4, 45 dakika hedef; yalnız önceki üç compute alanıyla sınırlı değil. S03 ilk 7/15 ve tekrar 2/8 korunur. Aşağıdaki eski S03 inceleme önceliği bu yeni kullanıcı talebinden öncedir. Sonraki üretilecek yeni set ID'si S05.
 
@@ -359,3 +371,27 @@ Kullanıcı Q17 açıklamasından sonra sonraki soruya geçmek istedi; Q17 kavra
 Kullanıcı “tamam 7. sınavı hazırla” dedi. Resmî sertifika sayfasının güncel bağlı rehberi tekrar kontrol edildi. S07 20 soru, 128–142 kelimelik gövdeler (ortalama 134,5), yakın ama koşullarla elenen seçenekler; 12 yeni ölçüm + 7 karma + 1 gecikmeli probe uygulaması. Her soru için Türkçe gerekçe, yanlış seçenek elemesi, belirleyici İngilizce koşul, rehber maddesi ve ek resmî kaynak var. Yapısal sayı/seçenek/anahtar/boş cevap alanı/yerel bağlantı kontrolleri geçti. Soru günlüğü, dizin ve kapsam notu güncellendi. Yeni quiz hazırlanmış olması çözüm veya kalıcılık kanıtı değildir.
 
 Q18 açıklaması sonrası kullanıcı stale kelimesini sordu: güncelliğini yitirmiş/eski kalmış; kesin yanlış veya expired ile eş anlamlı değil. Yeni uygulama yanıtı yok. S06 Q20 sonraki hata incelemesi olarak bekliyor; S04 sonucu bildirilmedi. Kullanıcı S07 ve ilgili çalışma kayıtları için commit/push istedi. Geçici tmp/ çıktıları bu kapsama dahil değil.
+
+
+## 26 Eylül — S07 Q10 sonunda ara
+
+Kullanıcı bırakması gerektiğini söyleyerek 1 C, 2 A, 3 D, 4 B, 5 A, 6 D+E, 7 B, 8 D, 9 B, 10 C verdi. İlk 10: 8/10, 32 dakika. S07 tamamlanmadı; Q11'den devam et, ikinci bölüm süresini ayrıca kaydet. Kalan soruları yanlış veya tamamlandı sayma. Q6/Q7 ayrıntılı incelemesi ve S06 Q20 bekliyor. Q15 gecikmeli probe uygulaması henüz çözülmedi. Önceki S07 hazırlığı ve S06 kayıtları 4452300 ile origin/main'e gönderilmişti; bu yeni kısmi sonuç o commit'ten sonradır.
+
+
+## S07 devamı — Q11 ve değerlendirme yaklaşımı
+
+Q11 ilk D+E, 2 dakika 26 saniye; doğru A+E. Güncel kısmi sonuç 8/11 ve kesintili çözüm toplamı 34:26. Sonraki soru Q12. Kullanıcı uzun senaryolarda bilinmeyen ayrıntı ve eminlik/hız sorununu sorguladı. Asistan setlerin gerçek sınava kalibre edilmediğini, senaryo karmaşıklığıyla niş teknik detayın karıştırıldığını kabul etti; sonraki üretim için sample biçimine yakın temel + makul ek koşul, ileri detayları ayrı çalışma yaklaşımı önerildi. Uzun İngilizce tercihi korunur; mevcut sorular/ilk cevaplar değiştirilmez. Kullanıcı Q1'i deneyim ve ipuçlarıyla seçtiğini söyledi; bunu salt tahmin sayma. Ayrıntılı gerekçe/yakın şık henüz yok. İlk 10 kısa püf noktaları paylaşıldı; bağımsız kalıcılık teyidi yok.
+
+
+### 27 Eylül — Q13 çözümü ve temel hiyerarşi açıklaması
+
+Kullanıcı önce Türkçe anlatımı da garip buldu, sonra doğru cevabı istedi; D açıklandı. Q13 için kullanıcı ilk seçimi yok; doğru cevap görüldüğü için bundan sonraki seçim bağımsız sınav yanıtı olarak puanlanmamalı. Ardından project/GKE/cluster/Pod/Workload Identity hiyerarşisini sordu. Project altında cluster, cluster içinde namespace, namespace içinde Pod ve KSA (aynı seviyede kaynaklar), Pod içinde container; node üzerinde çalışma ayrı ilişki olarak açıklanıyor. GKE ürün adı, workload uygulama/iş yükü, WIF kimlik mekanizması; GKE kimlik havuzu proje bağlamında ve aynı projenin cluster'ları tarafından paylaşılabiliyor. Bu temel kavram açıklamasıdır; kavrayış teyidi yok. Q1–Q12 9/12 korunur; Q13 rehberli çalışma, Q14–Q20 henüz cevaplanmadı.
+
+
+## 27 Eylül — Ürün bazında temel kullanım kurallarına geçiş
+
+Kullanıcı best practice'leri birlikte çalışmak istedi ve GKE temelinde eksik olabileceğini söyledi. Açık kapsam: GKE; Firestore/Cloud SQL; Cloud Run jobs task paylaşımı; cache; Cloud Build/deployment; Cloud Storage; Gemini/AI araçları, Cloud Workstations ve Google ekosistemini lokalden kullanma. Aktif öncelik bu öğretim; yeni zor deneme hazırlama veya S07'yi zorunlu sürdürme değil.
+
+Yöntem: sade Türkçe problem → hangi mekanizma → neden → hangi durumda geçersiz/eksik; sonra kısa uygulama ve gerektiğinde İngilizce ifade. Best practice'leri koşulsuz slogan yapma. Temel kuralları ileri ürün ayrıntılarından ayır. İlk GKE bölümü Deployment/Pod/Service ilişkisi ve üç kopyalı API örneği; sonra probes, requests/limits, autoscaling, rollout/termination, storage/config ve WIF/IAM. Diğer başlıklar henüz işlendi sayılmaz. Önceki GKE ders sorularının tamamlandığı kullanıcı beyanı, kavram hakimiyeti kanıtı değildir.
+
+S07 ilk Q1–Q12 9/12 korunur; Q13 doğru cevap açıklanmış rehberli çalışma, bağımsız seçim yok. Q14–Q20 ve S06 Q20 incelemesi bekliyor. Otomasyon/bildirim yok.

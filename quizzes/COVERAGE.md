@@ -161,3 +161,8 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 ## Ayrı senaryo serisi — 26 Eylül 2026
 
 [S07](scenarios/PCD-S07.md), dört resmî ana alanı 6 tasarım / 5 geliştirme-test / 5 deployment / 4 entegrasyon sorusuyla örnekler. Soru bazındaki rehber maddeleri ve teknik web kaynakları [ayrı anahtarda](answers/scenarios/PCD-S07.md). Ders PDF sayfalarıyla eşleştirilmiş yeni beşlik set değildir; yukarıdaki ders kapsamı veya tamamlanma kayıtları değişmez. 20 soru bütün alt konuları kapsamaz; ölçülmeyen kapsam anahtarda açıklanır.
+
+
+## Öğretici senaryo kapsamı — 27 Eylül 2026
+
+[S08](scenarios/PCD-S08.md) 50 soruyla 1.1/1.2/1.3, 2.1/2.2/2.3, 3.1/3.2, 4.1/4.2/4.3 başlıklarının her birini doğrudan örnekler. Birincil soru sayıları 16 tasarım, 12 geliştirme/test, 12 deployment, 10 entegrasyondur. [Ayrı anahtardaki kapsam haritası](answers/scenarios/PCD-S08.md) her konu kümesinin soru numaralarını ve yalnız açıklamada işlenen örnekleri gösterir. Bütün ürün parametrelerinin bağımsız ölçüldüğü veya öğrenildiği iddia edilmez. Ders bankasının PDF sayfa kapsamı ve kullanıcı tamamlama/ilk sonuç kayıtları değişmez. S08 henüz çözülmedi.
