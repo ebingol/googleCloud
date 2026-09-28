@@ -170,4 +170,9 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 
 ## Karma senaryo kapsamı — 28 Eylül 2026
 
-[S09](scenarios/PCD-S09.md): 50 soru, dört ana alan 16/12/12/10; 11 numaralı alt başlıktan doğrudan örnek. Q20/Q31 temel pekiştirme; karma ilişkiler [günlükte](scenarios/QUESTION-LOG.md), ölçülen/ölçülmeyen konu ayrımı [anahtarda](answers/scenarios/PCD-S09.md). Bu turda her ürün özelliği ayrı ölçülmez. Henüz çözülmedi; kapsam hazırlığı öğrenme/tamamlama kaydı değildir. Önceki tarihli S08 “henüz çözülmedi” notu tarihsel kalmıştır; doğrulanmış son durum 45/50 ve bölümlerin toplamı 119 dakikadır. İlk cevaplar ve ders bankası değiştirilmedi.
+[S09](scenarios/PCD-S09.md): 50 soru, dört ana alan 16/12/12/10; 11 numaralı alt başlıktan doğrudan örnek. Q20/Q31 temel pekiştirme; karma ilişkiler [günlükte](scenarios/QUESTION-LOG.md), ölçülen/ölçülmeyen konu ayrımı [anahtarda](answers/scenarios/PCD-S09.md). Bu turda her ürün özelliği ayrı ölçülmez. Tamamlandı: ilk gönderilen 37/50 (%74), bölümlerin toplamı 128 dakika. Q9 aktarım beyanıyla 38/50 ve Q19 soru belirsizliği ayrı kayıttır. [Sonuç](scenarios/results/PCD-S09-attempt-01.md). Kapsam hazırlığı öğrenme/tamamlama kaydı değildir. Önceki tarihli S08 “henüz çözülmedi” notu tarihsel kalmıştır; doğrulanmış son durum 45/50 ve bölümlerin toplamı 119 dakikadır. İlk cevaplar ve ders bankası değiştirilmedi.
+
+
+## Kısa karma deneme — 28 Eylül S10
+
+[S10](scenarios/PCD-S10.md): **20 soru / 45 dakika**; 18 tek + 2 çift seçim. Birincil alanlar 6 tasarım / 5 geliştirme-test / 5 deployment / 4 entegrasyon. 11 numaralı alt başlıktan örnek vardır; bütün ürünler ve özellikler ölçülmez. [Anahtardaki harita](answers/scenarios/PCD-S10.md) ölçülen ve ölçülmeyen kapsamı ayırır. Q18 bilinçli pekiştirme; diğer eski konu ilişkileri [günlükte](scenarios/QUESTION-LOG.md) kayıtlıdır. Henüz çözülmedi; hazırlık, öğrenme veya başarı kaydı değildir. Önceki ilk cevaplar ve ders bankası değişmedi.

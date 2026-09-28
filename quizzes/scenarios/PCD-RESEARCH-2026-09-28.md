@@ -27,3 +27,8 @@ Yazar GKE, Cloud Run/functions, Firestore, Pub/Sub, Cloud Storage ve Artifact Re
 Kullanıcının istediği zorluk hedefi korundu: 50 özgün soru, makul uzun İngilizce paragraflar, yakın alternatifler ve iki–üç koşulu birlikte değerlendirme. Zorluk, resmî sample’dan ölçülerek kalibre edilmiş değildir. Aday anlatımları teknik doğruluk kaynağı yapılmadı; her sorunun anahtarında birincil teknik doküman var. 16/12/12/10 dağılımı rehbere yakın örnekleme; bütün ürün alt özelliklerini ölçme iddiası yok.
 
 S09 hazırlandı; henüz cevap veya deneme sonucu yok. Eski ilk sonuçlar korundu. Araştırma ve hazırlık otomasyon/bildirim oluşturmaz.
+
+
+## Altı aylık genişletme
+
+Kullanıcının sonraki açık isteğiyle [28 Mart–28 Eylül incelemesi](PCD-RESEARCH-2026-09-28-SIX-MONTHS.md) eklendi. Tech Waves tam metnindeki 25+5 dakika ve materyal aşinalığı beyanı genişletmede değerlendirildi; önceki dar not bu ayrıntıları içermiyordu. Yeni araştırma sınav tarihini, yayın tarihini ve sınav dili belirsizliğini ayrı tutar.

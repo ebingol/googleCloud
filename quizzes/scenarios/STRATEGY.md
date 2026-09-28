@@ -1,12 +1,22 @@
 # Günlük quiz ve senaryo stratejisi
 
-Kararlaştırma: 20 Eylül 2026. Hedef: Professional Cloud Developer. Kullanıcı yaklaşık üç hafta kaldığını söyledi; kesin sınav tarihi bilinmiyor. Eski 20–30 dakikalık günlük plan yerine aşağıdaki düzen geçerli.
+Kararlaştırma: 20 Eylül 2026. Hedef: Professional Cloud Developer. Kullanıcının son beyanına göre yaklaşık iki hafta kaldı; kesin sınav tarihi bilinmiyor. Eski 20–30 dakikalık günlük plan yerine aşağıdaki düzen geçerli.
+
+## Güncel öncelik — 28 Eylül son düzeltme: S10, 20 soru / 45 dakika
+
+Kullanıcı tam deneme planını düzeltti. S10 **20 soru, 45 dakika hedefi** olarak hazır; 29 Eylül iş çıkışı çözüm planı. Henüz sonuç yok. 18 tek/2 çift seçim; uzun ama makul gövdeler ve yakın seçeneklerle birlikte doğrudan uygulama soruları. Her soruyu çok katmanlı tuzağa çevirme; eksik varsayımla belirsizlik üretme. Sample/gerçek sınavla zorluk kalibrasyonu yok.
+
+Son iki haftada **yeni konu testi yok**. Normal gün 20, yorgun/yoğun gün 10 soru; 1–2 gün hiç çözememe olasılığı kabul edilir, telafi borcu oluşturulmaz. Günlük tam deneme zorunlu değildir. Gündüz iş/sprint görevleri, akşam çalışma kullanıcının planıdır; otomasyon veya bildirim kurulmaz.
+
+45 dakika sonunda o ana kadarki ilk cevapları kaydet; devam edilirse ek süre ve yeni cevaplar ayrı kalır. E/K/T ve kararsızsa ikinci seçenek isteğe bağlıdır; soru başına yazılı gerekçe zorunlu değildir. Açıklama sonrası düzeltmeler ilk puanın üstüne yazılmaz. Yanlışları yalnız şıktan teknik eksik olarak sınıflama; dilde koşul ayrımı ve teknik gerekçeyi birlikte değerlendir. Sonraki yeni set S11.
+
+**Aşağıdaki güncel/eskiden günlük başlıkları tarihsel plandır; konu testi + her gün tam set gibi çelişen kuralların önüne bu son tercih geçer.**
 
 ## Güncel öncelik — 28 Eylül S09
 
 Kullanıcının yeni isteği: 50 soru, sample’dan daha zor hedef, yakın seçenekler, uzun ama makul İngilizce. Önce son bir ay aday yorumları araştırıldı; güncel deneyim az olduğu ve İngilizce soru uzunluğu/zorluk trendi doğrulanmadığı açıkça kaydedildi. S09 84–103 kelimelik gövdelerle ve birden fazla koşulla hazırlanmıştır; niş detay biriktirerek zorluk üretme. Açık pekiştirmeleri yeni kapsam sayma. Sample zorluk kıyası hedef, ölçüm değil.
 
-S09 hazır; ilk yanıt yok. Tam deneme için 120 dakika öneri, zorunlu kesme yok; 10’luk bölümler mümkün. İlk cevapları yardımdan sonraki cevaplardan ayır. Mevcut sonuçları koru. Sonraki yeni set S10. Aşağıdaki eski güncel başlıklar tarihsel tercihlerdir.
+S09 tamamlandı: ilk gönderilen 37/50 (%74), bölümlerin toplamı 128 dakika. Q9 aktarım beyanıyla 38/50 ayrı kayıt; Q19 belirsizlik notu sonuç dosyasında. Q21–Q50 23/30, 74 dakika; yeni yanlış incelemesi Q26’dan başlar. Tam deneme için 120 dakika öneri, zorunlu kesme yok; 10’luk bölümler mümkün. İlk cevapları yardımdan sonraki cevaplardan ayır. Mevcut sonuçları koru. Sonraki yeni set S10. Aşağıdaki eski güncel başlıklar tarihsel tercihlerdir.
 
 ## Güncel öncelik — 27 Eylül S08
 

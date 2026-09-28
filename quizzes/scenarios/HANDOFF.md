@@ -1,16 +1,34 @@
 # Yeni sohbet buradan devam etsin
 
-Son güncelleme: 28 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
+Son güncelleme: 28 Eylül 2026. Hedef Professional Cloud Developer; son kullanıcı beyanında yaklaşık iki hafta var, kesin tarih verilmedi.
 
 ## Kullanıcının son kararı
 
-**28 Eylül güncel — S09 hazır, çözüm başlamadı:** Kullanıcı yine 50 soru, sample exam’den daha zor hedef, yakın şıklar ve uzun ama makul paragraflar istedi; önce son bir ayın aday yorumlarını araştırmamızı istedi. [Araştırma](PCD-RESEARCH-2026-09-28.md): 28 Ağustos–28 Eylül penceresinde ayrıntılı bağımsız PCD deneyimi az; 31 Ağustos Tech Waves yazısı bulundu, sınava ağustosta girmiş fakat gün belirsiz. 26 Temmuz deneyimi yalnız pencere dışı tamamlayıcı. Uzunluk/zorluk artışı veya konu frekansı doğrulanmadı; satış/dump güncelleme tarihleri aday deneyimi sayılmadı.
+**28 Eylül en son — S10 hazır, 20 soru / 45 dakika:** Kullanıcı tam deneme planını açıkça düzeltti: “hayır 20 soruluk 45 dk çözmeye çalışacağım”. [S10 sorular](PCD-S10.md) ve [ayrı Türkçe anahtar](../answers/scenarios/PCD-S10.md) hazır. 18 tek + Q6/Q18 çift seçim; 75–90 kelimelik İngilizce gövdeler; dört alan 6/5/5/4, 11 alt başlık. Yakın seçenekler ve doğrudan uygulama dengelendi; gerçek sınavla zorluk eşdeğerliği yok. Soru ilişkileri QUESTION-LOG içinde; Q18 açık pekiştirme. Henüz hiçbir S10 cevabı, süresi veya sonucu yok.
 
-[PCD-S09](PCD-S09.md) ve [ayrı Türkçe anahtar](../answers/scenarios/PCD-S09.md) hazır. 50 soru; dört alan 16/12/12/10, 11 alt başlık; 44 tek + Q6/18/26/36/42/50 çift seçim. İngilizce gövdeler 84–103 kelime. Şık uzunluğu ipucu kontrolü yapıldı; tek seçim anahtarları A/B/C/D 11’er. Q20/Q31 açık temel pekiştirme, diğer eski konu birleşimleri günlüğe işlendi. Teknik kaynaklar birincil web belgeleri; resmî sample içeriğiyle doğrudan karşılaştırma yapılmadı. **Henüz hiçbir S09 cevabı veya puanı yok; devam Q1. Sonraki yeni set S10.**
+**Aktif sonraki adım:** Kullanıcı 29 Eylül iş çıkışı çözmeyi planlıyor; gün içinde sprint tasklarına bakacak. S10 Q1’den başla. 45. dakikadaki cevapları/boşları sabitle; sonradan devam ederse ek süre ve cevapları ayrı kaydet. 50 soruluk S10 planı iptal. Sonraki üretilecek set S11; kullanıcı istemeden üretme veya otomasyon/bildirim kurma.
 
-120 dakika yalnız önerilen tam deneme hedefi; önceki gibi 10’luk bölümlerle çözüm mümkün. Yardım/mola varsa ayrı kaydet. S08 ilk **45/50, 119 dakika bölümlerin toplamı** aynen korunur; S07 Q13 bağımsız puan dışında, S06 Q20 incelemesi bekliyor. Yeni sonuç dosyası açılmadı çünkü yeni cevap yok. Otomasyon kurulmadı. Kullanıcı S09, araştırma notu ve ilgili çalışma kayıtları için commit/push istedi; geçici `tmp/` dosyaları bu kapsama dahil değil.
+**Son iki haftalık tercih:** Yeni konu testi çözmek istemiyor. Normal gün 20, yoğun/yorgun gün 10 soru; 1–2 gün hiç çalışamama olasılığı var. Kaçan günleri telafi borcuna veya zorunlu günlük tam denemeye çevirme. Uzun ama makul İngilizce korunur; zorluğu otomatik artırma. Güven E/K/T ve kararsızsa ikinci seçenek isteğe bağlı; her soruya gerekçe zorunlu değil. S09’daki ilk yanıtlar, aktarım beyanı ve belirsizlik ayrımı aynen korunur. Yanlış seçimden doğrudan teknik eksik teşhisi koyma.
 
-Aşağıdaki tarihli maddeler geçmiş kayıttır; güncel başlangıç S09 Q1’dir.
+Aşağıdaki S09 araştırma ve sonuç notları önceki çalışmadır; aktif set S10’dur.
+
+**Son istek — altı aylık PCD deneyim araştırması:** [28 Mart–28 Eylül araştırması](PCD-RESEARCH-2026-09-28-SIX-MONTHS.md) tamamlandı. Üç somut pencere içi aday sınav anlatımı (Temmuz/Ağustos), bir Nisan yayını ama sınav tarihi belirsiz yardımcı yazı. Adaylar 30/75/80 dakika bildiriyor; biri 50 sorunun 15'inde kararsızken geçmiş. Bunlar gerçek puan/geçiş eşiği veya İngilizce zorluk kalibrasyonu değil. Japonca yazılar; sınav dili doğrulanmadı. Uzunluk ve nüans zorluğuna destek var, bütün sınavın S09 kadar ince ayrımlı olduğuna yok. Satış/dump, PCA, eski sınav/yeni yayın ayrıldı. Sonuçları ve yeni öğrenme puanını değiştirme. Kullanıcı teknik hata yaptığı teşhisine itiraz etti; gerekçesini dinlemeden teknik eksik diye kesinleştirme. Analistlerin muhtemelen Digital Leader aldığı kullanıcı beyanı; PCD ile eşit karşılaştırma yok.
+
+**28 Eylül güncel — S09 tamamlandı:** Q21–Q50 **23/30 (%76,7), 74 dakika**. İlk gönderilen cevaplar mevcut anahtara göre **37/50 (%74)**; süre 54+74 = **128 dakika (2:08)**. Bölümler arasında açıklama ve öğretim var; kesintisiz yardımsız tam deneme değil. [Tüm ilk cevaplar ve değerlendirme](results/PCD-S09-attempt-01.md).
+
+**Son dil kaygısı:** Kullanıcı kesin İngilizce anlam gereksiniminden ve analistlerin nasıl geçtiğinden söz etti. Kişilerin aynı sertifikaya girip girmediği bilinmiyor; onların sınavının daha kolay olduğuna dair kanıt yok. S09 kalibre edilmemiş ve bilinçli uzun/yakın şıklı; gerçek sınavın aynası diye sunma. Dil koşullarıyla teknik eksikleri ayrı işle, yeni seti otomatik zorlaştırma.
+
+**Son kullanıcı isteği:** Yanlışları fazla buldu ve son bölümün yedi açıklamasını birlikte istedi. Q26/29/35/38/45/49/50 Türkçe senaryo, yakın şık ayrımı ve örneklerle topluca açıklandı. Yeni bağımsız yanıt yok; açıklamayı ustalık/kalıcılık sayma.
+
+**Puan ayrımları:** Q9 kullanıcı açıklama sonrası A düşünürken B yazdığını bildirdi; ilk B korunur, beyanla toplam 38/50 (%76) ayrı kayıttır. Q19 kaynak Subscriber izninin eksikliği kökte açık olmadığından soru belirsizliği kaydedildi; kesin teknik eksik sayma. Q19 hariç ilk gönderilen 37/49 (%75,5); ayrıca Q9 beyanıyla 38/49 (%77,6). İlk cevapların üzerine açıklanmış doğru cevap yazılmaz.
+
+**Sonraki adım:** Yeni yanlışlar Q26 D+E→A+E, Q29 D→C, Q35 A→C, Q38 C→D, Q45 C→B, Q49 D→A, Q50 A+B→A+E; kullanıcının isteğiyle yedisi de topluca açıklandı. Bağımsız kavrayış/kalıcılık ölçümü yok. Q36 A+B ve Q42 D+E doğru. Son bölüm güven/gerekçe ve yardım/mola koşulları bildirilmedi. Tüm 50 soru cevaplandı; sonraki yeni set S10.
+
+İlk bölüm Q2/3/9/10/12/19 açıklandı, bağımsız kavrayış/kalıcılık kontrolü yok. Q2 token/kimlik/izin süreci; Q3 mevcut latency gerekçesi ile güncel hedefin ayrımı işlendi. Q10 B/D, Q12 A/C kararsızlık beyanı kaydedildi. Q9 aktarım beyanı ve Q19 kalite sorunu ayrı. S08 45/50 ve kesintili 119 dakika, S07 Q13 hariç 14/19 korunur; S06 Q20 incelemesi bekliyor.
+
+S09 50 soru, 44 tek + 6 çift; sample'dan daha zor olması tasarım hedefi, doğrulanmış kıyas değil. [Araştırma](PCD-RESEARCH-2026-09-28.md) son ay deneyim kanıtının sınırlılığını kaydeder. S09 ve önceki çalışma kayıtları `253afb0` ile origin/main'e gönderildi; S09 sonuçları o commit'ten sonra geldi. Otomasyon kurulmadı; geçici `tmp/` commit dışında.
+
+Aşağıdaki tarihli maddeler geçmiş kayıttır; güncel çalışma S10 çözümünü beklemektedir.
 
 **En son sonuç — S08 tamamlandı:** Q41–Q50 C/D/D/B+E/A/D/A/C/D/A → **10/10, 14 dakika**. Tüm ilk cevaplar **45/50 (%90)**. Süreler 45+60+14 = **119 dakika (1:59)**, bölümler halinde; aralarda açıklama ve ilgili konu öğretimi olduğundan kesintisiz yardımsız sınav diye sunma. İlk yanlışlar Q1/21/35/36/37; açıklamalar ilk seçimleri değiştirmez. [Nihai kayıt](results/PCD-S08-attempt-01.md). Son bölümde yeni hata yok, E/K/T/gerekçe bildirilmedi. Beş yanlışın açıklamaları verildi; kalıcılık kontrolü yok. Sonraki yeni set S09, yalnız kullanıcı isterse hazırla. S06 Q20 incelemesi hâlâ bekliyor.
 
@@ -68,7 +86,7 @@ Diğer kaynak konumları: [teknik tekrar rehberi](PCD-S01-review-guide.md). Revi
 
 ## Sonraki sohbetin ilk işi
 
-**Güncel başlangıç:** Kullanıcının yeni mesajına göre S08 cevaplarını değerlendir veya istediği temel konuyu anlat. Aşağıdaki tarihli S03/S04 öncelikleri tarihsel kayıttır; S08/S09 güncel durumunun önüne geçmez.
+**Güncel başlangıç:** S09 tamamlandı, tüm yanlışlar açıklandı; kullanıcının istediği soruyu derinleştir veya istediğinde bağımsız tekrar yap. Yeni mesajdaki tercih önceliklidir. Aşağıdaki tarihli S03/S04 öncelikleri tarihsel kayıttır; S08/S09 güncel durumunun önüne geçmez.
 
 **24 Eylül güncel öncelik:** Kullanıcı tüm konulardan 20 soru istedi; [PCD-S04](PCD-S04.md) hazırlandı ve çözüm bekleniyor. Cevap kaydettiğini bildirirse S04'ü yeniden oku. Dört ana alan 6/5/5/4, 45 dakika hedef; yalnız önceki üç compute alanıyla sınırlı değil. S03 ilk 7/15 ve tekrar 2/8 korunur. Aşağıdaki eski S03 inceleme önceliği bu yeni kullanıcı talebinden öncedir. Sonraki üretilecek yeni set ID'si S05.
 

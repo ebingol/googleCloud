@@ -2,7 +2,7 @@
 
 [Yeni sohbet için devam notu](HANDOFF.md) · [Günlük çalışma ve soru üretme stratejisi](STRATEGY.md) · [Soru geçmişi — hazırlayan için](QUESTION-LOG.md)
 
-**9 senaryo seti + 1 pekiştirme seti · 230 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
+**10 senaryo seti + 1 pekiştirme seti · 250 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
 
 Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgündür, gerçek sınav sorusu değildir. Amaç birkaç gereksinimi birlikte değerlendirmek ve makul alternatifleri elemektir. Pilotun zorluğu henüz öğrenci sonuçlarıyla kalibre edilmemiştir.
 
@@ -17,15 +17,16 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 | PCD-S06 | Exam guide öncelikli 20 soru; daha uzun paragraflar ve yakın alternatifler; ilk cevaplar 13/20, 73 dakika | Süreyi kaydet | [Çöz](PCD-S06.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S06.md) |
 | PCD-S07 | Exam guide öncelikli 20 uzun senaryo; yakın seçenekler, 18 tek + 2 çift seçim; Q13 hariç 14/19; Q13 rehberli, puan dışında | Süreyi kaydet | [Çöz](PCD-S07.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S07.md) |
 | PCD-S08 | Öğretici 50 soru; rehberin 11 alt başlığı, 44 tek + 6 çift seçim; tamamlandı: 45/50 (%90), toplam 119 dakika | 10’luk bölümler; süreyi kaydet | [Çöz](PCD-S08.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S08.md) |
-| PCD-S09 | 50 karma soru; yakın seçenekler, 44 tek + 6 çift seçim, henüz çözülmedi | 120 dakika isteğe bağlı hedef; bölümlü çözüm mümkün | [Çöz](PCD-S09.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S09.md) |
+| PCD-S09 | 50 karma soru; yakın seçenekler, 44 tek + 6 çift seçim; tamamlandı: ilk gönderilen 37/50 (%74), toplam 128 dakika | 120 dakika isteğe bağlı hedef; bölümlü çözüm mümkün | [Çöz](PCD-S09.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S09.md) |
+| PCD-S10 | 20 karma soru; 18 tek + 2 çift seçim, uzun ama makul İngilizce; henüz çözülmedi | 45 dakika | [Çöz](PCD-S10.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S10.md) |
 
 **İlk set sonrası:** [Doküman sayfaları, ilgili quizler ve bugünkü çalışma sırası](PCD-S01-review-guide.md).
 
 ## Çalışma akışı
 
 1. İlk turda cevap anahtarını ve kaynakları açmadan çöz.
-2. Her cevapta E/K/T güven düzeyi ve kararı belirleyen koşulu bir cümleyle yaz; kararsız olduğunda yakın alternatifi de belirt.
-3. İstersen cevapları sohbette beşli gruplar halinde gönder; S04–S07 için son grup 16–20; S08 toplam 50 soru, 10’luk bölümlerle de çözülebilir.
+2. E/K/T güven düzeyi isteğe bağlıdır; kararsız olduğunda ikinci seçeneği belirtebilirsin. Her soruya gerekçe yazman gerekmiyor.
+3. S10 için hedef 20 soru / 45 dakika. Süre sonunda mevcut cevapları kaydet; sonradan devam edersen ek süreyi ayır. İstersen cevapları beşli gruplar halinde gönder.
 4. Anahtarla kontrol ettikten sonra yanlışları ve tahminle doğruları tekrar listesine al.
 5. İlerlemeni aşağıya kaydet; tekrar çözümündeki ezber etkisini ilk denemeden ayır.
 
@@ -40,6 +41,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 | PCD-S06 | İlk bildirilen cevaplar | 25 Eylül 2026 | 13 / 20 (%65) | 73 dakika | Q1/3/5/14/17/18/20. [Sonuç](results/PCD-S06-attempt-01.md) |
 | PCD-S07 | İlk cevaplar; bölümler arasında geri bildirim var | 26–27 Eylül 2026 | 14 / 19 (%73,7); Q13 rehberli ve puan dışı | Q1–Q11: 34:26; tam süre bilinmiyor | Q6/Q7/Q11/Q17/Q18. Son yedi 5/7. [Kayıt](results/PCD-S07-attempt-01.md) |
 | PCD-S08 | İlk cevaplar; üç bölüm, aralarda geri bildirim | 27 Eylül 2026 başlangıç | 45 / 50 (%90), tamamlandı | 45 + 60 + 14 = 119 dakika | Q1/21/35/36/37. Son bölüm 10/10. [Kayıt](results/PCD-S08-attempt-01.md) |
+| PCD-S09 | İlk gönderilen cevaplar; bölümler arası geri bildirim | 28 Eylül 2026 | 37 / 50 (%74), tamamlandı | 54 + 74 = 128 dakika | Q9 aktarım beyanıyla 38/50; Q19 belirsizliği ayrı. Yeni yanlışlar Q26/29/35/38/45/49/50. [Kayıt](results/PCD-S09-attempt-01.md) |
 
 ## Kapsam
 
@@ -60,4 +62,4 @@ S08, güncel resmî rehberin dört ana alanındaki 11 alt başlığın her birin
 
 ## S09 — 28 Eylül
 
-Son bir ayın aday yorumları önce incelendi; tarih ve kanıt sınırlamaları [araştırma notunda](PCD-RESEARCH-2026-09-28.md). S09 hazır; yanıt/süre yok. Sonraki yeni set S10. S08 45/50 ve kesintili 119 dakika korunur.
+Son bir ayın aday yorumları önce incelendi; tarih ve kanıt sınırlamaları [araştırma notunda](PCD-RESEARCH-2026-09-28.md). S09 tamamlandı: ilk gönderilen 37/50 (%74), toplam 128 dakika. Sonraki yeni set S10. S08 45/50 ve kesintili 119 dakika korunur.
