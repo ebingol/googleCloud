@@ -1,8 +1,24 @@
 # Yeni sohbet buradan devam etsin
 
-Son güncelleme: 27 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
+Son güncelleme: 28 Eylül 2026. Hedef Professional Cloud Developer; önceki kullanıcı beyanında yaklaşık üç hafta vardı, kesin tarih verilmedi.
 
 ## Kullanıcının son kararı
+
+**28 Eylül güncel — S09 hazır, çözüm başlamadı:** Kullanıcı yine 50 soru, sample exam’den daha zor hedef, yakın şıklar ve uzun ama makul paragraflar istedi; önce son bir ayın aday yorumlarını araştırmamızı istedi. [Araştırma](PCD-RESEARCH-2026-09-28.md): 28 Ağustos–28 Eylül penceresinde ayrıntılı bağımsız PCD deneyimi az; 31 Ağustos Tech Waves yazısı bulundu, sınava ağustosta girmiş fakat gün belirsiz. 26 Temmuz deneyimi yalnız pencere dışı tamamlayıcı. Uzunluk/zorluk artışı veya konu frekansı doğrulanmadı; satış/dump güncelleme tarihleri aday deneyimi sayılmadı.
+
+[PCD-S09](PCD-S09.md) ve [ayrı Türkçe anahtar](../answers/scenarios/PCD-S09.md) hazır. 50 soru; dört alan 16/12/12/10, 11 alt başlık; 44 tek + Q6/18/26/36/42/50 çift seçim. İngilizce gövdeler 84–103 kelime. Şık uzunluğu ipucu kontrolü yapıldı; tek seçim anahtarları A/B/C/D 11’er. Q20/Q31 açık temel pekiştirme, diğer eski konu birleşimleri günlüğe işlendi. Teknik kaynaklar birincil web belgeleri; resmî sample içeriğiyle doğrudan karşılaştırma yapılmadı. **Henüz hiçbir S09 cevabı veya puanı yok; devam Q1. Sonraki yeni set S10.**
+
+120 dakika yalnız önerilen tam deneme hedefi; önceki gibi 10’luk bölümlerle çözüm mümkün. Yardım/mola varsa ayrı kaydet. S08 ilk **45/50, 119 dakika bölümlerin toplamı** aynen korunur; S07 Q13 bağımsız puan dışında, S06 Q20 incelemesi bekliyor. Yeni sonuç dosyası açılmadı çünkü yeni cevap yok. Otomasyon kurulmadı. Kullanıcı S09, araştırma notu ve ilgili çalışma kayıtları için commit/push istedi; geçici `tmp/` dosyaları bu kapsama dahil değil.
+
+Aşağıdaki tarihli maddeler geçmiş kayıttır; güncel başlangıç S09 Q1’dir.
+
+**En son sonuç — S08 tamamlandı:** Q41–Q50 C/D/D/B+E/A/D/A/C/D/A → **10/10, 14 dakika**. Tüm ilk cevaplar **45/50 (%90)**. Süreler 45+60+14 = **119 dakika (1:59)**, bölümler halinde; aralarda açıklama ve ilgili konu öğretimi olduğundan kesintisiz yardımsız sınav diye sunma. İlk yanlışlar Q1/21/35/36/37; açıklamalar ilk seçimleri değiştirmez. [Nihai kayıt](results/PCD-S08-attempt-01.md). Son bölümde yeni hata yok, E/K/T/gerekçe bildirilmedi. Beş yanlışın açıklamaları verildi; kalıcılık kontrolü yok. Sonraki yeni set S09, yalnız kullanıcı isterse hazırla. S06 Q20 incelemesi hâlâ bekliyor.
+
+**En son sonuç — S08 Q1–Q40:** Kullanıcı Q21–Q40 için **16/20 (%80), 60 dakika** bildirdi. Süre bu bölüm için alındı; önceki 45 dakika ile **105 dakika**. Toplam **35/40 (%87,5)**. Yeni yanlışlar Q21 A→C, Q35 D→A, Q36 A→C, Q37 C→D; önceki Q1 B→D korunur. Q24 B+D, Q32 C+E doğru. [Kayıt](results/PCD-S08-attempt-01.md). **Devam Q41; Q41–Q50 cevap yok.** Yeni dört yanlış ayrıntılı incelenmedi; eminlik/gerekçe bildirilmedi. Bölümler arasında geri bildirim var; kesintisiz sınav diye sunma. Sonraki yeni set S09.
+
+**27 Eylül en son sonuç — S08 Q1–Q20:** İlk cevaplar **19/20 (%95), 45 dakika**, ortalama 2:15/soru. Yalnız Q1 B→D (Cloud Run job/service) yanlış; Q7 A+E, Q15 A+D, Q17 A+C çift seçimleri doğru. Eminlik/gerekçe ve yardım koşulları bildirilmedi. [İlk kayıt](results/PCD-S08-attempt-01.md). **Devam Q21; Q21–Q50 cevap yok.** Temel tekrar içeren öğretici setin puanı, gerçek sınav zorluğu veya önceki setlere göre kesin yetkinlik artışı kanıtı değildir. Q1 için kısa amaç ayrımı geri bildirimi; kavrayış teyidi yok. S07 Q17/Q18 açıklandı, ilk 14/19 korunur; yeni bağımsız kontrol yok. Sonraki yeni set ID’si S09.
+
+**27 Eylül en son sonuç — S07:** Q14–Q20 ilk cevapları B/C/A/D/B/A/C → **5/7**. Q17 D→B, Q18 B→D yanlış. Q13 hariç toplam **14/19 (%73,7)**; ilk yanlışlar Q6/7/11/17/18. Q13 doğru D daha önce açıklanmış rehberli çalışma, bağımsız puan dışında. Son bölüm süresi yok; 34:26 yalnız Q1–Q11, tam süre bilinmiyor. Bölümler arasında destek bulundu; kesintisiz yardımsız deneme diye sunma. [Kayıt](results/PCD-S07-attempt-01.md). Q17/Q18 ayrıntılı inceleme yapılmadı. S08 hazır ve henüz çözülmedi; sonraki yeni set S09. S08 ve önceki kayıtlar `5e00f90` ile origin/main’e gönderildi; bu S07 sonucu o commit’ten sonra geldi.
 
 **27 Eylül en son tercih — S08 hazır:** Kullanıcı tüm exam guide kapsamına yayılan, daha öğretici ve sample’dan biraz zor bir sınav istedi. [PCD-S08](PCD-S08.md) 50 soru olarak hazırlandı; [ayrı Türkçe anahtar](../answers/scenarios/PCD-S08.md) sade anlam, karar kuralı, şık tuzağı, örnek ve kaynak içerir. Dört alan 16/12/12/10; 11 numaralı alt başlığın tümünde soru var. Ürün örneklerinin bazıları yalnız tamamlayıcı notta; bütün ürün ayrıntıları bağımsız ölçülmüş değildir. 44 tek + Q7/15/17/24/32/44 çift seçim; 93–108 kelimelik İngilizce gövdeler; 5 × 10 soru, süreyi kaydet, zorunlu bitiş yok. **Henüz hiçbir S08 cevabı veya sonucu yok.** Sonraki yeni set ID’si S09.
 
@@ -395,3 +411,75 @@ Kullanıcı best practice'leri birlikte çalışmak istedi ve GKE temelinde eksi
 Yöntem: sade Türkçe problem → hangi mekanizma → neden → hangi durumda geçersiz/eksik; sonra kısa uygulama ve gerektiğinde İngilizce ifade. Best practice'leri koşulsuz slogan yapma. Temel kuralları ileri ürün ayrıntılarından ayır. İlk GKE bölümü Deployment/Pod/Service ilişkisi ve üç kopyalı API örneği; sonra probes, requests/limits, autoscaling, rollout/termination, storage/config ve WIF/IAM. Diğer başlıklar henüz işlendi sayılmaz. Önceki GKE ders sorularının tamamlandığı kullanıcı beyanı, kavram hakimiyeti kanıtı değildir.
 
 S07 ilk Q1–Q12 9/12 korunur; Q13 doğru cevap açıklanmış rehberli çalışma, bağımsız seçim yok. Q14–Q20 ve S06 Q20 incelemesi bekliyor. Otomasyon/bildirim yok.
+
+
+### S07 Q17 ayrıntılı inceleme
+
+Kullanıcı son cevapların ardından detaylı inceleme istedi. Q17 ile başlandı: base table ile secondary index’in ayrı sıralama düzenleri, timestamp-leading index hotspot’u, shard-first index ve tüm shard sonuçlarını zaman sırasıyla birleştirme anlatımı. İlk D yanlışı ve doğru B değişmez. D’nin zaten dengeli base table’a müdahale ettiği, index’i değiştirmediği vurgulandı. Açıklama sonrası kavrayış henüz doğrulanmadı; Q18 ayrıntılı inceleme sıradaki adım. İlk toplam Q13 hariç 14/19 korunur.
+
+
+### S07 Q18 ayrıntılı inceleme
+
+Kullanıcı Q17 açıklamasından sonra “sonraki” dedi; Q17 kavrayış kontrolüne cevap vermedi, teyit yok. Q18’de try/catch içinde yalnız catch assertion’ı olduğunda beklenmeyen resolve yolunun kontrolsüz geçmesi; await expect(realFunction()).rejects ile rejection ve hata nedenini ölçme anlatıldı. İlk B yanlışı, doğru D ve toplam 14/19 korunur. B’nin gerçek test edilen fonksiyonu mock’layarak gerçek davranışı devreden çıkardığı açıklanır. Q18 açıklama sonrası bağımsız kavrayış henüz doğrulanmadı.
+
+
+### S08 Q1 sonrası geri bildirim
+
+Kullanıcı bu testi de çok kolay bulmadığını, aktarılan sınav deneyimine göre gerçek sınavın biraz daha zor olabileceğini ve geçebileceğini hissettiğini söyledi. 19/20 ve 45 dakika olumlu performans göstergesidir; bunu kolaylık veya kesin geçiş garantisi diye yorumlama. Service/job tetikleme farkını sordu: service HTTP endpoint’ine istek alır; job Console/CLI/Cloud Run Admin API, Scheduler veya orchestration üzerinden execution başlatılarak tamamlanana kadar çalışır. Job başlatma API’sine HTTP isteği ile job container’ının HTTP serving yapması ayrıldı. İlk Q1 B yanlışı korunur; açıklama sonrası bağımsız uygulama henüz yok. Q21–Q50 bekliyor.
+
+
+### S08 Q21 sadeleştirme
+
+Kullanıcı ikinci bölümde zorlandığını belirtti ve Q21’i sadeleştirmeyi istedi. Güncel soru tekrar okundu: seçilen A, düşük memory limit’i koruyup HTTP readiness probe ekliyor; CPU artırma B şıkkıdır. Senaryo, iş başına gerekli RAM’in container limitini aşması ve node’da yeterli kapasite olması üzerinden sadeleştirildi. Request/limit anlamı ve dört şıkkın Türkçesi verildi; yeni seçim veya kavrayış teyidi yok. İlk Q21 A yanlışı ve toplam 35/40 korunur. Q35/36/37 incelemesi bekliyor.
+
+
+### S08 Q21 anlam teyidi ve Q35 incelemesi
+
+Kullanıcı Q21’de “identified a reasonable per-task memory requirement within its budget” ifadesinin yanılttığını söyledi. Identified (ihtiyacı belirlemek) ile configured (ayarı uygulamak) ve bütçe uygunluğu ile mevcut memory limit yeterliliği ayrıldı. Kullanıcı “anladım ... yine İngilizce yanlış anlama” dedi: kullanıcı beyanına göre dil kaynaklı hata, anlık kavrayış beyanı var; bağımsız yeni uygulama yok. İlk A yanlışı korunur.
+
+Sonraki isteğiyle Q35’e geçildi: ilk D, doğru A. Image üzerindeki insan tarafından yazılan commit label ile digest’e bağlı doğrulanabilir build provenance kaydı ayrımı açıklanıyor. Test/scan/build-origin kanıtlarının amaçları ayrıldı. Q35 hata nedeni ve açıklama sonrası kavrayış henüz doğrulanmadı. Q36 ve Q37 sonraki yanlışlar; Q41–Q50 cevaplanmadı. Toplam 35/40 korunur.
+
+
+### S08 Q35 kavrayış beyanı ve Docker dependency cache tekrarı
+
+Kullanıcı provenance’ın ne olduğunu ve nasıl üretildiğini sordu; Cloud Build üretim metadata’sı, images ile Artifact Registry’ye push ve requestedVerifyOption: VERIFIED örneği açıklandı. Ardından “şimdi tamam oldu” dedi: anlık kavrayış beyanı var, bağımsız yeni uygulama yok. İlk Q35 D yanlışı korunur. Docker dependency cache sorusuna geçildi: package.json/package-lock.json önce COPY, sonra RUN npm ci, değişken source sonra COPY; değişmeyen bağımlılık layer’ının tekrar kullanılması ile npm paket indirme cache’i ayrıldı. Q36/Q37 incelemesi ve Q41–Q50 cevapları bekliyor.
+
+
+### S08 Q36 incelemesi
+
+Kullanıcı sonraki yanlışı istedi. Q36 ilk A, doğru C: timestamp-first row key ile device-first/time-second tasarım sade örneklerle karşılaştırıldı. İstenen sorgu bir bilinen cihazın zaman aralığı; cihaz kimlikleri iyi dağılmış ve trafik benzer. Timestamp-first yeni yazmaları dar aralığa toplarken device-first bu varsayımlarda dağıtım ve cihaz bazlı range read’i birlikte destekler. Gerekçe/kavrayış kullanıcıdan henüz gelmedi; ilk cevap ve 35/40 değişmez. Sıradaki yanlış Q37; Q41–Q50 bekliyor.
+
+
+### S08 Q36 — dağıtımın mekanizması
+
+Kullanıcı “A proposed row key...” ifadesindeki hazır tanımı şart gibi okuduğunu belirtti; proposed=önerilen tasarım, zorunlu doğru yapı değil ayrımı açıklandı. Ardından Bigtable’ın distribution verimliliğini sordu. Row key sırasıyla tutulan kayıtlar, contiguous tablet aralıkları, tabletlerin node’lara otomatik atanması; timestamp-first aktif uç hotspot’u ile well-distributed device-first/time-second modelinin yazma dağılımı ve range-read locality dengesi anlatıldı. Node başına tek cihaz veya hash ile doğrudan node seçimi olmadığı, tek sıcak cihaz halinde tasarımın ayrıca değerlendirilmesi gerektiği belirtildi. Q36 bağımsız yeni yanıt yok; ilk A ve 35/40 korunur. Q37 sıradaki yanlış.
+
+
+### Firestore temel kurallarına ara tekrar
+
+Kullanıcı scan/subdocument konularını hatırlatmamızı istedi. Klasik Firestore Standard/Core sorgu kapsamıyla index gereksinimi ile bütün collection’ı okumanın maliyetinin ayrılması; map field ile ayrı subcollection document farkı; parent read/delete işlemlerinin subcollection’ı otomatik getirmemesi/silmemesi; document boyutu ve büyüyen listeleri alt koleksiyona ayırma; Security Rules’ın query filtresi olmaması anlatılıyor. Enterprise/Pipeline davranışına koşulsuz genelleme yapılmaz. Yeni cevap veya bağımsız kavrayış teyidi yok; S08 35/40, Q37 incelemesi ve Q41–Q50 cevapları bekliyor.
+
+
+### Storage ürünleri ayrımı
+
+Kullanıcı Filestore ile Cloud Storage farkını sordu. Filestore yönetilen NFS/shared filesystem; Cloud Storage bucket/object modeli ve API erişimi olarak karşılaştırıldı. Önceki Firestore’un document database olduğu ayrıca belirtildi. Mount edebilmenin tek başına filesystem semantiği anlamına gelmediği; Cloud Storage FUSE’un NFS/POSIX eşdeğeri olmadığı kısa sınırla anlatılıyor. Kullanıcıdan bağımsız seçim yok; S08 35/40 değişmez. Q37 ve Q41–Q50 bekliyor.
+
+
+### Firestore composite index ve ilişkili veri okuma
+
+Kullanıcı composite index/JOIN ve veri çekme mantığını sordu. Klasik Firestore Standard/Core sorguları kapsamında users ve orders örneğiyle where + orderBy, composite index’in birden çok alan için tek collection sorgusunu desteklemesi; SQL JOIN yerine ayrı okumalarla uygulamada birleştirme veya denormalization anlatılıyor. Otomatik index ile gerektiğinde composite index, eksik index hatası ve collection group’un JOIN olmadığı ayrılıyor. Enterprise/Pipeline özellikleriyle koşulsuz ürün genellemesi yapılmaz. Yeni yanıt/kavrayış teyidi yok; S08 ilk 35/40 ve kalan Q37/Q41–Q50 durumu korunur.
+
+
+### Firestore index ve sorgu kavramlarını ayırma
+
+Kullanıcı composite index’in tanımını ve sorgu çeşitlerini sordu. Birden fazla field’ı belirli sırayla düzenleyen index, status/createdAt örneğiyle açıklanıyor. Index türü ile query işlemi ayrıldı; document ID ile okuma, collection query’de where/orderBy/limit/cursor, collection group kapsamı ve get/realtime dinleme farkı temel öğretim olarak veriliyor. Bunlar sabit toplam ürün özelliği sayısı değildir. Kavrayış teyidi veya yeni soru yanıtı yok; S08 ilk 35/40 korunur.
+
+
+### Firestore index oluşturma ve eksik index
+
+Kullanıcı index’in nasıl tanımlandığını ve tanımlanmazsa ne olduğunu sordu. Standard/Core kapsamıyla varsayılan otomatik single-field index’ler ve sorgunun gerektirdiği composite index ayrıldı; hata mesajındaki console bağlantısı veya Console Indexes/Create index ile collection, field sırası/direction ve scope seçimi; build tamamlanınca query’yi yeniden çalıştırma açıklandı. Eksik gerekli index’te otomatik full scan yerine query hatası; her sorguya elle index gerekmediği vurgulandı. Kavrayış henüz doğrulanmadı, ilk puanlar değişmedi.
+
+
+### S08 Q37 incelemesi
+
+Kullanıcı sonraki yanlışı istedi. Q37 ilk C, doğru D. Payments Pod’larına yalnız frontend’den belirli portta bağlantı şartı; ingress NetworkPolicy ile hedef/source selector ve port sınırı, Google Cloud IAM ile resource yetkisinden ayrıldı. Uygulama authentication’ı ağ izninden bağımsız korunur. C yalnız IAM rolünü daraltıp Pod network trafiğini değiştirmediği için elenir. Kullanıcının hata gerekçesi veya yeni kavrayış teyidi yok; ilk 35/40 korunur. Q21/35/36/37 açıklamaları verildi, hepsinin bağımsız öğrenildiği söylenmez. Q41–Q50 bekliyor.

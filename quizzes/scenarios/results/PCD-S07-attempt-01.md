@@ -1,4 +1,6 @@
-# PCD-S07 — İlk deneme, kısmi kayıt
+# PCD-S07 — İlk cevaplar ve rehberli çalışma kaydı
+
+**27 Eylül güncel sonuç: Q13 hariç 19 ilk cevapta 14 doğru, 5 yanlış (%73,7).** Q14–Q20 son bölüm 5/7; yanlışlar Q17 D→B ve Q18 B→D. Tüm ilk cevap yanlışları Q6/Q7/Q11/Q17/Q18. Q13 ilk seçim olmadan D açıklanmış rehberli çalışmadır; puana dahil değil. Bölümler arasında geri bildirim ve açıklamalar bulunduğundan bu sonuç kesintisiz, yardımsız tam deneme olarak sunulmaz. Son yedi soru için süre/güven/gerekçe bildirilmedi; toplam sınav süresi bilinmiyor. 34:26 yalnız Q1–Q11 için bilinen çözüm süresidir.
 
 26 Eylül 2026. Kullanıcı ilk 10 soru için 32 dakika bildirdi ve bırakması gerektiğini söyledi. Deneme Q10 sonunda kesildi; kullanıcı daha sonra Q11 için D+E ve 2 dakika 26 saniye bildirdi. 27 Eylülde Q12 A cevabı geldi; doğru. Q13 için cevap öncesi anlam desteği istendi. Bu, tamamlanmış veya kesintisiz 20 soruluk sınav sonucu değildir.
 
@@ -18,8 +20,16 @@
 | 10 | C | C | Doğru |
 | 11 | D, E | A, E | Yanlış |
 | 12 | A | A | Doğru |
+| 13 | İlk seçim yok | D | Rehberli; puan dışı |
+| 14 | B | B | Doğru |
+| 15 | C | C | Doğru |
+| 16 | A | A | Doğru |
+| 17 | D | B | Yanlış |
+| 18 | B | D | Yanlış |
+| 19 | A | A | Doğru |
+| 20 | C | C | Doğru |
 
-**Güncel kısmi sonuç Q1–Q12: 9/12 (%75).** Q11 süresi 2:26; bildirilen çözüm süreleri toplamı 34:26 (32:00 + 2:26), ara ve sohbet süresi dahil değil. Q11’de E doğru parça, D yanlış ve A eksik; tam küme kuralıyla 0 puan. Q12 süresi bildirilmedi; 34:26 yalnız Q1–Q11 için bilinen süredir. Q13–Q20 için cevap yok. Devamında ikinci bölümün süresini ayrıca kaydet; toplam süreyi kesintili deneme olarak sun. Q6/Q7 ayrıntılı hata incelemesi henüz yapılmadı; yalnız sonuç geri bildirimi verildi. S06 Q20 incelemesi de bekliyor.
+**Önceki ara sonuç Q1–Q12: 9/12 (%75).** Q11 süresi 2:26; bildirilen çözüm süreleri toplamı 34:26 (32:00 + 2:26), ara ve sohbet süresi dahil değil. Q11’de E doğru parça, D yanlış ve A eksik; tam küme kuralıyla 0 puan. Q12 süresi bildirilmedi; 34:26 yalnız Q1–Q11 için bilinen süredir. Q13–Q20 için cevap yok. Devamında ikinci bölümün süresini ayrıca kaydet; toplam süreyi kesintili deneme olarak sun. Q6/Q7 ayrıntılı hata incelemesi henüz yapılmadı; yalnız sonuç geri bildirimi verildi. S06 Q20 incelemesi de bekliyor.
 
 [Sorular](../PCD-S07.md) · [Anahtar](../../answers/scenarios/PCD-S07.md)
 
@@ -40,3 +50,18 @@ Kullanıcı önce Türkçe anlatımı da garip buldu, sonra doğru cevabı isted
 
 
 27 Eylül: Kullanıcı GKE temel ilişkileri ve ürün bazında best practice çalışmasına geçmek istedi. Yeni sınav cevabı yok; Q1–Q12 9/12 korunur, Q13 rehberli, Q14–Q20 bekliyor.
+
+
+### 27 Eylül — Q14–Q20 ilk cevapları
+
+Kullanıcı: `14-b,15-c,16-a,17-d,18-b,19-a,20-c`. Anahtarla karşılaştırma: 5/7. Q17 D yerine B (Spanner secondary-index hotspot); Q18 B yerine D (asenkron testte gerçek fonksiyonu sınama). Teknik/dil kaynaklı hata nedeni yalnız harflerden belirlenmedi. Q15 C doğru: optional dependency/fallback probe uygulamasında doğru ilk seçim var; gerekçe veya bağımsız kalıcılık teyidi yok. Q17/Q18 ayrıntılı inceleme henüz yapılmadı. S08 cevaplanmadı; S06 Q20 incelemesi bekliyor.
+
+
+### S07 Q17 ayrıntılı inceleme
+
+Kullanıcı son cevapların ardından detaylı inceleme istedi. Q17 ile başlandı: base table ile secondary index’in ayrı sıralama düzenleri, timestamp-leading index hotspot’u, shard-first index ve tüm shard sonuçlarını zaman sırasıyla birleştirme anlatımı. İlk D yanlışı ve doğru B değişmez. D’nin zaten dengeli base table’a müdahale ettiği, index’i değiştirmediği vurgulandı. Açıklama sonrası kavrayış henüz doğrulanmadı; Q18 ayrıntılı inceleme sıradaki adım. İlk toplam Q13 hariç 14/19 korunur.
+
+
+### S07 Q18 ayrıntılı inceleme
+
+Kullanıcı Q17 açıklamasından sonra “sonraki” dedi; Q17 kavrayış kontrolüne cevap vermedi, teyit yok. Q18’de try/catch içinde yalnız catch assertion’ı olduğunda beklenmeyen resolve yolunun kontrolsüz geçmesi; await expect(realFunction()).rejects ile rejection ve hata nedenini ölçme anlatıldı. İlk B yanlışı, doğru D ve toplam 14/19 korunur. B’nin gerçek test edilen fonksiyonu mock’layarak gerçek davranışı devreden çıkardığı açıklanır. Q18 açıklama sonrası bağımsız kavrayış henüz doğrulanmadı.

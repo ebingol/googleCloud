@@ -2,6 +2,12 @@
 
 Kararlaştırma: 20 Eylül 2026. Hedef: Professional Cloud Developer. Kullanıcı yaklaşık üç hafta kaldığını söyledi; kesin sınav tarihi bilinmiyor. Eski 20–30 dakikalık günlük plan yerine aşağıdaki düzen geçerli.
 
+## Güncel öncelik — 28 Eylül S09
+
+Kullanıcının yeni isteği: 50 soru, sample’dan daha zor hedef, yakın seçenekler, uzun ama makul İngilizce. Önce son bir ay aday yorumları araştırıldı; güncel deneyim az olduğu ve İngilizce soru uzunluğu/zorluk trendi doğrulanmadığı açıkça kaydedildi. S09 84–103 kelimelik gövdelerle ve birden fazla koşulla hazırlanmıştır; niş detay biriktirerek zorluk üretme. Açık pekiştirmeleri yeni kapsam sayma. Sample zorluk kıyası hedef, ölçüm değil.
+
+S09 hazır; ilk yanıt yok. Tam deneme için 120 dakika öneri, zorunlu kesme yok; 10’luk bölümler mümkün. İlk cevapları yardımdan sonraki cevaplardan ayır. Mevcut sonuçları koru. Sonraki yeni set S10. Aşağıdaki eski güncel başlıklar tarihsel tercihlerdir.
+
 ## Güncel öncelik — 27 Eylül S08
 
 Kullanıcı öğretici, tüm rehbere yayılan ve sample’dan biraz zor bir sınav istedi. Bu tercih eski “giderek zorlaştır / her sette çoğunluk yeni ayrıntı” kurallarından önce gelir. S08 50 sorudur; dört alan 16/12/12/10, 11 alt başlığın hepsi, 44 tek/6 çift seçim. Uzun İngilizce korunur (93–108 kelime); temel karar ve küçük ek koşul tercih edilir. Bilinçli tekrarlar açıkça işaretlenir. Anahtar ayrı Türkçe; sade anlam, koşul, yakın yanlışın nedeni ve örnek içerir. Kapsam haritası doğrudan ölçüm ile tamamlayıcı notu ayırır.

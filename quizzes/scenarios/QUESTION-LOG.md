@@ -203,13 +203,13 @@ S06 yalnız hazırlandı; yeni kullanıcı yanıtı/süre/puan yok. Sonraki yeni
 | S07-11 | Cloud Run job task index/count partition + retry-safe output | Karma; S02-01 job seçimi ve S01-10 idempotency üzerine task/parallelism ayrımı | Yanlış; kullanıcı D,E; anahtar A,E; 2:26 |
 | S07-12 | CPU method attribution için Profiler; Trace handlerı zaten daraltmış | Yeni; S05-12 SQL Query Stats yerine application CPU teşhisi | Doğru; kullanıcı A; 27 Eylül; süre yok |
 | S07-13 | GKE WIF same-project pool name-based identity sameness | Yeni; S03-04 direct grant üzerine cross-cluster trust boundary, grant syntax ezberi değil | İlk seçim yok; doğru D açıklanmış rehberli çalışma, bağımsız puana dahil değil |
-| S07-14 | Artifact Registry virtual priority + public endpoint bypass kaldırma | Yeni; S06-18 vulnerability remediation değil dependency resolution | Henüz çözülmedi |
-| S07-15 | Optional dependency fallback readiness; required catalog korunacak | Gecikmeli uygulama; S02-12 ve 22 Eylül açıklamasından 4 gün sonra; optional/required sözleşme ayrımı | Henüz çözülmedi |
-| S07-16 | Pub/Sub pull subscriber outstanding count/bytes flow control | Yeni; S06-04 ordering değil burst buffering/memory | Henüz çözülmedi |
-| S07-17 | Spanner timestamp secondary-index hotspot; shard-first ve merge | Karma; S04-01 Bigtable key dağılımını ayrı Spanner index write/read tradeoffuna taşıma | Henüz çözülmedi |
-| S07-18 | Gemini-generated Jest rejection test; catch-only assertion false positive | Yeni; S04-10 test oracle değil resolve yolunda assertion yokluğu; deterministic mock zaten doğru | Henüz çözülmedi |
-| S07-19 | GKE envFrom startup snapshot; named ConfigMap reference ile rollback | Karma; S03-01 projected file/no-restart yerine startup-only process ve retained config versions | Henüz çözülmedi |
-| S07-20 | Cloud Storage strong consistency vs CDN cache; versioned asset URLs | Yeni; S06-17 lifecycle veya S05-17 storage-class seçimi değil HTTP freshness | Henüz çözülmedi |
+| S07-14 | Artifact Registry virtual priority + public endpoint bypass kaldırma | Yeni; S06-18 vulnerability remediation değil dependency resolution | Doğru; kullanıcı B |
+| S07-15 | Optional dependency fallback readiness; required catalog korunacak | Gecikmeli uygulama; S02-12 ve 22 Eylül açıklamasından 4 gün sonra; optional/required sözleşme ayrımı | Doğru; kullanıcı C |
+| S07-16 | Pub/Sub pull subscriber outstanding count/bytes flow control | Yeni; S06-04 ordering değil burst buffering/memory | Doğru; kullanıcı A |
+| S07-17 | Spanner timestamp secondary-index hotspot; shard-first ve merge | Karma; S04-01 Bigtable key dağılımını ayrı Spanner index write/read tradeoffuna taşıma | Yanlış; kullanıcı D; anahtar B |
+| S07-18 | Gemini-generated Jest rejection test; catch-only assertion false positive | Yeni; S04-10 test oracle değil resolve yolunda assertion yokluğu; deterministic mock zaten doğru | Yanlış; kullanıcı B; anahtar D |
+| S07-19 | GKE envFrom startup snapshot; named ConfigMap reference ile rollback | Karma; S03-01 projected file/no-restart yerine startup-only process ve retained config versions | Doğru; kullanıcı A |
+| S07-20 | Cloud Storage strong consistency vs CDN cache; versioned asset URLs | Yeni; S06-17 lifecycle veya S05-17 storage-class seçimi değil HTTP freshness | Doğru; kullanıcı C |
 
 S07 Q1–Q10 ilk cevapları 8/10 (%80), 32 dakika; Q10 sonunda ara verildi. Q11 daha sonra D+E (doğru A+E), 2:26; güncel 8/11, çözüm toplamı 34:26 (kesintili). Q12–Q20 henüz çözülmedi. [Kısmi sonuç](results/PCD-S07-attempt-01.md). Q15 yalnız hazırlanmış gecikmeli uygulamadır; probe kalıcılığı henüz doğrulanmadı. S06 ilk 13/20 ve 73 dakika korunur; Q20 yanlış incelemesi bekliyor. Sonraki yeni set S08.
 
@@ -222,55 +222,123 @@ Kullanıcının son isteği eski yeni/karma/tekrar kotalarının önündedir. Te
 
 | Soru | Rehber | Karar / belirleyici koşul | Önceki ilişki | Durum |
 |---|---|---|---|---|
-| S08-01 | 1.1 | Platform seçimi ve işletim yükü: HTTP uygulaması için ihtiyacı karşılayan, yönetimi az platformu seç. | Pekiştirme; S02-01 job seçiminin ters kullanım koşulları, platform karşılaştırması. | Henüz çözülmedi |
-| S08-02 | 2.1 | Lokal ADC ile gcloud kimliği: gcloud çalışıyor ama uygulamanın kendi credential kaynağı eksik. | Pekiştirme; S01-11/S06-02, environment precedence yerine temel ADC ayrımı. | Henüz çözülmedi |
-| S08-03 | 3.2 | Deployment, Pod ve Service: Pod yeniden yaratılınca ayarlar kaybolmasın; istemci her seferinde yeni IP aramasın. | Temel pekiştirme; S07 Q13 sonrası kullanıcının belirttiği GKE hiyerarşi eksikliği. | Henüz çözülmedi |
-| S08-04 | 4.1 | Cloud SQL bağlantı havuzu: Güvenli bağlanmak yetmiyor; toplam bağlantı sayısı DB kapasitesini aşmasın. | Pekiştirme; bağlantı bütçesi/autoscaling, Cloud SQL ve AlloyDB proxy ayrımı açıklamada. | Henüz çözülmedi |
-| S08-05 | 1.1 | Session affinity ve paylaşılan durum: Instance değişse bile onaylanmış sepet kaybolmasın. | Karma; S05-01/05 cache tasarımı + session affinity, yeni durability birleşimi. | Henüz çözülmedi |
-| S08-06 | 2.1 | Gemini Code Assist ve repository bağlamı: AI’ın doğru sürüm ve gerçek interface’e göre kod önermesini sağla. | Pekiştirme; S05-10, bilinçli AI context temel tekrarı. | Henüz çözülmedi |
-| S08-07 | 3.2 | Startup, readiness ve liveness: Geç açılmayı hata sanma; geçici olarak hizmet veremeyen Pod’a yeni trafik gönderme. | Pekiştirme; S02-12 ve kullanıcının açıkça belirttiği probe eksikliği. | Henüz çözülmedi |
-| S08-08 | 1.2 | Çalışan erişimi ve müşteri kimliği: Çalışana iç uygulama kapısı, müşteriye ürün içinde giriş sistemi gerekiyor. | Yeni ölçüm; S07-05 JWT detayından daha temel ürün/kimlik amacı ayrımı. | Henüz çözülmedi |
-| S08-09 | 4.1 | Pub/Sub fan-out ve iş paylaşımı: İki farklı uygulama her event’i alsın; her uygulamanın kendi worker’ları işi paylaşsın. | Pekiştirme; publish/subscribe ile competing workers temel farkı. | Henüz çözülmedi |
-| S08-10 | 3.1 | Cloud Run source deployment: Desteklenen uygulamayı Dockerfile yazmadan source’tan Cloud Run’a gönder. | Pekiştirme; Cloud Run source/image ayrımını temel seviyede uygulama. | Henüz çözülmedi |
-| S08-11 | 2.1 | Workstations, Cloud Shell ve lokal IDE: Ortak araçları merkezi yönet; geliştiricinin dosyalarını kalıcı tut. | Pekiştirme; S05-02/06, temel ortam/persistence eşleştirmesi. | Henüz çözülmedi |
-| S08-12 | 1.1 | Zonal HA ve regional disaster recovery: Tek bölge tamamen giderse veritabanı ve uygulama nasıl geri gelir? | Karma; S04-05 zonal HA ile S07-09 replica lag, yeni bölgesel recovery kararı. | Henüz çözülmedi |
-| S08-13 | 3.2 | HPA ve cluster autoscaler: HPA Pod istiyor ama onları çalıştıracak node kapasitesi yok. | Pekiştirme; önceki GKE autoscaling ayrımlarını sadeleştirme. | Henüz çözülmedi |
-| S08-14 | 4.1 | Firestore transaction ve tekrar: Son ürünü iki kişiye satma; transaction tekrarında iki e-posta üretme. | Pekiştirme; S04 transaction/retry ve dış yan etki ayrımı. | Henüz çözülmedi |
-| S08-15 | 1.2 | GKE uygulama kimliği ve ağ izni: Pod hangi kimlikle konuşacak ve o kimlik hangi bucket’ı okuyabilir? | Pekiştirme; S03-04 ve son hiyerarşi açıklaması; cross-cluster identity sameness ölçülmüyor. | Henüz çözülmedi |
-| S08-16 | 2.1 | Emulator ile production doğrulaması sınırı: Lokal veri davranışını hızlı test et; gerçek cloud ayarlarını ayrıca doğrula. | Pekiştirme; S04-06, emulator sınırını öğretici biçimde ölçer. | Henüz çözülmedi |
-| S08-17 | 3.1 | Cloud Run servis çağrısı: Orders çağıran, billing alıcı. İzin alıcı üzerinde çağırana verilir; token alıcıya hitap eder. | Bilinçli pekiştirme; S01/R01 audience konusu, önceki anlık doğru kavrayış kalıcılık ölçümü değildir. | Henüz çözülmedi |
-| S08-18 | 1.3 | Firestore büyüyen listeyi modelleme: Sürekli büyüyen mesaj geçmişini nasıl saklayıp sayfalarsın? | Yeni ölçüm; S06 index exemption veya transaction yerine document/subcollection modelleme. | Henüz çözülmedi |
-| S08-19 | 4.1 | Cloud Storage resumable upload: Büyük dosyada bağlantı kopunca baştan başlama; sunucunun aldığı yerden sürdür. | Temel storage API uygulaması; interrupted transfer kararı. | Henüz çözülmedi |
-| S08-20 | 2.2 | Build once ve aynı artifactı terfi ettirme: Test ettiğin image ile production’a giden image aynı olsun. | Pekiştirme; S04-03, farklı environment config ile temel artifact promotion. | Henüz çözülmedi |
-| S08-21 | 3.2 | Requests ve limits: Bir task’ın gerçekten ihtiyaç duyduğu bellek, container limitini aşıyor. | Temel pekiştirme; GKE resource gereksinimi, ölçülmüş ihtiyaçtan karar. | Henüz çözülmedi |
-| S08-22 | 1.2 | Secret saklama, rotation ve KMS rolü: Parolayı image’dan çıkar; yalnız gereken uygulama okusun ve kontrollü değişsin. | Pekiştirme; S01-01/S05-11/S06-13, ayrı rotation kavramlarını temel düzeyde birleştirir. | Henüz çözülmedi |
-| S08-23 | 2.2 | Multi-stage image ve build cache: Build araçları final image’da kalmasın; değişmeyen bağımlılık adımı tekrar kullanılabilsin. | Karma; S05-18 cache düzeni + runtime-only multi-stage kararı. | Henüz çözülmedi |
-| S08-24 | 4.2 | API enablement ve service account yetkisi: API açık olmalı; uygulama kimliği de istediği işlemi yapabilmeli. | Bilinçli temel pekiştirme; API/ADC/IAM üç ayrı sorumluluk. | Henüz çözülmedi |
-| S08-25 | 1.3 | Spanner ve ilişkisel veri ihtiyacı: Yatay büyüyen, bölgeler arası ilişkisel transaction sistemi seç. | Pekiştirme; S01-14, ürün seçiminin gerekçesiyle temel tekrar. | Henüz çözülmedi |
-| S08-26 | 3.1 | Eventarc alıcısı ve teslimat: Event geldiğini doğru anla; iş kalıcı kabul edilmeden tamam dememe ve tekrarı güvenli yönetme. | Pekiştirme; event formatı + güvenilir kabul, önceki idempotency konuları bilinçli tekrar. | Henüz çözülmedi |
-| S08-27 | 2.1 | MCP tool erişimi ve least privilege: AI’ın ihtiyacı kadar tool ve gerçek yetki ver. | Pekiştirme; S06-06, kapsamı daraltılmış öğretici MCP sorusu. | Henüz çözülmedi |
-| S08-28 | 1.1 | Scheduler, Workflows, Tasks görev ayrımı: Her sabah başlayan, sonuçlara göre sırayla ilerleyen süreç kur. | Karma; S01-15 orchestration üzerine recurring start ve fan-out/dispatch ayrımı. | Henüz çözülmedi |
-| S08-29 | 4.2 | Pagination, field selection ve cache: Tüm sonucu al ama gereksiz alanı ve gereksiz tekrar çağrısını azalt. | Bilinçli pekiştirme; S07-08 field selection/pagination ve önceki stale kavramı. | Henüz çözülmedi |
-| S08-30 | 3.1 | Cloud Run Jobs tasks ve parallelism: Toplam 12 parça iş var; aynı anda en çok 3’ü çalışsın. | Pekiştirme; S07-11 sonrası task/parallelism temelini ayrı öğretme. | Henüz çözülmedi |
-| S08-31 | 1.2 | Retention, lifecycle ve organization policy: Silme koruması, sonradan temizlik ve public erişim yasağını birlikte kur. | Pekiştirme; S04-17/S06-17 üzerine üç kontrolün rolleri; öğretici tekrar, yeni bilgi sayılmaz. | Henüz çözülmedi |
-| S08-32 | 2.2 | Cloud Build ortak dosya ve step sırası: Çıktı sonraki step’lere ulaşsın; iki kontrol bitmeden paketleme başlamasın. | Pekiştirme; S01-03 + S04-02, bilinçli iki temel build mekanizması birleşimi. | Henüz çözülmedi |
-| S08-33 | 3.2 | Rolling update ve PDB ayrımı: Uygulama sürümünü değiştirirken üç hazır replica kalsın; bir yenisine yer var. | Pekiştirme; S05-15 sonrası bakım/rollout karışıklığı, termination saniye hesabı yok. | Henüz çözülmedi |
-| S08-34 | 4.2 | Vision API asynchronous batch: Kullanıcı beklemiyor; çok görseli toplu ve asenkron işle, başarısız alt kümeyi ayır. | Pekiştirme; S05/S06 API throughput, numeric quota ezberi olmadan Vision uygulaması. | Henüz çözülmedi |
-| S08-35 | 2.2 | Provenance neyi kanıtlar?: Bu image hangi build’den çıktı, doğrulanabilir şekilde göster. | Pekiştirme; S06-14, flag ezberi yerine provenance amacı. | Henüz çözülmedi |
-| S08-36 | 1.3 | Bigtable row key ve erişim paterni: Yazmaları dağıt, aynı cihazın zaman aralığını kolay oku. | Pekiştirme; S04-01 ile aynı temel karar, öğretim amacıyla açık tekrar. | Henüz çözülmedi |
-| S08-37 | 3.2 | GKE NetworkPolicy ve IAM sınırı: Payments’a ağdan yalnız frontend ulaşsın; kimlik kontrolü yine devam etsin. | Temel güvenli GKE deployment; S03 WIF/IAM’den ayrı network katmanı, açık pekiştirme. | Henüz çözülmedi |
-| S08-38 | 1.3 | Geçici object erişimi ve signed URL: Google hesabı olmayan müşteriye yalnız bir dosya için kısa erişim ver. | Pekiştirme; S01-04/S06-05, bilerek temel yetki kapsamı tekrarı. | Henüz çözülmedi |
-| S08-39 | 2.3 | AI unit test ve doğru oracle: Test hatalı kodu onaylamasın; iş kuralını gerçekten sınasın. | Pekiştirme; S04-10, kullanıcı isteğiyle temel test mantığına dönüş. | Henüz çözülmedi |
-| S08-40 | 4.2 | Retry, backoff ve deadline: Geçici arızada kontrollü tekrar; yanlış istekte parametreyi düzelt. | Pekiştirme; API tüketiminde temel transient/permanent ayrımı, örnek kaynağın service-specific kuralları genellenmez. | Henüz çözülmedi |
-| S08-41 | 1.1 | Global load balancer ve API yönetimi ayrımı: İki bölge için müşteriye tek HTTPS giriş noktası sağla. | Yeni ölçüm; S02 ingress sorusundan farklı global front-end ihtiyacı. | Henüz çözülmedi |
-| S08-42 | 2.1 | Cloud Assist ile kanıta dayalı inceleme: AI incelemeyi hızlandırsın; önerinin kanıtını yine kontrol et. | Karma; S05-14 ürün rolü + 4.3 AI-assisted troubleshooting uygulaması. | Henüz çözülmedi |
-| S08-43 | 3.1 | Canary, rollback ve uyumlu schema: Yeni kod denenirken eski kod hâlâ çalışabilsin; trafik geri dönünce veritabanı yüzünden kırılmasın. | Bilinçli pekiştirme; S05-03, kullanıcının additive schema ve rollback soruları. | Henüz çözülmedi |
-| S08-44 | 4.3 | Metrics, logs, traces ve Error Reporting: Genel grafiği görüyorsun; şimdi tek isteğin nerede yavaşladığını ve tekrar eden hatayı bul. | Pekiştirme; S06/S07 observability ayrımları, temel araç amacına odaklı. | Henüz çözülmedi |
-| S08-45 | 1.2 | Statik image taraması ve çalışan web uygulaması: Image içindeki paketlerin yanında çalışan web davranışını da kontrol et. | Yeni ölçüm; S06-18 paket düzeltme yerine runtime scanning kapsamı. | Henüz çözülmedi |
-| S08-46 | 2.3 | Integration test izolasyonu ve sonuç koruma: Build’ler birbirinin verisini bozmasın; cleanup test hatasını gizlemesin. | Pekiştirme; S06-10, kısa temel isolation ve release-gate açıklaması. | Henüz çözülmedi |
-| S08-47 | 1.2 | Artifact onayı ve deployment enforcement: Pipeline dışından gelen deploy da onay kuralına uysun. | Pekiştirme; S04-14, bilinçli temel release-gate tekrarı. | Henüz çözülmedi |
-| S08-48 | 4.2 | Generative AI API çıktısını uygulamaya bağlama: AI çıktısı parse edilebilsin ama doğru formatı doğru karar sanma. | GenAI API uygulama temeli; Gemini Code Assist ile uygulamanın model API çağrısı farklı sorumluluklar. | Henüz çözülmedi |
-| S08-49 | 1.3 | BigQuery batch analytics ve ham veri: Ham dosya kalsın; geçmiş veri SQL ile analiz edilsin; günlük yükleme yeterli. | Yeni ölçüm; S06 pending-stream atomicity yerine temel batch analytics mimarisi. | Henüz çözülmedi |
-| S08-50 | 3.1 | Apigee API versioning ve güvenlik: Eski mobil uygulamayı kırmadan v2 sun; iki sürümde de güvenlik devam etsin. | Pekiştirme; S06 API versioning ve S07 API management konularını temel karar düzeyine çekme. | Henüz çözülmedi |
+| S08-01 | 1.1 | Platform seçimi ve işletim yükü: HTTP uygulaması için ihtiyacı karşılayan, yönetimi az platformu seç. | Pekiştirme; S02-01 job seçiminin ters kullanım koşulları, platform karşılaştırması. | Yanlış; kullanıcı B; anahtar D |
+| S08-02 | 2.1 | Lokal ADC ile gcloud kimliği: gcloud çalışıyor ama uygulamanın kendi credential kaynağı eksik. | Pekiştirme; S01-11/S06-02, environment precedence yerine temel ADC ayrımı. | Doğru; kullanıcı B |
+| S08-03 | 3.2 | Deployment, Pod ve Service: Pod yeniden yaratılınca ayarlar kaybolmasın; istemci her seferinde yeni IP aramasın. | Temel pekiştirme; S07 Q13 sonrası kullanıcının belirttiği GKE hiyerarşi eksikliği. | Doğru; kullanıcı B |
+| S08-04 | 4.1 | Cloud SQL bağlantı havuzu: Güvenli bağlanmak yetmiyor; toplam bağlantı sayısı DB kapasitesini aşmasın. | Pekiştirme; bağlantı bütçesi/autoscaling, Cloud SQL ve AlloyDB proxy ayrımı açıklamada. | Doğru; kullanıcı A |
+| S08-05 | 1.1 | Session affinity ve paylaşılan durum: Instance değişse bile onaylanmış sepet kaybolmasın. | Karma; S05-01/05 cache tasarımı + session affinity, yeni durability birleşimi. | Doğru; kullanıcı B |
+| S08-06 | 2.1 | Gemini Code Assist ve repository bağlamı: AI’ın doğru sürüm ve gerçek interface’e göre kod önermesini sağla. | Pekiştirme; S05-10, bilinçli AI context temel tekrarı. | Doğru; kullanıcı B |
+| S08-07 | 3.2 | Startup, readiness ve liveness: Geç açılmayı hata sanma; geçici olarak hizmet veremeyen Pod’a yeni trafik gönderme. | Pekiştirme; S02-12 ve kullanıcının açıkça belirttiği probe eksikliği. | Doğru; kullanıcı A+E |
+| S08-08 | 1.2 | Çalışan erişimi ve müşteri kimliği: Çalışana iç uygulama kapısı, müşteriye ürün içinde giriş sistemi gerekiyor. | Yeni ölçüm; S07-05 JWT detayından daha temel ürün/kimlik amacı ayrımı. | Doğru; kullanıcı C |
+| S08-09 | 4.1 | Pub/Sub fan-out ve iş paylaşımı: İki farklı uygulama her event’i alsın; her uygulamanın kendi worker’ları işi paylaşsın. | Pekiştirme; publish/subscribe ile competing workers temel farkı. | Doğru; kullanıcı A |
+| S08-10 | 3.1 | Cloud Run source deployment: Desteklenen uygulamayı Dockerfile yazmadan source’tan Cloud Run’a gönder. | Pekiştirme; Cloud Run source/image ayrımını temel seviyede uygulama. | Doğru; kullanıcı C |
+| S08-11 | 2.1 | Workstations, Cloud Shell ve lokal IDE: Ortak araçları merkezi yönet; geliştiricinin dosyalarını kalıcı tut. | Pekiştirme; S05-02/06, temel ortam/persistence eşleştirmesi. | Doğru; kullanıcı C |
+| S08-12 | 1.1 | Zonal HA ve regional disaster recovery: Tek bölge tamamen giderse veritabanı ve uygulama nasıl geri gelir? | Karma; S04-05 zonal HA ile S07-09 replica lag, yeni bölgesel recovery kararı. | Doğru; kullanıcı A |
+| S08-13 | 3.2 | HPA ve cluster autoscaler: HPA Pod istiyor ama onları çalıştıracak node kapasitesi yok. | Pekiştirme; önceki GKE autoscaling ayrımlarını sadeleştirme. | Doğru; kullanıcı C |
+| S08-14 | 4.1 | Firestore transaction ve tekrar: Son ürünü iki kişiye satma; transaction tekrarında iki e-posta üretme. | Pekiştirme; S04 transaction/retry ve dış yan etki ayrımı. | Doğru; kullanıcı D |
+| S08-15 | 1.2 | GKE uygulama kimliği ve ağ izni: Pod hangi kimlikle konuşacak ve o kimlik hangi bucket’ı okuyabilir? | Pekiştirme; S03-04 ve son hiyerarşi açıklaması; cross-cluster identity sameness ölçülmüyor. | Doğru; kullanıcı A+D |
+| S08-16 | 2.1 | Emulator ile production doğrulaması sınırı: Lokal veri davranışını hızlı test et; gerçek cloud ayarlarını ayrıca doğrula. | Pekiştirme; S04-06, emulator sınırını öğretici biçimde ölçer. | Doğru; kullanıcı D |
+| S08-17 | 3.1 | Cloud Run servis çağrısı: Orders çağıran, billing alıcı. İzin alıcı üzerinde çağırana verilir; token alıcıya hitap eder. | Bilinçli pekiştirme; S01/R01 audience konusu, önceki anlık doğru kavrayış kalıcılık ölçümü değildir. | Doğru; kullanıcı A+C |
+| S08-18 | 1.3 | Firestore büyüyen listeyi modelleme: Sürekli büyüyen mesaj geçmişini nasıl saklayıp sayfalarsın? | Yeni ölçüm; S06 index exemption veya transaction yerine document/subcollection modelleme. | Doğru; kullanıcı D |
+| S08-19 | 4.1 | Cloud Storage resumable upload: Büyük dosyada bağlantı kopunca baştan başlama; sunucunun aldığı yerden sürdür. | Temel storage API uygulaması; interrupted transfer kararı. | Doğru; kullanıcı B |
+| S08-20 | 2.2 | Build once ve aynı artifactı terfi ettirme: Test ettiğin image ile production’a giden image aynı olsun. | Pekiştirme; S04-03, farklı environment config ile temel artifact promotion. | Doğru; kullanıcı B |
+| S08-21 | 3.2 | Requests ve limits: Bir task’ın gerçekten ihtiyaç duyduğu bellek, container limitini aşıyor. | Temel pekiştirme; GKE resource gereksinimi, ölçülmüş ihtiyaçtan karar. | Yanlış; kullanıcı A; anahtar C |
+| S08-22 | 1.2 | Secret saklama, rotation ve KMS rolü: Parolayı image’dan çıkar; yalnız gereken uygulama okusun ve kontrollü değişsin. | Pekiştirme; S01-01/S05-11/S06-13, ayrı rotation kavramlarını temel düzeyde birleştirir. | Doğru; kullanıcı B |
+| S08-23 | 2.2 | Multi-stage image ve build cache: Build araçları final image’da kalmasın; değişmeyen bağımlılık adımı tekrar kullanılabilsin. | Karma; S05-18 cache düzeni + runtime-only multi-stage kararı. | Doğru; kullanıcı C |
+| S08-24 | 4.2 | API enablement ve service account yetkisi: API açık olmalı; uygulama kimliği de istediği işlemi yapabilmeli. | Bilinçli temel pekiştirme; API/ADC/IAM üç ayrı sorumluluk. | Doğru; kullanıcı B+D |
+| S08-25 | 1.3 | Spanner ve ilişkisel veri ihtiyacı: Yatay büyüyen, bölgeler arası ilişkisel transaction sistemi seç. | Pekiştirme; S01-14, ürün seçiminin gerekçesiyle temel tekrar. | Doğru; kullanıcı D |
+| S08-26 | 3.1 | Eventarc alıcısı ve teslimat: Event geldiğini doğru anla; iş kalıcı kabul edilmeden tamam dememe ve tekrarı güvenli yönetme. | Pekiştirme; event formatı + güvenilir kabul, önceki idempotency konuları bilinçli tekrar. | Doğru; kullanıcı B |
+| S08-27 | 2.1 | MCP tool erişimi ve least privilege: AI’ın ihtiyacı kadar tool ve gerçek yetki ver. | Pekiştirme; S06-06, kapsamı daraltılmış öğretici MCP sorusu. | Doğru; kullanıcı B |
+| S08-28 | 1.1 | Scheduler, Workflows, Tasks görev ayrımı: Her sabah başlayan, sonuçlara göre sırayla ilerleyen süreç kur. | Karma; S01-15 orchestration üzerine recurring start ve fan-out/dispatch ayrımı. | Doğru; kullanıcı C |
+| S08-29 | 4.2 | Pagination, field selection ve cache: Tüm sonucu al ama gereksiz alanı ve gereksiz tekrar çağrısını azalt. | Bilinçli pekiştirme; S07-08 field selection/pagination ve önceki stale kavramı. | Doğru; kullanıcı B |
+| S08-30 | 3.1 | Cloud Run Jobs tasks ve parallelism: Toplam 12 parça iş var; aynı anda en çok 3’ü çalışsın. | Pekiştirme; S07-11 sonrası task/parallelism temelini ayrı öğretme. | Doğru; kullanıcı A |
+| S08-31 | 1.2 | Retention, lifecycle ve organization policy: Silme koruması, sonradan temizlik ve public erişim yasağını birlikte kur. | Pekiştirme; S04-17/S06-17 üzerine üç kontrolün rolleri; öğretici tekrar, yeni bilgi sayılmaz. | Doğru; kullanıcı C |
+| S08-32 | 2.2 | Cloud Build ortak dosya ve step sırası: Çıktı sonraki step’lere ulaşsın; iki kontrol bitmeden paketleme başlamasın. | Pekiştirme; S01-03 + S04-02, bilinçli iki temel build mekanizması birleşimi. | Doğru; kullanıcı C+E |
+| S08-33 | 3.2 | Rolling update ve PDB ayrımı: Uygulama sürümünü değiştirirken üç hazır replica kalsın; bir yenisine yer var. | Pekiştirme; S05-15 sonrası bakım/rollout karışıklığı, termination saniye hesabı yok. | Doğru; kullanıcı B |
+| S08-34 | 4.2 | Vision API asynchronous batch: Kullanıcı beklemiyor; çok görseli toplu ve asenkron işle, başarısız alt kümeyi ayır. | Pekiştirme; S05/S06 API throughput, numeric quota ezberi olmadan Vision uygulaması. | Doğru; kullanıcı A |
+| S08-35 | 2.2 | Provenance neyi kanıtlar?: Bu image hangi build’den çıktı, doğrulanabilir şekilde göster. | Pekiştirme; S06-14, flag ezberi yerine provenance amacı. | Yanlış; kullanıcı D; anahtar A |
+| S08-36 | 1.3 | Bigtable row key ve erişim paterni: Yazmaları dağıt, aynı cihazın zaman aralığını kolay oku. | Pekiştirme; S04-01 ile aynı temel karar, öğretim amacıyla açık tekrar. | Yanlış; kullanıcı A; anahtar C |
+| S08-37 | 3.2 | GKE NetworkPolicy ve IAM sınırı: Payments’a ağdan yalnız frontend ulaşsın; kimlik kontrolü yine devam etsin. | Temel güvenli GKE deployment; S03 WIF/IAM’den ayrı network katmanı, açık pekiştirme. | Yanlış; kullanıcı C; anahtar D |
+| S08-38 | 1.3 | Geçici object erişimi ve signed URL: Google hesabı olmayan müşteriye yalnız bir dosya için kısa erişim ver. | Pekiştirme; S01-04/S06-05, bilerek temel yetki kapsamı tekrarı. | Doğru; kullanıcı D |
+| S08-39 | 2.3 | AI unit test ve doğru oracle: Test hatalı kodu onaylamasın; iş kuralını gerçekten sınasın. | Pekiştirme; S04-10, kullanıcı isteğiyle temel test mantığına dönüş. | Doğru; kullanıcı A |
+| S08-40 | 4.2 | Retry, backoff ve deadline: Geçici arızada kontrollü tekrar; yanlış istekte parametreyi düzelt. | Pekiştirme; API tüketiminde temel transient/permanent ayrımı, örnek kaynağın service-specific kuralları genellenmez. | Doğru; kullanıcı A |
+| S08-41 | 1.1 | Global load balancer ve API yönetimi ayrımı: İki bölge için müşteriye tek HTTPS giriş noktası sağla. | Yeni ölçüm; S02 ingress sorusundan farklı global front-end ihtiyacı. | Doğru; kullanıcı C |
+| S08-42 | 2.1 | Cloud Assist ile kanıta dayalı inceleme: AI incelemeyi hızlandırsın; önerinin kanıtını yine kontrol et. | Karma; S05-14 ürün rolü + 4.3 AI-assisted troubleshooting uygulaması. | Doğru; kullanıcı D |
+| S08-43 | 3.1 | Canary, rollback ve uyumlu schema: Yeni kod denenirken eski kod hâlâ çalışabilsin; trafik geri dönünce veritabanı yüzünden kırılmasın. | Bilinçli pekiştirme; S05-03, kullanıcının additive schema ve rollback soruları. | Doğru; kullanıcı D |
+| S08-44 | 4.3 | Metrics, logs, traces ve Error Reporting: Genel grafiği görüyorsun; şimdi tek isteğin nerede yavaşladığını ve tekrar eden hatayı bul. | Pekiştirme; S06/S07 observability ayrımları, temel araç amacına odaklı. | Doğru; kullanıcı B+E |
+| S08-45 | 1.2 | Statik image taraması ve çalışan web uygulaması: Image içindeki paketlerin yanında çalışan web davranışını da kontrol et. | Yeni ölçüm; S06-18 paket düzeltme yerine runtime scanning kapsamı. | Doğru; kullanıcı A |
+| S08-46 | 2.3 | Integration test izolasyonu ve sonuç koruma: Build’ler birbirinin verisini bozmasın; cleanup test hatasını gizlemesin. | Pekiştirme; S06-10, kısa temel isolation ve release-gate açıklaması. | Doğru; kullanıcı D |
+| S08-47 | 1.2 | Artifact onayı ve deployment enforcement: Pipeline dışından gelen deploy da onay kuralına uysun. | Pekiştirme; S04-14, bilinçli temel release-gate tekrarı. | Doğru; kullanıcı A |
+| S08-48 | 4.2 | Generative AI API çıktısını uygulamaya bağlama: AI çıktısı parse edilebilsin ama doğru formatı doğru karar sanma. | GenAI API uygulama temeli; Gemini Code Assist ile uygulamanın model API çağrısı farklı sorumluluklar. | Doğru; kullanıcı C |
+| S08-49 | 1.3 | BigQuery batch analytics ve ham veri: Ham dosya kalsın; geçmiş veri SQL ile analiz edilsin; günlük yükleme yeterli. | Yeni ölçüm; S06 pending-stream atomicity yerine temel batch analytics mimarisi. | Doğru; kullanıcı D |
+| S08-50 | 3.1 | Apigee API versioning ve güvenlik: Eski mobil uygulamayı kırmadan v2 sun; iki sürümde de güvenlik devam etsin. | Pekiştirme; S06 API versioning ve S07 API management konularını temel karar düzeyine çekme. | Doğru; kullanıcı A |
 
 S08 öğrenci dosyası ve kaynaklı anahtar ayrı. Kapsam tablosu doğrudan soru ile yalnız notta anlatılan ayrıntıları ayırır. Sonraki yeni set S09. S07 Q12 A doğru sonrası 9/12; Q13 D rehberli, ilk seçim yok. S06 Q20 incelemesi hâlâ bekliyor.
+
+27 Eylül son S07 sonucu: Q14–Q20 5/7; toplam Q13 hariç 14/19 (%73,7). Q13 rehberli, ilk cevap yok. Son bölüm süresi bildirilmedi. Q17/Q18 ayrıntılı inceleme bekliyor; S08 hâlâ çözülmedi.
+
+27 Eylül S08 ilk Q1–Q20: 19/20, 45 dakika; yalnız Q1 B→D. E/K/T veya gerekçe yok. Q21–Q50 bekliyor; bağımsız kavrayış veya sınav eşdeğerliği iddiası yok. [Sonuç](results/PCD-S08-attempt-01.md).
+
+S08 Q21–Q40 ilk sonuç: 16/20, 60 dakika; Q21/35/36/37 yanlış. Q1–Q40 toplam 35/40 (%87,5), bölümlerin süre toplamı 105 dakika. Q41–Q50 cevap yok. Yeni yanlışlar henüz ayrıntılı incelenmedi.
+
+S08 tamamlandı: son on 10/10, 14 dakika; ilk cevap toplamı 45/50 (%90), 119 dakika bölümlerin toplamı. İlk yanlışlar Q1/21/35/36/37 korunur. Bölümler arasında rehberli açıklama var; kesintisiz deneme değil. Sonraki yeni set S09.
+
+
+## PCD-S09 — 28 Eylül 2026
+
+[Sorular](PCD-S09.md) · [Ayrı Türkçe anahtar](../answers/scenarios/PCD-S09.md) · [Önce yapılan son ay araştırması](PCD-RESEARCH-2026-09-28.md).
+
+50 soru; 44 tek/6 çift seçim; dört alan 16/12/12/10, 11 alt başlık. 84–103 kelimelik gövdeler. Yakın şık ve çok koşullu karar hedefi; sample/gerçek sınavla kalibrasyon yok. S08 ilk 45/50, 119 dakika ve eski ilk puanlar korunur. Q20/Q31 temel pekiştirme; karma sorular yeni temel konu diye sayılmaz. Henüz hiçbir S09 yanıtı, puanı veya süresi yok.
+
+| ID | Rehber | Ölçülen karar | Tür / önceki ilişki | Durum |
+|---|---|---|---|---|
+| S09-01 | 1.1 | Optional dependency: fallback + circuit breaker | Karma; S07-15 optional dependency, burada probe değil çağrı izolasyonu. | Henüz çözülmedi |
+| S09-02 | 2.1 | Local ADC impersonation ile runtime yetkisini yeniden üretme | Karma; S06-02 ADC precedence ve S08-02 temel ADC üzerine farklı kimlikle test. | Henüz çözülmedi |
+| S09-03 | 3.1 | Cloud Tasks worker acknowledgment işin sonuna bağlanmalı | Karma; S08-26 durable acceptance, burada ikinci queue yok ve worker ack tamamlanma demek. | Henüz çözülmedi |
+| S09-04 | 4.1 | Failover sonrası connection yenileme + transaction bütününü retry | Karma; S04-05 HA ve S08-04 pool üzerine failure recovery. | Henüz çözülmedi |
+| S09-05 | 1.3 | Firestore aynı timestamp için tie-breaker cursor | Yeni ölçüm; S08-18 veri modeli ve S05-08 pagination ile ilişkili, eşitlik sınırı yeni. | Henüz çözülmedi |
+| S09-06 | 2.2 | PR build trust boundary + ayrı release identity | Yeni ölçüm; S03-12 build/runtime kimliği, burada source trust boundary. | Henüz çözülmedi |
+| S09-07 | 3.2 | HPA container-specific CPU metric | Karma; S05-07 metrik seçimi, yeni sidecar dilution koşulu. | Henüz çözülmedi |
+| S09-08 | 4.2 | Storage conditional delete ile yeni generation koruma | Karma; S04-08 create-only ve S07-04 metadata yerine delete race. | Henüz çözülmedi |
+| S09-09 | 1.2 | Cross-project secret: denied runtime principal ve resource scope | Karma; S01-01, S06-03 ve R01-01 rol/kimlik ayrımlarını cross-project bağlamında birleştirir. | Henüz çözülmedi |
+| S09-10 | 2.3 | Emulator server SDK success Rules kanıtı değildir | Yeni ölçüm; S04-06/S08-16 emulator sınırı, bu kez rule bypass nedeniyle yanlış test kanıtı. | Henüz çözülmedi |
+| S09-11 | 1.1 | Spanner write latency: application/leader locality | Karma; S08-25 ürün seçimi üzerine leader locality, S05-09 timestamp read kararı değil. | Henüz çözülmedi |
+| S09-12 | 3.1 | Config-only revision, aynı digest ve no-traffic validation | Karma; rehberli revision bileşenleri + S08-20/43 artifact ve traffic. | Henüz çözülmedi |
+| S09-13 | 2.1 | Cloud Code/kubectl context project seçiminden ayrı | Yeni ölçüm; S08-11 ortam ürün seçiminden farklı context güvenliği. | Henüz çözülmedi |
+| S09-14 | 4.3 | Canary aggregate ortalamanın gizlediği tail latency | Karma; S08-44 metrics/trace, yeni canary aggregation teşhisi. | Henüz çözülmedi |
+| S09-15 | 1.3 | Bigtable hot customer: bounded salting tradeoff | Karma; S08-36 dengeli cihaz varsayımı tersine çevrildi; S07-17 shard/index ilişkisi var. Yeni temel hash kavramı diye sayılmaz. | Henüz çözülmedi |
+| S09-16 | 3.2 | Service port/targetPort farklılığı | Karma; S02-03 selector sorusundan farklı doğru selector yanlış port. | Henüz çözülmedi |
+| S09-17 | 2.2 | Build origin ve test kanıtı aynı artifacta bağlanmalı | Karma; S08-35 provenance açıklaması sonrası anlık birleşik uygulama; gecikmeli başarı sayılmayacak. | Henüz çözülmedi |
+| S09-18 | 1.2 | WIF authenticated issuer yetmez; repo/workflow boundary | Karma; S04-13 repository WIF sınırına mevcut aşırı geniş production trust teşhisi. | Henüz çözülmedi |
+| S09-19 | 4.1 | Dead-letter forwarding IAM + inceleme subscription | Yeni ölçüm; S07-16 flow control ve S06-04 ordering’den farklı failure isolation. | Henüz çözülmedi |
+| S09-20 | 3.1 | No-traffic candidate tag routing | Bilinçli pekiştirme; S03-02 ve rehberli R10-04. Yeni kapsam veya yeni teknik karar sayılmaz. | Henüz çözülmedi |
+| S09-21 | 1.1 | Uncertain task creation: stable name + delivery idempotency | Karma; S06-01 Tasks dispatch yerine producer creation uncertainty. | Henüz çözülmedi |
+| S09-22 | 2.3 | Consumer compatibility release test | Karma; S08-50 API versioning ve S08-39 independent oracle, yeni consumer test gate. | Henüz çözülmedi |
+| S09-23 | 3.2 | PDB mevcut unhealthy replica ile eviction budget | Karma; S03-07 PDB, burada arıza sonrası mevcut eviction bütçesi. | Henüz çözülmedi |
+| S09-24 | 4.2 | Pagination token query context ile bağlı | Yeni ölçüm; S07-08 missing token field değil token-query uyumu. | Henüz çözülmedi |
+| S09-25 | 1.2 | Secret rotation rollback dependency lifecycle | Karma; S02-13 ve S08-22 rotation temelinden dependency retirement penceresine. | Henüz çözülmedi |
+| S09-26 | 2.2 | Reproducible inputs + kontrollü security updates | Karma; S05-18 cache ve S08-20 promotion üzerine build input yönetimi. | Henüz çözülmedi |
+| S09-27 | 3.1 | Interactive acceptance + uzun finite Cloud Run job | Karma; S02-01 job ve S08-01 service ayrımı; yeni asenkron kontrol/çalıştırma birleşimi. | Henüz çözülmedi |
+| S09-28 | 1.3 | Shared managed NFS vs object/mount/pod-local | Karma uygulama; 27 Eylül Filestore/Storage sözlü açıklaması, ilk senaryo ölçümü. | Henüz çözülmedi |
+| S09-29 | 2.1 | Workstations config rollout aktif session restart | Karma; S05-06 persistence yerine yönetilen toolchain update’ın aktif session’a alınması. | Henüz çözülmedi |
+| S09-30 | 4.3 | Structured severity ve error grouping context | Karma; S08-44 genel araç seçimi yerine structured field teşhisi. | Henüz çözülmedi |
+| S09-31 | 3.2 | Open listener ile semantic readiness ayrımı | Bilinçli pekiştirme; S02-04 startup ve S02-12/S08-07 probe temeli. Yeni kapsam sayılmaz. | Henüz çözülmedi |
+| S09-32 | 1.1 | Farklı freshness contract: metadata cache ve auth | Karma; S05-01 cache/tenant üzerine authorization freshness, yeni correctness boundary. | Henüz çözülmedi |
+| S09-33 | 2.3 | Performance test confound: cold vs warm cohorts | Yeni ölçüm; S01-12 cold start çözümü değil performans deneyinin doğruluğu. | Henüz çözülmedi |
+| S09-34 | 4.1 | Exactly-once delivery vs publish/business duplication | Karma; S01-10 dedup üzerine service guarantee kapsamı. Yeni idempotency temeli sayılmaz. | Henüz çözülmedi |
+| S09-35 | 1.2 | Binary Authorization iki bağımsız attestation AND | Karma; S08-47 admission temeline iki ayrı approval mantığı. | Henüz çözülmedi |
+| S09-36 | 3.1 | Eventarc source-specific data schema ve adapter test | Karma; S03-14 Pub/Sub adapter’ın ters kaynak koşulu; yeni temel CloudEvents kapsamı değil. | Henüz çözülmedi |
+| S09-37 | 2.2 | Shared workspace concurrent write collision | Karma; S08-32 workspace+DAG yerine doğru DAG altında write collision. | Henüz çözülmedi |
+| S09-38 | 1.3 | Selective open-ended object hold | Yeni ölçüm; S08-31 bucket retention yerine object-level hold. Hukuki tavsiye değil ürün davranışı senaryosu. | Henüz çözülmedi |
+| S09-39 | 4.2 | Quota project serviceusage.services.use ayrı access katmanı | Yeni ölçüm; S08-24 enablement+IAM üzerine quota consumer ayrımı. | Henüz çözülmedi |
+| S09-40 | 3.2 | Missing ConfigMap key vs startup health | Karma; S07-19 mutable config/rollback değil config-start failure teşhisi. | Henüz çözülmedi |
+| S09-41 | 1.1 | Cloud Armor direct URL bypass ingress boundary | Karma; S02-10 ingress temelinin Cloud Armor bypass teşhisi. Yeni ingress kavramı sayılmaz. | Henüz çözülmedi |
+| S09-42 | 2.1 | AI retrieved context güvenilir emir değildir | Karma; S08-27 least privilege, burada returned content instruction boundary. | Henüz çözülmedi |
+| S09-43 | 3.1 | Per-request RAM concurrency kapasite planlama | Karma; S01-07 shared-state veya S08-21 tek task OOM değil eşzamanlı memory toplamı. | Henüz çözülmedi |
+| S09-44 | 4.3 | End-to-end async latency: backlog waiting vs handler span | Yeni ölçüm; S07-12 CPU attribution yerine queue wait observability. | Henüz çözülmedi |
+| S09-45 | 1.2 | KMS key retirement: live migration tamam ama backup bağımlılığı sürüyor | Karma; S06-13 KMS rotation/migration. Burada live migration tamam; kararı değiştiren kalan backup bağımlılığı. Yeni temel konu sayılmaz. | Henüz çözülmedi |
+| S09-46 | 3.2 | HPA request denominator ve desired replicas hesabı | Karma; S02-15 CPU requests ve HPA, yeni sayısal uygulama. | Henüz çözülmedi |
+| S09-47 | 1.1 | Workflows saga compensation ve idempotency | Karma; S01-15 orchestration ve S04-16 external effects, yeni compensation planı. | Henüz çözülmedi |
+| S09-48 | 1.3 | Firestore collection group cross-parent query scope | Karma; 27 Eylül sözlü Firestore collection group/index açıklaması; S08-18 subcollection üzerine query scope. | Henüz çözülmedi |
+| S09-49 | 4.2 | GenAI optional response bounded retry/fallback | Karma; S08-40 retry + S08-48 uygulama GenAI tüketimi; yeni ürün kotası ezberi yok. | Henüz çözülmedi |
+| S09-50 | 2.3 | AI test: commit-before-ack failure injection invariant | Karma; S08-39 AI oracle + önceki dedup, yeni failure-injection kanıtı. | Henüz çözülmedi |

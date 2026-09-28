@@ -166,3 +166,8 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 ## Öğretici senaryo kapsamı — 27 Eylül 2026
 
 [S08](scenarios/PCD-S08.md) 50 soruyla 1.1/1.2/1.3, 2.1/2.2/2.3, 3.1/3.2, 4.1/4.2/4.3 başlıklarının her birini doğrudan örnekler. Birincil soru sayıları 16 tasarım, 12 geliştirme/test, 12 deployment, 10 entegrasyondur. [Ayrı anahtardaki kapsam haritası](answers/scenarios/PCD-S08.md) her konu kümesinin soru numaralarını ve yalnız açıklamada işlenen örnekleri gösterir. Bütün ürün parametrelerinin bağımsız ölçüldüğü veya öğrenildiği iddia edilmez. Ders bankasının PDF sayfa kapsamı ve kullanıcı tamamlama/ilk sonuç kayıtları değişmez. S08 henüz çözülmedi.
+
+
+## Karma senaryo kapsamı — 28 Eylül 2026
+
+[S09](scenarios/PCD-S09.md): 50 soru, dört ana alan 16/12/12/10; 11 numaralı alt başlıktan doğrudan örnek. Q20/Q31 temel pekiştirme; karma ilişkiler [günlükte](scenarios/QUESTION-LOG.md), ölçülen/ölçülmeyen konu ayrımı [anahtarda](answers/scenarios/PCD-S09.md). Bu turda her ürün özelliği ayrı ölçülmez. Henüz çözülmedi; kapsam hazırlığı öğrenme/tamamlama kaydı değildir. Önceki tarihli S08 “henüz çözülmedi” notu tarihsel kalmıştır; doğrulanmış son durum 45/50 ve bölümlerin toplamı 119 dakikadır. İlk cevaplar ve ders bankası değiştirilmedi.
