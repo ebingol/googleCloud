@@ -2,6 +2,10 @@
 
 Kararlaştırma: 20 Eylül 2026. Hedef: Professional Cloud Developer. Kullanıcının son beyanına göre yaklaşık iki hafta kaldı; kesin sınav tarihi bilinmiyor. Eski 20–30 dakikalık günlük plan yerine aşağıdaki düzen geçerli.
 
+## Güncel öncelik — 29 Eylül: S09 mekanizmalarını öğretme
+
+Kullanıcı S09’daki 50 sorunun bütün mekanizmalarını somut örnekle açıklamamızı istedi. [Rehber](PCD-S09-MECHANISMS.md) hazır; sohbet içinde küçük gruplarla kullan. Önce varlık/kimlik/kaynak ayrımı, sonra veri veya istek akışı, ardından arıza ve çözüm; İngilizce ifadeyi bu resme bağla. Storage generation/hold, Workstations image/kalıcı home ve GKE Workload Identity gibi kavramları önceden bildiğini varsayma. Bu, kullanıcının belirttiği öğrenme ihtiyacıdır; her yanlışını teknik eksik diye sınıflandırma. Rehberin hazırlanması öğrenme/kalıcılık kanıtı değildir; ilk cevaplar ve puanlar değişmez. Bu istek aşağıdaki S10 planından önce gelir.
+
 ## Güncel öncelik — 28 Eylül son düzeltme: S10, 20 soru / 45 dakika
 
 Kullanıcı tam deneme planını düzeltti. S10 **20 soru, 45 dakika hedefi** olarak hazır; 29 Eylül iş çıkışı çözüm planı. Henüz sonuç yok. 18 tek/2 çift seçim; uzun ama makul gövdeler ve yakın seçeneklerle birlikte doğrudan uygulama soruları. Her soruyu çok katmanlı tuzağa çevirme; eksik varsayımla belirsizlik üretme. Sample/gerçek sınavla zorluk kalibrasyonu yok.
