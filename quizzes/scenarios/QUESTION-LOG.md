@@ -370,3 +370,63 @@ S08 tamamlandı: son on 10/10, 14 dakika; ilk cevap toplamı 45/50 (%90), 119 da
 | S10-18 | 3.1 | Cloud Run ingress container contract | Bilinçli pekiştirme; S03-06 listen address temeline açık PORT uyumsuzluğu eklenir. Yeni temel kapsam sayılmaz. | Henüz çözülmedi |
 | S10-19 | 3.1 | Cloud Run job failure signal | Karma; önceki job/service seçimi üzerine task exit sonucu. S09-03 service ack protokolünden farklı. | Henüz çözülmedi |
 | S10-20 | 4.3 | Request-weighted success SLI | Yeni ölçüm; S09-14 cohort görünürlüğünden farklı, açık tanımlanmış global request SLI pay/payda hesabı. | Henüz çözülmedi |
+
+
+## PCD-S11 — 1 Ekim 2026
+
+Kullanıcı S10’dan biraz daha zor, exam guide ağırlıklarıyla 50 soru istedi. 16/12/12/10 ana alan; 47 tek + Q6/Q19/Q21 çift seçim; 120 dakika kişisel hedef. Uzun İngilizce ve ayrı Türkçe kaynaklı anahtar. Yeni temel kapsam yerine karma uygulama ve bilinçli pekiştirmeler açıkça kaydedilir; yalnız soru hazırlandı, çözüm/kalıcılık yok.
+
+[Sorular](PCD-S11.md) · [Anahtar](../answers/scenarios/PCD-S11.md)
+
+| ID | Rehber | Karar | Tür / geçmiş / farklı koşul | Durum |
+|---|---|---|---|---|
+| S11-01 | 1.1 | Cache stampede; enough capacity for one refresh | Karma; S05-01 cache-aside üzerine eşzamanlı expiry ve refresher crash koşulu. | Henüz çözülmedi |
+| S11-02 | 2.1 | Test endpoint isolation; requests reaching localhost | Karma; S04-06/S08-16 ters yön: emulator testi çalışır, hosted diagnostic yanlışlıkla emulator’a gider. | Henüz çözülmedi |
+| S11-03 | 3.1 | Connection budget during overlap; twelve instances of the old revision and twelve of the new | Karma; S08-04 pool bütçesi; yeni iki revision overlap hesabı. | Henüz çözülmedi |
+| S11-04 | 4.1 | Consistent ranged download; must never silently combine versions | Karma; S03-05 generation-specific read; yeni çok parçalı transfer tutarlılığı. | Henüz çözülmedi |
+| S11-05 | 1.1 | Affinity and experiment assignment; across devices and across replacement | Karma; S08-05 durability değil kullanıcı bazlı deney üyeliği; affinity sınırı bilinçli tekrar. | Henüz çözülmedi |
+| S11-06 | 2.2 | Build ordering and failure semantics; correctly waits ... allowFailure: true | Karma; S04-02 doğru DAG varsayılır, S01-13 failure gate ile birleşir. | Henüz çözülmedi |
+| S11-07 | 3.2 | Surge capacity bottleneck; four available replicas throughout | Karma; S04-07 rollout ayarı doğru, S03-13 scheduler capacity birleşimi. | Henüz çözülmedi |
+| S11-08 | 1.3 | Zonal HA with explicit regional limit; losing a zone ... separately accepted ... regional outage | Bilinçli pekiştirme; S04-05/S08-12 scope ayrımı, regional DR sorusunun ters gereksinimi. | Henüz çözülmedi |
+| S11-09 | 4.1 | Ordering-key blocked work; order within each customer | Yeni ölçüm; S10-04 lease değil ordering key’e bağlı failure ilerlemesi. | Henüz çözülmedi |
+| S11-10 | 2.3 | Property test detects implementation bug; same helper used by the production function | Karma; S08-39 oracle üzerine helper kaynaklı circularity ve property/invariant uygulaması; yeni Google ürün bilgisi değil. | Henüz çözülmedi |
+| S11-11 | 1.1 | Quota plus burst protection; below that daily quota ... short burst | Karma; S04-09 ters durum: quota mevcut, burst koruması eksik. | Henüz çözülmedi |
+| S11-12 | 3.1 | Secret access at instance startup; newly started instances fail ... permission failure | Karma; S09-09 principal teşhisi + S05-11 startup yaşam döngüsü; yeni startup failure bağlamı. | Henüz çözülmedi |
+| S11-13 | 1.2 | Credential rollout sequencing; rollback ... until the observation period ends | Bilinçli pekiştirme; S09-25 credential overlap, yeni temel kapsam/kalıcılık iddiası yok. | Henüz çözülmedi |
+| S11-14 | 2.1 | Workstations mounted home; attaches persistent home disks | Karma; S09-29 restart sorusu değil build-time home masking; ürün detayının yeni ölçümü. | Henüz çözülmedi |
+| S11-15 | 4.2 | Error classification before retry; invalid field selector ... separate valid requests ... 503 | Bilinçli pekiştirme; S08-40 temel sınıflama, somut two-error incident; yeni retry konu iddiası yok. | Henüz çözülmedi |
+| S11-16 | 3.2 | Probe semantics during dependency failure; restarting ... does not accelerate recovery | Bilinçli pekiştirme; S02-12, DB failover kanıtı eklenmiş; yeni temel probe konusu değil. | Henüz çözülmedi |
+| S11-17 | 1.3 | Separate analytical scans; Reports may be refreshed once a day | Karma; S08-49 storage analytics üzerine primary contention ve uygulama uyumu; eski temel ürün seçimi sayılmaz. | Henüz çözülmedi |
+| S11-18 | 2.2 | Provenance is not a vulnerability waiver; requires ... no unresolved vulnerability | Karma; S09-17 evidence/digest doğru varsayılır, S06-18 vulnerability repair ile birleşir. | Henüz çözülmedi |
+| S11-19 | 3.1 | Event delivery and runtime data identity; before the handler runs ... service runs as processing-runtime | Karma; S01-06 invoker + S09-09 runtime resource identity; iki boundary doğrudan ölçülür. | Henüz çözülmedi |
+| S11-20 | 4.3 | Async trace propagation; no trace context ... message attributes | Karma; S04-12 propagation + S09-44 async wait, yeni messaging boundary. | Henüz çözülmedi |
+| S11-21 | 1.2 | NetworkPolicy DNS and backend access; Connecting ... IP succeeds ... blocked DNS queries | Karma; S03-10 ingress/egress üzerine DNS dependency; plugin/topology varsayımı açık. | Henüz çözülmedi |
+| S11-22 | 2.2 | Dockerfile overrides expected buildpack flow; source root contains an old Dockerfile | Karma; S08-10 buildpack seçimi, beklenmedik Dockerfile önceliği yeni ölçüm. | Henüz çözülmedi |
+| S11-23 | 3.2 | HPA cannot schedule nodes; node pool has reached its current maximum | Bilinçli pekiştirme; S08-13 node/Pod scaling; bu kez açık node maximum kanıtı; S10-12 ters bağlayıcı limit. | Henüz çözülmedi |
+| S11-24 | 1.3 | Signed URL identity guarantee; every download ... anyone who merely receives a forwarded link | Karma; S01-04/S08-38 signed URL uygunluğu ters gereksinimle sınanır; yeni identity garantisi ayrımı. | Henüz çözülmedi |
+| S11-25 | 4.1 | Firestore read-dependent retry; reuses that value in every callback attempt | Karma; S01-09 transaction ve S04-16 retry; dış side-effect değil read placement ölçülür. | Henüz çözülmedi |
+| S11-26 | 2.1 | AI context versus tool permissions; respects the current dependency contract | Bilinçli pekiştirme; S05-10/S08-06 context mühendisliği; yeni AI ürün özelliği ölçümü değil. | Henüz çözülmedi |
+| S11-27 | 3.1 | Rollback and pinned tagged endpoint; directly to the tagged revision URL | Karma; S09-20 tag temelinden yeni rollback sonrası istemci hedefi teşhisi. | Henüz çözülmedi |
+| S11-28 | 1.1 | Fan-out plus controlled dispatch; independently ... controlled ... concurrent requests | Karma; S04-04 fan-out + S01-05 Tasks dispatch; yeni ürün değil birleşik requirement. | Henüz çözülmedi |
+| S11-29 | 4.2 | Partial response preserves continuation; accidentally omits nextPageToken | Karma; S08-29 fields/pagination üzerine continuation field kaybı; yeni teşhis koşulu. | Henüz çözülmedi |
+| S11-30 | 2.3 | Prove runtime IAM in integration test; broad user ADC ... runtime service account | Karma; S08-16 emulator sınırı + S09-02 identity; yeni test execution evidence, Rules testi değil. | Henüz çözülmedi |
+| S11-31 | 1.2 | Recover disabled KMS version; disabled ... has not been destroyed | Karma; S09-45 backup retirement yerine gerçekleşmiş recoverable disable incident; aynı temel dependency açıkça korunur. | Henüz çözülmedi |
+| S11-32 | 3.2 | Live ConfigMap file and process snapshot; files ... update ... reads ... only once | Karma; S03-01 file projection koşulu zaten sağlanmış; yeni application cache katmanı. | Henüz çözülmedi |
+| S11-33 | 1.3 | Bigtable range locality; writes ... evenly across devices ... contiguous time interval | Bilinçli pekiştirme; S08-36 temel row key; S09-15 hot-device varsayımı açıkça yok, yeni kapsam değil. | Henüz çözülmedi |
+| S11-34 | 2.2 | Patch the final runtime stage; from the final runtime base | Karma; S08-23 multi-stage + S06-18 patch, yeni yanlış stage onarımını ayırma. | Henüz çözülmedi |
+| S11-35 | 4.3 | Report structured exception events; omits the exception stack ... structured error-event fields | Yeni ölçüm; S09-30 severity parse doğru varsayılır; Error Reporting event içeriği ölçülür. | Henüz çözülmedi |
+| S11-36 | 3.1 | Long-lived gRPC stream recovery; deployments can also replace instances ... resume | Karma; S10-11 streaming seçimi doğru, yeni lifecycle recovery ve durable session şartı. | Henüz çözülmedi |
+| S11-37 | 1.2 | Direct GKE principal resource scope; token acquisition succeeds ... separate project | Bilinçli pekiştirme; S03-04/S08-15 direct WIF, cross-project scope ile mekanizma uygulanır; yeni temel konu değil. | Henüz çözülmedi |
+| S11-38 | 2.3 | Tenant authorization negative test; authentication succeeds but account ownership is not enforced | Karma; S10-13 sonrası farklı karar: token verify doğru varsayılır, account authorization negative test. Anlık token-verification kopyası değil; kalıcılık sayılmaz. | Henüz çözülmedi |
+| S11-39 | 3.2 | Same tag does not update Pods; no change to the Deployment Pod template | Karma; S02-06 template rollout + S04-03 digest; new registry tag change teşhisi. | Henüz çözülmedi |
+| S11-40 | 4.2 | Batch subrequest retry; multipart response ... individual transient failures | Karma; S07-04 metadata precondition + API batching; yeni subresponse outcome kararı. | Henüz çözülmedi |
+| S11-41 | 1.2 | Retention beats early lifecycle eligibility; locked ninety-day ... retention expiry ... later | Karma; S04-17 lock + S06-17 lifecycle; yeni conflicting eligibility hesabı, hold değil. | Henüz çözülmedi |
+| S11-42 | 2.3 | Load generation includes queueing; arrives independently of earlier completions | Yeni ölçüm; S09-33 cold/warm fairness yerine load-generator workload modelini ölçer. | Henüz çözülmedi |
+| S11-43 | 3.1 | Source build identity denied; fails before producing ... configured Cloud Build service account | Bilinçli pekiştirme; S03-12/S04-18 build/runtime boundary, source deployment stage kanıtı. | Henüz çözülmedi |
+| S11-44 | 1.1 | Regional dependency failure scope; both regions depend on one Cloud SQL primary | Bilinçli pekiştirme; S08-12 regional DR + S05-05 cache durability; yeni temel scope değil. | Henüz çözülmedi |
+| S11-45 | 4.3 | Error-budget burn rate; recent window ... rather than ... monthly final result | Karma; S10-20 doğru request denominator üzerine error-budget oranı; yeni hesap. | Henüz çözülmedi |
+| S11-46 | 3.2 | Startup budget and deadlock detection; without weakening the steady-state liveness response | Bilinçli pekiştirme; S04-19/S08-07, farklı süreler; yeni temel probe kapsamı değil. | Henüz çözülmedi |
+| S11-47 | 1.2 | AI-selected resource is not authorization; well-formed ... another customer’s account | Karma; S08-48 output validation + S10-13 identity, doğrulanmış kimlik varsayımıyla yeni model-resource sınırı. | Henüz çözülmedi |
+| S11-48 | 1.1 | Warm capacity with finite budget; small warm baseline ... peak ... elastic | Bilinçli pekiştirme; S01-12 cold start, finite baseline budget ekli; tüm burst için guarantee yok. | Henüz çözülmedi |
+| S11-49 | 2.1 | Emulator success versus Storage service contract; direct API object listing; no ... intermediary | Karma; S07-20 Storage consistency/cache + development fake fidelity; emulator ürün garantisi iddiası değil. | Henüz çözülmedi |
+| S11-50 | 4.1 | Unknown commit result; cannot tell whether ... committed | Karma; S09-04 rollback doğrulanmış koşulunun tersi; S09-50 commit-before-ack uygulaması; yeni temel idempotency değil. | Henüz çözülmedi |

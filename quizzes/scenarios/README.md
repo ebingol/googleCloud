@@ -2,7 +2,7 @@
 
 [Yeni sohbet için devam notu](HANDOFF.md) · [Günlük çalışma ve soru üretme stratejisi](STRATEGY.md) · [Soru geçmişi — hazırlayan için](QUESTION-LOG.md)
 
-**10 senaryo seti + 1 pekiştirme seti · 250 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
+**11 senaryo seti + 1 pekiştirme seti · 300 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
 
 Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgündür, gerçek sınav sorusu değildir. Amaç birkaç gereksinimi birlikte değerlendirmek ve makul alternatifleri elemektir. Pilotun zorluğu henüz öğrenci sonuçlarıyla kalibre edilmemiştir.
 
@@ -18,7 +18,8 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 | PCD-S07 | Exam guide öncelikli 20 uzun senaryo; yakın seçenekler, 18 tek + 2 çift seçim; Q13 hariç 14/19; Q13 rehberli, puan dışında | Süreyi kaydet | [Çöz](PCD-S07.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S07.md) |
 | PCD-S08 | Öğretici 50 soru; rehberin 11 alt başlığı, 44 tek + 6 çift seçim; tamamlandı: 45/50 (%90), toplam 119 dakika | 10’luk bölümler; süreyi kaydet | [Çöz](PCD-S08.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S08.md) |
 | PCD-S09 | 50 karma soru; yakın seçenekler, 44 tek + 6 çift seçim; tamamlandı: ilk gönderilen 37/50 (%74), toplam 128 dakika | 120 dakika isteğe bağlı hedef; bölümlü çözüm mümkün | [Çöz](PCD-S09.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S09.md) |
-| PCD-S10 | 20 karma soru; 18 tek + 2 çift seçim, uzun ama makul İngilizce; henüz çözülmedi | 45 dakika | [Çöz](PCD-S10.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S10.md) |
+| PCD-S10 | 20 karma soru; ilk sonuç **19/20 (%95)**, yalnız Q13 yanlış; [sonuç](results/PCD-S10-attempt-01.md) | Hedef 45 dk; sonuç 42 dk | [Çöz](PCD-S10.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S10.md) |
+| PCD-S11 | S10’dan biraz daha zor hedefli 50 karma soru; 16/12/12/10; 47 tek + 3 çift seçim; henüz çözülmedi | 120 dakika kişisel hedef | [Çöz](PCD-S11.md) | [Çözüm sonrası aç](../answers/scenarios/PCD-S11.md) |
 
 **İlk set sonrası:** [Doküman sayfaları, ilgili quizler ve bugünkü çalışma sırası](PCD-S01-review-guide.md).
 
@@ -26,7 +27,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. Sorular özgün
 
 1. İlk turda cevap anahtarını ve kaynakları açmadan çöz.
 2. E/K/T güven düzeyi isteğe bağlıdır; kararsız olduğunda ikinci seçeneği belirtebilirsin. Her soruya gerekçe yazman gerekmiyor.
-3. S10 için hedef 20 soru / 45 dakika. Süre sonunda mevcut cevapları kaydet; sonradan devam edersen ek süreyi ayır. İstersen cevapları beşli gruplar halinde gönder.
+3. S11 için hedef 50 soru / 120 dakika; S10’un 20 soru / 45 dakika hedefi kendi kaydında korunur. Süre sonunda mevcut cevapları kaydet; sonradan devam edersen ek süreyi ayır. İstersen cevapları beşli gruplar halinde gönder.
 4. Anahtarla kontrol ettikten sonra yanlışları ve tahminle doğruları tekrar listesine al.
 5. İlerlemeni aşağıya kaydet; tekrar çözümündeki ezber etkisini ilk denemeden ayır.
 

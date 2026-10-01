@@ -169,3 +169,8 @@ Kullanıcı best practice'leri birlikte çalışmak istedi ve GKE temelinde eksi
 Yöntem: sade Türkçe problem → hangi mekanizma → neden → hangi durumda geçersiz/eksik; sonra kısa uygulama ve gerektiğinde İngilizce ifade. Best practice'leri koşulsuz slogan yapma. Temel kuralları ileri ürün ayrıntılarından ayır. İlk GKE bölümü Deployment/Pod/Service ilişkisi ve üç kopyalı API örneği; sonra probes, requests/limits, autoscaling, rollout/termination, storage/config ve WIF/IAM. Diğer başlıklar henüz işlendi sayılmaz. Önceki GKE ders sorularının tamamlandığı kullanıcı beyanı, kavram hakimiyeti kanıtı değildir.
 
 S07 ilk Q1–Q12 9/12 korunur; Q13 doğru cevap açıklanmış rehberli çalışma, bağımsız seçim yok. Q14–Q20 ve S06 Q20 incelemesi bekliyor. Otomasyon/bildirim yok.
+
+
+## 1 Ekim — güncel kullanıcı isteği: S11
+
+Kullanıcı S10’dan biraz daha zor 50 soruluk exam guide ağırlıklı deneme istedi. Önceki 20 soru/45 dakika planı bu set için geçerli değil. S11 16/12/12/10; 47 tek/3 çift seçim; 120 dakika kişisel hedef. Uzun İngilizce, yakın şıklar ve ek karar koşulları korunur; özgün pratik, gerçek sınav eşdeğerliği iddiası yok. İlk cevapları ve mola/yardım koşullarını ayrı kaydet. Henüz sonuç yok; sonraki yeni set S12.

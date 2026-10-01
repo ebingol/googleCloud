@@ -176,3 +176,8 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 ## Kısa karma deneme — 28 Eylül S10
 
 [S10](scenarios/PCD-S10.md): **20 soru / 45 dakika**; 18 tek + 2 çift seçim. Birincil alanlar 6 tasarım / 5 geliştirme-test / 5 deployment / 4 entegrasyon. 11 numaralı alt başlıktan örnek vardır; bütün ürünler ve özellikler ölçülmez. [Anahtardaki harita](answers/scenarios/PCD-S10.md) ölçülen ve ölçülmeyen kapsamı ayırır. Q18 bilinçli pekiştirme; diğer eski konu ilişkileri [günlükte](scenarios/QUESTION-LOG.md) kayıtlıdır. Henüz çözülmedi; hazırlık, öğrenme veya başarı kaydı değildir. Önceki ilk cevaplar ve ders bankası değişmedi.
+
+
+## Tam karma deneme — 1 Ekim S11
+
+[S11](scenarios/PCD-S11.md): 50 soru; 16 tasarım / 12 geliştirme-test / 12 deployment / 10 entegrasyon. 11 numaralı alt başlık doğrudan örneklenir; bütün alt özellikler ölçülmez. [Ayrı anahtar](answers/scenarios/PCD-S11.md) soru bazında rehber/kaynak/farklı koşul içerir. Karma uygulamalar ve bilinçli pekiştirmeler [günlükte](scenarios/QUESTION-LOG.md); yeni temel kapsam sayılmaz. Henüz çözülmedi; yalnız hazırlık tamamlandı. S10 doğrulanmış ilk sonuç 19/20, 42 dakika; önceki S10 “henüz çözülmedi” notu tarihsel kalmıştır. İlk cevaplar değişmedi.
