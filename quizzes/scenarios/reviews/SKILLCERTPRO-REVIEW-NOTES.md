@@ -1,0 +1,212 @@
+# SkillCertPro inceleme çalışma notları — 5 Ekim 2026
+
+Durum: bütün setlerin gövde/anahtar taraması tamamlandı; hedefli teknik doğrulama ve ön aday seçimi yapıldı. Kullanıcı satın aldığını bildirdi, 18 setin tamamının incelenmesini ve ileride buradan da tam sınav oluşturulmasını istedi. S12 Udemy seçkisi hazır kalacak. Henüz SkillCertPro seçkisinden sınav üretilmedi; sonraki ID S13.
+
+Tarayıcıdan kaynak sayfalar kaydedildi; HTML başlığıyla set kimliği doğrulandı. İlk hızlı kayıt turundaki yükleme gecikmesi kaynaklı eşleme hataları yeniden kayıtla giderildi. Ham HTML tmp/skillcertpro altında; kişisel oturum/cookie bilgisi değerlendirme dosyasına taşınmamalı. Yalnız soru/şık/açıklama kayıtları reviews JSON'una çıkarıldı.
+
+İnceleme denemeleri kullanıcı sonucu değildir: PT1/PT6 ilk sorularda boş Check kullanıldı; PT12 Summary → Finish Test boş tamamlandı, 0/60 yalnız asistan incelemesidir. Diğer setlerin tarayıcı Save Source dosyaları kullanılıyor, yeni kullanıcı cevabı yok.
+
+## PT12 bütün 60 soru ilk okuma
+
+- Q1/Q7: Tasks dedup konusu değerli, Firestore transaction dış email/inventory işlemini atomik yapmaz. Mark-before-send kayıp; mark-after-send tekrar penceresi. Açıklama tüm durumları çözer diye sunuyor. Düzeltmeden sınava alma.
+- Q2 API Gateway host geçişi: doğrulanacak.
+- Q3 serverless NEG healthcheck ana karar iyi; outlier detection otomatik varsayımı düzeltilmeli.
+- Q4 Gemini file context: güncel konu, seçim yapılmışken dosya zaten açık çelişkisi var; prompt/file context daha kesin kurulmalı.
+- Q5 Bigtable device#timestamp doğru koşullu; tek device'ın zamanla dağıldığı genellemesi yanlış.
+- Q6/Q33 no-traffic + tag iyi fakat aynı karar tekrarı.
+- Q8 Workstations custom image iyi aday.
+- Q9 immutable ConfigMap/Secret iyi aday, %30 iddiası doğrulanmadı.
+- Q10 automatic scanning aday, sürekli analiz yaşam döngüsü sınırlarını unutma.
+- Q11 local ADC ve Q28 revoke iyi, ayrı kararlar.
+- Q12 Apigee analytics iyi.
+- Q13 HPA versus cluster autoscaler iyi; önceki kullanıcı setlerinde pekiştirme.
+- Q14 resumable session URI iyi.
+- Q15 signed IAP assertion iyi; firewall IP spoof anlatımı aşırı.
+- Q16 Direct VPC all-traffic + NAT iyi; NAT tek olası internet çıkışı değildir.
+- Q17 Apple provider iyi ana karar; otomatik account linking ve REST yasağı genellemeleri güvenilmez.
+- Q18/Q25 Firestore readwrite transaction aynı mekanizma, birini seç.
+- Q19 no-cpu-throttling ana karar var; process lifecycle/durability garanti değil, reliable background completion eksik.
+- Q20 IAP external identities: Workforce Federation IAP'te çalışmaz açıklaması güncel dokümanla çelişiyor. https://docs.cloud.google.com/iap/docs/use-workforce-identity-federation
+- Q21 email link iyi temel.
+- Q22 managed kube state metrics iyi aday.
+- Q23 Run maxinstances + SQL pool iyi; default unbounded ve never exceeds yanlış garanti.
+- Q24 Data Boost aday; partitionable query koşulu, zero impact aşırı iddiası kontrol.
+- Q26 cold-start mininstances belirsiz; CPU boost da azaltabilir. Eksik ölçüm koşulu.
+- Q27 VPCSC erişim tasarımı ihtiyaç/sınır konumu belirsiz.
+- Q29 reverse sequential user key iyi koşullu.
+- Q30 bucket location/storageclass karışmış; multi-region yanlış dışlanıyor.
+- Q31 images describe/list karışmış; registry metadata versus running containers, eski GCR.
+- Q32 waitFor doğru ana konu ama readiness başarılı provision komutundan ayrı; default sequential yanlış anlatılmış.
+- Q34 bozuk soru: gereksinim maddeleri seçeneklere taşınmış.
+- Q35 distribution log metric iyi anahtar, historical retroactive doldurulur açıklaması yanlış. https://docs.cloud.google.com/logging/docs/logs-based-metrics
+- Q36/Q38 muğlak efficiency pattern soruları ve tutarsız seçmeler; ele.
+- Q37 test log archiving amacı kökte yok, açıklama uyduruyor; ele.
+- Q39 framework/mock/CI faydalı ama temel.
+- Q40 All of above environment koşulu yok; split healthcheck AppEngine flex koşulu eksik.
+- Q41 MIG/cluster karşılaştırma yüzeysel, seçmeler muğlak.
+- Q42 phased monolith transition doğru ama temel.
+- Q43 load test temel, performance test tanımı gereksiz dar.
+- Q44 Endpoints/Apigee seçiminde kökte belirleyici gereksinim yok.
+- Q45 Bigtable column families az tutma şıkkı yanlış dışlanmış.
+- Q46 containerized managed selection AppEngine flex key, CloudRun dışlanma kökte açıklanmıyor.
+- Q47 Bigtable rowkey tekrar, erişim şekli eksik.
+- Q48 sessionstorage Datastore maliyet tek başına kesin değil.
+- Q49 JWT user session + runtime kavramları karışık; JWT şifreleme değildir.
+- Q50 dual logsinks BQ/PubSub makul; AppEngine flex/genel ayrımı açıklamada eksik.
+- Q51 altyapı whitepaper trivia/overgeneralization; düşük öncelik.
+- Q52 BigQuery LIMIT sorusunda mantık/anahtar/açıklama çelişkili, bozuk.
+- Q53 globalERP analytics gereksinimi yokken BigQuery doğru işaretli.
+- Q54/Q57 UUID/composite tekrar, UUID collisions impossible iddiası yanlış.
+- Q55 IAP iyi temel, kapsam varsayımları gerekli.
+- Q56 legal genellemeler, geliştirme sınavı seçkisi için düşük öncelik.
+- Q58 uptime check iyi temel.
+- Q59 doğrulanmış yanlış anahtar: inactive bucket highQPS için D gradual rampup; kaynak A bucket dağıtımı. https://docs.cloud.google.com/storage/docs/request-rate
+- Q60 Auth0 tek doğru zorlanmış; Google ID token service-to-service için değil iddiası yanlış. Ele.
+
+## Ön örnekler
+
+PT1 Q1–9 ve PT6 Q1–7 UI'de görüldü; PT1 Q5 tekrar capture olsa da tek soru. PT1Q9=PT6Q3 DLP; PT1Q8=PT6Q4 CloudBuild; PT1Q4=PT6Q5 bootdisk. PT6Q6 iletişim kuran containerların tek Pod olması tek doğru diye öğretiliyor; yanlış genelleme. PT1Q6 GSuite enterprise identity değil açıklaması yanlış (Workspace ile Cloud Identity ayrımı).
+
+
+## Bütün setlerin taraması tamamlandı
+
+1050 kayıt, 760 normalize farklı gövde; 156 tekrar grubu ve 290 tekrar yuvası. Görsel içeren 65 sorunun görsel ayrıntıları tam doğrulanmadı. İlk dosya eşleme hataları HTML başlıklarıyla giderildi. Kaynak sayımı kesindir; teknik doğrulama hedeflidir.
+
+- SCP01-Q06 [caution]: Workspace/GSuite enterprise identity dışlaması yanlış genelleme.
+- SCP01-Q20 [exclude]: SQL seçeneklerinde WHERE, GROUP BY sonrasında; sözdizimi bozuk.
+- SCP01-Q24 [caution]: ANY_VALUE nondeterministic; random örnekleme diye öğretme.
+- SCP01-Q33 [caution]: VPA ve HPA seçimi için gereksinimler eksik.
+- SCP01-Q37 [caution]: L7 yalnız global genellemesi güncel değil.
+- SCP01-Q40 [caution]: Regional cluster tüm single point of failure durumlarını kaldırmaz.
+- SCP01-Q49 [caution]: Column family sayısını az tutma önerisi dışlanmış.
+- SCP01-Q52 [exclude]: Spanner monoton anahtar hotspot senaryosunda sorunlu anahtar.
+- SCP02-Q12 [exclude]: Shell $PARAM ve ${PARAM} ikisi de geçerli; metadata otomatik env değildir.
+- SCP02-Q13 [exclude]: Retention policy otomatik lifecycle deletion ile karışıyor.
+- SCP02-Q24 [caution]: Cloud Source Repositories yeni müşteri kısıtları kontrol edilmeli.
+- SCP02-Q33 [caution]: Açıklama kökte olmayan session affinity gereksinimini ekliyor.
+- SCP02-Q41 [caution]: Scale-to-zero ve zamanında transaction garantileri aşırı.
+- SCP02-Q47 [exclude]: Kapatılmış Stackdriver Debugger güncel araç olarak sunuluyor.
+- SCP02-Q56 [caution]: Java 7 ve platform seçenekleri eski.
+- SCP03-Q04 [caution]: Log retention tüm loglar için sabit 30 gün değildir.
+- SCP03-Q05 [exclude]: Auth0 tek doğru zorlanmış; Firebase/ID token genellemeleri.
+- SCP03-Q07 [caution]: Cloud SQL HA açık yapılandırma gerektirir.
+- SCP03-Q21 [caution]: SQL session store kesin elenemez; maliyet/performans varsayımları eksik. Key Datastore, prose Memorystore daha hızlı fakat pahalı diyor; tek başına key/prose çelişkisi sayma.
+- SCP03-Q32 [caution]: Backoff fikri doğru; Storage sorusunda Gmail kaynak linki zayıf.
+- SCP03-Q41 [exclude]: BigQuery LIMIT ve maliyet açıklaması tutarsız.
+- SCP04-Q06 [caution]: Bucket location mutlak değişmez iddiası relocation özelliğiyle tekrar doğrulanmalı.
+- SCP04-Q31 [exclude]: Stackdriver Debugger eski.
+- SCP04-Q54 [caution]: Uzun iş için App Engine flex seçimi eski seçeneklere dayanıyor.
+- SCP04-Q55 [caution]: Aynı kök SCP10-Q47 ile farklı platform anahtarı.
+- SCP05-Q34 [caution]: Lift-and-shift gereksinimi ile Functions/Endpoints dönüşümü uyumsuz.
+- SCP05-Q39 [caution]: SCP06-Q29 aynı kök, farklı monitoring çözümü.
+- SCP05-Q47 [caution]: Spanner availability için üç node ezberi güncel kapasite modeliyle kontrol edilmeli.
+- SCP05-Q49 [exclude]: SCP09-Q49 aynı kök, parallel inserts/batching farklı anahtar.
+- SCP05-Q50 [exclude]: Service discovery anahtarı Endpoint/env; aynı soru SCP08-Q49 ve SCP09-Q32 Service DNS seçiyor.
+- SCP05-Q56 [caution]: Knative operasyon yükünü azaltma gereksinimiyle tartışmalı; SCP09-Q57 başka anahtar.
+- SCP06-Q06 [exclude]: İletişim kuran tüm containerlar tek Pod olmalı genellemesi yanlış.
+- SCP06-Q27 [caution]: Noncurrent generation üzerinde in-place veri güncelleme varsayımı.
+- SCP06-Q53 [exclude]: Project bir region içinde oluşturulmaz; App Engine location ayrı.
+- SCP07-Q11 [caution]: Deployment Manager güncelliği kontrol edilmeden seçme.
+- SCP07-Q14 [exclude]: Pub/Sub Dataflow ile harici endpoint için koşulsuz exactly-once/FIFO garantisi yok.
+- SCP07-Q21 [caution]: Organization/Free Tier/Workspace nedenleri karışıyor.
+- SCP07-Q40 [exclude]: VM üzerinde attached service account ADC yerine key dosyası öneriliyor.
+- SCP07-Q49 [caution]: Namespace ve NetworkPolicy tek başına tam tenant izolasyonu değildir.
+- SCP08-Q03 [caution]: Spanner CPU eşiği tüm topolojiler için tek yüzde değildir.
+- SCP08-Q09 [caution]: EU multi-region ile single region terimleri karışıyor.
+- SCP08-Q31 [caution]: Default service account Editor yeni organizasyonlarda koşulsuz varsayılamaz.
+- SCP08-Q32 [exclude]: Cloud Run yalnız Artifact Registry image kabul eder iddiası yanlış.
+- SCP08-Q34 [caution]: Response sonrası CPU billing modeline bağlı.
+- SCP08-Q46 [caution]: Aynı kök SCP10-Q46 ile Filestore/Storage farklı anahtar.
+- SCP09-Q35 [exclude]: Stackdriver Logpoints/Debugger eski.
+- SCP09-Q41 [reference]: Bucket ramp-up doğru yaklaşım; SCP12-Q59 yanlış anahtarla karşılaştır.
+- SCP10-Q01 [caution]: Her Google Drive kullanıcısı için domain-wide delegation varsayımı yanlış.
+- SCP10-Q04 [exclude]: Memorystore public IP gerekçesi yanlış; özel ağ erişimi değerlendirilir.
+- SCP10-Q10 [exclude]: Pod IP değişimi sorusunun tüm seçenekleri autoscaler; doğru Service seçeneği yok.
+- SCP10-Q41 [caution]: Bucket location değişmez genellemesi yeniden doğrulanmalı.
+- SCP11-Q01 [caution]: CI test geri bildirimi gereksinimine deployment aracıyla cevap.
+- SCP11-Q11 [exclude]: Instance sayısı artmasın şartına rağmen maxSurge=1 doğru işaretli.
+- SCP11-Q16 [caution]: Tam production load test ile canary/shadow ayrımı eksik.
+- SCP11-Q17 [exclude]: Preemptible shutdown için 5 dakikada bir polling uygun değil.
+- SCP11-Q44 [caution]: Service account key önerisi modern WIF/ADC karşısında gözden geçirilmeli.
+- SCP11-Q53 [exclude]: BigQuery storage Cloud Storage seçeneğiyle karışmış.
+- SCP11-Q56 [exclude]: Bozuk SQL sözdizimi.
+- SCP12-Q01 [caution]: Firestore işlem kaydı ile harici email gönderimi atomik olmaz.
+- SCP12-Q07 [caution]: Dedup kontrolü harici yan etkiyle aynı atomik sınırda değil.
+- SCP12-Q19 [caution]: CPU allocation background işin tamamlanma garantisi değildir.
+- SCP12-Q20 [exclude]: IAP Workforce Identity Federation desteklemez açıklaması güncel değil.
+- SCP12-Q23 [caution]: Cloud Run max instance mutlak DB connection garantisi değildir.
+- SCP12-Q26 [caution]: Cold start azaltma seçeneklerini ayıracak ölçüm eksik.
+- SCP12-Q30 [caution]: Storage class/location karışımı ve multi-region dışlaması.
+- SCP12-Q32 [caution]: waitFor bağımlılığı veritabanının readiness kontrolü değildir.
+- SCP12-Q34 [exclude]: Gereksinimler seçeneklere karışmış bozuk soru.
+- SCP12-Q35 [exclude]: Log metric tarihsel loglarla geriye dönük dolar açıklaması yanlış.
+- SCP12-Q36 [exclude]: SCP05-Q36 aynı kök farklı pattern anahtarı; belirsiz.
+- SCP12-Q38 [exclude]: Verimlilik pattern seçiminde belirleyici koşullar yok.
+- SCP12-Q45 [caution]: Az column family önerisini yanlış dışlıyor.
+- SCP12-Q46 [caution]: App Engine flex/Cloud Run ayrımı için yeterli şart yok.
+- SCP12-Q49 [caution]: JWT session kimliği/runtime kimliği ve şifreleme karışıyor.
+- SCP12-Q52 [exclude]: BigQuery LIMIT mantığı/anahtarı tutarsız.
+- SCP12-Q53 [exclude]: Global ERP sorusunda gerekçesiz BigQuery doğru işaretli.
+- SCP12-Q54 [caution]: UUID collision imkansız denemez.
+- SCP12-Q57 [caution]: UUID collision imkansız denemez; aynı karar tekrarı.
+- SCP12-Q59 [exclude]: Inactive bucket için key A; resmi yaklaşım kademeli ramp-up D.
+- SCP12-Q60 [exclude]: Auth0 ve ID token açıklamasında yanlış genellemeler.
+- SCP13-Q02 [caution]: Step timeout değiştirmek overall build timeout sınırını kaldırmaz.
+- SCP13-Q04 [caution]: Redis HA sıfır veri kaybı garantisi değildir.
+- SCP13-Q23 [caution]: Secret version disable dış sistemdeki credentialı revoke etmez.
+- SCP13-Q24 [caution]: Container adı/readiness ve waitFor ayrıntıları eksik.
+- SCP13-Q27 [caution]: Redis snapshot/HA her failure için persistence garantisi değildir.
+- SCP13-Q28 [caution]: 8 GiB bellek için 4 vCPU zorunluluğu yanlış öncül.
+- SCP13-Q39 [caution]: VPC içi olma bilgiyi otomatik nonsensitive yapmaz.
+- SCP13-Q44 [caution]: Redis read replica sıfır cache kaybı garantisi değildir.
+- SCP13-Q47 [caution]: Cloud Assist AppHub koşulları canlı dokümanla ayrıca doğrulanmalı.
+- SCP13-Q52 [caution]: SLSA provenance ve trigger zorunluluğu genellemesi doğrulanmalı.
+- SCP14-Q01 [caution]: Private pool + PSA Cloud SQL arasında transitive peering otomatik çalışmaz.
+- SCP14-Q04 [caution]: Cloud Storage CMEK ile client-side envelope encryption ayrımı kökte açık değil.
+- SCP14-Q10 [exclude]: SQL/Redis aynı application transaction boundary ifadesi atomiklik sağlamaz.
+- SCP14-Q30 [caution]: Latency distribution için percentile/aligner eksik.
+- SCP14-Q39 [caution]: Defrag yüksek bellek kullanımının her nedenini çözmez.
+- SCP14-Q43 [caution]: Bigtable continuous materialized view desteği güncel koşulları doğrulanmalı.
+- SCP14-Q45 [caution]: CPU throttling çözümü process termination dayanıklılığı sağlamaz.
+- SCP14-Q47 [exclude]: Private pool/AlloyDB peering topolojisi transitive erişimi varsayıyor.
+- SCP14-Q53 [caution]: Telemetry için CPU always allocated teslim garantisi değildir.
+- SCP14-Q57 [caution]: All-traffic VPC seçimi corporate firewall route yapılandırmasının yerine geçmez.
+- SCP15-Q17 [caution]: Salt her hot user içindeki farklı kayıtları dağıtmalı; tek user hash yeterli değil.
+- SCP15-Q19 [caution]: Provenance generation ve SLSA koşulları ayrı doğrulanmalı.
+- SCP15-Q29 [caution]: Intercepting sink _Required log kopyalarını engellemez.
+- SCP15-Q35 [low-value]: Cloud Assist thumbs-down düğmesi seviyesi; kullanıcı için düşük getirili.
+- SCP15-Q37 [caution]: Session affinity best effort; katı revision/instance garantisi yapma.
+- SCP15-Q42 [caution]: CPU allocation ile durable delivery aynı şey değil.
+- SCP15-Q43 [caution]: Managed pooling yeni endpoint/port uyarlaması gerektirebilir.
+- SCP15-Q47 [caution]: Global multi-region LB Standard Tier ile geçerli yapılandırma gibi kurulmuş.
+- SCP15-Q58 [caution]: Tek filter için mutlaka composite değil collection-group single-field index yeterli olabilir.
+- SCP15-Q59 [caution]: Uzun yaşayan DB process step ve readiness komutu ayrı kurulmalı.
+- SCP16-Q08 [caution]: Multi-stage builder dependency cache final runtime image içinde bulunmayabilir.
+- SCP16-Q12 [caution]: 1000 concurrency kapasite testi olmadan önerilmiş; websocket state/reconnect eksik.
+- SCP16-Q18 [caution]: Task-name dedup tekrar dispatch işlem idempotency'si değildir; retention penceresi sınırlı.
+- SCP16-Q28 [caution]: 512Mi limit seçimi kökteki 1Gi üst sınır ve burst gereksinimleriyle net değil.
+- SCP16-Q35 [low-value]: Coğrafya açıklaması teşhis için yetersiz; ölçüm olmadan kesin neden değil.
+- SCP16-Q39 [exclude]: Periyodik shard toplamı inventory oversell engelleme garantisi sağlamaz.
+- SCP16-Q44 [caution]: gcloud emulator/server SDK ile security rules testi ayrımı açık değil.
+- SCP16-Q47 [caution]: Task creation dedup ile handler exactly-once karıştırılmamalı.
+- SCP16-Q50 [exclude]: Etcd encryption authorized API secret okumasını engellemez; audit sorunu RBAC.
+- SCP16-Q51 [caution]: 8 GiB için 4 vCPU zorunlu değil.
+- SCP17-Q08 [exclude]: versionPrefixes yanlış JSON alanı; Docker tag prefix için tagPrefixes gerekir.
+- SCP17-Q10 [caution]: 10 instance x 10 bağlantı sınırı 429 veya DB aşımını koşulsuz önlemez.
+- SCP17-Q26 [caution]: Partial response nextPageToken yoksa pagination kaybolabilir.
+- SCP17-Q30 [caution]: Session affinity best effort.
+- SCP17-Q31 [caution]: Response sonrası CPU tahsisi teslim/tamamlanma garantisi değildir.
+- SCP17-Q38 [caution]: Connector scale-in manuel azaltma koşulları yeniden doğrulanmalı.
+- SCP17-Q39 [caution]: IAP Identity Platform external identity modunda authorization uygulamada gerekebilir.
+- SCP17-Q45 [caution]: Secret volume rotation uygulamanın dosyayı yeniden okumasını sağlamaz.
+- SCP17-Q47 [caution]: Komutta deployment adı boş; source HTML placeholder kaybı olabilir.
+- SCP17-Q50 [reference]: Retry iki sınır birlikte sağlanınca durur; SCP18-Q04 tersini öğretiyor.
+- SCP17-Q53 [caution]: Listener immediate/always latest iddiası network/cache koşullarını gizliyor.
+- SCP17-Q55 [caution]: Latest dosya okuma server update'in koşulsuz anında garantisi değildir.
+- SCP17-Q59 [caution]: Rotation schedule yalnız bildirim; actual credential update consumer sorumluluğu.
+- SCP17-Q60 [exclude]: hash(user_id)%N aynı kullanıcının tüm işlemleri için aynı değer; iddia edilen user-içi dağılımı yapmaz.
+- SCP18-Q04 [exclude]: max_attempts ve max_retry_duration OR değil AND; kök iki sert üst sınır istiyor.
+- SCP18-Q15 [caution]: Instance billing background completion garantisi değildir.
+- SCP18-Q21 [caution]: Explicit index sıralaması query orderBy ile uyuşmalı; error link güvenilir başlangıç.
+
+- SCP14-Q17 [caution]: Retry config ana kararı iyi; backoff örneğinde 160 ve 240 saniyelik linear aralıkları atlanmış. Ön aday açıklaması düzeltilecek.

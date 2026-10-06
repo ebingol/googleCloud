@@ -430,3 +430,119 @@ Kullanıcı S10’dan biraz daha zor, exam guide ağırlıklarıyla 50 soru iste
 | S11-48 | 1.1 | Warm capacity with finite budget; small warm baseline ... peak ... elastic | Bilinçli pekiştirme; S01-12 cold start, finite baseline budget ekli; tüm burst için guarantee yok. | Henüz çözülmedi |
 | S11-49 | 2.1 | Emulator success versus Storage service contract; direct API object listing; no ... intermediary | Karma; S07-20 Storage consistency/cache + development fake fidelity; emulator ürün garantisi iddiası değil. | Henüz çözülmedi |
 | S11-50 | 4.1 | Unknown commit result; cannot tell whether ... committed | Karma; S09-04 rollback doğrulanmış koşulunun tersi; S09-50 commit-before-ack uygulaması; yeni temel idempotency değil. | Henüz çözülmedi |
+
+
+## 5 Ekim 2026 — PCD-S12: Udemy kaynak seçkisi
+
+Kullanıcının açık talebiyle 50 farklı kaynak sorunun uyarlaması. Tamamı seçki/pekiştirme; yeni temel kapsam veya kalıcılık kanıtı sayılmaz. Kaynak ID her sorunun kökenidir; eski set bağlantıları seçili örneklerdir, eksiksiz benzerlik listesi değildir. Henüz bağımsız cevap yok.
+
+| Soru | Rehber | Ölçülen karar | Köken / önceki ilişki | Durum |
+|---|---|---|---|---|
+| S12-01 | 2.2 | Özel build aracı | Udemy PT2-Q4; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-02 | 2.2 | Aynı artifact promotion | Udemy PT5-Q9; seçki/pekiştirme; S04-03 | Hazır, çözülmedi |
+| S12-03 | 1.3 | Bigtable failover | Udemy PT6-Q11; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-04 | 3.1 | Cloud Run admission politikası | Udemy PT5-Q48; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-05 | 2.1 | Kurumsal geliştirme ortamı | Udemy PT4-Q52; seçki/pekiştirme; S09-29 | Hazır, çözülmedi |
+| S12-06 | 2.2 | Build step dosya paylaşımı | Udemy PT5-Q15; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-07 | 3.2 | Autopilot Arm yerleşimi | Udemy PT6-Q56; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-08 | 1.3 | Firestore büyüyen mesaj geçmişi | Udemy PT5-Q44; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-09 | 3.1 | Workflows Cloud Run job çağrısı | Udemy PT6-Q59; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-10 | 4.3 | Clusterlar arası log sorgusu | Udemy PT5-Q5; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-11 | 1.2 | Terraform Cloud kimliği | Udemy PT6-Q21; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-12 | 3.1 | Source deploy ile entegrasyon | Udemy PT6-Q57; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-13 | 4.1 | Private SQL yerel erişim | Udemy PT6-Q50; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-14 | 3.2 | Drain sırasında PDB | Udemy PT6-Q18; seçki/pekiştirme; S11-07 (rollout ile karşılaştırma) | Hazır, çözülmedi |
+| S12-15 | 1.1 | Hot data cache ve kaynak veri | Udemy PT6-Q24; seçki/pekiştirme; S11-01 | Hazır, çözülmedi |
+| S12-16 | 1.1 | Storage olayından çok adımlı işlem | Udemy PT6-Q34; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-17 | 2.2 | Registry olayıyla build | Udemy PT6-Q17; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-18 | 2.2 | Build ile push sınırı | Udemy PT6-Q20; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-19 | 4.1 | SQL analitik ayrımı | Udemy PT5-Q54; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-20 | 4.1 | Küçük API yazımlarını batch etme | Udemy PT5-Q33; seçki/pekiştirme; S10-11 | Hazır, çözülmedi |
+| S12-21 | 4.2 | Cross-project SQL API | Udemy PT6-Q45; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-22 | 3.2 | Trafik uygunluğu | Udemy PT5-Q32; seçki/pekiştirme; S11-16 | Hazır, çözülmedi |
+| S12-23 | 4.2 | İsteğe bağlı API ve arayüz | Udemy PT1-Q38; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-24 | 1.2 | Cross-project runtime izinleri | Udemy PT5-Q30; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-25 | 2.3 | Dayanıklılık testi | Udemy PT6-Q49; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-26 | 4.2 | 429 sonrası retry | Udemy PT5-Q52; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-27 | 3.2 | Deployment rollout sınırları | Udemy PT5-Q34; seçki/pekiştirme; S11-07 | Hazır, çözülmedi |
+| S12-28 | 1.1 | Büyük dosya upload veri yolu | Udemy PT2-Q13; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-29 | 1.2 | Retention ve lifecycle | Udemy PT1-Q13; seçki/pekiştirme; S04-17 / S11-41 | Hazır, çözülmedi |
+| S12-30 | 1.1 | Üçüncü taraf özelliği kapatma | Udemy PT6-Q38; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-31 | 4.1 | Atomik read-modify-write | Udemy PT5-Q36; seçki/pekiştirme; S10-16 (batch/transaction ayrımı) | Hazır, çözülmedi |
+| S12-32 | 1.1 | API ürününe göre kota | Udemy PT6-Q3; seçki/pekiştirme; S11-11 | Hazır, çözülmedi |
+| S12-33 | 1.1 | Workflow dallanması | Udemy PT4-Q59; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-34 | 2.2 | Test attestation akışı | Udemy PT6-Q14; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-35 | 2.3 | Tekrarlanabilir messaging testi | Udemy PT2-Q18; seçki/pekiştirme; S11-30 | Hazır, çözülmedi |
+| S12-36 | 3.2 | Yavaş başlangıç ve liveness | Udemy PT5-Q27; seçki/pekiştirme; S11-46 | Hazır, çözülmedi |
+| S12-37 | 3.1 | Bucket create audit olayı | Udemy PT6-Q71; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-38 | 4.3 | CPU ve heap profili | Udemy PT2-Q45; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-39 | 4.3 | Dış servis gecikmesini izleme | Udemy PT5-Q46; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-40 | 1.2 | Namespace yetkisi | Udemy PT5-Q26; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-41 | 1.2 | API güvenliğinin katmanları | Udemy PT6-Q41; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-42 | 1.2 | AlloyDB için ağ ve kimlik ayrımı | Udemy PT6-Q15; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-43 | 3.2 | Pub/Sub backlog ile HPA | Udemy PT1-Q15; seçki/pekiştirme; S11-23 | Hazır, çözülmedi |
+| S12-44 | 3.1 | Cloud Run kademeli rollout | Udemy PT6-Q2; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-45 | 1.3 | Paylaşılan dosya sistemi | Udemy PT5-Q22; seçki/pekiştirme; S09-28 | Hazır, çözülmedi |
+| S12-46 | 1.3 | Bigtable row key | Udemy PT5-Q41; seçki/pekiştirme; S11-33 | Hazır, çözülmedi |
+| S12-47 | 2.3 | Paralel performans testi izolasyonu | Udemy PT4-Q7; seçki/pekiştirme; S09-33 (test karşılaştırılabilirliği) | Hazır, çözülmedi |
+| S12-48 | 2.1 | Yerelde güvenli SQL bağlantısı | Udemy PT5-Q56; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-49 | 3.2 | StatefulSet kimliği | Udemy PT2-Q10; seçki/pekiştirme | Hazır, çözülmedi |
+| S12-50 | 2.1 | Cloud Shell GKE erişim teşhisi | Udemy PT5-Q39; seçki/pekiştirme | Hazır, çözülmedi |
+
+
+## 5 Ekim 2026 — PCD-S13 SkillCertPro seçkisi
+
+[Sorular](PCD-S13.md) · [Ayrı Türkçe anahtar](../answers/scenarios/PCD-S13.md). Kullanıcı kaynak içinden 50 soruluk tam sınav istedi. 49 SkillCertPro senaryosu + 1 açıkça etiketli resmî Eventarc tamamlayıcısı; 16/12/12/10, 11 alt başlık. Q22/Q39/Q41 çift, diğer 47 soru tek seçim. 120 dakika kişisel hedef. 44–69 kelimelik gövdeler; gerçek sınavla kalibrasyon iddiası yok. Önceki yakın kararlar bilinçli pekiştirme/karma; 50 yeni konu diye sunulmaz. Henüz kullanıcı cevabı veya puan yok.
+
+| ID | Rehber | Karar | Kaynak ve önceki ilişki | Durum |
+|---|---|---|---|---|
+| S13-01 | 2.2 | build-DAG | SCP14-Q20; S11-06 / S04-02; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-02 | 2.1 | Skaffold-sync | SCP17-Q07; S10-14; karma, rebuild yerine file sync | Hazır, çözülmedi |
+| S13-03 | 3.1 | Cloud-Deploy-canary | SCP16-Q60; S12-44; karma, Cloud Deploy automation | Hazır, çözülmedi |
+| S13-04 | 4.2 | pagination-fields | SCP13-Q06; S11-29; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-05 | 2.1 | Gemini-MCP | SCP14-Q51; S06-06 / S08-27; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-06 | 4.3 | bucket-metrics | SCP17-Q51; S12-10 / S10-15; merkezi ölçüm kapsamı | Hazır, çözülmedi |
+| S13-07 | 1.2 | delayed-secret-destroy | SCP14-Q58; S11-13/31 ile ilişkili; Secret Manager version yaşam döngüsü | Hazır, çözülmedi |
+| S13-08 | 3.1 | secret-startup | SCP14-Q60; S11-12; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-09 | 1.1 | Tasks-retry | SCP14-Q17; S11-28; Tasks pekiştirme, retry policy kararı | Hazır, çözülmedi |
+| S13-10 | 1.1 | multi-region-Run | SCP15-Q09; S11-44; karma, bağımlılıklar sağlıklı varsayılıyor | Hazır, çözülmedi |
+| S13-11 | 3.2 | HPA-requests | SCP14-Q23; S10-12 / S11-23; HPA farklı engel teşhisi | Hazır, çözülmedi |
+| S13-12 | 3.1 | outlier-detection | SCP16-Q22; S11-44; LB failure detection uygulaması | Hazır, çözülmedi |
+| S13-13 | 4.3 | Query-Insights | SCP15-Q05; S12-38/39 observability temeli; ORM route correlation | Hazır, çözülmedi |
+| S13-14 | 1.3 | snapshot-reads | SCP16-Q19; S08 Spanner temeli; snapshot kararı pekiştirme | Hazır, çözülmedi |
+| S13-15 | 1.1 | Workflows | SCP14-Q27; S12-33 / S01-15; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-16 | 4.3 | log-alert | SCP15-Q12; S12-10 log sorgusu üzerine matching event alert | Hazır, çözülmedi |
+| S13-17 | 1.3 | time-bucket | SCP14-Q19; S12-46 / S11-33; karma, row granularity değişiyor | Hazır, çözülmedi |
+| S13-18 | 1.3 | signed-URL | SCP14-Q52; S11-24 / S01-04; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-19 | 1.2 | two-attestors | SCP18-Q26; S12-34; karma, iki bağımsız onay | Hazır, çözülmedi |
+| S13-20 | 2.1 | Workstations | SCP14-Q50; S12-05 / S09-29 / S11-14; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-21 | 2.3 | dependency-injection | SCP18-Q25; S12-35 / S11-30; bilinçli unit/integration ayrımı | Hazır, çözülmedi |
+| S13-22 | 3.1 | Storage finalized trigger and receiver | OFFICIAL-EVENTARC; Ek resmî soru; S12-16/37 ve S11-19 ile ilişkili, IAM yerine event/receiver seçimi | Hazır, çözülmedi |
+| S13-23 | 3.2 | HPA-GitOps | SCP14-Q35; S11-23 HPA temeli; desired-state ownership | Hazır, çözülmedi |
+| S13-24 | 4.2 | backoff | SCP15-Q25; S12-26 / S11-15; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-25 | 4.3 | PromQL-ratio | SCP16-Q58; S10-20 / S11-45; bilinçli oran/alert pekiştirmesi | Hazır, çözülmedi |
+| S13-26 | 1.1 | API-deprecation | SCP14-Q06; S12-32 API politikasıyla ilişkili; farklı yaşam döngüsü kararı | Hazır, çözülmedi |
+| S13-27 | 4.1 | pool-budget | SCP17-Q40; S11-03; bilinçli pool bütçesi pekiştirmesi | Hazır, çözülmedi |
+| S13-28 | 4.1 | resumable-offset | SCP15-Q31; S11-04 transfer temeli; upload offset kararı | Hazır, çözülmedi |
+| S13-29 | 1.2 | identity-tenants | SCP17-Q33; S10-13 / S11-38; kimlik izolasyonu pekiştirme | Hazır, çözülmedi |
+| S13-30 | 2.3 | allowExitCodes | SCP16-Q05; S11-06; karma, seçici failure exception | Hazır, çözülmedi |
+| S13-31 | 1.3 | JSONB-schema | SCP16-Q31; S10-08 PostgreSQL üzerine schema kararı | Hazır, çözülmedi |
+| S13-32 | 2.1 | code-customization | SCP18-Q20; S11-26 context temeli; kurumsal repository özelleştirmesi | Hazır, çözülmedi |
+| S13-33 | 2.3 | publisher-interaction-test | SCP15-Q06; S10-10 yerine seçildi; S11-10 test oracle temeli üzerine interaction assertion | Hazır, çözülmedi |
+| S13-34 | 2.2 | multi-stage | SCP16-Q16; S11-34 / S08-23; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-35 | 3.2 | immutable-config | SCP17-Q20; S11-32; ters lifecycle koşulu, canlı değişim gerekmiyor | Hazır, çözülmedi |
+| S13-36 | 3.1 | ingress | SCP13-Q33; S03/Cloud Run ingress; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-37 | 1.3 | vector-index | SCP17-Q05; AI/veri temeline ek index uygulaması; yeni temel AI kapsamı iddiası yok | Hazır, çözülmedi |
+| S13-38 | 1.3 | Spanner-hash-key | SCP16-Q53; S07/S09 hotspot kararlarıyla ilişkili pekiştirme | Hazır, çözülmedi |
+| S13-39 | 1.2 | cross-perimeter | SCP15-Q10; S09 VPCSC kapsamı; bilinçli güvenlik pekiştirmesi | Hazır, çözülmedi |
+| S13-40 | 3.2 | BackendConfig | SCP14-Q55; S11-16 probe temeli; LB ve Pod check ayrımı | Hazır, çözülmedi |
+| S13-41 | 2.2 | build-images | SCP16-Q02; S12-18; karma, build results kaydı ekli | Hazır, çözülmedi |
+| S13-42 | 2.1 | debugger-source-map | SCP17-Q23; S10-14; karma, bağlı debugger path teşhisi | Hazır, çözülmedi |
+| S13-43 | 3.2 | metadata-init | SCP16-Q06; S11-37 WIF üzerine transient startup dependency | Hazır, çözülmedi |
+| S13-44 | 2.2 | immutable-tags | SCP15-Q26; S11-39 / S12-02; registry tag enforcement kararı | Hazır, çözülmedi |
+| S13-45 | 4.1 | listener-lifecycle | SCP18-Q05; Firestore istemci lifecycle; temel realtime veri kullanımının uygulaması | Hazır, çözülmedi |
+| S13-46 | 3.2 | Autopilot-WIF | SCP16-Q40; S11-37 / S12-07; Autopilot yapılandırması | Hazır, çözülmedi |
+| S13-47 | 3.2 | container-HPA | SCP17-Q54; HPA temeli pekiştirme; container-specific ölçüm | Hazır, çözülmedi |
+| S13-48 | 1.1 | cache-aside | SCP16-Q27; S12-15 / S11-01; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-49 | 1.2 | egress-policy | SCP18-Q07; S11-21 / S03-10; bilinçli pekiştirme | Hazır, çözülmedi |
+| S13-50 | 4.2 | quota-project | SCP17-Q44; S09-39; bilinçli pekiştirme, izin zaten sağlanmış | Hazır, çözülmedi |

@@ -181,3 +181,13 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 ## Tam karma deneme — 1 Ekim S11
 
 [S11](scenarios/PCD-S11.md): 50 soru; 16 tasarım / 12 geliştirme-test / 12 deployment / 10 entegrasyon. 11 numaralı alt başlık doğrudan örneklenir; bütün alt özellikler ölçülmez. [Ayrı anahtar](answers/scenarios/PCD-S11.md) soru bazında rehber/kaynak/farklı koşul içerir. Karma uygulamalar ve bilinçli pekiştirmeler [günlükte](scenarios/QUESTION-LOG.md); yeni temel kapsam sayılmaz. Henüz çözülmedi; yalnız hazırlık tamamlandı. S10 doğrulanmış ilk sonuç 19/20, 42 dakika; önceki S10 “henüz çözülmedi” notu tarihsel kalmıştır. İlk cevaplar değişmedi.
+
+
+## Kaynak seçkisi — 5 Ekim S12
+
+[S12](scenarios/PCD-S12.md): satın alınan Udemy paketindeki 50 farklı senaryonun düzeltilmiş uyarlaması. Güncel guide ağırlıkları 32/23/24/21 → 16/12/12/10; 11 alt başlık örneklenir. Önceki çalışmalardaki mekanizmalar kaynak seçimi talebiyle pekiştirilir; yeni temel kapsam sayılmaz. [Anahtar](answers/scenarios/PCD-S12.md) soru/kaynak/rehber eşlemesini içerir. Gemini ve bağımsız Cloud Tasks doğru cevaplı senaryo yok; bütün ürün özellikleri ölçülmez. Yalnız hazırlık tamamlandı; kullanıcı henüz çözmedi. Önceki bağımsız sonuçlar değişmedi. Alt başlık soru sayıları: 1.1: 6, 1.2: 6, 1.3: 4, 2.1: 3, 2.2: 6, 2.3: 3, 3.1: 5, 3.2: 7, 4.1: 4, 4.2: 3, 4.3: 3.
+
+
+## PCD-S13 SkillCertPro tam deneme seçkisi
+
+5 Ekim 2026. [50 soru](scenarios/PCD-S13.md), 49 SkillCertPro uyarlaması + 1 resmî Eventarc ek senaryosu; kaynak/rehber eşlemesi `scenarios/reviews/PCD-S13-selection.json` içinde. Dört ana alan 16/12/12/10, 11 numaralı alt başlık. GKE HPA/BackendConfig/WIF, Cloud Code debugging ve sync, Workstations, Gemini MCP/code customization/unit test, Tasks retry ve Eventarc receiver örneklenir. Dört Gemini/AI geliştirme sorusu Q5/Q21/Q32/Q33; bu sayı gerçek sınav tahmini değildir. Eventarc Q22, kaynakta eksik olduğu için resmî belgeye dayanan ek sorudur. Soru hazırlanması tamamlanmış öğrenme veya yeni temel kapsam sayılmaz; önceki kararlarla ilişkiler QUESTION-LOG içinde. S12 ve önceki ilk sonuçlar korunur.

@@ -1,0 +1,1008 @@
+[
+  {
+    "source": "PT2-Q4",
+    "domain": "2.2",
+    "title": "Özel build aracı",
+    "stem": "A Cloud Build pipeline requires an internal compiler that is absent from the standard builders. Several repositories need the same compiler version, and the team wants reproducible builds without installing it from an external site during every build. Which implementation should you use?",
+    "options": [
+      "Install the compiler on a developer laptop and assume Cloud Build can execute its local binary.",
+      "Move every repository to a permanently managed Jenkins VM solely to obtain this compiler.",
+      "Put the compiler name in the Cloud Build substitutions and rely on automatic tool installation.",
+      "Package the compiler in a versioned custom builder image and reference that image in the build steps."
+    ],
+    "why": "Build step bir container image kullanır; custom builder araç ve sürümü yeniden kullanılabilir biçimde kapsar.",
+    "near": "Jenkins çalışabilir ama sorudaki ihtiyacı karşılamak için yönetilen build sisteminden taşınmak gereksizdir.",
+    "clue": "same compiler version; reproducible builds",
+    "url": "https://docs.cloud.google.com/build/docs/configuring-builds/use-community-and-custom-builders",
+    "n": 1,
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "source": "PT5-Q9",
+    "domain": "2.2",
+    "title": "Aynı artifact promotion",
+    "stem": "A container passes testing in staging. The release process must promote the identical bytes to production, even if another build later reuses the same human-readable tag. Which image reference should the deployment record retain to identify the tested artifact unambiguously?",
+    "options": [
+      "A reusable environment tag such as staging.",
+      "Only the image repository name, without a tag or digest.",
+      "The image digest.",
+      "The latest tag."
+    ],
+    "why": "Digest içeriğe bağlı kimliktir. Mutable tag başka içeriğe taşınabilir; production deployment test edilen digest’i kullanmalıdır.",
+    "near": "Semantic/environment tag ancak ayrıca immutable tutulursa güvenlidir; soru tag reuse olabildiğini açıkça söylüyor.",
+    "clue": "identical bytes; reuses the same tag",
+    "url": "https://docs.cloud.google.com/artifact-registry/docs/docker/names",
+    "n": 2,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT6-Q11",
+    "domain": "1.3",
+    "title": "Bigtable failover",
+    "stem": "A read-heavy application uses a replicated Bigtable instance with clusters in two regions. It currently routes requests to one cluster and requires an operator to change routing during outages. The application accepts eventual consistency and does not require single-row transactions. Which app-profile change enables managed routing to an available cluster?",
+    "options": [
+      "Add a Dataflow export job and continue sending online reads to the same failed cluster.",
+      "Increase the client connection pool but keep single-cluster routing.",
+      "Keep single-cluster routing and add more nodes only to the currently selected cluster.",
+      "Use a multi-cluster routing app profile with both clusters eligible."
+    ],
+    "why": "Multi-cluster routing uygun replicated cluster’lar arasında failover sağlar. Eventual consistency ve single-row transaction kısıtları açıkça kabul edildi.",
+    "near": "Connection pool ağ/hedef cluster kullanılabilirliği problemini çözmez.",
+    "clue": "accepts eventual consistency; operator to change routing",
+    "url": "https://docs.cloud.google.com/bigtable/docs/routing",
+    "n": 3,
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "source": "PT5-Q48",
+    "domain": "3.1",
+    "title": "Cloud Run admission politikası",
+    "stem": "Your organization already produces signed test attestations for approved image digests. A Cloud Run service must reject ordinary deployments that lack this approval, including deployments submitted outside the usual CI pipeline. Which control should enforce this requirement at deployment time?",
+    "options": [
+      "Add a test step to the usual pipeline but allow every other deployment path without admission checks.",
+      "Use only an Artifact Registry retention policy to control which images can be deployed.",
+      "Enable an enforcing Binary Authorization policy requiring the trusted attestation for the service.",
+      "Require the image tag to contain the word approved, without verifying signed evidence."
+    ],
+    "why": "CI dışındaki deployment yolunu da kontrol etmek için deployment admission policy gerekir. İlgili güvenilir attestation istenir; yetkili breakglass ayrı denetimli istisnadır.",
+    "near": "Yalnız pipeline test gate’i başka deploy yollarını engellemez.",
+    "clue": "including deployments ... outside the usual CI pipeline",
+    "url": "https://docs.cloud.google.com/run/docs/securing/binary-authorization",
+    "n": 4,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT4-Q52",
+    "domain": "2.1",
+    "title": "Kurumsal geliştirme ortamı",
+    "stem": "Developers use different laptops and IDEs, but their builds require approved tools and private access to services inside the company VPC. Security wants centrally maintained development environments with controlled network access and reproducible tool versions. Which approach provides an appropriate managed foundation?",
+    "options": [
+      "Install Cloud Code on every laptop and assume the extension creates private connectivity and a common OS toolchain.",
+      "Give each developer Cloud Shell and assume its default network is the company VPC.",
+      "Give developers unrestricted custom VM images and depend on verbal instructions to keep the tools identical.",
+      "Use Cloud Workstations in the approved network with centrally maintained custom images and the required perimeter configuration."
+    ],
+    "why": "Workstations yönetilen geliştirme ortamı, custom image ise standart toolchain sağlar. Ağ ve perimeter ayrıca doğru kurulmalıdır; haftalık image rebuild tüm güvenliği garanti etmez.",
+    "near": "Cloud Code bir IDE aracı; kendi başına ortak runtime ağı veya merkezi OS imajı oluşturmaz.",
+    "clue": "centrally maintained; private access; reproducible tool versions",
+    "url": "https://docs.cloud.google.com/workstations/docs/customize-container-images",
+    "n": 5,
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "source": "PT5-Q15",
+    "domain": "2.2",
+    "title": "Build step dosya paylaşımı",
+    "stem": "The first step of a Cloud Build job produces a manifest. A later step in the same build must read it, and the dependency order is already correct. The first step currently writes into its container's temporary directory. Which change shares the manifest without introducing a storage service?",
+    "options": [
+      "Bake it into the first step image after that container has already started.",
+      "Store its path in a substitution and expect the file contents to be transferred automatically.",
+      "Write the manifest under /workspace and have the dependent step read that path.",
+      "Keep it in the first step container and only increase the later step timeout."
+    ],
+    "why": "/workspace build adımları arasında paylaşılan alandır; her container’ın özel geçici dosya sistemi aynı paylaşımı sağlamaz.",
+    "near": "Path bilgisini iletmek dosyanın kendisini paylaşmaz.",
+    "clue": "same build; dependency order is already correct",
+    "url": "https://docs.cloud.google.com/build/docs/configuring-builds/pass-data-between-steps",
+    "n": 6,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT6-Q56",
+    "domain": "3.2",
+    "title": "Autopilot Arm yerleşimi",
+    "stem": "An Autopilot cluster has no existing Arm nodes. You are deploying an arm64-compatible image and want GKE to provision appropriate capacity from the workload requirements. The cluster version and region support Arm. Which manifest choice explicitly requests the CPU architecture without managing node pools yourself?",
+    "options": [
+      "Switch to a Standard cluster solely to create an Arm node pool manually.",
+      "Set an appropriate nodeSelector including kubernetes.io/arch: arm64.",
+      "Add only an Arm-related toleration and rely on it to require Arm nodes.",
+      "Label the Pod metadata with kubernetes.io/arch: arm64 without a scheduling selector."
+    ],
+    "why": "nodeSelector scheduling zorunluluğunu ifade eder. Desteklenen Autopilot konfigürasyonunda GKE uygun kapasite oluşturur; yalnız toleration bir node’u zorunlu kılmaz.",
+    "near": "Toleration belirli taint’e izin verir; başka uygun node’a yerleşmeyi engellemez.",
+    "clue": "provision ... from workload requirements",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/arm-on-gke",
+    "n": 7,
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "source": "PT5-Q44",
+    "domain": "1.3",
+    "title": "Firestore büyüyen mesaj geçmişi",
+    "stem": "A chat product uses Firestore. A room can accumulate an unbounded message history, but clients fetch messages in pages and create messages independently. You want to avoid rewriting a large room document whenever a message arrives. Which document model is the best fit?",
+    "options": [
+      "Store room metadata in a document and each message in a document within its messages subcollection.",
+      "Store every message in one array field on the room document.",
+      "Store only the latest message in the room document and use document versions as the application history.",
+      "Create one project-wide document containing a map of every room and all its messages."
+    ],
+    "why": "Alt collection mesajları bağımsız yazım ve sorgulanabilir sayfalama birimlerine ayırır; büyüyen tek document sınırına yaslanmaz.",
+    "near": "Tek array her mesajda aynı büyüyen belgeyi değiştirmeyi gerektirir.",
+    "clue": "unbounded message history; independently",
+    "url": "https://firebase.google.com/docs/firestore/data-model",
+    "n": 8,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT6-Q59",
+    "domain": "3.1",
+    "title": "Workflows Cloud Run job çağrısı",
+    "stem": "A Workflow must start a Cloud Run job, wait for its execution to complete, and then continue with a reporting step. The job is a batch workload with no application HTTP server. Which integration should the Workflow use?",
+    "options": [
+      "Call the Cloud Run services invoke endpoint using the job name as a service name.",
+      "Create a Pub/Sub subscription on the job and expect the job itself to listen continuously.",
+      "Use the Cloud Run Admin API connector to run the job and handle its long-running operation.",
+      "Send an HTTP request to an assumed public application URL on the job."
+    ],
+    "why": "Job bir HTTP service değildir; Admin API jobs.run üzerinden execution başlatılır. Workflows connector long-running operation davranışını yönetir.",
+    "near": "Job container’ının web server açması gerekmez; varsayılan request endpoint’i yoktur.",
+    "clue": "wait ... complete; no application HTTP server",
+    "url": "https://docs.cloud.google.com/workflows/docs/tutorials/execute-cloud-run-jobs",
+    "n": 9,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT5-Q5",
+    "domain": "4.3",
+    "title": "Clusterlar arası log sorgusu",
+    "stem": "The same workload runs in three GKE clusters in one project. Container stdout is already collected in Cloud Logging. During an incident, you need one query covering the relevant workload across all three clusters. Which approach avoids manually changing kubectl contexts and inspecting replicas individually?",
+    "options": [
+      "Use the Cloud Trace span list as a complete replacement for container stdout logs.",
+      "Run kubectl logs in one current context and assume it automatically queries the other clusters.",
+      "Query Cloud Logging, for example with gcloud logging read, using container resource and workload-label filters across the clusters.",
+      "Use journalctl on a single worker node and assume it contains all cluster logs."
+    ],
+    "why": "Merkezî logging cluster sınırları arasında aynı query ile filtrelemeyi sağlar. resource.type=k8s_container ve workload/project filtreleri gereksiz kayıtları daraltır.",
+    "near": "kubectl current context tek cluster hedefler; diğer cluster loglarını otomatik toplamaz.",
+    "clue": "already collected in Cloud Logging; across all three clusters",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/about-logs",
+    "n": 10,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT6-Q21",
+    "domain": "1.2",
+    "title": "Terraform Cloud kimliği",
+    "stem": "Terraform Cloud currently runs your infrastructure plans and applies. Security prohibits storing long-lived Google service account keys in external systems. The team wants to keep its existing Terraform Cloud execution environment and obtain temporary Google Cloud credentials for each run. Which authentication approach best fits?",
+    "options": [
+      "Store a service account key in Terraform Cloud and rotate the key every month.",
+      "Create a Google Workspace user for the pipeline and store its password as a sensitive variable.",
+      "Configure Workload Identity Federation for Terraform Cloud and scope access to the required resources.",
+      "Move Terraform execution to GKE and use a Kubernetes service account."
+    ],
+    "why": "Dış iş yükü kimliği WIF ile kısa ömürlü Google kimliğine çevrilir. Mevcut execution ortamını korur ve kalıcı anahtar gerektirmez.",
+    "near": "GKE üzerinde workload identity mümkün olsa da execution ortamını taşıma şartı gereksizdir.",
+    "clue": "keep its existing Terraform Cloud execution environment",
+    "url": "https://docs.cloud.google.com/iam/docs/workload-identity-federation-with-deployment-pipelines",
+    "n": 11,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT6-Q57",
+    "domain": "3.1",
+    "title": "Source deploy ile entegrasyon",
+    "stem": "You have a small Python HTTP service in a local source directory and need to test it behind an existing Apigee proxy. The language is supported by buildpacks, no Dockerfile is present, and cloud build permissions are ready. Which deployment path minimizes local container-tool setup?",
+    "options": [
+      "Deploy from the source directory with gcloud run deploy --source, then test the deployed service through Apigee.",
+      "Point the production Apigee proxy at localhost on the developer laptop without configuring reachability.",
+      "Install a local Docker daemon, build and push an image manually, then deploy it.",
+      "Run only local unit tests and treat them as proof that the hosted Apigee route works."
+    ],
+    "why": "Source deploy buildpacks/Cloud Build yolunu kullanarak local Docker kurma ihtiyacını azaltır. Hosted proxy entegrasyonu ayrıca gerçek route üzerinden sınanır.",
+    "near": "Local unit test Apigee ağ/kimlik/routing entegrasyonunun kanıtı değildir.",
+    "clue": "no Dockerfile; minimizes local container-tool setup",
+    "url": "https://docs.cloud.google.com/run/docs/deploying-source-code",
+    "n": 12,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT6-Q50",
+    "domain": "4.1",
+    "title": "Private SQL yerel erişim",
+    "stem": "A staging Cloud SQL instance has only a private IP. A developer has no VPN route from the laptop but is authorized to use IAP TCP forwarding. A small VM can be placed on the database's reachable VPC. Which arrangement allows secure development access without assigning a public IP to the VM or database?",
+    "options": [
+      "Run Cloud SQL Auth Proxy on the VPC VM and reach its appropriately restricted listener through an IAP TCP tunnel.",
+      "Add the laptop public IP to authorized networks and keep all routing unchanged.",
+      "Run Cloud SQL Auth Proxy only on the laptop and assume it creates a private network route.",
+      "Grant the developer Project Owner and connect directly to the private IP over the internet."
+    ],
+    "why": "Proxy’nin çalıştığı VM private SQL’e ulaşır; IAP geliştiriciden bu VM’ye kontrollü tünel sağlar. Listener/firewall/IAM en dar kapsamda ayarlanır.",
+    "near": "Laptop üzerindeki Auth Proxy ağ erişimi yokluğunu çözmez.",
+    "clue": "no VPN route; only a private IP",
+    "url": "https://docs.cloud.google.com/sql/docs/postgres/connect-to-instance-from-outside-vpc",
+    "n": 13,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT6-Q18",
+    "domain": "3.2",
+    "title": "Drain sırasında PDB",
+    "stem": "A stateless GKE service has ten replicas. During voluntary node drains that use the Kubernetes Eviction API, at least eight replicas must remain available. You are configuring disruption protection rather than changing an application rollout strategy. Which setting expresses this requirement?",
+    "options": [
+      "A HorizontalPodAutoscaler with minReplicas: 8, without a disruption budget.",
+      "A Deployment with maxSurge: 8, without a disruption budget.",
+      "A PodDisruptionBudget with maxUnavailable: 8.",
+      "A PodDisruptionBudget with minAvailable: 8 and a selector matching the workload."
+    ],
+    "why": "PDB minAvailable=8 ilgili eviction işlemlerine kullanılabilir kopya sınırı koyar. Involuntary failure veya bütçeyi bypass eden silme için mutlak koruma değildir.",
+    "near": "HPA kopya hedefini belirler; drain eviction kabul kontrolünün yerine geçmez.",
+    "clue": "voluntary node drains; Eviction API; at least eight",
+    "url": "https://kubernetes.io/docs/concepts/workloads/pods/disruptions/",
+    "n": 14,
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "source": "PT6-Q24",
+    "domain": "1.1",
+    "title": "Hot data cache ve kaynak veri",
+    "stem": "A market-data API reads from an existing authoritative database. Most requests repeatedly access a small subset of records, and those responses may be a few seconds old. You need to reduce database load without moving the full dataset or making cache eviction cause permanent data loss. Which design should you choose?",
+    "options": [
+      "Move the entire database into Redis and delete the original records after loading them.",
+      "Place each API read in a Pub/Sub queue and wait for a subscriber to answer.",
+      "Create a BigQuery copy and run an analytical query for every incoming API request.",
+      "Cache frequently requested records in Memorystore; read the database on a cache miss and populate the cache."
+    ],
+    "why": "Hot subset + kısa staleness toleransı cache-aside için uygundur. Kalıcı doğruluk kaynağı veritabanı olarak kalır.",
+    "near": "Tüm veriyi Redis tek kopya yapmak eviction halinde kalıcı veri kaybını önleme şartını sağlamaz.",
+    "clue": "small subset; without moving the full dataset",
+    "url": "https://docs.cloud.google.com/memorystore/docs/redis/redis-overview",
+    "n": 15,
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "source": "PT6-Q34",
+    "domain": "1.1",
+    "title": "Storage olayından çok adımlı işlem",
+    "stem": "Images uploaded to a bucket must be checked with the Vision API and then passed through several processing services. More steps will be added later. You want a managed event-driven entry point and a central definition of the processing sequence, without adding orchestration logic to every worker. Which design best fits?",
+    "options": [
+      "Route object-finalized events through Eventarc to Workflows, and orchestrate the processing services there.",
+      "Schedule a periodic bucket listing and put all sequencing logic into each image-processing worker.",
+      "Send the event independently to every worker and assume delivery order enforces the processing sequence.",
+      "Use a Cloud Tasks queue as the sole state machine for the entire multi-step process."
+    ],
+    "why": "Eventarc olay yönlendirmeyi, Workflows sıra ve durum yönetimini yapar. Worker servisler görevlerine odaklanır. Olay tekrarı için işleme idempotent tasarlanmalıdır.",
+    "near": "Bağımsız abonelere dağıtım bir işlem sırası ve sonuç bağımlılığı kurmaz.",
+    "clue": "central definition of the processing sequence",
+    "url": "https://docs.cloud.google.com/eventarc/standard/docs/workflows/route-trigger-cloud-storage",
+    "n": 16,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT6-Q17",
+    "domain": "2.2",
+    "title": "Registry olayıyla build",
+    "stem": "Your policy requires a verification build whenever an image is uploaded to Artifact Registry, including approved uploads made directly from developer machines. The project is not using VPC Service Controls. You want an event-driven solution with no polling and no custom relay service. What should trigger verification?",
+    "options": [
+      "A Cloud Scheduler job that periodically compares image lists.",
+      "Artifact Registry Pub/Sub notifications consumed by an appropriately filtered Cloud Build Pub/Sub trigger.",
+      "A Git commit trigger that assumes every image upload corresponds to a new commit.",
+      "A notification step added only to the main image-building pipeline."
+    ],
+    "why": "Registry kaynağındaki bildirim hem pipeline hem manuel upload yolunu kapsar. Cloud Build Pub/Sub trigger doğrudan tüketebilir. VPC-SC sınırı soru kökünde dışlandı.",
+    "near": "Yalnız ana pipeline içindeki bildirim manuel upload’ı kaçırır.",
+    "clue": "including ... directly from developer machines",
+    "url": "https://docs.cloud.google.com/build/docs/automate-builds-pubsub-events",
+    "n": 17,
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "source": "PT6-Q20",
+    "domain": "2.2",
+    "title": "Build ile push sınırı",
+    "stem": "A Cloud Build job successfully tests code and builds a container using a unique tag. Its next step deploys that tag to Cloud Run, but deployment reports that the image does not exist in Artifact Registry. The pipeline contains neither a push step nor an images output configuration. What must happen before deployment?",
+    "options": [
+      "Rename the Cloud Run service so its name matches the image repository.",
+      "Push the built image to the intended Artifact Registry repository and make deployment wait for that push.",
+      "Give the runtime service account Cloud Build Editor while leaving the image local to the build.",
+      "Remove the unique tag and deploy latest instead."
+    ],
+    "why": "Build container’ında image üretmek registry’ye upload değildir. Deployment erişilebilir registry artifact’ına ihtiyaç duyar; push’ın tamamlanması beklenir.",
+    "near": "Service adıyla repository adının aynı olması gerekmez.",
+    "clue": "neither a push step nor an images output configuration",
+    "url": "https://docs.cloud.google.com/build/docs/building/build-containers",
+    "n": 18,
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "source": "PT5-Q54",
+    "domain": "4.1",
+    "title": "SQL analitik ayrımı",
+    "stem": "Long-running analytics queries against a Cloud SQL for PostgreSQL primary are slowing customer transactions. Analysts need a continuously refreshed copy in BigQuery, while the transactional application must keep using Cloud SQL. Which managed integration best separates these workloads without building a custom dual-write path?",
+    "options": [
+      "Modify every transaction to synchronously write to Cloud SQL and BigQuery without reconciliation.",
+      "Move the analytical queries to a newly created empty BigQuery dataset without replicating data.",
+      "Use Datastream change data capture to replicate the relevant tables to BigQuery.",
+      "Export CSV files manually at the end of each month."
+    ],
+    "why": "Datastream CDC ile değişiklikler analitik hedefe aktarılır. Sıfır gecikme/sıfır kaynak yükü garantisi değil; transactional workload ile ağır analitiği ayıran yönetilen yaklaşımdır.",
+    "near": "Dual-write iki hedef başarısızlık/tutarlılık yükünü uygulamaya ekler.",
+    "clue": "continuously refreshed; keep using Cloud SQL",
+    "url": "https://docs.cloud.google.com/datastream/docs/overview",
+    "n": 19,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT5-Q33",
+    "domain": "4.1",
+    "title": "Küçük API yazımlarını batch etme",
+    "stem": "A client uploads thousands of small rows through BigQuery's insertAll API. It currently makes one request per row, and request overhead dominates runtime. You want a small client-side improvement while staying within the API's request-size limits. What should change?",
+    "options": [
+      "Create a separate Cloud Storage object for every row before making the same individual insert calls.",
+      "Group multiple rows into bounded insertAll requests and inspect row-level errors in each response.",
+      "Increase the retry count while preserving one successful request per row.",
+      "Send all rows in one unlimited-size request and ignore individual row failures."
+    ],
+    "why": "Bounded batching sabit request overhead’ini amorti eder. Boyut limitleri ve satır bazında kısmi başarısızlıklar ele alınmalıdır.",
+    "near": "Sınırsız tek request API sınırlarını ihlal edebilir; bütün sonuçları başarı varsayamazsın.",
+    "clue": "one request per row; request-size limits",
+    "url": "https://docs.cloud.google.com/bigquery/docs/streaming-data-into-bigquery",
+    "n": 20,
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "source": "PT6-Q45",
+    "domain": "4.2",
+    "title": "Cross-project SQL API",
+    "stem": "A Cloud Run service connects to Cloud SQL in another project. The runtime account already has Cloud SQL Client on the database project, and routing and database credentials have been verified. Diagnostics show that the Cloud SQL Admin API is disabled in the Cloud Run project. What should you correct first?",
+    "options": [
+      "Enable the Cloud SQL Admin API in the Cloud Run project and ensure it is also enabled in the database project.",
+      "Move the database into the Cloud Run project.",
+      "Grant Cloud SQL Admin instead of Cloud SQL Client to avoid enabling the API.",
+      "Increase the PostgreSQL max_connections value to bypass the disabled API."
+    ],
+    "why": "API enablement IAM’den ayrıdır. Cross-project Cloud Run SQL bağlantısında gerekli API her iki projede açılır.",
+    "near": "Daha geniş IAM rolü kapalı API’yi etkinleştirmez.",
+    "clue": "API is disabled in the Cloud Run project",
+    "url": "https://docs.cloud.google.com/sql/docs/postgres/connect-run",
+    "n": 21,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT5-Q32",
+    "domain": "3.2",
+    "title": "Trafik uygunluğu",
+    "stem": "A GKE application process can remain alive while it is temporarily unable to serve requests. Its /ready endpoint accurately reports this condition, and restarting the process would not help. Which probe should use that endpoint to remove an unready Pod from Service traffic while allowing it to recover?",
+    "options": [
+      "Configure a PodDisruptionBudget and use it as the request-routing health check.",
+      "Configure readinessProbe to call /ready.",
+      "Configure startupProbe to call /ready only once and rely on that result for the Pod lifetime.",
+      "Configure livenessProbe to call /ready and restart on every failure."
+    ],
+    "why": "Readiness başarısızlığı Service endpoint uygunluğunu etkiler; restart gerektirmez. Liveness process recovery için farklı amaçtadır.",
+    "near": "Startup probe yalnız başlangıcı korur; çalışma boyunca trafik uygunluğunu takip etmez.",
+    "clue": "restarting ... would not help; Service traffic",
+    "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+    "n": 22,
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "source": "PT1-Q38",
+    "domain": "4.2",
+    "title": "İsteğe bağlı API ve arayüz",
+    "stem": "A browser page displays core account information and an optional recommendation panel from a slower third-party API. The panel is not needed for the initial view. You want the core page to become usable without waiting for that API, while handling failures gracefully. Which client design best fits?",
+    "options": [
+      "Move the same blocking API call before every static asset request.",
+      "Reload the whole page repeatedly until the external API responds successfully.",
+      "Render the core view first, fetch recommendations asynchronously, and update the panel when the response arrives.",
+      "Block all rendering with a synchronous request until recommendations are available."
+    ],
+    "why": "Kritik olmayan response başlangıç render’ını bloklamaz; tamamlanınca ilgili UI güncellenir. Hata veya loading durumu ayrıca gösterilebilir.",
+    "near": "Senkron bekleme opsiyonel veriyi tüm kullanıcı deneyiminin kritik yoluna sokar.",
+    "clue": "optional; not needed for the initial view",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Synchronous_and_Asynchronous_Requests",
+    "n": 23,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT5-Q30",
+    "domain": "1.2",
+    "title": "Cross-project runtime izinleri",
+    "stem": "A function in project A writes new output objects to one bucket in project B. It must use a dedicated runtime identity, and it does not need to read, overwrite, or delete existing objects. Which TWO actions establish the required identity and least-privilege access?",
+    "options": [
+      "Configure the function to run as a dedicated IAM service account.",
+      "Generate a runtime service account key and include it in the function source.",
+      "Grant that runtime service account Storage Object Creator on the destination bucket.",
+      "Grant the Cloud Functions service agent Project Editor in project B.",
+      "Grant the developer Storage Object Creator and leave the runtime identity unchanged."
+    ],
+    "why": "Çalışan kodun kimliği runtime SA olur. Hedef bucket üzerinde objectCreator yeni nesne yazımına yeter; farklı proje olması kullanıcı veya servis ajanına yetki verme gerekçesi değildir.",
+    "near": "Developer hesabındaki yetki kodun runtime kimliğine aktarılmaz.",
+    "clue": "dedicated runtime identity; new output objects",
+    "url": "https://docs.cloud.google.com/functions/docs/securing/function-identity",
+    "n": 24,
+    "answers": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "source": "PT6-Q49",
+    "domain": "2.3",
+    "title": "Dayanıklılık testi",
+    "stem": "Your application passes unit, integration, and expected-load tests. The team still does not know whether retries and failover work when a dependency becomes unreachable. You want evidence about recovery behavior in a controlled staging environment. Which additional testing approach addresses this uncertainty most directly?",
+    "options": [
+      "Increase load only while keeping all dependencies healthy.",
+      "Repeat successful unit tests more frequently without changing failure conditions.",
+      "Review static code coverage and treat high coverage as proof that failover works.",
+      "Inject bounded dependency failures, observe recovery against defined expectations, and stop the experiment if guardrails are exceeded."
+    ],
+    "why": "Kontrollü fault injection/chaos testi arıza altındaki gerçek retry/failover davranışını gözlemler.",
+    "near": "Load testi kapasite davranışını gösterir; özellikle dependency arızası oluşturmuyorsa recovery kanıtı değildir.",
+    "clue": "dependency becomes unreachable; recovery behavior",
+    "url": "https://docs.cloud.google.com/architecture/framework/reliability/perform-testing-for-recovery-from-failures",
+    "n": 25,
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "source": "PT5-Q52",
+    "domain": "4.2",
+    "title": "429 sonrası retry",
+    "stem": "A Cloud Storage client sees intermittent HTTP 429 responses during sudden traffic increases. Operations being retried are safe to repeat under the application's existing idempotency controls. Which client behavior best handles transient throttling while avoiding synchronized retry storms?",
+    "options": [
+      "Use the same fixed short delay in every client and retry indefinitely.",
+      "Treat every 429 as a permanent missing-object error and discard the operation.",
+      "Use bounded exponential backoff with jitter and appropriate retry limits.",
+      "Retry immediately in every client until each operation succeeds."
+    ],
+    "why": "Backoff talebi azaltır, jitter istemcileri aynı anda yeniden çağrı yapmaktan uzaklaştırır. Kalıcı quota/bottleneck ayrıca çözülmelidir; retry sonsuz değildir.",
+    "near": "Sabit aynı zamanlama yükü yeniden senkronize edebilir.",
+    "clue": "intermittent 429; safe to repeat",
+    "url": "https://docs.cloud.google.com/storage/docs/retry-strategy",
+    "n": 26,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT5-Q34",
+    "domain": "3.2",
+    "title": "Deployment rollout sınırları",
+    "stem": "A Deployment has four healthy replicas. During a rollout, all four must remain available until replacement Pods pass readiness. Capacity exists for one extra Pod, but no more. The Deployment uses RollingUpdate. Which TWO values implement these rollout constraints?",
+    "options": [
+      "Set maxSurge to 1.",
+      "Set maxUnavailable to 1.",
+      "Set the rollout strategy to Recreate.",
+      "Set maxSurge to 0.",
+      "Set maxUnavailable to 0."
+    ],
+    "why": "maxSurge=1 bir ek Pod’a izin verir; maxUnavailable=0 rollout’un kullanılabilir kopyayı hedefin altına indirmesini önler. Readiness ve kapasite sağlanmış varsayılır; tüm arızalara mutlak uptime garantisi değildir.",
+    "near": "maxSurge=0/maxUnavailable=1 önce eski Pod silmeye izin verir; dört hazır kopyayı korumaz.",
+    "clue": "all four; capacity ... one extra Pod",
+    "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+    "n": 27,
+    "answers": [
+      "A",
+      "E"
+    ]
+  },
+  {
+    "source": "PT2-Q13",
+    "domain": "1.1",
+    "title": "Büyük dosya upload veri yolu",
+    "stem": "A web service authorizes users to upload large videos to Cloud Storage. Proxying every upload through the application consumes its network and compute capacity. The backend must retain control over the destination object and who can initiate an upload. Which design removes the application from the bulk-data path?",
+    "options": [
+      "After authorization, provide a narrowly scoped signed upload URL or a resumable-upload session URI to the client.",
+      "Send each video through a longer-timeout Cloud Run request and buffer the whole file in memory.",
+      "Give all authenticated users write permission on the entire bucket.",
+      "Embed the backend service account private key in the upload page."
+    ],
+    "why": "Backend yetkilendirdikten sonra sınırlandırılmış yükleme yetkisini istemciye verir; byte aktarımı doğrudan Storage’a olur. Resumable session URI de bearer credential olarak korunmalıdır.",
+    "near": "Bucket-wide genel yetki hedef nesne ve kullanıcı denetimini gereksiz genişletir.",
+    "clue": "retain control over the destination object; bulk-data path",
+    "url": "https://docs.cloud.google.com/storage/docs/access-control/signed-urls",
+    "n": 28,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT1-Q13",
+    "domain": "1.2",
+    "title": "Retention ve lifecycle",
+    "stem": "An approved compliance policy requires every stored record to remain undeletable for seven years. Records are actively queried for three years, after which retrieval is rare. The bucket design has already been reviewed for an irreversible retention lock. Which combination meets both retention and storage-cost requirements?",
+    "options": [
+      "Move objects to Archive after three years and rely on its minimum storage duration to enforce seven years.",
+      "Use lifecycle deletion after seven years without setting a retention policy.",
+      "Enable Object Versioning and give users permission to delete all object generations.",
+      "Lock the seven-year bucket retention policy and use a lifecycle transition to Archive after three years."
+    ],
+    "why": "Retention policy silme/değiştirme engelini, lifecycle transition storage class değişimini sağlar. Archive minimum süre ücretlendirmesi retention garantisi değildir.",
+    "near": "Lifecycle delete kuralı erken manuel silmeyi engellemez.",
+    "clue": "undeletable for seven years; retrieval is rare",
+    "url": "https://docs.cloud.google.com/storage/docs/bucket-lock",
+    "n": 29,
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "source": "PT6-Q38",
+    "domain": "1.1",
+    "title": "Üçüncü taraf özelliği kapatma",
+    "stem": "A release includes both routine fixes and a new capability that depends on an unproven external provider. The fixes must reach all users now. You want to enable the new capability for a small group and disable only that capability immediately if the provider becomes unreliable. Which approach best separates these release decisions?",
+    "options": [
+      "Deploy the release with a feature flag controlling the external-provider capability.",
+      "Increase the provider request timeout for every user and deploy without a rollout control.",
+      "Roll back the entire release whenever the external provider fails.",
+      "Use a blue/green switch that moves every user to the new release at once."
+    ],
+    "why": "Feature flag kodun deployment durumuyla özelliğin etkinliğini ayırır; rutin düzeltmeler kalırken ilgili özellik kapatılır.",
+    "near": "Tam rollback düzeltmeleri de geri alır; istenen yalnız bir yeteneği kapatmaktır.",
+    "clue": "disable only that capability",
+    "url": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+    "n": 30,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT5-Q36",
+    "domain": "4.1",
+    "title": "Atomik read-modify-write",
+    "stem": "Two workers can credit the same Datastore-mode account concurrently. Each reads the current balance, adds its own amount, and writes the result. Occasionally one credit disappears even though both writes succeed. Which change prevents the lost-update race?",
+    "options": [
+      "Read and update the account inside a transaction, allowing the transaction logic to retry on contention.",
+      "Keep the read outside the transaction and put only the final write inside it.",
+      "Read with an ancestor query but leave the read and write as separate uncoordinated operations.",
+      "Write both results faster by raising the number of worker threads."
+    ],
+    "why": "Read ve ona bağlı write aynı transaction denemesinde olmalı. Conflict retry güncel bakiye üzerinden yeniden hesaplar.",
+    "near": "Güçlü tutarlı okuma tek başına okuma ile yazma arasındaki yarışmayı engellemez.",
+    "clue": "one credit disappears; both writes succeed",
+    "url": "https://docs.cloud.google.com/datastore/docs/concepts/transactions",
+    "n": 31,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT6-Q3",
+    "domain": "1.1",
+    "title": "API ürününe göre kota",
+    "stem": "A partner API already verifies API keys in Apigee. Each key belongs to either a standard or premium API product. The business wants different daily request allowances for the two products, with usage tracked separately for each client application. Which policy design best enforces these allowances?",
+    "options": [
+      "Use one Quota counter shared by every application using the proxy.",
+      "Use a SpikeArrest policy with one shared requests-per-second value for the proxy.",
+      "Use a Quota policy with the product-specific allowance and a client-specific identifier.",
+      "Set the backend load balancer maximum request rate to the premium daily allowance."
+    ],
+    "why": "Günlük toplam kullanım Quota ile, müşteri ayrımı counter identifier ile kurulur. API product kotası ilgili ürün seviyesini temsil eder.",
+    "near": "SpikeArrest kısa süreli ani yükü yumuşatır; günlük müşteri bazlı kullanım hakkının yerine geçmez.",
+    "clue": "daily request allowances; separately for each client",
+    "url": "https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/quota-policy",
+    "n": 32,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT4-Q59",
+    "domain": "1.1",
+    "title": "Workflow dallanması",
+    "stem": "An order process calls three existing HTTP services. The response from the first service determines whether to call the second or the third, and the chosen response feeds a final update. There is no human approval or external callback to wait for. Which orchestration approach adds the least unnecessary infrastructure?",
+    "options": [
+      "Create a Cloud Tasks queue and expect the queue to evaluate response fields and choose subsequent services.",
+      "Use Workflows HTTP steps and switch conditions based on returned values.",
+      "Create an Airflow environment solely to run this short request-driven sequence.",
+      "Create a callback endpoint for every step and wait for callbacks instead of using the returned responses."
+    ],
+    "why": "Workflows değişken, sıra ve switch ile servis dönüşlerine göre akışı yönetir. Queue kendi başına iş akışı karar motoru değildir.",
+    "near": "Callback yalnız gerçekten dışarıdan bir devam sinyali beklendiğinde gerekir; burada sonuç zaten HTTP response içinde.",
+    "clue": "response determines; no external callback",
+    "url": "https://docs.cloud.google.com/workflows/docs/reference/syntax/conditions",
+    "n": 33,
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "source": "PT6-Q14",
+    "domain": "2.2",
+    "title": "Test attestation akışı",
+    "stem": "Binary Authorization is enabled on production GKE clusters. Your release rule requires proof that the exact container image passed regression tests. The test pipeline is trusted to issue this proof only after successful tests. Which TWO additions make admission enforce that rule?",
+    "options": [
+      "Use the latest tag as sufficient evidence that the tests ran successfully.",
+      "Create a signed attestation for the tested image digest after the regression tests pass.",
+      "Replace the admission policy with an image-retention policy in Artifact Registry.",
+      "Configure an attestor and an enforcing policy that requires its attestation.",
+      "Create the attestation before testing so failed tests cannot delay deployment."
+    ],
+    "why": "Attestor doğrulanan imzayı tanımlar; pipeline başarılı test sonrası digest’e attestation üretir. Enforcing admission policy bunu deployment sırasında ister.",
+    "near": "Tag test kanıtı değildir. Binary Authorization testleri kendiliğinden çalıştırmaz.",
+    "clue": "exact container image; only after successful tests",
+    "url": "https://docs.cloud.google.com/binary-authorization/docs/attestations",
+    "n": 34,
+    "answers": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "source": "PT2-Q18",
+    "domain": "2.3",
+    "title": "Tekrarlanabilir messaging testi",
+    "stem": "You need local integration tests for a service that consumes Pub/Sub messages containing sensitive payment information. The tests must reproduce malformed and duplicate-message cases without accessing production data or depending on an external project. Which approach best supports those requirements?",
+    "options": [
+      "Send randomly generated bytes to the production subscription until an error occurs.",
+      "Use the Pub/Sub emulator with synthetic fixtures covering valid, malformed, and duplicate messages.",
+      "Replay unmodified production payment messages into the local test environment.",
+      "Replace the subscriber with a mock that always reports success and skip message parsing."
+    ],
+    "why": "Emulator ve kontrollü sentetik fixture yerel veri akışını tekrar üretir. Bu, gerçek IAM ve bütün hosted-service davranışlarının doğrulandığı anlamına gelmez.",
+    "near": "Sadece başarılı mock hatalı mesaj parse/dedup davranışını ölçmez.",
+    "clue": "reproduce malformed and duplicate-message cases",
+    "url": "https://docs.cloud.google.com/pubsub/docs/emulator",
+    "n": 35,
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "source": "PT5-Q27",
+    "domain": "3.2",
+    "title": "Yavaş başlangıç ve liveness",
+    "stem": "A GKE container sometimes needs two minutes to initialize. Its liveness check is useful for detecting deadlocks after startup, but currently restarts the container before initialization finishes. You want to allow startup time without slowing steady-state deadlock detection. Which probe configuration should you add?",
+    "options": [
+      "A readiness probe alone, leaving the failing liveness timing unchanged.",
+      "A startup probe with a sufficient startup budget, while preserving the normal liveness check.",
+      "A PodDisruptionBudget that prevents liveness-triggered restarts.",
+      "A much slower liveness check that applies throughout the entire container lifetime."
+    ],
+    "why": "Startup probe başarılı olana kadar liveness/readiness çalıştırılmaz. Başlangıç penceresi ile sonradan deadlock tespit hızı ayrılır.",
+    "near": "Readiness tek başına liveness’ın öldürmesini önlemez.",
+    "clue": "without slowing steady-state deadlock detection",
+    "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+    "n": 36,
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "source": "PT6-Q71",
+    "domain": "3.1",
+    "title": "Bucket create audit olayı",
+    "stem": "A Cloud Run compliance service checks the names of newly created Cloud Storage buckets. It should run automatically after bucket creation, without polling. IAM and the event delivery prerequisites can be configured. Which event route matches bucket creation rather than uploads of objects into existing buckets?",
+    "options": [
+      "Use only a direct object-finalized trigger and assume it also fires whenever an empty bucket is created.",
+      "Configure a Cloud Run CPU alert as the notification mechanism for bucket creation.",
+      "Schedule a periodic list operation and compare bucket names once per day.",
+      "Use an Eventarc Cloud Audit Logs trigger filtered for the Cloud Storage bucket-creation API method."
+    ],
+    "why": "Bucket oluşturma yönetim API olayı Audit Logs filtrelemesiyle yönlendirilebilir. Object finalize ise dosya/nesne olayıdır; boş bucket oluşturma değildir.",
+    "near": "Object-finalized trigger mevcut bucket’a yüklenen nesneyi temsil eder.",
+    "clue": "bucket creation rather than uploads of objects",
+    "url": "https://docs.cloud.google.com/eventarc/standard/docs/run/cal",
+    "n": 37,
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "source": "PT2-Q45",
+    "domain": "4.3",
+    "title": "CPU ve heap profili",
+    "stem": "A Go service on GKE uses unexpectedly high CPU and memory under ordinary traffic. You need to identify expensive functions and allocation paths inside the running application, rather than measure latency between services. Which tool and evidence best match this investigation?",
+    "options": [
+      "Use only uptime checks to infer the functions allocating memory.",
+      "Read only load balancer access logs and group requests by status code.",
+      "Use only Cloud Trace spans around remote HTTP calls.",
+      "Instrument the supported Go application with Cloud Profiler and inspect CPU and heap profiles."
+    ],
+    "why": "Profiler CPU/heap dağılımını code path düzeyinde gösterir; Trace servis/request süreleri için tamamlayıcıdır.",
+    "near": "Dış HTTP span süreleri hangi iç fonksiyonun allocation yaptığını doğrudan vermez.",
+    "clue": "functions and allocation paths; inside the ... application",
+    "url": "https://docs.cloud.google.com/profiler/docs/about-profiler",
+    "n": 38,
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "source": "PT5-Q46",
+    "domain": "4.3",
+    "title": "Dış servis gecikmesini izleme",
+    "stem": "An API invokes payment, shipping, and inventory services. Users report occasional slow responses, but aggregate CPU metrics look normal. You need to identify which outgoing operation consumes the request time. What instrumentation provides the most useful evidence?",
+    "options": [
+      "Increase the logging severity of every message without adding timing or correlation information.",
+      "Add a readiness probe and use its success rate as the duration of every outgoing call.",
+      "Collect only node-level CPU metrics and infer which external API is slow.",
+      "Add OpenTelemetry spans around outgoing calls and inspect the resulting distributed traces in Cloud Trace."
+    ],
+    "why": "Span hiyerarşisi ve süreler gecikmenin hangi çağrıda toplandığını gösterir. Dış sağlayıcı iç trace sağlamasa bile client span çağrı süresini ölçebilir.",
+    "near": "CPU normal olması dış I/O latency’sini dışlamaz.",
+    "clue": "which outgoing operation consumes the request time",
+    "url": "https://docs.cloud.google.com/trace/docs/overview",
+    "n": 39,
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "source": "PT5-Q26",
+    "domain": "1.2",
+    "title": "Namespace yetkisi",
+    "stem": "Two application teams share a GKE cluster. Team B needs to deploy ordinary workloads for an integration, but it must not change Team A's Deployments or Services. No project-wide administrative role is required. Which access configuration provides the requested control with the least unnecessary privilege?",
+    "options": [
+      "Grant Team B Project Editor and ask it to use a separate namespace.",
+      "Grant Team B Kubernetes cluster-admin and distinguish its resources with labels.",
+      "Create a namespace for Team B and bind suitable Kubernetes workload-management permissions within that namespace.",
+      "Give Team B project Viewer and rely on that role to authorize creating Deployments."
+    ],
+    "why": "Namespace kapsamlı RBAC, Team B erişimini ilgili namespace kaynaklarına sınırlar. Namespace tek başına network/host güvenlik izolasyonu değildir; burada ölçülen kaynak değiştirme yetkisidir.",
+    "near": "Project Editor gibi geniş izinleri namespace isimlendirmesi daraltmaz.",
+    "clue": "must not change Team A; no project-wide administrative role",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control",
+    "n": 40,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT6-Q41",
+    "domain": "1.2",
+    "title": "API güvenliğinin katmanları",
+    "stem": "A GKE API is exposed to external partners. Requests must pass OAuth token validation and API-specific authorization before reaching the backend. The public endpoint also needs managed protection against common web exploits and volumetric attacks. Which architecture covers both requirements?",
+    "options": [
+      "Use Cloud Armor alone and treat every request that passes its WAF rules as an authenticated partner request.",
+      "Place Apigee on an ingress path protected by an external Application Load Balancer and Cloud Armor, and prevent backend bypass.",
+      "Use Apigee authentication but expose a second unrestricted public path directly to the GKE backend.",
+      "Expose an Istio ingress gateway and rely only on Kubernetes NetworkPolicy for OAuth validation and WAF protection."
+    ],
+    "why": "Apigee API kimlik/policy katmanı; Armor dış web saldırı korumasıdır. Korunan yolu bypass eden açık backend bırakılmamalı.",
+    "near": "Cloud Armor WAF kontrolünü geçmek uygulama kullanıcısının OAuth ile doğrulandığı anlamına gelmez.",
+    "clue": "OAuth token validation; common web exploits",
+    "url": "https://docs.cloud.google.com/architecture/best-practices-securing-applications-and-apis-using-apigee",
+    "n": 41,
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "source": "PT6-Q15",
+    "domain": "1.2",
+    "title": "AlloyDB için ağ ve kimlik ayrımı",
+    "stem": "An application project and a database project belong to the same organization. A new private-IP AlloyDB deployment is being planned. The teams must retain separate project ownership but are permitted to use a centrally managed network. Which design provides private reachability without relying on the Auth Proxy to create a network path?",
+    "options": [
+      "Move all application resources into the database project and grant its developers Project Editor.",
+      "Attach both service projects to an approved Shared VPC and configure AlloyDB private connectivity in that network.",
+      "Keep the networks disconnected and run the AlloyDB Auth Proxy beside the application.",
+      "Keep the networks disconnected and give the application service account AlloyDB Client."
+    ],
+    "why": "Proje ayrılığı ağ ayrılığı olmak zorunda değildir. Shared VPC ortak özel ağı, IAM ise ayrı kaynak yetkilerini sağlar. AlloyDB için gereken private services access ayrıca yapılandırılır.",
+    "near": "Auth Proxy güvenli kimlikli bağlantı sağlar; mevcut olmayan ağ rotasını oluşturmaz.",
+    "clue": "separate project ownership; centrally managed network",
+    "url": "https://docs.cloud.google.com/alloydb/docs/configure-connectivity",
+    "n": 42,
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "source": "PT1-Q15",
+    "domain": "3.2",
+    "title": "Pub/Sub backlog ile HPA",
+    "stem": "GKE workers consume one Pub/Sub subscription. They spend much of their time waiting for downstream I/O, so CPU usage stays low even when the backlog grows. More worker replicas improve throughput, and node capacity is available. Which autoscaling signal best matches the processing demand?",
+    "options": [
+      "Use VPA recommendations as the mechanism for creating more worker replicas.",
+      "Configure HPA with an appropriate external Pub/Sub backlog metric.",
+      "Enable only cluster node autoscaling and expect it to increase the Deployment replica count.",
+      "Configure HPA to increase replicas only when CPU utilization reaches 90 percent."
+    ],
+    "why": "External backlog metriği iş talebini doğrudan yansıtır. HPA replica sayısını, node autoscaler ise node kapasitesini yönetir.",
+    "near": "CPU düşük kaldığı için yalnız CPU tabanlı sinyal bu I/O bekleyen iş yükündeki birikimi kaçırabilir.",
+    "clue": "CPU usage stays low even when the backlog grows",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/tutorials/autoscaling-metrics",
+    "n": 43,
+    "answers": [
+      "B"
+    ]
+  },
+  {
+    "source": "PT6-Q2",
+    "domain": "3.1",
+    "title": "Cloud Run kademeli rollout",
+    "stem": "A Cloud Run service has a healthy production revision. A new revision must be tested with a small fraction of live traffic before wider rollout, and you want to use native revision management. What is the safest sequence for introducing the new revision?",
+    "options": [
+      "Deploy without immediately assigning traffic, allocate a small percentage, evaluate signals, and increase gradually.",
+      "Delete the current revision before deploying the new one to prevent version overlap.",
+      "Deploy to 100 percent of traffic and rely on rollback only after all users are exposed.",
+      "Create a second DNS name and assume DNS automatically sends a controlled percentage to each revision."
+    ],
+    "why": "Yeni revision önce no-traffic deploy edilir; native traffic split ile kontrollü canlı kullanıcı etkisi sağlanır. Rollback yolu korunur.",
+    "near": "100% dağıtıp sonra gözlemek gradual exposure şartını karşılamaz.",
+    "clue": "small fraction of live traffic; native revision management",
+    "url": "https://docs.cloud.google.com/run/docs/rollouts-rollbacks-traffic-migration",
+    "n": 44,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT5-Q22",
+    "domain": "1.3",
+    "title": "Paylaşılan dosya sistemi",
+    "stem": "Several replicas of a legacy service must read and update files on the same filesystem. You are moving the service to GKE, and changing its file operations to an object-storage API is out of scope. The existing service uses NFS and requires shared writable access. Which storage approach minimizes application changes?",
+    "options": [
+      "Use a Filestore NFS share through an appropriate GKE PersistentVolume configuration.",
+      "Give each replica a different Persistent Disk and assume writes become visible to other replicas.",
+      "Mount a Cloud Storage bucket and assume it provides every NFS filesystem behavior unchanged.",
+      "Put the writable files in a ConfigMap and mount it in every Pod."
+    ],
+    "why": "NFS ve ortak read/write gereksinimi yönetilen Filestore ile karşılanabilir. Performans, erişim ve uygun tier ayrıca seçilmelidir.",
+    "near": "Object storage mount, NFS/POSIX davranışlarının tamamının yerine geçtiği varsayımıyla kullanılmamalı.",
+    "clue": "existing service uses NFS; shared writable access",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/filestore-csi-driver",
+    "n": 45,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT5-Q41",
+    "domain": "1.3",
+    "title": "Bigtable row key",
+    "stem": "A Bigtable table stores account activity. Reads usually request a time interval for one account, and writes are spread across many active accounts. Each event has an account ID and a fixed-width timestamp. Which row-key ordering best supports these reads while avoiding a single global timestamp-leading write hotspot?",
+    "options": [
+      "Use account ID followed by the fixed-width timestamp and an event disambiguator if required.",
+      "Use timestamp followed by account ID for every event.",
+      "Use account ID alone, overwriting its row each time a new event arrives.",
+      "Use a random UUID alone and scan the whole table for account history."
+    ],
+    "why": "Account prefix aynı hesabın zaman aralığını bitişik satırlara toplar. Global artan timestamp prefix tüm yazımları bir kenara yığabilir. Tek hesabın çok sıcak olması ayrıca tasarım gerektirir.",
+    "near": "UUID dağıtımı iyileştirebilir ama sorudaki temel account-range sorgusunu kaybettirir.",
+    "clue": "time interval for one account; many active accounts",
+    "url": "https://docs.cloud.google.com/bigtable/docs/schema-design",
+    "n": 46,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT4-Q7",
+    "domain": "2.3",
+    "title": "Paralel performans testi izolasyonu",
+    "stem": "Several commits must run Spanner performance tests concurrently. You need comparable latency measurements without the test runs competing for the same Spanner compute capacity. The budget permits temporary managed instances in an existing test project. Which setup is most appropriate?",
+    "options": [
+      "Use the Spanner emulator as a substitute for production-service latency measurements.",
+      "Run every test against the production instance after truncating its tables.",
+      "Provision an equivalent isolated Spanner instance per run, load controlled test data, and remove it after testing.",
+      "Create a separate database per run on one shared instance and assume compute is isolated."
+    ],
+    "why": "Instance başına ayrılmış compute paralel run’ların Spanner kapasitesini paylaşmasını önler. Aynı konfigürasyon/veri ve warm-up gibi test kontrolleri yine gerekir.",
+    "near": "Ayrı database veri izolasyonu sağlayabilir ama aynı instance compute kapasitesini paylaşır. Emulator performans eşdeğeri değildir.",
+    "clue": "without ... competing for the same ... compute capacity",
+    "url": "https://docs.cloud.google.com/spanner/docs/emulator",
+    "n": 47,
+    "answers": [
+      "C"
+    ]
+  },
+  {
+    "source": "PT5-Q56",
+    "domain": "2.1",
+    "title": "Yerelde güvenli SQL bağlantısı",
+    "stem": "A developer must test a PostgreSQL client against a staging Cloud SQL instance from a workstation. Approved network reachability already exists. The connection should use IAM-authorized, encrypted transport without manually managing client certificates. Database credentials and grants are handled separately. What should the developer run locally?",
+    "options": [
+      "Run Cloud SQL Auth Proxy with an authorized identity and point the application at its local listener.",
+      "Use the Cloud SQL Admin REST API as the PostgreSQL query endpoint.",
+      "Connect to a newly created local PostgreSQL database and assume it contains current staging data.",
+      "Grant Cloud SQL Editor and connect through an unencrypted raw connection without a proxy."
+    ],
+    "why": "Auth Proxy güvenli bağlantı katmanını yönetir. Ağ yolu, IAM connectivity rolü ve database login/grant ayrı gerekliliklerdir; soru diğerlerini açıkça sağlar.",
+    "near": "Admin REST API instance yönetir; SQL sorgu protokolünün yerine geçmez.",
+    "clue": "reachability already exists; certificates",
+    "url": "https://docs.cloud.google.com/sql/docs/postgres/connect-auth-proxy",
+    "n": 48,
+    "answers": [
+      "A"
+    ]
+  },
+  {
+    "source": "PT2-Q10",
+    "domain": "3.2",
+    "title": "StatefulSet kimliği",
+    "stem": "You are deploying a stateful service on GKE. Each replica needs a stable ordinal network identity and its own persistent volume that can be reattached when that replica's Pod is replaced. Which controller and storage pattern best express those requirements?",
+    "options": [
+      "Use a Deployment whose replicas all write to one emptyDir volume.",
+      "Use a Deployment with random Pod names and assume a ClusterIP Service gives each replica a stable identity.",
+      "Use a DaemonSet and identify each replica only by its current Pod IP.",
+      "Use a StatefulSet with the required governing Service and volumeClaimTemplates."
+    ],
+    "why": "StatefulSet sabit ordinal kimlik ve replica başına PVC düzeni sağlar. Governing headless Service ağ kimliğini destekler.",
+    "near": "ClusterIP Service tüm backend’ler için ortak adres sağlar; tek tek replica kimliğinin yerine geçmez.",
+    "clue": "each replica; stable ordinal; its own persistent volume",
+    "url": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+    "n": 49,
+    "answers": [
+      "D"
+    ]
+  },
+  {
+    "source": "PT5-Q39",
+    "domain": "2.1",
+    "title": "Cloud Shell GKE erişim teşhisi",
+    "stem": "You successfully retrieve credentials for a GKE cluster from Cloud Shell. Subsequent kubectl requests time out. The cluster uses a public control-plane endpoint restricted by authorized networks, and Cloud Shell's current public IP is outside those ranges. What is the most direct correction?",
+    "options": [
+      "Run get-credentials repeatedly until it creates a network route.",
+      "Authorize the approved Cloud Shell source IP for the control-plane endpoint, following the network access policy.",
+      "Grant the caller cluster-admin while leaving the authorized network ranges unchanged.",
+      "Change the application Service from ClusterIP to LoadBalancer."
+    ],
+    "why": "Credential edinme ile Kubernetes endpoint’e paket ulaşması farklı katmanlar. Verilen bulgu authorized networks uyuşmazlığını doğrudan gösteriyor.",
+    "near": "RBAC yetkisini büyütmek ağdan düşürülen bağlantıyı düzeltmez.",
+    "clue": "public IP is outside those ranges",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks",
+    "n": 50,
+    "answers": [
+      "B"
+    ]
+  }
+]

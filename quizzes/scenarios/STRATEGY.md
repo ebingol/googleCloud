@@ -1,5 +1,15 @@
 # Günlük quiz ve senaryo stratejisi
 
+## 5 Ekim S13 hazır
+
+Kullanıcının yeni talebiyle SkillCertPro seçkisinden [S13](PCD-S13.md) hazırlandı: 49 kaynak uyarlaması + 1 resmî Eventarc ek sorusu, 50 soru/120 dakika kişisel hedef, 16/12/12/10. Q22/Q39/Q41 çift seçim. İngilizce sorular ve ayrı Türkçe anahtar; ilk yanıtlar korunur. S12 de hazır ve çözülmedi. Sonraki adım kullanıcının seçtiği setin ilk çözümü; yeni set kendiliğinden hazırlanmaz, sonraki ID S14. Aşağıdaki ön seçim aşaması tarihsel kayıttır.
+
+
+## 5 Ekim kaynak seçimi için güncel çalışma
+
+Kullanıcı Udemy paketini tutuyor; S12 kaynak seçkisi hazır/çözülmedi. SkillCertPro satın alındı, bütün 18 setin 1050 gövde/anahtar taraması tamamlandı. [Kalite raporu](reviews/SKILLCERTPRO-PCD-2026-REVIEW.md) ve 50 ön aday kaydı hazır; S13 henüz sınav olarak oluşturulmadı. Tamamını sırayla çözdürmek yerine kullanıcının seviyesine uygun karar soruları seçilecek; platform anahtarı doğru kabul edilmeyecek. Kaynakta Eventarc gövdede yok; tam denemede resmî kaynaklı ek soru açıkça etiketlenerek tamamlanmalı. Aday listesi 16/12/12/10 ön dağılım; final yazımda güncel belge ve önceki soru ilişkileri tekrar kontrol edilecek. İnceleme sırasında asistanın boş platform denemeleri kullanıcı puanı değildir. Otomasyon yok.
+
+
 Kararlaştırma: 20 Eylül 2026. Hedef: Professional Cloud Developer. Kullanıcının son beyanına göre yaklaşık iki hafta kaldı; kesin sınav tarihi bilinmiyor. Eski 20–30 dakikalık günlük plan yerine aşağıdaki düzen geçerli.
 
 ## Güncel öncelik — 29 Eylül: S09 mekanizmalarını öğretme
@@ -174,3 +184,8 @@ S07 ilk Q1–Q12 9/12 korunur; Q13 doğru cevap açıklanmış rehberli çalış
 ## 1 Ekim — güncel kullanıcı isteği: S11
 
 Kullanıcı S10’dan biraz daha zor 50 soruluk exam guide ağırlıklı deneme istedi. Önceki 20 soru/45 dakika planı bu set için geçerli değil. S11 16/12/12/10; 47 tek/3 çift seçim; 120 dakika kişisel hedef. Uzun İngilizce, yakın şıklar ve ek karar koşulları korunur; özgün pratik, gerçek sınav eşdeğerliği iddiası yok. İlk cevapları ve mola/yardım koşullarını ayrı kaydet. Henüz sonuç yok; sonraki yeni set S12.
+
+
+## 5 Ekim — güncel kullanıcı isteği: S12 kaynak seçkisi
+
+Kullanıcı satın aldığı Udemy paketini tutacak; 372 soru içinden anlamlı bulduğumuz senaryolarla 50 soru istedi. Bu özel set için kaynak seçimi, önceki yeni-konu kotalarından önceliklidir. S12 16/12/12/10, 47 tek + Q24/Q27/Q34 çift seçim, 120 dakika kişisel hedef. İngilizce sorular sample benzeri kısa/orta uzunlukta; yakın seçenek ve belirleyici koşul esas, yapay paragraf uzatma yok. Senaryolar kalite düzeltmeleriyle uyarlanır, birebir yeni konu diye sunulmaz. Anahtar ayrı Türkçe; kaynak soru numarası ve teknik kaynak korunur. Gemini/Cloud Tasks eksikleri öğrenilmiş sayılmaz. İlk cevaplar gelmedi; ilk sonuç ve rehberli çözüm ayrı tutulacak. Sonraki yeni set S13; kullanıcı istemeden üretme, otomasyon kurma.
