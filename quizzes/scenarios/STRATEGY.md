@@ -1,5 +1,9 @@
 # Günlük quiz ve senaryo stratejisi
 
+## 8 Ekim — S14 konu seti hazır
+
+Kullanıcı Gemini PDF’si ve API entegrasyonu kapsamından 20 soru istedi. [S14](PCD-S14.md) 18 tek + Q04/Q19 çift seçim, 50 dakika kişisel hedef; 5 PDF temelli ve 15 ek resmî kaynak sorusu. Bu özel konu talebi tam sınav ağırlıklarından önce gelir. IAM/ADC, Workstations, Tasks/Eventarc/Workflows ve Vision yük yönetimi öncelikli. İlk cevaplar/süre bekleniyor; yeni set kendiliğinden üretilmez. S12 ilk 44/50, 72 dakika korunur; S13 henüz çözülmedi. Sonraki yeni ID S15. Otomasyon yok.
+
 ## 5 Ekim S13 hazır
 
 Kullanıcının yeni talebiyle SkillCertPro seçkisinden [S13](PCD-S13.md) hazırlandı: 49 kaynak uyarlaması + 1 resmî Eventarc ek sorusu, 50 soru/120 dakika kişisel hedef, 16/12/12/10. Q22/Q39/Q41 çift seçim. İngilizce sorular ve ayrı Türkçe anahtar; ilk yanıtlar korunur. S12 de hazır ve çözülmedi. Sonraki adım kullanıcının seçtiği setin ilk çözümü; yeni set kendiliğinden hazırlanmaz, sonraki ID S14. Aşağıdaki ön seçim aşaması tarihsel kayıttır.

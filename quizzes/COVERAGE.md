@@ -191,3 +191,8 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 ## PCD-S13 SkillCertPro tam deneme seçkisi
 
 5 Ekim 2026. [50 soru](scenarios/PCD-S13.md), 49 SkillCertPro uyarlaması + 1 resmî Eventarc ek senaryosu; kaynak/rehber eşlemesi `scenarios/reviews/PCD-S13-selection.json` içinde. Dört ana alan 16/12/12/10, 11 numaralı alt başlık. GKE HPA/BackendConfig/WIF, Cloud Code debugging ve sync, Workstations, Gemini MCP/code customization/unit test, Tasks retry ve Eventarc receiver örneklenir. Dört Gemini/AI geliştirme sorusu Q5/Q21/Q32/Q33; bu sayı gerçek sınav tahmini değildir. Eventarc Q22, kaynakta eksik olduğu için resmî belgeye dayanan ek sorudur. Soru hazırlanması tamamlanmış öğrenme veya yeni temel kapsam sayılmaz; önceki kararlarla ilişkiler QUESTION-LOG içinde. S12 ve önceki ilk sonuçlar korunur.
+
+
+## PCD-S14 — Gemini ve Google Cloud API entegrasyonu
+
+8 Ekim 2026. [20 soru](scenarios/PCD-S14.md), [ayrı Türkçe anahtar ve kapsam haritası](answers/scenarios/PCD-S14.md). Konu seti: 5 PDF temelli soru, 15 ek resmî entegrasyon sorusu. Gemini publisher/multimodal/prompt-tuning, IAM/ADC/Workstations, Tasks, Eventarc/Workflows ve Vision request-feature-in-processing kotaları doğrudan örneklenir. Q04/Q19 çift seçim; 50 dakika kişisel hedef. Tam sınav ağırlıkları uygulanmaz; 1.1/1.2/2.1/4.1/4.2 seçili kararları, tüm rehber veya ürün ayrıntılarını kapsamaz. Model sürümleri ve sayısal varsayılan kotalar ezberletilmez. Hazırlık tamamlandı; kullanıcı çözümü, süre/puan veya öğrenme teyidi yok. S12 doğrulanmış ilk 44/50, 72 dakika korunur; geçmiş “S12 çözülmedi” notları tarihsel kalmıştır.

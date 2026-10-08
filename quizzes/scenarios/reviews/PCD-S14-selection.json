@@ -1,0 +1,231 @@
+{
+  "date": "2026-10-08",
+  "set": "PCD-S14",
+  "status": "prepared_not_attempted",
+  "pdf_based_questions": [
+    1,
+    5,
+    9,
+    13,
+    17
+  ],
+  "multiple_choice_questions": [
+    4,
+    19
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "topic": "Hazır foundation model / publisher endpoint",
+      "guide": "4.2",
+      "origin": "PDF s.7,10–11",
+      "refs": [
+        "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/quickstart"
+      ],
+      "relation": "Yeni ölçüm; S08-48 çıktı doğrulamasından farklı publisher/serving kararı."
+    },
+    {
+      "id": 2,
+      "topic": "Workstations ADC kaynak önceliği",
+      "guide": "2.1",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/docs/authentication/application-default-credentials",
+        "https://docs.cloud.google.com/workstations/docs/authentication"
+      ],
+      "relation": "Bilinçli pekiştirme; S06-02 environment precedence, Workstations uygulaması."
+    },
+    {
+      "id": 3,
+      "topic": "Cloud Tasks rate ve concurrency",
+      "guide": "1.1",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/tasks/docs/configuring-queues"
+      ],
+      "relation": "Bilinçli pekiştirme; S06-01 / S11-28. Tek Vision worker’da iki kontrol ayrımı."
+    },
+    {
+      "id": 4,
+      "topic": "Eventarc → Workflows → Gemini IAM",
+      "guide": "1.2",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/eventarc/standard/docs/workflows/roles-permissions",
+        "https://docs.cloud.google.com/workflows/docs/authentication",
+        "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/access-control"
+      ],
+      "relation": "Karma; S11-19 iki IAM sınırı; burada Workflows execution ve Gemini prediction."
+    },
+    {
+      "id": 5,
+      "topic": "Multimodal prompt",
+      "guide": "4.2",
+      "origin": "PDF s.11–16",
+      "refs": [
+        "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/multimodal/overview"
+      ],
+      "relation": "Yeni ölçüm; multimodal input bağlama, eski Pro Vision adını ezberleme yok."
+    },
+    {
+      "id": 6,
+      "topic": "Vision request ve feature kota hesabı",
+      "guide": "4.2",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/vision/quotas"
+      ],
+      "relation": "Yeni sayısal karar; S08-34 batch seçiminden farklı request-feature bütçesi."
+    },
+    {
+      "id": 7,
+      "topic": "Tasks → Cloud Run token tipi",
+      "guide": "1.2",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/tasks/docs/creating-http-target-tasks"
+      ],
+      "relation": "Bilinçli pekiştirme; S01-06/R01-05, 5 Ekim Tasks token öğretimi; audience hazır değil token tipi hatalı."
+    },
+    {
+      "id": 8,
+      "topic": "Eventarc metadata ve input bytes",
+      "guide": "1.1",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/eventarc/standard/docs/event-format"
+      ],
+      "relation": "Bilinçli pekiştirme; S13-22 event/bytes; burada bozuk OCR input teşhisi."
+    },
+    {
+      "id": 9,
+      "topic": "Prompt ve tuning ayrımı",
+      "guide": "4.2",
+      "origin": "PDF s.8 + ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/tune-models"
+      ],
+      "relation": "Yeni ölçüm; PDF customization açıklamasını koşullu karar yapar."
+    },
+    {
+      "id": 10,
+      "topic": "Workstations user ile Cloud Run runtime IAM",
+      "guide": "1.2",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/run/docs/securing/service-identity",
+        "https://docs.cloud.google.com/workstations/docs/authentication"
+      ],
+      "relation": "Bilinçli pekiştirme; S12-24 ilk yanlış ve S11-30 kimlik ayrımı; upload yerine input read teşhisi."
+    },
+    {
+      "id": 11,
+      "topic": "Workflows raw HTTP OAuth2/OIDC",
+      "guide": "4.1",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/workflows/docs/http-requests",
+        "https://docs.cloud.google.com/workflows/docs/authentication"
+      ],
+      "relation": "Karma; 5 Ekim token öğretimi, iki hedefin workflow auth yapılandırması."
+    },
+    {
+      "id": 12,
+      "topic": "Vision in-processing kota",
+      "guide": "4.2",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/vision/quotas",
+        "https://docs.cloud.google.com/vision/docs/batch"
+      ],
+      "relation": "Yeni ölçüm; S08-34 batch seçimi yerine kabul edilmiş işin beklemesi."
+    },
+    {
+      "id": 13,
+      "topic": "Vision ile generative Gemini görev ayrımı",
+      "guide": "4.2",
+      "origin": "PDF s.13,16 + ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/vision/docs/ocr",
+        "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/multimodal/overview"
+      ],
+      "relation": "Karma; S05-14 araç ayrımı, Vision/Gemini uygulama çıktıları birlikte."
+    },
+    {
+      "id": 14,
+      "topic": "Workstations impersonation ve actAs",
+      "guide": "2.1",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/docs/authentication/use-service-account-impersonation",
+        "https://docs.cloud.google.com/workstations/docs/authentication"
+      ],
+      "relation": "Bilinçli pekiştirme; S09-02 ilk yanlış, yeni temel konu değil."
+    },
+    {
+      "id": 15,
+      "topic": "Tasks duplicate delivery ve ücretli API idempotency",
+      "guide": "1.1",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/tasks/docs/common-pitfalls"
+      ],
+      "relation": "Karma; S09-03 erken ack ve S09-21 create dedup yerine tamamlanmış delivery sonrası ücretli call atlama."
+    },
+    {
+      "id": 16,
+      "topic": "Workflows LRO submit ve complete",
+      "guide": "4.2",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/vision/docs/batch",
+        "https://docs.cloud.google.com/workflows/docs/connectors"
+      ],
+      "relation": "Karma; S12-16/33 sıralama, yeni LRO completion bağımlılığı."
+    },
+    {
+      "id": 17,
+      "topic": "Code Assist ile runtime Gemini API ayrımı",
+      "guide": "2.1",
+      "origin": "PDF s.1–3,16 + ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/quickstart"
+      ],
+      "relation": "Bilinçli temel pekiştirme; S05-14 ve 6 Ekim araç öğretimi; ürün runtime ayrımı."
+    },
+    {
+      "id": 18,
+      "topic": "Kalıcı input hatası ile transient retry",
+      "guide": "1.1",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/tasks/docs/configuring-queues",
+        "https://docs.cloud.google.com/vision/docs/reference/rest/v1/images/annotate"
+      ],
+      "relation": "Bilinçli pekiştirme; S02-08/S13-24. Vision invalid input ve kuyruk kararı."
+    },
+    {
+      "id": 19,
+      "topic": "API enablement ve runtime prediction yetkisi",
+      "guide": "4.2",
+      "origin": "PDF s.16 başlangıç akışı + ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/quickstart",
+        "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/access-control",
+        "https://docs.cloud.google.com/run/docs/securing/service-identity"
+      ],
+      "relation": "Bilinçli pekiştirme; S08-24. Gemini prediction permission somutlaştırması."
+    },
+    {
+      "id": 20,
+      "topic": "Vision ortak proje kotası ve global bütçe",
+      "guide": "4.2",
+      "origin": "Ek resmî kaynak",
+      "refs": [
+        "https://docs.cloud.google.com/vision/quotas",
+        "https://docs.cloud.google.com/tasks/docs/configuring-queues"
+      ],
+      "relation": "Karma; Q6 tek client hesabından farklı bağımsız fleet koordinasyonu; S11-28 dispatch temeli."
+    }
+  ]
+}

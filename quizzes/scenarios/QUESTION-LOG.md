@@ -546,3 +546,31 @@ Kullanıcının açık talebiyle 50 farklı kaynak sorunun uyarlaması. Tamamı 
 | S13-48 | 1.1 | cache-aside | SCP16-Q27; S12-15 / S11-01; bilinçli pekiştirme | Hazır, çözülmedi |
 | S13-49 | 1.2 | egress-policy | SCP18-Q07; S11-21 / S03-10; bilinçli pekiştirme | Hazır, çözülmedi |
 | S13-50 | 4.2 | quota-project | SCP17-Q44; S09-39; bilinçli pekiştirme, izin zaten sağlanmış | Hazır, çözülmedi |
+
+
+## PCD-S14 — 8 Ekim 2026, Gemini/API entegrasyon konu seti
+
+[Sorular](PCD-S14.md) · [Ayrı Türkçe anahtar](../answers/scenarios/PCD-S14.md). Kullanıcının açık talebi: seçtiği PDF ve konuşulan entegrasyon kapsamından 20 soru, commit/push. 5 PDF temelli + 15 ek resmî kaynak sorusu; 18 tek/2 çift (Q04/Q19), 50 dakika kişisel hedef. Tam deneme ağırlıkları uygulanmaz; model sürüm ezberi yok. Kaynak eşlemesi `reviews/PCD-S14-selection.json`. Yeni ölçüm temel kavramın ilk kez görülmesi demek değildir; önceki yakın kararlar açıkça pekiştirme/karma. Henüz kullanıcı cevabı veya sonuç yok.
+
+| ID | Rehber | Ölçülen karar / belirleyici koşul | Tür / önceki ilişki | İlk sonuç |
+|---|---|---|---|---|
+| S14-01 | 4.2 | Hazır foundation model / publisher endpoint; No custom weights or task-specific training are needed | Yeni ölçüm; S08-48 çıktı doğrulamasından farklı publisher/serving kararı. | Hazır, çözülmedi |
+| S14-02 | 2.1 | Workstations ADC kaynak önceliği; without changing its environment | Bilinçli pekiştirme; S06-02 environment precedence, Workstations uygulaması. | Hazır, çözülmedi |
+| S14-03 | 1.1 | Cloud Tasks rate ve concurrency; independently control the rate ... and the number ... in progress | Bilinçli pekiştirme; S06-01 / S11-28. Tek Vision worker’da iki kontrol ayrımı. | Hazır, çözülmedi |
+| S14-04 | 1.2 | Eventarc → Workflows → Gemini IAM; Two permission checks fail | Karma; S11-19 iki IAM sınırı; burada Workflows execution ve Gemini prediction. | Hazır, çözülmedi |
+| S14-05 | 4.2 | Multimodal prompt; sequence of actions shown in it | Yeni ölçüm; multimodal input bağlama, eski Pro Vision adını ezberleme yok. | Hazır, çözülmedi |
+| S14-06 | 4.2 | Vision request ve feature kota hesabı; all batches contain ten images | Yeni sayısal karar; S08-34 batch seçiminden farklı request-feature bütçesi. | Hazır, çözülmedi |
+| S14-07 | 1.2 | Tasks → Cloud Run token tipi; rejects them before the handler runs | Bilinçli pekiştirme; S01-06/R01-05, 5 Ekim Tasks token öğretimi; audience hazır değil token tipi hatalı. | Hazır, çözülmedi |
+| S14-08 | 1.1 | Eventarc metadata ve input bytes; assumes the event body contains the document bytes | Bilinçli pekiştirme; S13-22 event/bytes; burada bozuk OCR input teşhisi. | Hazır, çözülmedi |
+| S14-09 | 4.2 | Prompt ve tuning ayrımı; already meet the acceptance criteria | Yeni ölçüm; PDF customization açıklamasını koşullu karar yapar. | Hazır, çözülmedi |
+| S14-10 | 1.2 | Workstations user ile Cloud Run runtime IAM; Logs confirm that Cloud Run uses image-runtime | Bilinçli pekiştirme; S12-24 ilk yanlış ve S11-30 kimlik ayrımı; upload yerine input read teşhisi. | Hazır, çözülmedi |
+| S14-11 | 4.1 | Workflows raw HTTP OAuth2/OIDC; Neither call uses a Workflows connector | Karma; 5 Ekim token öğretimi, iki hedefin workflow auth yapılandırması. | Hazır, çözülmedi |
+| S14-12 | 4.2 | Vision in-processing kota; in-processing quota is full | Yeni ölçüm; S08-34 batch seçimi yerine kabul edilmiş işin beklemesi. | Hazır, çözülmedi |
+| S14-13 | 4.2 | Vision ile generative Gemini görev ayrımı; preserve those interfaces rather than train a custom model | Karma; S05-14 araç ayrımı, Vision/Gemini uygulama çıktıları birlikte. | Hazır, çözülmedi |
+| S14-14 | 2.1 | Workstations impersonation ve actAs; resource permissions ... must remain unchanged | Bilinçli pekiştirme; S09-02 ilk yanlış, yeni temel konu değil. | Hazır, çözülmedi |
+| S14-15 | 1.1 | Tasks duplicate delivery ve ücretli API idempotency; success response is lost | Karma; S09-03 erken ack ve S09-21 create dedup yerine tamamlanmış delivery sonrası ücretli call atlama. | Hazır, çözülmedi |
+| S14-16 | 4.2 | Workflows LRO submit ve complete; No connector is waiting ... automatically | Karma; S12-16/33 sıralama, yeni LRO completion bağımlılığı. | Hazır, çözülmedi |
+| S14-17 | 2.1 | Code Assist ile runtime Gemini API ayrımı; contains no model API call or integration code | Bilinçli temel pekiştirme; S05-14 ve 6 Ekim araç öğretimi; ürün runtime ayrımı. | Hazır, çözülmedi |
+| S14-18 | 1.1 | Kalıcı input hatası ile transient retry; repeated attempts cannot change its bytes | Bilinçli pekiştirme; S02-08/S13-24. Vision invalid input ve kuyruk kararı. | Hazır, çözülmedi |
+| S14-19 | 4.2 | API enablement ve runtime prediction yetkisi; A review finds two gaps | Bilinçli pekiştirme; S08-24. Gemini prediction permission somutlaştırması. | Hazır, çözülmedi |
+| S14-20 | 4.2 | Vision ortak proje kotası ve global bütçe; same Vision quota project | Karma; Q6 tek client hesabından farklı bağımsız fleet koordinasyonu; S11-28 dispatch temeli. | Hazır, çözülmedi |
