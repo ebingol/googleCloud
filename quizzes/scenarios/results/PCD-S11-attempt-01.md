@@ -80,3 +80,27 @@ Yanlış incelemesi için ilk üç aday: Q6 (beklemek/başarılı olmak), Q21 (D
 Kullanıcı sonucu “fena değil” olarak değerlendirdi; daha çok en makul cevabı seçtiğini ve ilk 10 sorudan sonra mükemmeliyetçi davranmadığını belirtti. İlk 10 soru 9/10; kalan 40 soru 34/40 (%85). Bu dağılım belirgin performans çöküşü göstermez; strateji değişiminin yanlışlara neden olduğu sonucuna varılmaz. İlk sonuç 43/50 ve 109 dakika korunur.
 
 Seçeneklerin bozduğu koşullara göre hazırlayanın hata örüntüsü yorumu: Q14/Q39 mekanizmanın ne zaman devreye girdiği (mount/image, pull/rollout); Q6/Q21/Q24 kontrolün doğru aşama veya katmanda uygulanması (release gate, network/IAM, backend/browser); Q25/Q50 eşzamanlılık ve tekrar sırasında doğruluk (transaction içi okuma, aynı operation ID). Ortak örüntü, makul görünen işlemin sorunun istediği garantiyi gerçekten sağlayıp sağlamaması. Bu yorum kullanıcının teknik bilgi/dil/dikkat hata nedeni olarak kesin sınıflandırılması değildir; bireysel gerekçeler henüz alınmadı. Kısa değerlendirme yöntemi: seçilen şık için “Sorudaki hangi şartı sağlıyor, hangi şartı açıkta bırakıyor?” kontrolü. Rehberli yorum bağımsız öğrenme ölçümü değildir.
+
+## Cevapsız tekrar talebi
+
+7 Ekim 2026: Kullanıcının isteğiyle S11 yanlışları Q6/Q14/Q21/Q24/Q25/Q39/Q50 özgün İngilizce metin ve seçeneklerle, anahtar/açıklama olmadan yeniden sunuldu. Henüz tekrar cevabı veya süre yok; ilk 43/50 ve 109 dakika korunur. Önceki açıklamalar görülmüş olduğundan gelecek yanıtlar ilk bağımsız denemeden ayrı tekrar kaydıdır; aynı sorunun tekrarı yeni bağlamda kalıcılık ölçümü sayılmaz.
+
+## Aynı soruların tekrar cevapları — 7 Ekim 2026
+
+Kullanıcı: `06-de,14-d,21-de,24-b,25-a,39-c,50-c`. Mevcut anahtara göre **6/7**; yalnız Q14 D→A yanlış. Q6/Q21 D+E tam doğru. Süre ve gerekçe bildirilmedi. Önceden cevaplar/açıklamalar görüldü; bu aynı soruların tekrar sonucudur, yeni bağımsız deneme veya yeni bağlamda kalıcılık kanıtı değildir. İlk sonuç **43/50 ve 109 dakika** korunur.
+
+| Soru | Tekrar cevabı | Anahtar | Sonuç |
+|---|---|---|---|
+| 6 | D+E | D+E | Doğru |
+| 14 | D | A | Yanlış |
+| 21 | D+E | D+E | Doğru |
+| 24 | B | B | Doğru |
+| 25 | A | A | Doğru |
+| 39 | C | C | Doğru |
+| 50 | C | C | Doğru |
+
+Q14 için persistent /home mount’un image içindeki aynı yolu örtmesi, rebuild’in mount içeriğini değiştirmemesi ve template’lerin /home dışında tutulup mevcut dosyaları ezmeden başlangıçta kopyalanması kısaca açıklandı. Aynı D seçimi devam ediyor; neden teknik bilgi/dil/dikkat olarak kesin sınıflandırılmadı. Açıklama sonrası kavrayış henüz teyit edilmedi.
+
+## Q14 — uzak geliştirme temel modeli
+
+7 Ekim: Kullanıcı Cloud Workstations’ın bulutta olup olmadığını, bağlantının nasıl yapıldığını ve /home’un neden kalıcı kaldığını sordu. Temel uzak geliştirme modeli ihtiyacı kullanıcı beyanıyla doğrulandı. Browser IDE/lokal editor/SSH erişimi, buluttaki VM-container ve ayrı persistent disk’in /home olarak bağlanması somut günlük örnekle açıklandı. /home laptop yolu değildir; oturum durması disk silinmesi değildir. Q14 mount/image ayrımı bu modele bağlandı. Kavrayış henüz teyit edilmedi. Resmî kaynaklar: https://docs.cloud.google.com/workstations/docs/overview ve https://docs.cloud.google.com/workstations/docs/architecture .
