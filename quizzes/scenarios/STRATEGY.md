@@ -1,5 +1,9 @@
 # Günlük quiz ve senaryo stratejisi
 
+## 9 Ekim — S13 anahtarlı bilgi çalışması
+
+Kullanıcı S13 soru+cevaplarını ve gerekli ürün bilgisi eklerini istedi. [Tekrar](../answers/scenarios/PCD-S13-REVIEW.md) 50 soru ve 50 kısa bilgi notuyla 10×5 bölümde hazır. Süre hedefi yok; kullanıcının yarın inceleme ve mola ihtiyacı korunur. Bilinmeyen ürün özelliğini, koşul kaçırma ve alternatif karıştırmadan ayır; tüm yanlışları bilgi veya konsantrasyon eksikliği sayma. İlk 29/50,112 dakika korunur; anahtarlı okuma bağımsız ölçüm değildir.
+
 ## 9 Ekim — konsantrasyon geri bildirimi ve S14 anahtarlı çalışma
 
 Kullanıcı yoğun soruların bir noktadan sonra konsantrasyonunu aştığını belirtti. S14 anahtarlı tekrar 4×5 bölümle, süre hedefi olmadan kullanılabilir; kısa molalar mümkündür. Bu geri bildirim uzun İngilizce soru metinlerini kısaltma isteği değildir ve Q07/Q08/Q19 hata nedenini tek başına kanıtlamaz. İlk 17/20, 54 dakika korunur. [Tekrar dosyası](../answers/scenarios/PCD-S14-REVIEW.md) rehberli çalışmadır; yeni bağımsız ölçüm değildir.

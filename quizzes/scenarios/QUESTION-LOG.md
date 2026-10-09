@@ -496,56 +496,56 @@ Kullanıcının açık talebiyle 50 farklı kaynak sorunun uyarlaması. Tamamı 
 
 | ID | Rehber | Karar | Kaynak ve önceki ilişki | Durum |
 |---|---|---|---|---|
-| S13-01 | 2.2 | build-DAG | SCP14-Q20; S11-06 / S04-02; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-02 | 2.1 | Skaffold-sync | SCP17-Q07; S10-14; karma, rebuild yerine file sync | Hazır, çözülmedi |
-| S13-03 | 3.1 | Cloud-Deploy-canary | SCP16-Q60; S12-44; karma, Cloud Deploy automation | Hazır, çözülmedi |
-| S13-04 | 4.2 | pagination-fields | SCP13-Q06; S11-29; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-05 | 2.1 | Gemini-MCP | SCP14-Q51; S06-06 / S08-27; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-06 | 4.3 | bucket-metrics | SCP17-Q51; S12-10 / S10-15; merkezi ölçüm kapsamı | Hazır, çözülmedi |
-| S13-07 | 1.2 | delayed-secret-destroy | SCP14-Q58; S11-13/31 ile ilişkili; Secret Manager version yaşam döngüsü | Hazır, çözülmedi |
-| S13-08 | 3.1 | secret-startup | SCP14-Q60; S11-12; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-09 | 1.1 | Tasks-retry | SCP14-Q17; S11-28; Tasks pekiştirme, retry policy kararı | Hazır, çözülmedi |
-| S13-10 | 1.1 | multi-region-Run | SCP15-Q09; S11-44; karma, bağımlılıklar sağlıklı varsayılıyor | Hazır, çözülmedi |
-| S13-11 | 3.2 | HPA-requests | SCP14-Q23; S10-12 / S11-23; HPA farklı engel teşhisi | Hazır, çözülmedi |
-| S13-12 | 3.1 | outlier-detection | SCP16-Q22; S11-44; LB failure detection uygulaması | Hazır, çözülmedi |
-| S13-13 | 4.3 | Query-Insights | SCP15-Q05; S12-38/39 observability temeli; ORM route correlation | Hazır, çözülmedi |
-| S13-14 | 1.3 | snapshot-reads | SCP16-Q19; S08 Spanner temeli; snapshot kararı pekiştirme | Hazır, çözülmedi |
-| S13-15 | 1.1 | Workflows | SCP14-Q27; S12-33 / S01-15; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-16 | 4.3 | log-alert | SCP15-Q12; S12-10 log sorgusu üzerine matching event alert | Hazır, çözülmedi |
-| S13-17 | 1.3 | time-bucket | SCP14-Q19; S12-46 / S11-33; karma, row granularity değişiyor | Hazır, çözülmedi |
-| S13-18 | 1.3 | signed-URL | SCP14-Q52; S11-24 / S01-04; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-19 | 1.2 | two-attestors | SCP18-Q26; S12-34; karma, iki bağımsız onay | Hazır, çözülmedi |
-| S13-20 | 2.1 | Workstations | SCP14-Q50; S12-05 / S09-29 / S11-14; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-21 | 2.3 | dependency-injection | SCP18-Q25; S12-35 / S11-30; bilinçli unit/integration ayrımı | Hazır, çözülmedi |
-| S13-22 | 3.1 | Storage finalized trigger and receiver | OFFICIAL-EVENTARC; Ek resmî soru; S12-16/37 ve S11-19 ile ilişkili, IAM yerine event/receiver seçimi | Hazır, çözülmedi |
-| S13-23 | 3.2 | HPA-GitOps | SCP14-Q35; S11-23 HPA temeli; desired-state ownership | Hazır, çözülmedi |
-| S13-24 | 4.2 | backoff | SCP15-Q25; S12-26 / S11-15; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-25 | 4.3 | PromQL-ratio | SCP16-Q58; S10-20 / S11-45; bilinçli oran/alert pekiştirmesi | Hazır, çözülmedi |
-| S13-26 | 1.1 | API-deprecation | SCP14-Q06; S12-32 API politikasıyla ilişkili; farklı yaşam döngüsü kararı | Hazır, çözülmedi |
-| S13-27 | 4.1 | pool-budget | SCP17-Q40; S11-03; bilinçli pool bütçesi pekiştirmesi | Hazır, çözülmedi |
-| S13-28 | 4.1 | resumable-offset | SCP15-Q31; S11-04 transfer temeli; upload offset kararı | Hazır, çözülmedi |
-| S13-29 | 1.2 | identity-tenants | SCP17-Q33; S10-13 / S11-38; kimlik izolasyonu pekiştirme | Hazır, çözülmedi |
-| S13-30 | 2.3 | allowExitCodes | SCP16-Q05; S11-06; karma, seçici failure exception | Hazır, çözülmedi |
-| S13-31 | 1.3 | JSONB-schema | SCP16-Q31; S10-08 PostgreSQL üzerine schema kararı | Hazır, çözülmedi |
-| S13-32 | 2.1 | code-customization | SCP18-Q20; S11-26 context temeli; kurumsal repository özelleştirmesi | Hazır, çözülmedi |
-| S13-33 | 2.3 | publisher-interaction-test | SCP15-Q06; S10-10 yerine seçildi; S11-10 test oracle temeli üzerine interaction assertion | Hazır, çözülmedi |
-| S13-34 | 2.2 | multi-stage | SCP16-Q16; S11-34 / S08-23; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-35 | 3.2 | immutable-config | SCP17-Q20; S11-32; ters lifecycle koşulu, canlı değişim gerekmiyor | Hazır, çözülmedi |
-| S13-36 | 3.1 | ingress | SCP13-Q33; S03/Cloud Run ingress; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-37 | 1.3 | vector-index | SCP17-Q05; AI/veri temeline ek index uygulaması; yeni temel AI kapsamı iddiası yok | Hazır, çözülmedi |
-| S13-38 | 1.3 | Spanner-hash-key | SCP16-Q53; S07/S09 hotspot kararlarıyla ilişkili pekiştirme | Hazır, çözülmedi |
-| S13-39 | 1.2 | cross-perimeter | SCP15-Q10; S09 VPCSC kapsamı; bilinçli güvenlik pekiştirmesi | Hazır, çözülmedi |
-| S13-40 | 3.2 | BackendConfig | SCP14-Q55; S11-16 probe temeli; LB ve Pod check ayrımı | Hazır, çözülmedi |
-| S13-41 | 2.2 | build-images | SCP16-Q02; S12-18; karma, build results kaydı ekli | Hazır, çözülmedi |
-| S13-42 | 2.1 | debugger-source-map | SCP17-Q23; S10-14; karma, bağlı debugger path teşhisi | Hazır, çözülmedi |
-| S13-43 | 3.2 | metadata-init | SCP16-Q06; S11-37 WIF üzerine transient startup dependency | Hazır, çözülmedi |
-| S13-44 | 2.2 | immutable-tags | SCP15-Q26; S11-39 / S12-02; registry tag enforcement kararı | Hazır, çözülmedi |
-| S13-45 | 4.1 | listener-lifecycle | SCP18-Q05; Firestore istemci lifecycle; temel realtime veri kullanımının uygulaması | Hazır, çözülmedi |
-| S13-46 | 3.2 | Autopilot-WIF | SCP16-Q40; S11-37 / S12-07; Autopilot yapılandırması | Hazır, çözülmedi |
-| S13-47 | 3.2 | container-HPA | SCP17-Q54; HPA temeli pekiştirme; container-specific ölçüm | Hazır, çözülmedi |
-| S13-48 | 1.1 | cache-aside | SCP16-Q27; S12-15 / S11-01; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-49 | 1.2 | egress-policy | SCP18-Q07; S11-21 / S03-10; bilinçli pekiştirme | Hazır, çözülmedi |
-| S13-50 | 4.2 | quota-project | SCP17-Q44; S09-39; bilinçli pekiştirme, izin zaten sağlanmış | Hazır, çözülmedi |
+| S13-01 | 2.2 | build-DAG | SCP14-Q20; S11-06 / S04-02; bilinçli pekiştirme | İlk yanlış; kullanıcı D, anahtar C |
+| S13-02 | 2.1 | Skaffold-sync | SCP17-Q07; S10-14; karma, rebuild yerine file sync | İlk yanlış; kullanıcı C, anahtar A |
+| S13-03 | 3.1 | Cloud-Deploy-canary | SCP16-Q60; S12-44; karma, Cloud Deploy automation | İlk doğru; kullanıcı B, anahtar B |
+| S13-04 | 4.2 | pagination-fields | SCP13-Q06; S11-29; bilinçli pekiştirme | İlk doğru; kullanıcı C, anahtar C |
+| S13-05 | 2.1 | Gemini-MCP | SCP14-Q51; S06-06 / S08-27; bilinçli pekiştirme | İlk doğru; kullanıcı A, anahtar A |
+| S13-06 | 4.3 | bucket-metrics | SCP17-Q51; S12-10 / S10-15; merkezi ölçüm kapsamı | İlk doğru; kullanıcı D, anahtar D |
+| S13-07 | 1.2 | delayed-secret-destroy | SCP14-Q58; S11-13/31 ile ilişkili; Secret Manager version yaşam döngüsü | İlk yanlış; kullanıcı C, anahtar D |
+| S13-08 | 3.1 | secret-startup | SCP14-Q60; S11-12; bilinçli pekiştirme | İlk yanlış; kullanıcı B, anahtar A |
+| S13-09 | 1.1 | Tasks-retry | SCP14-Q17; S11-28; Tasks pekiştirme, retry policy kararı | İlk doğru; kullanıcı B, anahtar B |
+| S13-10 | 1.1 | multi-region-Run | SCP15-Q09; S11-44; karma, bağımlılıklar sağlıklı varsayılıyor | İlk yanlış; kullanıcı B, anahtar C |
+| S13-11 | 3.2 | HPA-requests | SCP14-Q23; S10-12 / S11-23; HPA farklı engel teşhisi | İlk yanlış; kullanıcı A, anahtar B |
+| S13-12 | 3.1 | outlier-detection | SCP16-Q22; S11-44; LB failure detection uygulaması | İlk yanlış; kullanıcı B, anahtar D |
+| S13-13 | 4.3 | Query-Insights | SCP15-Q05; S12-38/39 observability temeli; ORM route correlation | İlk doğru; kullanıcı A, anahtar A |
+| S13-14 | 1.3 | snapshot-reads | SCP16-Q19; S08 Spanner temeli; snapshot kararı pekiştirme | İlk yanlış; kullanıcı D, anahtar B |
+| S13-15 | 1.1 | Workflows | SCP14-Q27; S12-33 / S01-15; bilinçli pekiştirme | İlk doğru; kullanıcı B, anahtar B |
+| S13-16 | 4.3 | log-alert | SCP15-Q12; S12-10 log sorgusu üzerine matching event alert | İlk yanlış; kullanıcı B, anahtar A |
+| S13-17 | 1.3 | time-bucket | SCP14-Q19; S12-46 / S11-33; karma, row granularity değişiyor | İlk doğru; kullanıcı D, anahtar D |
+| S13-18 | 1.3 | signed-URL | SCP14-Q52; S11-24 / S01-04; bilinçli pekiştirme | İlk doğru; kullanıcı A, anahtar A |
+| S13-19 | 1.2 | two-attestors | SCP18-Q26; S12-34; karma, iki bağımsız onay | İlk yanlış; kullanıcı B, anahtar C |
+| S13-20 | 2.1 | Workstations | SCP14-Q50; S12-05 / S09-29 / S11-14; bilinçli pekiştirme | İlk doğru; kullanıcı C, anahtar C |
+| S13-21 | 2.3 | dependency-injection | SCP18-Q25; S12-35 / S11-30; bilinçli unit/integration ayrımı | İlk yanlış; kullanıcı A, anahtar B |
+| S13-22 | 3.1 | Storage finalized trigger and receiver | OFFICIAL-EVENTARC; Ek resmî soru; S12-16/37 ve S11-19 ile ilişkili, IAM yerine event/receiver seçimi | İlk yanlış; kullanıcı A+B, anahtar A+C |
+| S13-23 | 3.2 | HPA-GitOps | SCP14-Q35; S11-23 HPA temeli; desired-state ownership | İlk yanlış; kullanıcı A, anahtar B |
+| S13-24 | 4.2 | backoff | SCP15-Q25; S12-26 / S11-15; bilinçli pekiştirme | İlk doğru; kullanıcı B, anahtar B |
+| S13-25 | 4.3 | PromQL-ratio | SCP16-Q58; S10-20 / S11-45; bilinçli oran/alert pekiştirmesi | İlk doğru; kullanıcı A, anahtar A |
+| S13-26 | 1.1 | API-deprecation | SCP14-Q06; S12-32 API politikasıyla ilişkili; farklı yaşam döngüsü kararı | İlk doğru; kullanıcı C, anahtar C |
+| S13-27 | 4.1 | pool-budget | SCP17-Q40; S11-03; bilinçli pool bütçesi pekiştirmesi | İlk doğru; kullanıcı C, anahtar C |
+| S13-28 | 4.1 | resumable-offset | SCP15-Q31; S11-04 transfer temeli; upload offset kararı | İlk doğru; kullanıcı A, anahtar A |
+| S13-29 | 1.2 | identity-tenants | SCP17-Q33; S10-13 / S11-38; kimlik izolasyonu pekiştirme | İlk doğru; kullanıcı D, anahtar D |
+| S13-30 | 2.3 | allowExitCodes | SCP16-Q05; S11-06; karma, seçici failure exception | İlk doğru; kullanıcı D, anahtar D |
+| S13-31 | 1.3 | JSONB-schema | SCP16-Q31; S10-08 PostgreSQL üzerine schema kararı | İlk doğru; kullanıcı A, anahtar A |
+| S13-32 | 2.1 | code-customization | SCP18-Q20; S11-26 context temeli; kurumsal repository özelleştirmesi | İlk doğru; kullanıcı D, anahtar D |
+| S13-33 | 2.3 | publisher-interaction-test | SCP15-Q06; S10-10 yerine seçildi; S11-10 test oracle temeli üzerine interaction assertion | İlk doğru; kullanıcı A, anahtar A |
+| S13-34 | 2.2 | multi-stage | SCP16-Q16; S11-34 / S08-23; bilinçli pekiştirme | İlk yanlış; kullanıcı D, anahtar A |
+| S13-35 | 3.2 | immutable-config | SCP17-Q20; S11-32; ters lifecycle koşulu, canlı değişim gerekmiyor | İlk yanlış; kullanıcı C, anahtar D |
+| S13-36 | 3.1 | ingress | SCP13-Q33; S03/Cloud Run ingress; bilinçli pekiştirme | İlk doğru; kullanıcı C, anahtar C |
+| S13-37 | 1.3 | vector-index | SCP17-Q05; AI/veri temeline ek index uygulaması; yeni temel AI kapsamı iddiası yok | İlk doğru; kullanıcı C, anahtar C |
+| S13-38 | 1.3 | Spanner-hash-key | SCP16-Q53; S07/S09 hotspot kararlarıyla ilişkili pekiştirme | İlk doğru; kullanıcı C, anahtar C |
+| S13-39 | 1.2 | cross-perimeter | SCP15-Q10; S09 VPCSC kapsamı; bilinçli güvenlik pekiştirmesi | İlk doğru; kullanıcı A+D, anahtar A+D |
+| S13-40 | 3.2 | BackendConfig | SCP14-Q55; S11-16 probe temeli; LB ve Pod check ayrımı | İlk yanlış; kullanıcı D, anahtar A |
+| S13-41 | 2.2 | build-images | SCP16-Q02; S12-18; karma, build results kaydı ekli | İlk doğru; kullanıcı D+E, anahtar D+E |
+| S13-42 | 2.1 | debugger-source-map | SCP17-Q23; S10-14; karma, bağlı debugger path teşhisi | İlk doğru; kullanıcı B, anahtar B |
+| S13-43 | 3.2 | metadata-init | SCP16-Q06; S11-37 WIF üzerine transient startup dependency | İlk doğru; kullanıcı B, anahtar B |
+| S13-44 | 2.2 | immutable-tags | SCP15-Q26; S11-39 / S12-02; registry tag enforcement kararı | İlk doğru; kullanıcı D, anahtar D |
+| S13-45 | 4.1 | listener-lifecycle | SCP18-Q05; Firestore istemci lifecycle; temel realtime veri kullanımının uygulaması | İlk yanlış; kullanıcı C, anahtar B |
+| S13-46 | 3.2 | Autopilot-WIF | SCP16-Q40; S11-37 / S12-07; Autopilot yapılandırması | İlk yanlış; kullanıcı B, anahtar C |
+| S13-47 | 3.2 | container-HPA | SCP17-Q54; HPA temeli pekiştirme; container-specific ölçüm | İlk yanlış; kullanıcı C, anahtar D |
+| S13-48 | 1.1 | cache-aside | SCP16-Q27; S12-15 / S11-01; bilinçli pekiştirme | İlk doğru; kullanıcı D, anahtar D |
+| S13-49 | 1.2 | egress-policy | SCP18-Q07; S11-21 / S03-10; bilinçli pekiştirme | İlk yanlış; kullanıcı A, anahtar C |
+| S13-50 | 4.2 | quota-project | SCP17-Q44; S09-39; bilinçli pekiştirme, izin zaten sağlanmış | İlk yanlış; kullanıcı A, anahtar B |
 
 
 ## PCD-S14 — 8 Ekim 2026, Gemini/API entegrasyon konu seti
@@ -576,3 +576,5 @@ Kullanıcının açık talebiyle 50 farklı kaynak sorunun uyarlaması. Tamamı 
 | S14-20 | 4.2 | Vision ortak proje kotası ve global bütçe; same Vision quota project | Karma; Q6 tek client hesabından farklı bağımsız fleet koordinasyonu; S11-28 dispatch temeli. | İlk doğru; kullanıcı A, anahtar A |
 
 9 Ekim S14 ilk sonuç: 17/20 (%85), 54 dakika; Q07/Q08/Q19 yanlış. Ham ilk cevaplar results/PCD-S14-attempt-01.md içinde korunur. Açıklama sonrası kavrayış teyidi yok.
+
+9 Ekim S13 ilk sonuç: 29/50 (%58), 112 dakika. Ham ilk cevaplar results/PCD-S13-attempt-01.md içinde korunur. Soru bazlı hata nedeni ve kavrayış teyidi yok; önceki konsantrasyon geri bildirimi neden olarak atanmaz.
