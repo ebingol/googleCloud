@@ -196,3 +196,5 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 ## PCD-S14 — Gemini ve Google Cloud API entegrasyonu
 
 8 Ekim 2026. [20 soru](scenarios/PCD-S14.md), [ayrı Türkçe anahtar ve kapsam haritası](answers/scenarios/PCD-S14.md). Konu seti: 5 PDF temelli soru, 15 ek resmî entegrasyon sorusu. Gemini publisher/multimodal/prompt-tuning, IAM/ADC/Workstations, Tasks, Eventarc/Workflows ve Vision request-feature-in-processing kotaları doğrudan örneklenir. Q04/Q19 çift seçim; 50 dakika kişisel hedef. Tam sınav ağırlıkları uygulanmaz; 1.1/1.2/2.1/4.1/4.2 seçili kararları, tüm rehber veya ürün ayrıntılarını kapsamaz. Model sürümleri ve sayısal varsayılan kotalar ezberletilmez. Hazırlık tamamlandı; kullanıcı çözümü, süre/puan veya öğrenme teyidi yok. S12 doğrulanmış ilk 44/50, 72 dakika korunur; geçmiş “S12 çözülmedi” notları tarihsel kalmıştır.
+
+9 Ekim S14 sonuç güncellemesi: **17/20 (%85), 54 dakika**; Q07/Q08/Q19 yanlış. [İlk sonuç](scenarios/results/PCD-S14-attempt-01.md). PDF temelli beş soru doğru; tüm konu hakimiyeti veya kalıcılık sonucu çıkarılmaz. Önceki hazırlık/çözülmedi notu tarihsel kaldı.

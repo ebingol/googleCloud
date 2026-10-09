@@ -1,5 +1,9 @@
 # Günlük quiz ve senaryo stratejisi
 
+## 9 Ekim — konsantrasyon geri bildirimi ve S14 anahtarlı çalışma
+
+Kullanıcı yoğun soruların bir noktadan sonra konsantrasyonunu aştığını belirtti. S14 anahtarlı tekrar 4×5 bölümle, süre hedefi olmadan kullanılabilir; kısa molalar mümkündür. Bu geri bildirim uzun İngilizce soru metinlerini kısaltma isteği değildir ve Q07/Q08/Q19 hata nedenini tek başına kanıtlamaz. İlk 17/20, 54 dakika korunur. [Tekrar dosyası](../answers/scenarios/PCD-S14-REVIEW.md) rehberli çalışmadır; yeni bağımsız ölçüm değildir.
+
 ## 8 Ekim — S14 konu seti hazır
 
 Kullanıcı Gemini PDF’si ve API entegrasyonu kapsamından 20 soru istedi. [S14](PCD-S14.md) 18 tek + Q04/Q19 çift seçim, 50 dakika kişisel hedef; 5 PDF temelli ve 15 ek resmî kaynak sorusu. Bu özel konu talebi tam sınav ağırlıklarından önce gelir. IAM/ADC, Workstations, Tasks/Eventarc/Workflows ve Vision yük yönetimi öncelikli. İlk cevaplar/süre bekleniyor; yeni set kendiliğinden üretilmez. S12 ilk 44/50, 72 dakika korunur; S13 henüz çözülmedi. Sonraki yeni ID S15. Otomasyon yok.
