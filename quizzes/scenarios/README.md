@@ -66,3 +66,8 @@ S08, güncel resmî rehberin dört ana alanındaki 11 alt başlığın her birin
 ## S09 — 28 Eylül
 
 Son bir ayın aday yorumları önce incelendi; tarih ve kanıt sınırlamaları [araştırma notunda](PCD-RESEARCH-2026-09-28.md). S09 tamamlandı: ilk gönderilen 37/50 (%74), toplam 128 dakika. Sonraki yeni set S10. S08 45/50 ve kesintili 119 dakika korunur.
+
+
+## PCD-S15
+
+[S15 GKE ağırlıklı karma sınav](PCD-S15.md) · 50 soru / 120 dakika kişisel hedef · 47 tek + 3 çift seçim. [Ayrı Türkçe anahtar](../answers/scenarios/PCD-S15.md). 38 SkillCertPro uyarlaması + 12 tamamlayıcı resmî belge sorusu. Henüz çözülmedi.

@@ -1,5 +1,14 @@
 # Günlük quiz ve senaryo stratejisi
 
+## 14 Ekim 2026 S15 hazır
+
+Kullanıcının açık isteğiyle Chrome üzerinden satın alınmış SkillCertPro bankasının 18 setinde 1.050 soru/seçenek/cevap DOM metni tarandı (başlık 1.052). Seçilen 38 adayın gövde ve platform açıklamaları ayrıntılı karşılaştırıldı; bütün bankanın her teknik açıklamasının bağımsız doğrulanması iddia edilmez. Set 1/2 boş bitirildi, Set 3 inceleme için başlatıldı; bunlar kullanıcı sınav sonuçları değildir.
+
+[S15](PCD-S15.md): 50 soru, 120 dakika kişisel hedef, 47 tek + Q09/Q26/Q43 çift seçim. GKE 20 (geliştirici araçları/gözlem dahil), CI/CD 7, Workflows 5, Workstations 4, Buildpacks 3, Eventarc 3, Gemini 2, veri 4, Identity Platform 1, Tasks 1. Konular karışık, her 10'luk bölümde 3–5 GKE sorusu. 38 platform uyarlaması + 12 ek resmî kaynak sorusu; Eventarc doğru cevaplı kaynak senaryosu yok, Workflows/Buildpacks/Workstations sınırlı. Dağılım aday deneyimi aktarımına göre özel çalışma tercihidir; gerçek sınav tahmini veya zorluk kalibrasyonu değildir. [Ayrı Türkçe anahtar](../answers/scenarios/PCD-S15.md) karar/eleme koşulu/sade İngilizce/teknik kaynak içerir. Kaynak ve düzeltmeler reviews/PCD-S15-selection.json ve reviews/PCD-S15-source-audit.json içinde.
+
+Önemli düzeltmeler: SCP16-Q28 resource koşulları/anahtar; SCP17-Q57 yanlış sidecar açıklaması; SCP17-Q09 açıklamanın şık olması; Firestore batch atomiklik koşulu; private-pool network transitiveness; Secret Manager disable ile dış credential revocation ayrımı. S13 Q15 orchestration ve S11 Q14 home mount bilinçli pekiştirmedir. S15 henüz çözülmedi; ilk cevap/süre/puan yok. Önceki sonuçlar değiştirilmedi. Sonraki adım S15 ilk 10 cevap ve süre; yeni ID S16. Kullanıcı S15 için commit/push istedi; gönderim durumu Git kayıtlarıyla doğrulanır. Otomasyon yok.
+
+
 ## 9 Ekim — S13 anahtarlı bilgi çalışması
 
 Kullanıcı S13 soru+cevaplarını ve gerekli ürün bilgisi eklerini istedi. [Tekrar](../answers/scenarios/PCD-S13-REVIEW.md) 50 soru ve 50 kısa bilgi notuyla 10×5 bölümde hazır. Süre hedefi yok; kullanıcının yarın inceleme ve mola ihtiyacı korunur. Bilinmeyen ürün özelliğini, koşul kaçırma ve alternatif karıştırmadan ayır; tüm yanlışları bilgi veya konsantrasyon eksikliği sayma. İlk 29/50,112 dakika korunur; anahtarlı okuma bağımsız ölçüm değildir.

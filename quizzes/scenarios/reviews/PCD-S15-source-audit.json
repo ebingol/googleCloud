@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-14",
+  "live_browser": "Chrome SkillCertPro authenticated DOM scan",
+  "counts": {
+    "1": 59,
+    "2": 59,
+    "3": 60,
+    "4": 60,
+    "5": 60,
+    "6": 60,
+    "7": 60,
+    "8": 60,
+    "9": 60,
+    "10": 60,
+    "11": 60,
+    "12": 60,
+    "13": 60,
+    "14": 60,
+    "15": 60,
+    "16": 60,
+    "17": 60,
+    "18": 32
+  },
+  "total": 1050,
+  "advertised": 1052,
+  "scope": "18 setin DOM soru/seçenek/cevap metinleri tarandı; seçilen adaylar ayrıntılı incelendi. Tüm bankanın her açıklaması bağımsız teknik doğrulanmış değildir.",
+  "inspection_attempts": "Set 1 ve Set 2 boş bitirildi; bunlar asistan incelemesi, kullanıcı sonucu değil. Set 3 başlatıldı; geri kalan setler DOM metni üzerinden okundu.",
+  "known_fixes": [
+    "SCP16-Q28: kaynak C; açık rezervasyon/peak şartlarıyla A",
+    "SCP17-Q57: açıklama yanlış sidecar sorusuna ait; 120%",
+    "SCP17-Q09: açıklama şık olarak yapıştırılmış; çıkarıldı",
+    "SCP18-Q22: atomic condition eklendi",
+    "SCP14-Q01: private pool network transitiveness belirsizliği düzeltildi",
+    "SCP13-Q23: disable dış credential revocation değildir"
+  ],
+  "source_questions": 38,
+  "official_supplements": 12,
+  "groups": {
+    "GKE": 20,
+    "Data": 4,
+    "CI/CD": 7,
+    "Gemini": 2,
+    "Buildpacks": 3,
+    "Workflows": 5,
+    "Tasks": 1,
+    "Workstations": 4,
+    "Eventarc": 3,
+    "Identity": 1
+  }
+}

@@ -1,0 +1,1184 @@
+[
+  {
+    "source": "SCP14-Q15",
+    "stem": "Your application running on a GKE Standard cluster exports a custom business metric to Cloud Monitoring, and you want a HorizontalPodAutoscaler to scale the Deployment based on that metric. You configured the HPA to reference the custom metric, but it reports an unavailable metric value and never scales on it, while CPU-based scaling on the same cluster works correctly. The custom metric name is correct, its Cloud Monitoring data is present, and the adapter identity already has the required read permissions. No custom metrics adapter is installed. What should you do to enable scaling on the Cloud Monitoring metric?",
+    "options": [
+      "Deploy the Custom Metrics Stackdriver Adapter to the cluster so the HPA controller can read the metric from Cloud Monitoring through the custom and external metrics API.",
+      "Increase the metrics-server resource limits so that it can scrape the additional custom metric from each Pod.",
+      "Reconfigure the application to write the metric to standard output as structured JSON, create a logs-based metric, and point the HPA resource block directly at the Cloud Logging sink so the controller polls it each sync interval.",
+      "Switch the HPA manifest to apiVersion autoscaling/v1 and add the custom metric under targetCPUUtilizationPercentage."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "GKE",
+    "topic": "custom metrics adapter",
+    "why": "Cloud Monitoring metric’ini Kubernetes custom/external metrics API’ye sunan adapter gerekir.",
+    "trap": "CPU metrics-server Cloud Monitoring’deki business metric’i kendiliğinden sunmaz. Adapter IAM erişimi de gerekir.",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/tutorials/autoscaling-metrics",
+    "original_answers": [
+      "B"
+    ],
+    "n": 1,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Metric is present, no adapter installed” → Ölçüm var ama HPA’nın okuyacağı arayüze sunulmamış."
+  },
+  {
+    "source": "SCP13-Q15",
+    "stem": "Your team has deployed a new version of an application to GKE, but users are reporting errors. You need to quickly revert to the previous working version while minimizing user impact. The Deployment history shows multiple revisions. The immediately preceding revision is the known good version, and no GitOps controller is reverting emergency changes. What is the fastest method to accomplish this using kubectl?",
+    "options": [
+      "Run kubectl scale deployment/my-app --replicas=0, update the manifest, then scale back up.",
+      "Run kubectl rollout history deployment/my-app, then run kubectl set image deployment/my-app container=previous-image:tag.",
+      "Run kubectl delete deployment my-app, then run kubectl apply -f previous-deployment.yaml.",
+      "Run kubectl rollout undo deployment/my-app to automatically roll back to the previous revision."
+    ],
+    "answers": [
+      "D"
+    ],
+    "group": "GKE",
+    "topic": "rollout undo",
+    "why": "rollout undo saklanan önceki Pod template revision’ına döner.",
+    "trap": "Deployment’ı silmek veya sıfıra indirmek gereksiz kesinti yaratır; rollback başarı ve sıfır kesinti garantisi değildir.",
+    "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-back-a-deployment",
+    "original_answers": [
+      "A"
+    ],
+    "n": 2,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Previous working version” → Çalıştığını bildiğin bir önceki Deployment sürümüne dön."
+  },
+  {
+    "source": "SCP18-Q22",
+    "stem": "You are developing an application with Cloud Firestore that needs to update 200 product documents with new pricing information. You do not need to read any documents or make decisions based on current values. You want to minimize latency and avoid transaction contention. All 200 updates must commit together or none must take effect, and the batch is within request-size limits. What should you do?",
+    "options": [
+      "Use a Firestore transaction to read all 200 documents first, then write the updated prices to ensure consistency.",
+      "Use the bulk writer with the 500/50/5 rule to gradually ramp up parallel writes for large batch operations.",
+      "Execute 200 individual update operations in parallel using Promise.all() to maximize throughput.",
+      "Use a batched write to group the update operations and commit them atomically without reading documents."
+    ],
+    "answers": [
+      "D"
+    ],
+    "group": "Data",
+    "topic": "atomic batched write",
+    "why": "Read-dependent karar yoksa atomic batched write 200 update’i birlikte commit eder.",
+    "trap": "BulkWriter/Promise.all tüm set için atomiklik sağlamaz. Kaynak gövdesine bu gerekli koşul eklendi.",
+    "url": "https://firebase.google.com/docs/firestore/manage-data/transactions",
+    "original_answers": [
+      "B"
+    ],
+    "n": 3,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“All commit together or none” → Güncellemelerin bir kısmı kalıp bir kısmı başarısız olmasın."
+  },
+  {
+    "source": "SCP13-Q13",
+    "stem": "You are configuring a Cloud Build pipeline for a Python application. Your integration tests generate JUnit XML test reports that your team needs to analyze after builds complete. You want to persist these test results outside of the build environment following Google-recommended best practices. The reports must be retained after successful builds; preserving reports from failed builds is handled separately. What should you do?",
+    "options": [
+      "Configure the Cloud Build ‘artifacts‘ section with an ‘objects‘ block specifying a Cloud Storage bucket location and the paths to the test report XML files.",
+      "Use Cloud Logging to write the test results by configuring the test framework to output results to STDOUT during the build step.",
+      "Configure a custom volume in the build step and mount it to persist test results across build steps and after the build completes.",
+      "Write the test results to /workspace/test_results and configure the build to automatically persist all files in /workspace to Cloud Storage."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "CI/CD",
+    "topic": "persistent reports",
+    "why": "artifacts.objects ile rapor dosyalarının bucket konumu ve paths listesi tanımlanır.",
+    "trap": "workspace ve custom volume build’ler arasında kalıcı değildir. artifacts upload başarıyla tamamlanan build için uygulanır.",
+    "url": "https://docs.cloud.google.com/build/docs/building/store-artifacts-in-cloud-storage",
+    "original_answers": [
+      "B"
+    ],
+    "n": 4,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Outside the build environment” → Rapor build makinesi kapanınca da saklansın."
+  },
+  {
+    "source": "SCP13-Q47",
+    "stem": "An incident affects several microservices that together make up one customer-facing application; the services are registered to an application managed in an app-enabled folder with App Hub. You want a single Gemini Cloud Assist investigation that reasons across the entire application rather than one resource at a time. The organization has access to the investigations offering and the operator has the required permissions. What should you do?",
+    "options": [
+      "Run a separate project-level investigation for each underlying service and then manually correlate the observations and hypotheses across all of the individual reports yourself.",
+      "Run the investigation against a regional log bucket so it captures all of the application‘s services.",
+      "Run an application-level Gemini Cloud Assist investigation from Cloud Hub for the App Hub application.",
+      "Run one Gemini Cloud Assist investigation that spans multiple projects at once by listing every project as a resource."
+    ],
+    "answers": [
+      "C"
+    ],
+    "group": "Gemini",
+    "topic": "application investigation",
+    "why": "App Hub application kapsamıyla Cloud Hub üzerinden tek investigation başlatılır.",
+    "trap": "Proje listesi ilişkili application kapsamını yerine koymaz. İlgili preview erişimi ve izinler soruda hazırdır.",
+    "url": "https://docs.cloud.google.com/cloud-assist/investigations",
+    "original_answers": [
+      "B"
+    ],
+    "n": 5,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Across the entire application” → Tek resource yerine App Hub’daki ilişkili uygulamayı birlikte incele."
+  },
+  {
+    "source": "OFFICIAL-BP2",
+    "group": "Buildpacks",
+    "topic": "build environment",
+    "stem": "A Cloud Run source deployment uses Google buildpacks. An approved build step needs a documented, non-secret build-time environment variable to control how assets are compiled. Setting the variable only on the running service changes application behavior but leaves the compiled assets unchanged. Which configuration supplies it at the required phase?",
+    "options": [
+      "Use only --set-env-vars on the service because runtime variables are inherited by every Cloud Build step.",
+      "Use the source deployment build environment configuration, such as --set-build-env-vars, when creating the new build.",
+      "Set the value on the Cloud Run revision after it is deployed so the existing image is rebuilt in place.",
+      "Grant the build identity Cloud Run Invoker so it can read environment variables from running instances."
+    ],
+    "answers": [
+      "B"
+    ],
+    "why": "Build env buildpacks’ın build aşamasına verilir; yeni source build bu ayarı kullanır.",
+    "trap": "Runtime env hazırlanmış image’ın içindeki compiled asset’i yeniden derlemez.",
+    "url": "https://docs.cloud.google.com/run/docs/configuring/services/build-environment-variables",
+    "original_answers": null,
+    "n": 6,
+    "previous": "Ek resmî kaynak; ilgili önceki kimlik/konfigürasyon mekanizmaları pekiştirilebilir.",
+    "plain": "“At the required phase” → Ayar container çalışırken değil, image hazırlanırken gerekli."
+  },
+  {
+    "source": "SCP17-Q09",
+    "stem": "You are implementing a canary deployment strategy for a Cloud Run service using Cloud Deploy. This is the first time deploying the application to the target environment. The canary deployment is configured with 10%, 50%, and 75% traffic phases before the stable phase. What behavior should you expect during this first deployment?",
+    "options": [
+      "Cloud Deploy skips the canary phases and deploys directly to the stable phase at 100%, because there is no existing revision to split traffic with.",
+      "Cloud Deploy prompts you to manually advance through each canary phase, waiting for your approval to create the initial baseline revision.",
+      "Cloud Deploy creates placeholder revisions at each percentage phase and proceeds through all configured canary phases before reaching stable.",
+      "Cloud Deploy fails the deployment with an error indicating that canary deployments require an existing stable revision in the target environment."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "CI/CD",
+    "topic": "first canary rollout",
+    "why": "Mevcut stable revision yoksa ilk rollout canary aşamalarını atlayıp stable ile başlar.",
+    "trap": "Placeholder revision oluşturulmaz. Kaynakta D seçeneğine yapıştırılmış açıklama kaldırıldı.",
+    "url": "https://docs.cloud.google.com/deploy/docs/deployment-strategies/canary/cloud-run",
+    "original_answers": [
+      "B"
+    ],
+    "n": 7,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“First deployment; no existing revision” → Trafiği paylaşacak eski sürüm yok."
+  },
+  {
+    "source": "SCP15-Q21",
+    "stem": "Your company is deploying a web application on GKE that needs to be accessible only from within your organization‘s VPC network. The application requires HTTP(S) load balancing with URL-based routing to multiple backend services. You need to configure the Ingress resource to deploy the appropriate load balancer type. What should you do?",
+    "options": [
+      "Use spec.ingressClassName: ‘gce-internal‘ in the Ingress manifest instead of annotations to deploy an internal Application Load Balancer.",
+      "Create a Service of type LoadBalancer with the annotation networking.gke.io/load-balancer-type: ‘Internal‘ to expose the application internally.",
+      "Add the annotation kubernetes.io/ingress.class: ‘gce-internal‘ to the Ingress manifest to deploy an internal Application Load Balancer.",
+      "Add the annotation kubernetes.io/ingress.class: ‘gce‘ to the Ingress manifest to deploy an external Application Load Balancer with firewall rules limiting access to internal IPs."
+    ],
+    "answers": [
+      "C"
+    ],
+    "group": "GKE",
+    "topic": "internal Ingress",
+    "why": "GKE Ingress üzerinde kubernetes.io/ingress.class: gce-internal kullanılır.",
+    "trap": "Internal LoadBalancer Service HTTP path routing ihtiyacını tek başına karşılamaz.",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/internal-load-balance-ingress",
+    "original_answers": [
+      "C"
+    ],
+    "n": 8,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“URL-based routing within the VPC” → VPC içinden erişilen HTTP path routing gerekli."
+  },
+  {
+    "source": "OFFICIAL-WF1",
+    "group": "Workflows",
+    "topic": "parallel branch results",
+    "stem": "A Workflows execution retrieves pricing and stock information from independent HTTP services. A final decision needs both responses. Each branch must write its result into a variable initialized in the parent scope, and the final decision must run only after both branches finish. Which TWO elements should be configured?",
+    "options": [
+      "Place the independent calls in branches of a parallel step and put the final decision after that parallel step.",
+      "Give the two branches identical step names so one branch automatically waits for the other.",
+      "Add both parent result variables to the parallel step shared list so the branches may assign them.",
+      "Use a single Cloud Tasks queue with concurrency two, which provides the workflow with both response bodies.",
+      "Define the results only as branch-local variables and reference them directly from the parent after the parallel step."
+    ],
+    "answers": [
+      "A",
+      "C"
+    ],
+    "why": "parallel bağımsız çağrıları eşzamanlı yapar ve tamamlanınca parent devam eder. shared parent variable’a write izni verir.",
+    "trap": "Branch-local değer parent scope’dan okunmaz; shared ayrıca nested parallel scope’da da tanımlanmalıdır.",
+    "url": "https://docs.cloud.google.com/workflows/docs/reference/syntax/parallel-steps",
+    "original_answers": null,
+    "n": 9,
+    "previous": "Ek resmî kaynak; ilgili önceki kimlik/konfigürasyon mekanizmaları pekiştirilebilir.",
+    "plain": "“Both responses; parent scope” → Paralel iki işin sonucunu üst akışta kullan."
+  },
+  {
+    "source": "SCP18-Q02",
+    "stem": "Your team uses Cloud Build triggers to automatically deploy container images to Cloud Run when commits are pushed to your GitHub repository. You want to ensure each deployed revision can be traced back to its source code commit for debugging and audit purposes. How should you configure your cloudbuild.yaml file to accomplish this?",
+    "options": [
+      "Create a custom script in your cloudbuild.yaml that queries the GitHub API to retrieve the commit SHA and passes it to subsequent build steps through environment variables.",
+      "Configure your Cloud Build trigger to use webhook events with a custom payload that includes the commit SHA as a trigger substitution.",
+      "Tag the container image with the $COMMIT_SHA substitution variable in your cloudbuild.yaml file. Use the same tag when pushing to Artifact Registry and deploying to Cloud Run.",
+      "Configure your build steps to tag images with the current timestamp using $BUILD_ID and store the Git SHA in a separate metadata file in Cloud Storage."
+    ],
+    "answers": [
+      "C"
+    ],
+    "group": "CI/CD",
+    "topic": "commit traceability",
+    "why": "COMMIT_SHA tag’ini build, push ve deploy’da aynı kullanırsın.",
+    "trap": "BUILD_ID commit SHA değildir. Commit tag’i değiştirilemez bytes garantisi vermez; immutable tag veya digest ayrıca düşünülebilir.",
+    "url": "https://docs.cloud.google.com/build/docs/configuring-builds/substitute-variable-values",
+    "original_answers": [
+      "B"
+    ],
+    "n": 10,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Traced back to its source code commit” → Hangi commit’in bu revision’ı ürettiğini bulabil."
+  },
+  {
+    "source": "SCP13-Q53",
+    "stem": "You are optimizing a Cloud Build pipeline that builds Docker images for a Node.js application. The builds are currently slow because Docker rebuilds all layers each time, even when only the application code changes. The Dockerfile has not changed in months, and most build time is spent downloading npm dependencies. You want to speed up subsequent builds while keeping the pipeline configuration simple. The Dockerfile copies the unchanged package manifest and lockfile and installs dependencies before copying application source. A previously built cache image exists. What should you do?",
+    "options": [
+      "Configure a persistent disk attached to Cloud Build workers to store the Docker build cache across multiple build executions.",
+      "Configure the cloudbuild.yaml to pull a previously built image from Artifact Registry and use the --cache-from argument with docker build to reuse unchanged layers from the cached image.",
+      "Store the node_modules directory in a Cloud Storage bucket and copy it into the build context at the start of each build using a gcloud storage cp step.",
+      "Increase the Cloud Build machine type to E2_HIGHCPU_32 to download and install npm dependencies faster during each build execution."
+    ],
+    "answers": [
+      "B"
+    ],
+    "group": "CI/CD",
+    "topic": "Docker layer cache",
+    "why": "Önceki image’ı pull edip docker build --cache-from ile uygun layer’ları yeniden kullanırsın.",
+    "trap": "Dependency dosyaları source’dan önce kopyalanmalıdır; değişen önceki layer sonrası cache geçersizleşir.",
+    "url": "https://docs.cloud.google.com/build/docs/optimize-builds/speeding-up-builds",
+    "original_answers": [
+      "A"
+    ],
+    "n": 11,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Unchanged dependencies before source” → Kod değişse de değişmeyen paket katmanını yeniden indirip kurma."
+  },
+  {
+    "source": "OFFICIAL-WF2",
+    "group": "Workflows",
+    "topic": "safe step retries",
+    "stem": "A workflow successfully reserves inventory and then calls an idempotent pricing endpoint. Pricing sometimes returns HTTP 503, but repeating the inventory reservation would create a second reservation. The pricing endpoint is safe to repeat. You want a bounded retry with increasing delays that preserves the completed reservation. What should you configure?",
+    "options": [
+      "Retry the entire workflow execution whenever any step fails, including the inventory reservation.",
+      "Catch the 503 and return a successful workflow result without obtaining a price.",
+      "Attach a retry policy with an appropriate predicate, maximum retries, and exponential backoff to the pricing call only.",
+      "Increase the HTTP timeout indefinitely so pricing failures never reach the workflow."
+    ],
+    "answers": [
+      "C"
+    ],
+    "why": "Retry yalnız pricing step’inde uygulanır; tamamlanan reservation yeniden yürütülmez.",
+    "trap": "Workflow’un tümünü tekrar etmek non-idempotent önceki side effect’i çoğaltabilir.",
+    "url": "https://docs.cloud.google.com/workflows/docs/reference/syntax/retrying",
+    "original_answers": null,
+    "n": 12,
+    "previous": "Ek resmî kaynak; ilgili önceki kimlik/konfigürasyon mekanizmaları pekiştirilebilir.",
+    "plain": "“Preserves the completed reservation” → Başarılı stok ayırmayı tekrar yapmadan yalnız pricing’i tekrar dene."
+  },
+  {
+    "source": "SCP14-Q36",
+    "stem": "Your application running on GKE experiences intermittent connection failures to Memorystore for Redis during instance scaling and maintenance operations. You need to implement a resilient connection strategy that minimizes application disruptions. What should you do?",
+    "options": [
+      "Enable Memorystore AUTH and in-transit encryption to establish persistent connections that survive instance maintenance events without requiring reconnection logic.",
+      "Configure the GKE cluster to use a Memorystore read replica as the primary endpoint, and failover to the primary node only when the replica is unavailable.",
+      "Deploy multiple Basic Tier Memorystore instances and implement client-side sharding to distribute load, reducing the impact when any single instance undergoes maintenance.",
+      "Implement retry logic with exponential backoff in your application code to handle temporary connection failures, and configure a connection pool to efficiently manage Redis connections."
+    ],
+    "answers": [
+      "D"
+    ],
+    "group": "GKE",
+    "topic": "Redis reconnection",
+    "why": "Bounded exponential backoff, jitter ve connection pool transient bağlantı kopmalarını yönetir.",
+    "trap": "AUTH/TLS erişim güvenliği sağlar; bakım sırasında kopan bağlantıyı otomatik yaşatmaz.",
+    "url": "https://docs.cloud.google.com/memorystore/docs/redis/about-maintenance",
+    "original_answers": [
+      "A"
+    ],
+    "n": 13,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Temporary connection failures” → Geçici kopuşta kontrollü bekleyip tekrar bağlan."
+  },
+  {
+    "source": "SCP17-Q02",
+    "stem": "Your organization is migrating an order processing system to Cloud Tasks. The Cloud Tasks queue dispatches tasks to a Cloud Run function that updates inventory in Cloud SQL. During testing, you observe that some inventory updates are being processed multiple times, causing data inconsistencies. What is the recommended approach to prevent these issues?",
+    "options": [
+      "Configure the queue with max_concurrent_dispatches set to 1 to ensure only one task is processed at a time across the entire queue.",
+      "Use a stable order identifier and atomically record that identifier together with the inventory mutation in one database transaction, treating a previously committed identifier as a successful duplicate.",
+      "Enable automatic deduplication in Cloud Tasks by setting a unique task name for each order to prevent duplicate task creation.",
+      "Set max_attempts to 1 in the queue‘s RetryConfig to prevent any retries and eliminate the possibility of duplicate processing."
+    ],
+    "answers": [
+      "B"
+    ],
+    "group": "Tasks",
+    "topic": "atomic idempotency",
+    "why": "Stable order ID için duplicate kontrolü ve inventory mutation aynı DB transaction’da yapılır.",
+    "trap": "Unique task name creation dedup içindir; aynı task’ın redelivery’sini engellemez.",
+    "url": "https://docs.cloud.google.com/tasks/docs/common-pitfalls",
+    "original_answers": [
+      "B"
+    ],
+    "n": 14,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Repeated executions produce the same result” → Aynı işi ikinci kez almak stoktan ikinci kez düşmesin."
+  },
+  {
+    "source": "SCP18-Q18",
+    "stem": "You are deploying a microservices application to GKE that requires database credentials and API keys. Your security team mandates that sensitive data must be encrypted at rest and access must be controlled through IAM policies. You also need to audit when secrets are accessed. What should you do?",
+    "options": [
+      "Store the secrets in Secret Manager and use Workload Identity Federation for GKE to authenticate your application to access them via the Secret Manager API. Enable the relevant Data Access audit logs for secret access.",
+      "Create Kubernetes Secrets with the data encoded in base64 and enable application-layer secrets encryption with Cloud KMS on your GKE cluster.",
+      "Store the credentials in ConfigMaps and restrict access using Kubernetes RBAC policies on the namespace.",
+      "Store the secrets as environment variables directly in your Deployment manifests and encrypt the manifests using Cloud KMS before storing them in your Git repository."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "GKE",
+    "topic": "Secret Manager IAM audit",
+    "why": "Secret Manager, WIF ile workload kimliği ve secret-level IAM kullanılır; access kayıtları için Data Access logging etkinleştirilir.",
+    "trap": "Base64 encryption değildir; Kubernetes RBAC, Secret Manager IAM ve access audit gereksiniminin karşılığı değildir.",
+    "url": "https://docs.cloud.google.com/secret-manager/docs/audit-logging",
+    "original_answers": [
+      "C"
+    ],
+    "n": 15,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Access controlled through IAM and audited” → Secret okuma izni ve erişim kaydı Google Cloud tarafında yönetilsin."
+  },
+  {
+    "source": "SCP14-Q08",
+    "stem": "You are configuring an Ingress resource on GKE to expose multiple services externally. Your cluster is VPC-native, and you want to take advantage of container-native load balancing for optimal traffic distribution. Backend NEGs are enabled and configured correctly; you want to avoid allocating unnecessary node ports. Which Service type should you use for the backend Services referenced by the Ingress?",
+    "options": [
+      "Use type: ExternalName for the backend Services to map directly to external DNS names for improved routing performance.",
+      "Use type: NodePort for the backend Services, as this is always required for Ingress regardless of container-native load balancing settings.",
+      "Use type: LoadBalancer for the backend Services to ensure each service has its own external IP address for the Ingress to reference.",
+      "Use type: ClusterIP for the backend Services when container-native load balancing is enabled."
+    ],
+    "answers": [
+      "D"
+    ],
+    "group": "GKE",
+    "topic": "Ingress NEG backend",
+    "why": "NEG kullanan container-native Ingress için ClusterIP Service yeterlidir; trafik Pod IP’lerine yönlenir.",
+    "trap": "NodePort bazı yapılarda kullanılabilir; burada her backend için ayrı LoadBalancer gerekmez.",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/container-native-load-balancing",
+    "original_answers": [
+      "D"
+    ],
+    "n": 16,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Avoid allocating unnecessary node ports” → Pod’a doğrudan erişirken gereksiz NodePort açma."
+  },
+  {
+    "source": "OFFICIAL-WS3",
+    "group": "Workstations",
+    "topic": "ADC impersonation",
+    "stem": "A developer uses a supported Python client library inside Cloud Workstations to reproduce a production authorization issue as app-runtime. The library uses ADC. Network access and app-runtime resource permissions are verified, the developer may impersonate that service account, and no environment credential file overrides ADC. The test must use app-runtime without creating a long-lived key. Which action should the developer take?",
+    "options": [
+      "Run gcloud auth login and leave the client library to use whichever personal ADC file already exists.",
+      "Export a service account JSON key to the persistent home directory and configure the library to read it.",
+      "Grant app-runtime the Cloud Workstations User role so all code in the workstation switches to that identity.",
+      "Create local ADC using gcloud auth application-default login --impersonate-service-account=app-runtime@PROJECT_ID.iam.gserviceaccount.com."
+    ],
+    "answers": [
+      "D"
+    ],
+    "why": "Desteklenen Python library yerel impersonated ADC ile hedef SA adına kısa ömürlü credential kullanır.",
+    "trap": "gcloud CLI login ADC’yi aynı kimliğe geçirmek değildir; Workstations User workstation’a erişim içindir.",
+    "url": "https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment",
+    "original_answers": null,
+    "n": 17,
+    "previous": "Ek resmî kaynak; ilgili önceki kimlik/konfigürasyon mekanizmaları pekiştirilebilir.",
+    "plain": "“As app-runtime without a long-lived key” → Kod hedef servis hesabı adına çalışsın; JSON key oluşturma."
+  },
+  {
+    "source": "SCP12-Q13",
+    "stem": "Your HorizontalPodAutoscaler on a GKE Standard cluster correctly scales a Deployment out toward its maxReplicas during traffic spikes. However, many of the new Pods remain in a Pending state with FailedScheduling events indicating insufficient CPU on the existing nodes. You need the cluster to provide capacity for the additional Pods automatically. What should you do?",
+    "options": [
+      "Reduce the maxReplicas value in the HorizontalPodAutoscaler so that the Deployment never requests more Pods than the current nodes can schedule.",
+      "Enable cluster autoscaler on the node pool so that nodes are added automatically when Pods cannot be scheduled due to insufficient resources.",
+      "Lower the CPU resource requests on the Deployment‘s containers so that more Pods can be packed onto the existing nodes during traffic spikes.",
+      "Create a second HorizontalPodAutoscaler that targets the same Deployment using memory utilization so that the combined autoscalers distribute Pods more evenly across the available nodes and avoid the Pending state."
+    ],
+    "answers": [
+      "B"
+    ],
+    "group": "GKE",
+    "topic": "node capacity",
+    "why": "HPA replica sayısını artırmış; Pending Pod’lar için node pool cluster autoscaler kapasite ekler.",
+    "trap": "İkinci HPA node kapasitesi oluşturmaz. Node limitleri ve kota yeterli olmalıdır.",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler",
+    "original_answers": [
+      "C"
+    ],
+    "n": 18,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Pending / insufficient CPU” → Replica istendi ama onu çalıştıracak node kapasitesi yok."
+  },
+  {
+    "source": "SCP16-Q28",
+    "stem": "A GKE Standard application normally needs 250m CPU and 512Mi memory. Load tests show peaks of 1000m CPU and 768Mi memory. Platform policy requires reserving only the normal requirement while imposing hard limits of 1000m CPU and 1Gi memory. All values are validated for this application. Which resource configuration satisfies both the reservation policy and peak requirements?",
+    "options": [
+      "Set both CPU request and limit to 1000m, and set both memory request and limit to 1Gi to ensure guaranteed QoS class.",
+      "Set no resource requests or limits and rely on GKE Autopilot to automatically determine the appropriate resource values.",
+      "Set CPU request to 250m with no CPU limit, and set both memory request and limit to 512Mi.",
+      "Set CPU request to 250m with limit of 1000m, and set memory request to 512Mi with limit of 1Gi."
+    ],
+    "answers": [
+      "D"
+    ],
+    "group": "GKE",
+    "topic": "requests limits",
+    "why": "250m CPU/512Mi memory request; 1000m CPU/1Gi memory limit verilen rezervasyon ve üst sınır koşullarını karşılar.",
+    "trap": "Kaynak C diyor. Şartları açıklaştırılmış bu soruda A doğrudur. 512Mi limit, belirtilen 768Mi peak memory ihtiyacını karşılamaz.",
+    "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+    "original_answers": [
+      "C"
+    ],
+    "n": 19,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Reserve normal requirement; impose hard limits” → Normal ihtiyacı ayır, peak için izin ver ama üst sınırı uygula."
+  },
+  {
+    "source": "OFFICIAL-WS2",
+    "group": "Workstations",
+    "topic": "environment configuration",
+    "stem": "A platform team maintains an approved Cloud Workstations container image. Developers need more VM memory and a larger persistent home disk, while retaining exactly the same development tools. The team wants these settings managed through the workstation service rather than changes to application code. Where should it configure the machine type and home disk settings?",
+    "options": [
+      "Modify the application Deployment resource requests and limits inside the development Kubernetes cluster.",
+      "Set CPU and memory limits in the Dockerfile and increase the size of an image layer containing /home.",
+      "Add flags to the IDE launch configuration, which provisions the VM and expands its persistent disk.",
+      "Change the workstation configuration machine and persistent directory settings while retaining its container image reference."
+    ],
+    "answers": [
+      "D"
+    ],
+    "why": "WorkstationConfig VM/machine ve persistent directory ayarlarını yönetir; container image araçları sağlar.",
+    "trap": "Image layer boyutu kalıcı disk boyutu değildir; GKE Pod limits workstation VM’ini değiştirmez.",
+    "url": "https://docs.cloud.google.com/workstations/docs/customize-development-environment",
+    "original_answers": null,
+    "n": 20,
+    "previous": "Ek resmî kaynak; ilgili önceki kimlik/konfigürasyon mekanizmaları pekiştirilebilir.",
+    "plain": "“Same tools, more VM memory” → Araç image’ı aynı kalsın; workstation makine ayarı değişsin."
+  },
+  {
+    "source": "SCP16-Q45",
+    "stem": "Your team is deploying a production application on GKE that accesses API keys from Secret Manager. The security team requires that applications always use validated and tested secret versions rather than automatically picking up new versions that might contain errors. An operator must not be able to change the secret selected by moving an alias without a corresponding release configuration change. How should you configure your application to follow Google-recommended best practices?",
+    "options": [
+      "Configure your application to always use the latest alias when accessing secrets to ensure it automatically receives the most recent credentials.",
+      "Create a custom version alias called ‘production‘ and have your application always access this alias to simplify secret management.",
+      "Reference secrets by their specific version number in your deployment configuration and update version numbers through your existing release processes.",
+      "Store secrets locally in your GKE cluster as Kubernetes Secrets and manually sync them from Secret Manager periodically to maintain control over version updates."
+    ],
+    "answers": [
+      "C"
+    ],
+    "group": "GKE",
+    "topic": "pinned secret version",
+    "why": "Validated numeric version deployment ile pin edilir, değişiklik release sürecinden geçer.",
+    "trap": "latest veya taşınabilen alias release manifest’i değişmeden başka değere geçebilir.",
+    "url": "https://docs.cloud.google.com/secret-manager/docs/best-practices",
+    "original_answers": [
+      "A"
+    ],
+    "n": 21,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Validated and tested versions” → Son yüklenen değere kendiliğinden geçme; onaylanmış sayısal sürümü kullan."
+  },
+  {
+    "source": "SCP14-Q27",
+    "stem": "Your team is building a loan-approval process composed of six independent HTTP services that must run in a defined order, with conditional branching based on each service‘s response. You need to define the orchestration logic in a single place, observe the execution state of every step, and avoid running any worker infrastructure while the process is idle. Which approach should you use?",
+    "options": [
+      "Deploy a Compute Engine managed instance group that runs a controller process which calls each service in order, persists the current step to a database, and evaluates branching logic from configuration files.",
+      "Publish a message to a Pub/Sub topic for each service and let each service subscribe to the previous service‘s topic.",
+      "Define the process as a Workflows workflow that calls each HTTP service in sequence and uses conditional steps for branching.",
+      "Chain the services together by having each service enqueue a Cloud Tasks task that targets the next service in the sequence."
+    ],
+    "answers": [
+      "C"
+    ],
+    "group": "Workflows",
+    "topic": "central orchestration",
+    "why": "Workflows sequence, conditional branch ve execution history’yi merkezi olarak sağlar.",
+    "trap": "Pub/Sub fan-out veya Tasks chain ile business orchestration mantığı servislere dağılır. S13 Q15’e yakın bilinçli kaynak pekiştirmesi.",
+    "url": "https://docs.cloud.google.com/workflows/docs/overview",
+    "original_answers": [
+      "B"
+    ],
+    "n": 22,
+    "previous": "S13 Q15 ile aynı orchestration kararı; bilinçli pekiştirme.",
+    "plain": "“In a single place; execution state of every step” → İşin sırası ve dallanması merkezi tanımlı, adımları izlenebilir olsun."
+  },
+  {
+    "source": "SCP13-Q21",
+    "stem": "You are developing a microservice that runs on a GKE cluster, and you use VS Code with the Cloud Code plugin. While debugging a deployment issue, you want to browse the cluster‘s Pods, Deployments, and Services and stream live container logs directly from your IDE without switching to a separate terminal or the Google Cloud console. What should you do?",
+    "options": [
+      "Use the Cloud Code Kubernetes Explorer in VS Code to browse the cluster‘s resources and stream logs from the selected Pods.",
+      "Install a standalone Kubernetes dashboard add-on on the cluster, expose it through a load balancer, and open the dashboard URL in a browser tab next to VS Code to monitor resources and tail container logs.",
+      "Run repeated kubectl get and kubectl logs commands in the VS Code integrated terminal to list resources and follow the logs of each container.",
+      "Configure a Cloud Monitoring dashboard for the cluster and create log-based metrics so that you can inspect the state of each Pod and Deployment from the console."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "GKE",
+    "topic": "IDE cluster explorer",
+    "why": "Cloud Code Kubernetes Explorer kaynakları ve seçili Pod loglarını IDE’den gösterir.",
+    "trap": "Integrated terminal kullanılabilir ama sorudaki terminale geçmeme şartını karşılamaz.",
+    "url": "https://docs.cloud.google.com/code/docs/vscode/view-logs",
+    "original_answers": [
+      "B"
+    ],
+    "n": 23,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Without switching to a separate terminal” → Cluster kaynaklarını ve loglarını IDE panelinden gör."
+  },
+  {
+    "source": "SCP16-Q55",
+    "stem": "Your team is running a microservices application on a GKE cluster. You need to collect custom Prometheus metrics from your application pods and send them to Cloud Monitoring for analysis and alerting. You want to use Google‘s recommended approach with minimal operational overhead. What should you do?",
+    "options": [
+      "Install the Ops Agent on all GKE nodes and configure it to scrape Prometheus metrics from each pod‘s endpoint by specifying individual pod IPs in the agent configuration.",
+      "Create a Cloud Function that periodically queries each pod‘s metrics endpoint and writes the data to Cloud Monitoring using the custom metrics API with JSON payloads.",
+      "Enable Managed Service for Prometheus on the GKE cluster and create a PodMonitoring custom resource that specifies the metrics endpoint and scrape interval for your application pods.",
+      "Deploy and configure a self-managed Prometheus server in the cluster, then use the Prometheus remote write API to export all metrics to Cloud Monitoring every 30 seconds."
+    ],
+    "answers": [
+      "C"
+    ],
+    "group": "GKE",
+    "topic": "managed Prometheus",
+    "why": "Managed collection ve PodMonitoring scrape endpoint/interval seçer.",
+    "trap": "Self-managed Prometheus kurulabilir ama managed collection operasyon yükünü azaltır.",
+    "url": "https://docs.cloud.google.com/stackdriver/docs/managed-prometheus/setup-managed",
+    "original_answers": [
+      "B"
+    ],
+    "n": 24,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Minimal operational overhead” → Ayrı Prometheus sunucusunun bakımını üstlenmeden metric topla."
+  },
+  {
+    "source": "OFFICIAL-BP1",
+    "group": "Buildpacks",
+    "topic": "Dockerfile precedence",
+    "stem": "A team deploys a supported Python service with gcloud run deploy --source. It expects Google buildpacks to detect the runtime, but the submitted source directory also contains an old Dockerfile and build logs show Dockerfile instructions being executed. The service no longer needs the custom Dockerfile. Which change makes the source deployment follow the intended buildpacks path?",
+    "options": [
+      "Set a runtime environment variable named USE_BUILDPACKS and keep the submitted Dockerfile unchanged.",
+      "Remove the Dockerfile from the submitted source and redeploy from source using the supported buildpacks runtime.",
+      "Deploy with --image and provide the Python source directory as the image reference.",
+      "Grant the runtime service account Artifact Registry Reader so Cloud Build ignores Dockerfile instructions."
+    ],
+    "answers": [
+      "B"
+    ],
+    "why": "Source deploy’da Dockerfile varsa bu dosya build için kullanılır; yoksa desteklenen source buildpacks ile hazırlanır.",
+    "trap": "Runtime env veya image pull izni builder seçimini değiştirmez.",
+    "url": "https://docs.cloud.google.com/run/docs/deploying-source-code",
+    "original_answers": null,
+    "n": 25,
+    "previous": "Ek resmî kaynak; ilgili önceki kimlik/konfigürasyon mekanizmaları pekiştirilebilir.",
+    "plain": "“Dockerfile instructions being executed” → Source’da Dockerfile bulunduğu için buildpacks yolu seçilmemiş."
+  },
+  {
+    "source": "OFFICIAL-WS1",
+    "group": "Workstations",
+    "topic": "home initialization",
+    "stem": "A custom Cloud Workstations image includes starter files under /home/user/project. Existing workstation configurations mount a persistent disk at /home, and developers report that the starter files are missing when the workstation starts. Existing user projects must be preserved, and defaults should be supplied only when absent. Which TWO changes implement this requirement?",
+    "options": [
+      "Store the default project files outside /home in the container image, such as under /opt/project-template.",
+      "Replace the persistent home disk with ephemeral storage so the image contents always remain visible.",
+      "Add an idempotent container startup script that copies missing defaults into the mounted home directory after user initialization.",
+      "Copy the entire template into /home during every startup with overwrite enabled, so every developer receives the latest defaults.",
+      "Add an IAM role to the workstation user so the persistent disk stops masking image directories."
+    ],
+    "answers": [
+      "A",
+      "C"
+    ],
+    "why": "Kalıcı /home mount’u image’daki home içeriğini örter. Default’u /opt’ta tutup startup’ta yalnız eksik dosyayı kopyalarsın.",
+    "trap": "Her açılışta overwrite kullanıcı değişikliklerini kaybettirir; kalıcı disk kaldırmak preservation şartını bozar.",
+    "url": "https://docs.cloud.google.com/workstations/docs/customize-container-images",
+    "original_answers": null,
+    "n": 26,
+    "previous": "S11 Q14 / Workstations home mount mekanizması; çift gereksinimli pekiştirme.",
+    "plain": "“Defaults only when absent” → Başlangıç dosyasını eksikse getir; geliştiricinin mevcut dosyasını ezme."
+  },
+  {
+    "source": "SCP17-Q42",
+    "stem": "Your organization uses Cloud Build to run automated tests before deploying containers to GKE. You need to ensure that only images built by Cloud Build can be deployed to production clusters. The required build attestation is already generated for each eligible image; enforce the rule during ordinary admission rather than only logging violations. How should you configure deployment validation?",
+    "options": [
+      "Enable Binary Authorization and configure a policy requiring attestations from the built-by-cloud-build attestor before allowing image deployment.",
+      "Enable Artifact Analysis vulnerability scanning and configure GKE to reject images with critical vulnerabilities.",
+      "Configure Cloud Build to add a custom label to all container images and create a GKE admission controller that checks for this label during deployment.",
+      "Configure Cloud Build to push images only to a private Artifact Registry and restrict GKE to pull images only from that registry."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "GKE",
+    "topic": "build attestation",
+    "why": "Enforced Binary Authorization policy built-by-cloud-build attestation ister.",
+    "trap": "Private repo veya label build provenance’a dair aynı kriptografik deployment kontrolünü sağlamaz. Bu attestation tek başına test geçiş kanıtı değildir.",
+    "url": "https://docs.cloud.google.com/binary-authorization/docs/deploy-cloud-build",
+    "original_answers": [
+      "A"
+    ],
+    "n": 27,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Enforce during admission” → Deployment yapılırken imzalı build kanıtını kontrol edip gerektiğinde engelle."
+  },
+  {
+    "source": "SCP12-Q08",
+    "stem": "Your team uses Cloud Workstations for development. Developers need a consistent environment that includes a specific JDK version, internal Maven repositories pre-configured, and the Cloud Code plugin pre-installed in their IDE. You want new workstation instances to start with these tools already available without requiring developers to run setup scripts after launch. What should you do?",
+    "options": [
+      "Build a custom container image that extends a Cloud Workstations base image, includes the required JDK and pre-installed Cloud Code plugin, and reference that image in the workstation configuration.",
+      "Create a workstation configuration that uses the default base image, and instruct each developer to run an initialization shell script after their first login to install the required tools.",
+      "Configure a Cloud Build trigger that runs whenever a developer creates a workstation, installs the JDK and plugin over SSH, and then notifies the developer when the environment is ready.",
+      "Use a Cloud Workstations startup metadata script defined on the workstation cluster to install the JDK and Cloud Code plugin every time the workstation starts."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "Workstations",
+    "topic": "custom image",
+    "why": "Standart araçları custom container image içine kurup workstation configuration ile dağıtırsın.",
+    "trap": "Her geliştiricinin elle kurması başlangıçta hazır ve tutarlı ortam şartını karşılamaz.",
+    "url": "https://docs.cloud.google.com/workstations/docs/customize-container-images",
+    "original_answers": [
+      "A"
+    ],
+    "n": 28,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Already available without setup scripts” → Geliştirici açınca araçlar hazır olsun; elle kurulum yapmasın."
+  },
+  {
+    "source": "SCP16-Q46",
+    "stem": "A frequently executed query in your Cloud Spanner application builds its SQL string by concatenating different user-supplied filter values directly into the statement text on every request. You observe that Spanner re-parses and re-plans the statement repeatedly, and a security reviewer flags the concatenation. You want to improve execution efficiency and reduce risk. What should you do?",
+    "options": [
+      "Wrap the query in a read-write transaction so Spanner persists the compiled plan for the session and reuses it for every subsequent concatenated statement.",
+      "Move the filtering logic out of SQL by reading all rows into the application and applying the user-supplied filters in memory with client-side code.",
+      "Add a STORING clause to the table‘s primary index so the query results are cached and the plan no longer needs to be recompiled for each set of values.",
+      "Rewrite the query to use bound query parameters in place of the inline literal values so Spanner can reuse the cached execution plan across requests."
+    ],
+    "answers": [
+      "D"
+    ],
+    "group": "Data",
+    "topic": "Spanner parameters",
+    "why": "Inline user values yerine bound parameters SQL injection riskini azaltır ve query plan reuse’a yardımcı olur.",
+    "trap": "STORING index’e ek column koyar; query-result cache veya literal normalization ayarı değildir.",
+    "url": "https://docs.cloud.google.com/spanner/docs/sql-best-practices",
+    "original_answers": [
+      "B"
+    ],
+    "n": 29,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Bound query parameters” → Kullanıcı değerini SQL metnine yapıştırma; parametre olarak gönder."
+  },
+  {
+    "source": "OFFICIAL-EA3",
+    "group": "Eventarc",
+    "topic": "duplicate handler transaction",
+    "stem": "An Eventarc handler writes one processing charge per event into Cloud SQL. A repeated delivery of the same CloudEvent creates an additional charge even though the source object has not changed. Multiple handler instances can receive the duplicate concurrently. You need to preserve independent legitimate events while preventing duplicate charges. Which design is appropriate?",
+    "options": [
+      "Use the object filename alone as a permanent deduplication key, ignoring distinct event generations and sources.",
+      "Use the CloudEvent source and id as a stable key and atomically record that key with the charge in a database transaction.",
+      "Acknowledge the event before writing the charge and keep processed IDs only in local memory.",
+      "Limit the service to one instance and assume Eventarc will then deliver each event exactly once."
+    ],
+    "answers": [
+      "B"
+    ],
+    "why": "CloudEvent source+id aynı event’i belirler. Unique kayıt ve charge aynı transaction’da duplicate race’i önler.",
+    "trap": "Local memory başka instance veya restart için yeterli değildir; filename farklı event’leri birleştirebilir.",
+    "url": "https://docs.cloud.google.com/eventarc/docs/retry-events",
+    "original_answers": null,
+    "n": 30,
+    "previous": "Ek resmî kaynak; ilgili önceki kimlik/konfigürasyon mekanizmaları pekiştirilebilir.",
+    "plain": "“Duplicate concurrently; legitimate events” → Aynı olayın yarışan kopyalarını engelle, başka gerçek olayları kaybetme."
+  },
+  {
+    "source": "OFFICIAL-EA2",
+    "group": "Eventarc",
+    "topic": "execution failure after delivery",
+    "stem": "Eventarc Standard successfully starts a workflow for each Storage event. Some workflows then fail in a downstream HTTP processing step. Operations expects Eventarc to restart each failed workflow automatically, but no replacement execution appears. Delivery to the workflow succeeded. What should the team change to recover from these downstream failures?",
+    "options": [
+      "Change the trigger event type to object-deleted so Eventarc interprets downstream failures as delivery failures.",
+      "Grant Eventarc Viewer to the workflow service account so it can request automatic replay.",
+      "Implement appropriate step retries and error handling inside the workflow, with an explicit recovery process for terminal execution failures.",
+      "Increase only the Eventarc delivery retry duration because every failed execution remains an unacknowledged event."
+    ],
+    "answers": [
+      "C"
+    ],
+    "why": "Workflow execution başlayınca event acknowledgment gerçekleşir. Sonraki execution failure için workflow retries/recovery gerekir.",
+    "trap": "Eventarc teslim retry’si başlatılmış workflow’un business failure’ını otomatik replay etmez.",
+    "url": "https://docs.cloud.google.com/eventarc/docs/retry-events",
+    "original_answers": null,
+    "n": 31,
+    "previous": "Ek resmî kaynak; ilgili önceki kimlik/konfigürasyon mekanizmaları pekiştirilebilir.",
+    "plain": "“Delivery succeeded; workflow then fails” → Olay teslim edildi; sonra iş akışı içinde hata oluştu."
+  },
+  {
+    "source": "SCP13-Q10",
+    "stem": "A latency-sensitive service on GKE experiences sudden, sharp traffic spikes. Your HorizontalPodAutoscaler scales out correctly but too gradually, so Pods are overwhelmed before enough replicas are added. You want the autoscaler to add replicas more aggressively during spikes while keeping scale-down conservative. What should you do?",
+    "options": [
+      "Reduce the kube-controller-manager HPA sync period cluster-wide so the autoscaling loop evaluates metrics more frequently.",
+      "Replace the HorizontalPodAutoscaler with a CronJob that pre-scales the Deployment on a schedule, add a second HPA on memory, and configure a Cloud Monitoring alert that triggers a Cloud Function to patch the replica count.",
+      "Lower the target CPU utilization threshold to a very small value so the HorizontalPodAutoscaler keeps the Deployment running near maxReplicas at all times.",
+      "Configure the HorizontalPodAutoscaler‘s behavior.scaleUp policies in autoscaling/v2 with a higher Pods or Percent rate and a short stabilization window, while leaving scaleDown conservative."
+    ],
+    "answers": [
+      "D"
+    ],
+    "group": "GKE",
+    "topic": "HPA behavior",
+    "why": "autoscaling/v2 behavior.scaleUp ile büyüme hızı ayarlanır; scaleDown ayrı tutulur.",
+    "trap": "CPU hedefini çok düşürmek kalıcı fazla kapasite üretir; doğrudan büyüme hızını ayarlamaz.",
+    "url": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/",
+    "original_answers": [
+      "D"
+    ],
+    "n": 32,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“More aggressively while keeping scale-down conservative” → Hızlı büyüsün, küçülürken acele etmesin."
+  },
+  {
+    "source": "OFFICIAL-WF3",
+    "group": "Workflows",
+    "topic": "callback approval",
+    "stem": "An order workflow must pause until an authorized reviewer approves it through an existing service. Approval can take hours, and the service can send an authenticated callback when the decision is ready. The workflow must retain its execution context without repeatedly polling the approval service or keeping a custom worker running. Which mechanism should it use?",
+    "options": [
+      "Keep a Cloud Run request open for the entire approval period and return only when the reviewer decides.",
+      "Create an execution-specific callback endpoint, provide it to the approval service, and use events.await_callback with an appropriate timeout.",
+      "Schedule a new workflow every minute to retrieve the approval status and reconstruct the original execution context.",
+      "Start a Cloud Composer environment solely to keep a Python polling process alive while the workflow is paused."
+    ],
+    "answers": [
+      "B"
+    ],
+    "why": "Execution callback URL oluşturulur; await_callback aynı execution içinde bekler ve yetkili callback ile devam eder.",
+    "trap": "Callback çağıranının workflows.callbacks.send izni gerekir; süresiz bekleme veya polling gerekmez.",
+    "url": "https://docs.cloud.google.com/workflows/docs/creating-callback-endpoints",
+    "original_answers": null,
+    "n": 33,
+    "previous": "Ek resmî kaynak; ilgili önceki kimlik/konfigürasyon mekanizmaları pekiştirilebilir.",
+    "plain": "“Without repeatedly polling” → Sürekli durum sormadan callback gelmesini bekle."
+  },
+  {
+    "source": "SCP16-Q21",
+    "stem": "You have a GKE cluster in project-a that needs to pull container images from an Artifact Registry Docker repository in project-b. The GKE cluster uses the Compute Engine default service account for its nodes. You want to configure access following Google-recommended security practices. What should you do?",
+    "options": [
+      "Create a new service account in project-b with Artifact Registry Reader role, export its key, and configure imagePullSecrets in GKE with the key file.",
+      "Grant the Artifact Registry Reader role on the Artifact Registry repository in project-b to the Compute Engine default service account from project-a.",
+      "Enable cross-project access on the Artifact Registry repository and configure an imagePullSecret in the GKE namespace referencing the repository credentials.",
+      "Grant the Storage Object Viewer role on project-b to the Compute Engine default service account from project-a."
+    ],
+    "answers": [
+      "B"
+    ],
+    "group": "GKE",
+    "topic": "image pull identity",
+    "why": "Repository üzerinde node service account’a Artifact Registry Reader verilir.",
+    "trap": "Image pull’u uygulamanın KSA’sına verilen bucket veya runtime API izni çözmez; node access scope da uygun olmalıdır.",
+    "url": "https://docs.cloud.google.com/artifact-registry/docs/integrate-gke",
+    "original_answers": [
+      "D"
+    ],
+    "n": 34,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Pull images from project-b” → Container başlamadan image’ı hangi makine kimliği indiriyor?"
+  },
+  {
+    "source": "OFFICIAL-WF4",
+    "group": "Workflows",
+    "topic": "caller and worker identities",
+    "stem": "A workflow runs as order-orchestrator and invokes a private Cloud Run service using OIDC. The worker runs as invoice-worker and writes invoice objects to Cloud Storage. Token audience and network routing are correct. The call is rejected with an IAM permission error before worker code starts. The worker already has the required bucket access. Which permission should be added to the appropriate identity?",
+    "options": [
+      "Grant invoice-worker Cloud Run Invoker on the workflow execution resource.",
+      "Grant order-orchestrator Cloud Run Invoker on the worker service.",
+      "Grant the human who deployed the workflow Storage Object Creator on the bucket.",
+      "Grant the Eventarc service agent Storage Object Creator so it can authorize all downstream calls."
+    ],
+    "answers": [
+      "B"
+    ],
+    "why": "Çağrı token’ı workflow SA’yı temsil eder; hedef service’in Invoker izni bu kimliğe verilir.",
+    "trap": "Worker runtime bucket yetkisi inbound invocation yetkisi değildir.",
+    "url": "https://docs.cloud.google.com/workflows/docs/authenticate-from-workflow",
+    "original_answers": null,
+    "n": 35,
+    "previous": "Ek resmî kaynak; ilgili önceki kimlik/konfigürasyon mekanizmaları pekiştirilebilir.",
+    "plain": "“Before worker code starts” → Hata inbound çağrı izninde; worker’ın bucket erişimine daha gelinmedi."
+  },
+  {
+    "source": "SCP14-Q32",
+    "stem": "You operate a multi-tenant B2B application that uses Identity Platform tenants to isolate each customer organization. Your sales team onboards several new customers each day, and you need each new customer‘s isolated identity space and its sign-in providers to be created automatically as part of your provisioning workflow, with no manual console steps. What should you do?",
+    "options": [
+      "Create a single shared tenant for all customers and separate organizations by adding a customer-id custom claim to every user.",
+      "Use the Identity Platform tenant management API through the Admin SDK to programmatically create a new tenant and configure its identity providers during your onboarding workflow.",
+      "Have an administrator create each tenant and configure its identity providers manually in the Google Cloud console as customers are onboarded.",
+      "For each new customer, run a Terraform pipeline that provisions a dedicated Google Cloud project, enables Identity Platform, configures the providers, and wires up a separate Cloud Run backend so customers are isolated at the project boundary."
+    ],
+    "answers": [
+      "B"
+    ],
+    "group": "Identity",
+    "topic": "tenant provisioning",
+    "why": "Admin SDK/tenant management API ile tenant ve provider ayarları otomatik hazırlanır.",
+    "trap": "Custom claim ayrı managed user directory değildir; mevcut shared backend için yeni proje oluşturmak gereksizdir.",
+    "url": "https://docs.cloud.google.com/identity-platform/docs/multi-tenancy-managing-tenants",
+    "original_answers": [
+      "B"
+    ],
+    "n": 36,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“No manual console steps” → Müşterinin ayrı kimlik alanı kodla oluşturulsun."
+  },
+  {
+    "source": "SCP17-Q57",
+    "stem": "A container running on GKE sets a CPU request of 250m and a CPU limit of 1000m. The Deployment has a HorizontalPodAutoscaler that targets 60% average CPU utilization. Under load, each Pod consistently uses 300m of CPU. Each Pod contains only this one container, and resource metrics are healthy. What average CPU utilization value will the HorizontalPodAutoscaler use to make its scaling decision?",
+    "options": [
+      "60%, because the HPA reports its configured target value until the next sync period recalculates the real utilization.",
+      "30%, because the HPA calculates utilization as a percentage of the container‘s CPU limit (300m / 1000m).",
+      "120%, because the HPA calculates utilization as a percentage of the container‘s CPU request (300m / 250m), not its limit.",
+      "75%, because the HPA averages the CPU request and limit (625m) and reports usage relative to that midpoint."
+    ],
+    "answers": [
+      "C"
+    ],
+    "group": "GKE",
+    "topic": "HPA denominator",
+    "why": "300m / 250m = 120%. Utilization request üzerinden hesaplanır.",
+    "trap": "1000m limit’e bölmek 30% verir ama HPA utilization’ın paydası değildir. Kaynak açıklaması başka sidecar sorusuna aittir.",
+    "url": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/",
+    "original_answers": [
+      "C"
+    ],
+    "n": 37,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Average CPU utilization” → Kullanılan CPU’yu request’e oranla; limit’e değil."
+  },
+  {
+    "source": "SCP14-Q01",
+    "stem": "You are building container images with Cloud Build and storing them in Artifact Registry. Your integration tests, which run as a Cloud Build step, must connect to a Cloud SQL instance that only accepts traffic from internal IP addresses within your VPC. The default Cloud Build worker pool cannot reach these resources. The network team has validated a private-pool connectivity design, including the database route; ordinary peering is not being assumed to provide transitive connectivity. Which build execution environment should you configure?",
+    "options": [
+      "Create a Cloud Build private pool with the validated private network connectivity and configure the build trigger to use that worker pool.",
+      "In each Cloud Build step that needs database access, install the Cloud SQL Auth Proxy and configure it with a service account that has the Cloud SQL Admin role.",
+      "Add a firewall rule that allows ingress from 0.0.0.0/0 to your Cloud SQL instance, and continue using the default Cloud Build worker pool.",
+      "Configure a Serverless VPC Access connector in the same region as your Cloud Build trigger, and reference the connector in your cloudbuild.yaml file."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "CI/CD",
+    "topic": "private build pool",
+    "why": "Build’i gerekli private network yoluna sahip private worker pool’da çalıştırırsın.",
+    "trap": "Auth Proxy IAM ve bağlantı güvenliği sağlar; eksik network route’u yaratmaz. VPC peering transitif değildir.",
+    "url": "https://docs.cloud.google.com/build/docs/private-pools/use-in-private-network",
+    "original_answers": [
+      "D"
+    ],
+    "n": 38,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Cannot reach internal IP addresses” → Yetki yeterli olsa bile build makinesinin network yolu eksik."
+  },
+  {
+    "source": "SCP18-Q17",
+    "stem": "Your team is developing a multi-tenant application using Cloud Firestore where each tenant has a ‘reviews‘ subcollection under their document. You need to query all reviews across all tenants where the rating equals 5 stars. The query runs in an authorized server backend. No collection-group index for this field exists yet. What must you configure before executing this query?",
+    "options": [
+      "Create a single-field or composite index with collection group scope for the ‘reviews‘ collection on the rating field.",
+      "Enable the collection group query feature in the Firestore database settings and configure security rules.",
+      "Create a root-level ‘all_reviews‘ collection and duplicate all review documents there for cross-tenant queries.",
+      "Configure a single-field ascending index for each tenant‘s reviews subcollection individually."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "Data",
+    "topic": "collection group index",
+    "why": "reviews için collection group scope’da rating index’i ve collectionGroup query kullanılır.",
+    "trap": "Her tenant collection’ı için index tanımlamak cross-collection-group sorgu index’i değildir. Client security rules ayrıca uygun olmalıdır.",
+    "url": "https://firebase.google.com/docs/firestore/query-data/index-overview",
+    "original_answers": [
+      "C"
+    ],
+    "n": 39,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“All reviews across all tenants” → Aynı isimli bütün reviews subcollection’larını birlikte sorgula."
+  },
+  {
+    "source": "SCP13-Q43",
+    "stem": "Your team is deploying a Java application to GKE that reads configuration from a properties file. The application needs to pick up configuration changes without requiring a pod restart. You want to use a ConfigMap for this configuration and implement the simplest solution. The application can reload configuration, and a short propagation delay is acceptable; the mount must not use subPath. How should you configure the application to consume the ConfigMap?",
+    "options": [
+      "Create an immutable ConfigMap and use a rolling deployment strategy to update pods when configuration changes occur.",
+      "Inject the ConfigMap as environment variables and configure a liveness probe to detect stale configuration and trigger pod replacement.",
+      "Mount the ConfigMap as a volume at the path where your application reads the configuration file. Configure your application to watch for file changes.",
+      "Reference the ConfigMap using environment variables in the container specification. Configure a sidecar container to restart the main container when the ConfigMap changes."
+    ],
+    "answers": [
+      "C"
+    ],
+    "group": "GKE",
+    "topic": "ConfigMap reload",
+    "why": "ConfigMap normal volume olarak mount edilir; uygulama değişen dosyayı yeniden okur.",
+    "trap": "Env variable mevcut process’te güncellenmez; subPath mount update almaz; yayılma anlık değildir.",
+    "url": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+    "original_answers": [
+      "D"
+    ],
+    "n": 40,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Without requiring a pod restart” → Process çalışırken güncel ayar dosyasını yeniden okusun."
+  },
+  {
+    "source": "SCP18-Q08",
+    "stem": "A developer accidentally ran a DELETE statement that removed millions of rows from an AlloyDB for PostgreSQL cluster about 20 minutes ago. The cluster has continuous backup enabled and the pre-deletion timestamp is within its recoverable window. You need to recover the deleted data with minimal data loss while keeping the original cluster intact for investigation. What should you do?",
+    "options": [
+      "Use point-in-time recovery to restore the cluster‘s data to a new cluster at a timestamp just before the DELETE ran, then validate and reconcile the recovered rows.",
+      "Export the entire database to Cloud Storage with pg_dump, manually search the dump files for the deleted rows, recreate them with INSERT statements, and re-import the reconstructed table back into the running cluster.",
+      "Create a cross-region secondary cluster and promote it, because the secondary still retains the rows that were just deleted on the primary cluster.",
+      "Restore the most recent automated daily backup directly over the existing cluster to roll it back to the last full backup taken before the DELETE occurred."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "Data",
+    "topic": "AlloyDB PITR",
+    "why": "DELETE öncesi timestamp’e yeni cluster restore edilir, sonra gerekli kayıtlar uzlaştırılır.",
+    "trap": "Replica logical DELETE’i de kopyalar; mevcut veriyi dump etmek silinmiş satırları geri getirmez.",
+    "url": "https://docs.cloud.google.com/alloydb/docs/backup/restore-pitr",
+    "original_answers": [
+      "C"
+    ],
+    "n": 41,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Keep the original cluster intact” → Eski durumu ayrı cluster’a çıkar; inceleme yapılan mevcut cluster’ı ezme."
+  },
+  {
+    "source": "SCP17-Q58",
+    "stem": "A workload on GKE handles variable request volume that maps well to CPU, so you want to scale the replica count horizontally on CPU. The per-Pod memory footprint also varies significantly between releases, and you want memory requests right-sized automatically without manual tuning. You want a managed, Google-recommended approach that avoids two controllers fighting over the same resource. The cluster meets the prerequisites, and use of the Beta multidimensional autoscaling feature is approved. What should you do?",
+    "options": [
+      "Configure a single HorizontalPodAutoscaler that targets both CPU and memory utilization, which also resizes Pod memory requests automatically.",
+      "Configure Multidimensional Pod Autoscaling so the workload scales horizontally on CPU while a vertical component right-sizes memory requests.",
+      "Configure a Vertical Pod Autoscaler in Auto mode on CPU and memory, which adds replicas once Pods reach their resource limits.",
+      "Create a HorizontalPodAutoscaler on CPU and a Vertical Pod Autoscaler in Auto mode that simultaneously adjusts both CPU and memory requests, and let the two controllers reconcile their recommendations on the same Deployment during each scaling cycle."
+    ],
+    "answers": [
+      "B"
+    ],
+    "group": "GKE",
+    "topic": "multidimensional autoscaling",
+    "why": "MultidimPodAutoscaler CPU’ya göre replica, memory için request ayarı yapar.",
+    "trap": "HPA memory request’i değiştirmez; aynı CPU utilization’ını HPA ve VPA ile birlikte yönetmek çatışabilir. Beta kullanımına izin verilmiştir.",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/multidimensional-pod-autoscaling",
+    "original_answers": [
+      "B"
+    ],
+    "n": 42,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Replica count on CPU; memory requests right-sized” → CPU yükünde Pod sayısı, bellek ihtiyacında Pod boyutu değişsin."
+  },
+  {
+    "source": "OFFICIAL-EA1",
+    "group": "Eventarc",
+    "topic": "trigger and workflow identity",
+    "stem": "A Cloud Storage object-finalized Eventarc trigger starts an existing workflow. The trigger uses event-starter, while the workflow runs as document-orchestrator and calls a private Cloud Run processor. Event receiver, Storage transport permissions, and network routing are already configured. Neither the workflow-start permission nor processor-invocation permission has been granted. Which TWO least-privilege grants complete this chain?",
+    "options": [
+      "Grant event-starter Workflows Invoker on the destination workflow.",
+      "Grant document-orchestrator Cloud Run Invoker on the processor service.",
+      "Grant event-starter Cloud Run Invoker on the processor instead of granting workflow-start access.",
+      "Grant the Storage service agent Project Owner so its privileges propagate through the entire chain.",
+      "Grant the human uploader Cloud Run Admin because the event uses the uploader identity for every downstream call."
+    ],
+    "answers": [
+      "A",
+      "B"
+    ],
+    "why": "Eventarc workflow’u trigger identity ile başlatır; workflow sonraki çağrıyı kendi SA’sıyla yapar.",
+    "trap": "Birinci çağırana ikinci hedef izni vermek eksik workflow-start iznini çözmez.",
+    "url": "https://docs.cloud.google.com/eventarc/standard/docs/workflows/route-trigger-cloud-storage",
+    "original_answers": null,
+    "n": 43,
+    "previous": "Ek resmî kaynak; ilgili önceki kimlik/konfigürasyon mekanizmaları pekiştirilebilir.",
+    "plain": "“Trigger uses event-starter; workflow runs as document-orchestrator” → Başlatan kimlik ile workflow kodunun çağıran kimliği ayrı."
+  },
+  {
+    "source": "SCP14-Q49",
+    "stem": "You are developing a Python application using Cloud Code in VS Code and want to build container images without writing a Dockerfile. The Python runtime and dependencies are supported, and the team wants a maintained source-to-image builder. What should you configure in your development environment?",
+    "options": [
+      "Enable the Cloud Build extension in VS Code which automatically containerizes applications using AI-based detection.",
+      "Write a custom shell script that invokes ‘docker build‘ with auto-generated Dockerfile contents based on file extensions.",
+      "Configure Cloud Code to use Google Cloud buildpacks, which auto-detect the language and create container images from source code.",
+      "Configure Cloud Code to use Kaniko builder which automatically generates Dockerfile from source analysis."
+    ],
+    "answers": [
+      "C"
+    ],
+    "group": "Buildpacks",
+    "topic": "source to image",
+    "why": "Google buildpacks desteklenen source dilini detect edip Dockerfile olmadan container image üretir.",
+    "trap": "Kaniko mevcut Dockerfile build eder; dosya uzantısından otomatik Dockerfile üretme mekanizması değildir.",
+    "url": "https://docs.cloud.google.com/docs/buildpacks/overview",
+    "original_answers": [
+      "A"
+    ],
+    "n": 44,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Without writing a Dockerfile” → Desteklenen source’dan buildpacks ile image üret."
+  },
+  {
+    "source": "SCP13-Q23",
+    "stem": "You rotated a Secret Manager secret used by your Cloud Build pipeline by adding a new version with the latest credential. Your security policy requires that the previous version become unreadable through the Secret Manager API immediately after rotation, but you must be able to roll back to the previous version within a 7-day window in case the new credential causes build failures. Revocation of the credential at its external provider is outside this requirement. What should you do with the previous secret version?",
+    "options": [
+      "Set a 7-day expiration time on the secret resource, allowing all versions to be deleted automatically when the rollback window closes.",
+      "Disable the previous secret version immediately after rotation. If a rollback is required within 7 days, enable the version again; otherwise destroy the version after 7 days.",
+      "Destroy the previous secret version immediately after rotation, and if a rollback is needed within 7 days, recover it from the Secret Manager soft-delete recycle bin.",
+      "Leave the previous version enabled and remove the explicit version pin from cloudbuild.yaml so that Cloud Build automatically uses the newest enabled version, then delete the old version after 7 days."
+    ],
+    "answers": [
+      "B"
+    ],
+    "group": "CI/CD",
+    "topic": "disable secret version",
+    "why": "Disable API üzerinden okumayı durdurur; enable ile rollback mümkündür, sonra destroy edilir.",
+    "trap": "Secret Manager disable, dış sağlayıcıdaki gerçek credential’ı iptal etmez. Soruda yalnız Secret Manager erişimi istenir.",
+    "url": "https://docs.cloud.google.com/secret-manager/docs/disable-secret-version",
+    "original_answers": [
+      "A"
+    ],
+    "n": 45,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Unreadable through Secret Manager; rollback” → Değeri şimdilik okunamaz yap, gerektiğinde geri açabil."
+  },
+  {
+    "source": "SCP17-Q41",
+    "stem": "You are using Cloud Code for VS Code to develop a multi-service Kubernetes application. You want to improve your local development workflow by only building and deploying the frontend service you are actively working on, while still maintaining dependencies with the backend services. How should you configure your project?",
+    "options": [
+      "Create separate VS Code workspaces for each service and use VS Code‘s multi-root workspace feature to switch between frontend and backend development contexts.",
+      "Set the SKAFFOLD_BUILD_ONLY environment variable to the frontend service name before starting your debug session to limit the build scope.",
+      "Configure multiple .vscode/launch.json configurations with different container image names and manually switch between configurations when working on different services.",
+      "Define Skaffold modules in your skaffold.yaml file by naming each configuration with the metadata.name field, then select specific modules to build in the Cloud Code run configuration."
+    ],
+    "answers": [
+      "D"
+    ],
+    "group": "GKE",
+    "topic": "Skaffold modules",
+    "why": "metadata.name ile named configuration/module tanımlayıp seçili modülü çalıştırırsın; requires bağımlılıkları ifade eder.",
+    "trap": "VS Code workspace seçmek build/deploy bağımlılıklarını tanımlamaz. Seçili modül bağımlılıklarını da içerebilir.",
+    "url": "https://skaffold.dev/docs/design/config/",
+    "original_answers": [
+      "B"
+    ],
+    "n": 46,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Only the frontend while maintaining dependencies” → Frontend üzerinde çalış; gerekli backend bağımlılıklarını tanımlı tut."
+  },
+  {
+    "source": "SCP18-Q12",
+    "stem": "A unit test that Gemini Code Assist generated for a coupon-expiration function passes on some days and fails on others. You determine that the function calls datetime.now() directly, so the test result depends on the current date. You want a reliable, deterministic test with minimal redesign. What should you do?",
+    "options": [
+      "Ask Gemini Code Assist to refactor the function so the current time is an injected parameter, and update the test to pass a fixed timestamp.",
+      "Configure the CI runner to reset its system clock to a fixed date before each run, add a wrapper that pins the timezone, and document the required clock state so developers can reproduce failures locally.",
+      "Add a retry to the failing test so it runs up to five times and passes if any attempt succeeds.",
+      "Mark the test as expected-to-fail so it no longer blocks the pipeline while still appearing in reports."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "Gemini",
+    "topic": "deterministic test",
+    "why": "Zamanı parametre veya clock dependency olarak dışarıdan verip testte sabit timestamp kullanırsın.",
+    "trap": "Retry zamana bağlı koşulu çözmez; CI makinesinin saatini değiştirmek gereksiz ortam bağımlılığı yaratır.",
+    "url": "https://docs.python.org/3/library/unittest.mock.html",
+    "original_answers": [
+      "A"
+    ],
+    "n": 47,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Depends on the current date” → Test sonucu bugünün tarihine göre değişmesin."
+  },
+  {
+    "source": "SCP12-Q15",
+    "stem": "Your company has deployed an internal web application on Google Kubernetes Engine behind an HTTPS load balancer. You have enabled Identity-Aware Proxy (IAP) to control access. A security audit reveals that an attacker who bypasses the load balancer could potentially forge identity headers. You need to ensure your application verifies user identities securely. What should you do?",
+    "options": [
+      "Configure VPC firewall rules to block all traffic that does not originate from the load balancer‘s IP address range.",
+      "Read the x-goog-authenticated-user-email header directly in your application to retrieve the authenticated user‘s email address for authorization decisions.",
+      "Grant the IAP-secured Web App User role only to specific users and rely on IAP‘s authentication to validate all requests.",
+      "Verify the x-goog-iap-jwt-assertion header in your application code by validating the JWT signature using Google‘s public keys and checking the audience claim."
+    ],
+    "answers": [
+      "D"
+    ],
+    "group": "GKE",
+    "topic": "IAP signed assertion",
+    "why": "IAP JWT signature, expected audience, issuer ve süre claim’lerini doğrularsın.",
+    "trap": "Düz email header’ını güvenilir kabul etmek forge edilmiş kimliği ayırt etmez.",
+    "url": "https://docs.cloud.google.com/iap/docs/signed-headers-howto",
+    "original_answers": [
+      "B"
+    ],
+    "n": 48,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Forge identity headers” → Düz header’daki kimlik iddiasına güvenme; imzalı kanıtı doğrula."
+  },
+  {
+    "source": "SCP16-Q26",
+    "stem": "You are configuring a Cloud Monitoring alerting policy for your GKE workload that monitors container memory utilization. You want the alerting policy to create an incident only when memory utilization exceeds 85% for a sustained period, avoiding alerts from brief spikes. What configuration should you apply?",
+    "options": [
+      "Set the condition combiner to ‘All conditions are met‘ and create a second condition that checks if memory utilization has been above 85% for a minimum of 5 minutes.",
+      "Configure the alerting policy with the Missing data option set to ‘Missing data treated as values that violate the policy condition‘ to ensure all memory spikes are captured.",
+      "Set the alignment period to aggregate memory utilization over a consistent time interval. Configure a retest window duration that requires the threshold to be exceeded for multiple consecutive evaluation periods.",
+      "Configure the Rolling window function to ‘percent change‘ so that the alerting policy only triggers when memory utilization changes by more than 85% relative to the baseline."
+    ],
+    "answers": [
+      "C"
+    ],
+    "group": "GKE",
+    "topic": "alert retest window",
+    "why": "Retest window, threshold ihlalinin belirlenen süre boyunca devam etmesini şart koşar.",
+    "trap": "Alignment örnekleri düzenler; tek başına sustained violation koşulunun yerine geçmez.",
+    "url": "https://docs.cloud.google.com/monitoring/alerts/concepts-indepth",
+    "original_answers": [
+      "D"
+    ],
+    "n": 49,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“For a sustained period” → Bir anlık spike değil, belirli süre devam eden ihlal alarm üretsin."
+  },
+  {
+    "source": "SCP18-Q23",
+    "stem": "Your security team requires that the database password used by your Cloud Build integration tests be rotated automatically every 30 days. After rotation, a Cloud Run function must call the secret-management application to generate a new password and add it as a new secret version. You want to follow Google-recommended best practices. What should you do?",
+    "options": [
+      "Configure a rotation period and next rotation time on the secret in Secret Manager, and set a topic to receive rotation notifications. Configure the Cloud Run function as a Pub/Sub subscriber to the rotation topic so it adds a new secret version when triggered.",
+      "Create a Cloud Scheduler job that runs every 30 days and invokes the Cloud Run function over HTTPS. Have the function generate a new password and call the AddSecretVersion API to add the new version.",
+      "Enable automatic key rotation on the Cloud KMS key that encrypts the Secret Manager secret. Configure an Eventarc trigger on the cryptoKeyVersions.create audit log entry to invoke the Cloud Run function to add a new secret version.",
+      "Set a Cloud KMS rotation period of 30 days on a key, and use the key to encrypt the password file in Cloud Storage. Configure a Cloud Storage notification on the encrypted object to trigger the Cloud Run function to add a new secret version."
+    ],
+    "answers": [
+      "A"
+    ],
+    "group": "CI/CD",
+    "topic": "secret rotation notification",
+    "why": "Secret Manager rotation schedule Pub/Sub bildirimi üretir; subscriber gerçek parolayı değiştirip yeni version yazar.",
+    "trap": "Schedule tek başına credential üretmez veya DB parolasını değiştirmez; KMS key rotation da bunu yapmaz.",
+    "url": "https://docs.cloud.google.com/secret-manager/docs/rotation-recommendations",
+    "original_answers": [
+      "D"
+    ],
+    "n": 50,
+    "previous": "Kaynak uyarlaması/karma pekiştirme; yeni temel kapsam iddiası yok.",
+    "plain": "“Rotation notifications” → Vakti gelince bildirim al; gerçek parolayı değiştiren işlem subscriber’da olsun."
+  }
+]

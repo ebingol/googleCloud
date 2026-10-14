@@ -200,3 +200,8 @@ Her satır bir beşlik seti ve kapsadığı konu grubunu gösterir. Aynı konunu
 9 Ekim S14 sonuç güncellemesi: **17/20 (%85), 54 dakika**; Q07/Q08/Q19 yanlış. [İlk sonuç](scenarios/results/PCD-S14-attempt-01.md). PDF temelli beş soru doğru; tüm konu hakimiyeti veya kalıcılık sonucu çıkarılmaz. Önceki hazırlık/çözülmedi notu tarihsel kaldı.
 
 9 Ekim S13 sonuç güncellemesi: **29/50 (%58), 112 dakika**, 21 yanlış; [ilk sonuç](scenarios/results/PCD-S13-attempt-01.md). Hazırlanmış kapsam, öğrenilmiş kapsam değildir. Önceki çözülmedi notları tarihsel kaldı; diğer ilk sonuçlar korunur.
+
+
+## PCD-S15 GKE ağırlıklı kaynak seçkisi
+
+14 Ekim 2026. [50 soruluk S15](scenarios/PCD-S15.md), [ayrı anahtar](answers/scenarios/PCD-S15.md). GKE 20; CI/CD 7; Workflows 5; Workstations 4; Buildpacks 3; Eventarc 3; Gemini 2; veri 4; Identity Platform 1; Tasks 1. Özel konu dağılımı, resmî alan ağırlıklarının birebir temsili değildir. 38 kaynak uyarlaması + 12 ek resmî belge sorusu. Eventarc routing, trigger/runtime kimlikleri, execution failure sonrası retry ayrımı; Workflows parallel/shared, retry, callbacks; buildpacks builder precedence/build env; Workstations image/home/VM config/ADC örneklenir. Hazırlık tamamlandı, ilk çözüm ve öğrenme teyidi yok. Eski sonuçlar korunur.
