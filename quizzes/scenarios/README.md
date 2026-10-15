@@ -71,3 +71,8 @@ Son bir ayın aday yorumları önce incelendi; tarih ve kanıt sınırlamaları 
 ## PCD-S15
 
 [S15 GKE ağırlıklı karma sınav](PCD-S15.md) · 50 soru / 120 dakika kişisel hedef · 47 tek + 3 çift seçim. [Ayrı Türkçe anahtar](../answers/scenarios/PCD-S15.md). 38 SkillCertPro uyarlaması + 12 tamamlayıcı resmî belge sorusu. Henüz çözülmedi.
+
+
+## PCD-S16
+
+[S16 Cumartesi karma deneme](PCD-S16.md) · 50 soru / 120 dakika kişisel hedef · 47 tek + Q07/Q28/Q43 çift seçim. [Ayrı Türkçe anahtar](../answers/scenarios/PCD-S16.md). 30 SkillCertPro uyarlaması + 20 resmî belge temelli tamamlayıcı soru; GKE 20, veri 4, Gemini 2. 17 Ekim 2026 için hazır; henüz çözülmedi. İlk tur bitmeden anahtar açılmaz.

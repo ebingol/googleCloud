@@ -1,0 +1,1058 @@
+[
+  {
+    "n": 1,
+    "group": "GKE",
+    "topic": "structured application logs",
+    "source": "SCP13-Q18",
+    "stem": "A GKE service already writes application logs to standard output, and managed workload logging is enabled. Investigators can search the message text but cannot reliably filter by order ID or distinguish application severity. You want those values available as structured fields without operating an additional log collector. Which change best meets the requirement?",
+    "options": [
+      "Write one JSON log entry per line to stdout, including severity, message, and orderId fields.",
+      "Put the fields into the message string only and configure log retention to extract them.",
+      "Write JSON only to a private file in the container and rely on stdout collection to discover that file automatically.",
+      "Keep text logs and add severity as a Deployment annotation, expecting per-entry JSON fields."
+    ],
+    "why": "JSON stdout girdileri yapılandırılmış log alanları sağlar; orderId üzerinden filtrelenir.",
+    "trap": "Pod label uygulama isteğinin değişen metadata alanı değildir.",
+    "url": "https://docs.cloud.google.com/logging/docs/structured-logging",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "A"
+    ],
+    "plain": "JSON stdout girdileri yapılandırılmış log alanları sağlar; orderId üzerinden filtrelenir."
+  },
+  {
+    "n": 2,
+    "group": "CI/CD",
+    "topic": "build versus step timeout",
+    "source": "SCP13-Q02",
+    "stem": "A Cloud Build execution is terminated after its configured 20-minute build timeout. The integration-test step needs 25 minutes, and all steps together normally finish within 35 minutes. The queue wait is short and no step-specific timeout is configured. You want tests to remain mandatory while allowing up to 40 minutes for the running build. What should you change?",
+    "options": [
+      "Increase queueTtl to 2400s and leave the running build timeout unchanged.",
+      "Set the top-level build timeout to 2400s and keep any step timeout within that build budget.",
+      "Set allowFailure on integration tests so the deployment proceeds when testing is interrupted.",
+      "Set only the test step timeout to 2400s while retaining the 20-minute build timeout."
+    ],
+    "why": "Top-level timeout çalışan build süresini sınırlar; step timeout bunu aşamaz.",
+    "trap": "Kaynak anahtarı belirsizdi: soruda açık 20 dakika build sınırı koyuldu; timeout options altına yazılmaz.",
+    "url": "https://docs.cloud.google.com/build/docs/build-config-file-schema",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "B"
+    ],
+    "plain": "Top-level timeout çalışan build süresini sınırlar; step timeout bunu aşamaz."
+  },
+  {
+    "n": 3,
+    "group": "Data",
+    "topic": "transactional read modify write",
+    "source": "SCP12-Q18",
+    "stem": "A Firestore backend transfers funds between two account documents. Before writing, it must verify the current source balance, and concurrent requests can modify either account. No external payment API is called during the database operation. You need both balances to remain consistent with the values used for the decision. Which implementation should you use?",
+    "options": [
+      "Read both accounts outside a transaction, then place the two updates in a WriteBatch.",
+      "Update the debit first and use a document trigger to credit the destination eventually.",
+      "Read and validate the balances, then update both documents inside a Firestore transaction that can retry on conflicts.",
+      "Read from a local cache and submit independent writes with Promise.all."
+    ],
+    "why": "Karar verilen okumalar ve iki yazma aynı transaction içinde olmalı.",
+    "trap": "WriteBatch iki yazmayı atomik yapar ama dışarıdaki okumaların hâlâ geçerli olduğunu doğrulamaz.",
+    "url": "https://firebase.google.com/docs/firestore/manage-data/transactions",
+    "previous": "S15 Q03 atomik batch ile ilişkili bilinçli ayrım: burada karar öncesi okuma da tutarlı olmalı.",
+    "answers": [
+      "C"
+    ],
+    "plain": "Karar verilen okumalar ve iki yazma aynı transaction içinde olmalı."
+  },
+  {
+    "n": 4,
+    "group": "GKE",
+    "topic": "Cloud SQL proxy sidecar",
+    "source": "SCP13-Q37",
+    "stem": "A GKE application must connect to Cloud SQL using a private address. The private network route is already verified, and its workload identity has the required Cloud SQL permissions. The team requires proxy-managed connection authentication and encryption without managing database TLS certificates in application code. Which deployment arrangement best satisfies those requirements?",
+    "options": [
+      "Add a Cloud SQL Admin role to the node and remove connection authentication from the application.",
+      "Connect directly to the database private IP because network privacy alone satisfies the authentication and encryption requirements.",
+      "Run one proxy on a developer laptop and expose it to every production Pod.",
+      "Run the Cloud SQL Auth Proxy as a sidecar using private-IP connectivity and have the application connect through localhost."
+    ],
+    "why": "Proxy sidecar uygulamayla aynı Pod network alanında localhost sunar; private IP yolu ayrıca gerekir.",
+    "trap": "Private IP tek başına istenen proxy-managed auth/TLS mekanizması değildir.",
+    "url": "https://docs.cloud.google.com/sql/docs/mysql/connect-kubernetes-engine",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "D"
+    ],
+    "plain": "Proxy sidecar uygulamayla aynı Pod network alanında localhost sunar; private IP yolu ayrıca gerekir."
+  },
+  {
+    "n": 5,
+    "group": "Workflows",
+    "topic": "Google API connector",
+    "source": "OFFICIAL-S16-WF1",
+    "stem": "A workflow starts a supported Google Cloud API operation that returns a long-running operation. Later steps must execute only after that operation completes successfully. The associated Workflows connector supports waiting for this operation, and the workflow service account already has the necessary permissions. You want to minimize custom token handling and polling loops. What should you use?",
+    "options": [
+      "Start a continuously running VM whose only task is to poll the operation for the workflow.",
+      "Send an OIDC token to every Google API and assume it makes operations synchronous.",
+      "Use a raw HTTP request and proceed as soon as the operation name is returned.",
+      "Use the supported connector with its operation-waiting behavior and an appropriate connector timeout."
+    ],
+    "why": "Desteklenen connector auth ve long-running operation beklemesini yönetir.",
+    "trap": "Connector kapsamı kontrol edilir; her HTTP çağrısı kendiliğinden tamamlanana kadar beklemez.",
+    "url": "https://docs.cloud.google.com/workflows/docs/connectors",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "D"
+    ],
+    "plain": "Desteklenen connector auth ve long-running operation beklemesini yönetir."
+  },
+  {
+    "n": 6,
+    "group": "Buildpacks",
+    "topic": "Java runtime selection",
+    "source": "OFFICIAL-S16-BP1",
+    "stem": "A Java service is built with Google Cloud buildpacks and no Dockerfile. The repository compiles successfully with a supported JDK, but the team must consistently build with a different supported JDK major version. It wants to retain the managed buildpacks path rather than maintain a custom build image. Where should the runtime-version selection be supplied?",
+    "options": [
+      "Install the desired JDK in a pre-build shell session but let the buildpack select its runtime independently.",
+      "Change only the local developer JDK and assume remote source builds inherit it.",
+      "Supply GOOGLE_RUNTIME_VERSION to the buildpacks build environment with the supported JDK version constraint.",
+      "Set GOOGLE_RUNTIME_VERSION only on the deployed service after the build has completed."
+    ],
+    "why": "Java buildpack runtime seçimi build-time GOOGLE_RUNTIME_VERSION ile yapılır.",
+    "trap": "Runtime env mevcut image içindeki JDK kurulumunu değiştirmez.",
+    "url": "https://docs.cloud.google.com/docs/buildpacks/java",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "C"
+    ],
+    "plain": "Java buildpack runtime seçimi build-time GOOGLE_RUNTIME_VERSION ile yapılır."
+  },
+  {
+    "n": 7,
+    "group": "GKE",
+    "topic": "versioned immutable configuration",
+    "source": "SCP12-Q09",
+    "stem": "A Deployment references an immutable ConfigMap named payment-config-v1. A configuration change has been approved, and the old configuration must remain available for rollback. The team wants the new Pods to start with the revised values through its normal declarative release process. Which TWO actions should it take?",
+    "options": [
+      "Change the Deployment Pod template to reference the new ConfigMap and roll out that template.",
+      "Create a new immutable ConfigMap with a different name containing the approved values.",
+      "Patch the data of payment-config-v1 in place while leaving immutable set to true.",
+      "Delete all running Pods without changing their existing ConfigMap reference.",
+      "Set immutable to false on payment-config-v1 before editing its data."
+    ],
+    "why": "Yeni immutable kaynak oluşturulur ve Pod template referansı değişir; eski kaynak rollback için korunur.",
+    "trap": "Immutable data in-place değiştirilemez ve immutable true geri alınamaz.",
+    "url": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+    "previous": "S13 immutable ConfigMap bilgisiyle bilinçli pekiştirme; yeni kapsam sayılmaz.",
+    "answers": [
+      "A",
+      "B"
+    ],
+    "plain": "Yeni immutable kaynak oluşturulur ve Pod template referansı değişir; eski kaynak rollback için korunur."
+  },
+  {
+    "n": 8,
+    "group": "CI/CD",
+    "topic": "multi stage runtime image",
+    "source": "SCP15-Q50",
+    "stem": "A container build compiles a Go service using a compiler toolchain and then deploys the resulting image to production. Security review finds compilers and source files in the runtime image, although the service only needs its compiled executable and a small set of runtime files. You want a smaller image without changing the application behavior. What should you do?",
+    "options": [
+      "Use a multi-stage Dockerfile and copy only the required executable and runtime files into the final stage.",
+      "Delete the compiler in a later layer of the same final image and assume earlier layers no longer contain it.",
+      "Increase Cloud Build machine memory so it automatically removes unused packages.",
+      "Push the builder stage to a private repository and deploy that image unchanged."
+    ],
+    "why": "Build toolchain builder stage’de kalır; runtime stage gerekli artifactları içerir.",
+    "trap": "Sonraki layer’da silmek önceki image layer’ındaki içeriği ortadan kaldırmaz.",
+    "url": "https://docs.cloud.google.com/build/docs/optimize-builds/building-leaner-containers",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "A"
+    ],
+    "plain": "Build toolchain builder stage’de kalır; runtime stage gerekli artifactları içerir."
+  },
+  {
+    "n": 9,
+    "group": "Eventarc",
+    "topic": "bucket event routing",
+    "source": "OFFICIAL-S16-EA1",
+    "stem": "A document service on Cloud Run should run when a new object is finalized in one specific Cloud Storage bucket. Objects in other buckets must not start the service. The destination service, source bucket, locations, and required identities are already valid. You want managed event routing rather than scheduled bucket scans. What should you configure?",
+    "options": [
+      "Configure a trigger for object-deleted events and infer new uploads from deletion absence.",
+      "Create only a topic named after the bucket, with no Storage event publishing or trigger configuration.",
+      "An Eventarc Standard trigger filtered by the object-finalized event type and the source bucket, targeting the Cloud Run service.",
+      "Configure only a destination runtime service account and assume source bucket events are routed automatically."
+    ],
+    "why": "Kaynak olay türü + bucket filtresi ve hedef servis Eventarc trigger’da tanımlanır.",
+    "trap": "Pub/Sub mesajlaşma ile bir bucket olayını hedefe bağlayan trigger aynı görev değildir.",
+    "url": "https://docs.cloud.google.com/run/docs/tutorials/eventarc",
+    "previous": "S15 event teslimi ve IAM sorularından farklı: burada routing/filter seçimi ölçülür.",
+    "answers": [
+      "C"
+    ],
+    "plain": "Kaynak olay türü + bucket filtresi ve hedef servis Eventarc trigger’da tanımlanır."
+  },
+  {
+    "n": 10,
+    "group": "GKE",
+    "topic": "declarative release configuration",
+    "source": "SCP17-Q19",
+    "stem": "A service team frequently updates a GKE Deployment from CI. During incidents, engineers struggle to determine which resource settings changed because some updates are made with interactive edits. The team wants reviewed, reproducible desired configuration with a history outside the cluster. It is not introducing a GitOps controller. Which approach should it adopt?",
+    "options": [
+      "Record only the image tag and leave resource and probe settings out of version control.",
+      "Keep Deployment manifests in version control, review changes, and create or update resources with kubectl apply.",
+      "Delete the Deployment before each release and recreate it from an imperative command.",
+      "Use kubectl edit for every change and rely on shell history as the release record."
+    ],
+    "why": "Declarative manifest Git geçmişi konfigürasyon değişimini görünür ve yeniden uygulanabilir yapar.",
+    "trap": "apply tek başına sürekli drift reconciliation sağlamaz; soruda GitOps controller yok.",
+    "url": "https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "B"
+    ],
+    "plain": "Declarative manifest Git geçmişi konfigürasyon değişimini görünür ve yeniden uygulanabilir yapar."
+  },
+  {
+    "n": 11,
+    "group": "Workstations",
+    "topic": "idle versus running timeout",
+    "source": "OFFICIAL-S16-WS1",
+    "stem": "Cloud Workstations users sometimes leave their development environments running overnight. The platform team wants inactive workstations to stop after an idle interval but does not want an active debugging session stopped merely because a fixed total running duration has elapsed. Which configuration distinction matters for this requirement?",
+    "options": [
+      "Configure an idle timeout with the stop action and avoid imposing a conflicting running timeout.",
+      "Set an IDE debug-session timeout and assume it controls the workstation VM lifecycle.",
+      "Set a running timeout because it measures only inactivity rather than total running time.",
+      "Stop the workstation on a fixed daily schedule even when the developer is actively debugging."
+    ],
+    "why": "idleTimeout idle duruma, runningTimeout toplam çalışma süresine bağlıdır.",
+    "trap": "IDE/application ayarı Workstations VM yaşam döngüsü ayarı değildir.",
+    "url": "https://docs.cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "A"
+    ],
+    "plain": "idleTimeout idle duruma, runningTimeout toplam çalışma süresine bağlıdır."
+  },
+  {
+    "n": 12,
+    "group": "GKE",
+    "topic": "multiple notification channels",
+    "source": "SCP15-Q48",
+    "stem": "A Cloud Monitoring alerting policy for a production GKE service must notify an email group, an existing Slack integration, and a Pub/Sub topic used by an incident automation service. All three channel types are supported and configured. No custom payload transformation is required. You want the smallest amount of additional application infrastructure. What should you do?",
+    "options": [
+      "Attach the three notification channels to the alerting policy.",
+      "Replace all channels with a custom Cloud Run fan-out service that you operate.",
+      "Create a log sink to the Slack workspace and expect it to receive incident notifications.",
+      "Keep only email and build mail-forwarding code that publishes to Pub/Sub."
+    ],
+    "why": "Policy birden fazla native notification channel kullanabilir.",
+    "trap": "Custom fanout mümkün ama gerekmediği belirtilmiş; ek işletim yükü yaratır.",
+    "url": "https://docs.cloud.google.com/monitoring/support/notification-options",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "A"
+    ],
+    "plain": "Policy birden fazla native notification channel kullanabilir."
+  },
+  {
+    "n": 13,
+    "group": "GKE",
+    "topic": "managed Kubernetes object state metrics",
+    "source": "SCP12-Q22",
+    "stem": "An operations team monitors a GKE application using container CPU and memory metrics. It now needs supported metrics describing Kubernetes object state, including Pod phases and Deployment replica counts, in Cloud Monitoring. The cluster meets the collection prerequisites, and the team does not want to deploy its own kube-state-metrics exporter. Which managed collection capability should it enable?",
+    "options": [
+      "Keep only container CPU and memory collection enabled because resource usage metrics include every Kubernetes object state.",
+      "Enable the supported GKE kube state metrics collection packages for the required Kubernetes objects.",
+      "Create a counter of application ERROR logs and treat it as the current Deployment replica count.",
+      "Deploy a separate kube-state-metrics exporter and self-managed Prometheus server even though additional components are prohibited."
+    ],
+    "why": "GKE managed kube state metrics koleksiyonu Pod/Deployment gibi Kubernetes nesnelerinin durum metriklerini sağlar.",
+    "trap": "Container resource usage ile Kubernetes object state aynı metric grubu değildir; managed collection mevcutken kendi exporter altyapısı gerekmez.",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/kube-state-metrics",
+    "previous": "Önceki seçki kayıtlarında kaynak ID kullanılmamış; S13/S15 gövde ve kararlarıyla karşılaştırıldı. Benzer temel kavramlar yeni kapsam sayılmaz.",
+    "answers": [
+      "B"
+    ],
+    "plain": "GKE managed kube state metrics koleksiyonu Pod/Deployment gibi Kubernetes nesnelerinin durum metriklerini sağlar."
+  },
+  {
+    "n": 14,
+    "group": "CI/CD",
+    "topic": "parallel build dependency graph",
+    "source": "SCP16-Q24",
+    "stem": "A Cloud Build pipeline runs independent unit and integration tests against already available dependencies. Both test steps should begin immediately, but the packaging step must wait for both to finish successfully. Step IDs are unit and integration, and failures must stop release packaging. Which dependency configuration should you use?",
+    "options": [
+      "Omit waitFor everywhere because Cloud Build infers independence from step names.",
+      "Start packaging first and mark it allowFailure so it eventually observes completed tests.",
+      "Set waitFor: [] on every step and assume that means all steps run immediately.",
+      "Set waitFor: [\"-\"] on both tests and waitFor: [\"unit\", \"integration\"] on packaging."
+    ],
+    "why": "waitFor [-] başlangıcı, step id listesi bağımlılıkları tanımlar.",
+    "trap": "Alanı kaldırmak otomatik paralel dependency inference değildir.",
+    "url": "https://docs.cloud.google.com/build/docs/configuring-builds/configure-build-step-order",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "D"
+    ],
+    "plain": "waitFor [-] başlangıcı, step id listesi bağımlılıkları tanımlar."
+  },
+  {
+    "n": 15,
+    "group": "GKE",
+    "topic": "application layer encryption boundary",
+    "source": "SCP16-Q50",
+    "stem": "A GKE Standard cluster must keep using Kubernetes Secrets, but policy now requires an additional application-layer encryption boundary for Secret data stored in etcd using a customer-controlled Cloud KMS key. Authorized API readers are still expected to read values according to Kubernetes RBAC. Which change addresses this storage requirement?",
+    "options": [
+      "Grant KMS Decrypter to API readers but leave cluster application-layer encryption disabled.",
+      "Enable GKE application-layer secrets encryption with the Cloud KMS key and the required service-agent key access.",
+      "Use Base64 encoding and treat it as customer-controlled encryption at rest.",
+      "Restrict Secret reads with RBAC alone and treat access control as the requested additional storage encryption."
+    ],
+    "why": "GKE application-layer encryption etcd Secret verisini KMS ile korur; yetkili API okumaları ayrı RBAC konusudur.",
+    "trap": "Kaynak hatalı API-reader tehdidiyle encryption çözümünü karıştırıyordu; kapsam storage olarak düzeltildi.",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/encrypting-secrets",
+    "previous": "S15 Secret Manager sorusundan farklı koşul: Kubernetes Secrets korunacak ve customer-controlled etcd encryption isteniyor.",
+    "answers": [
+      "B"
+    ],
+    "plain": "GKE application-layer encryption etcd Secret verisini KMS ile korur; yetkili API okumaları ayrı RBAC konusudur."
+  },
+  {
+    "n": 16,
+    "group": "Identity",
+    "topic": "email link authentication",
+    "source": "SCP12-Q21",
+    "stem": "A consumer web application already uses Identity Platform. The product team wants a passwordless flow where a user supplies an email address, receives a sign-in link, and completes authentication by opening that link. Users do not need a Google account, and the team wants a built-in provider flow rather than its own token service. What should it configure?",
+    "options": [
+      "Generate unsigned user IDs in email URLs and trust them when the link is opened.",
+      "Enable email-link sign-in in the email provider and implement the supported send-link and complete-sign-in client flow.",
+      "Use SMS authentication but send the SMS verification code in an email.",
+      "Enable only Google OAuth because every email address can authenticate as a Google account."
+    ],
+    "why": "Email link yerleşik passwordless kimlik doğrulama akışıdır.",
+    "trap": "Email sahibi olmak Google OAuth hesabı sahibi olmakla aynı değil.",
+    "url": "https://firebase.google.com/docs/auth/web/email-link-auth",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "B"
+    ],
+    "plain": "Email link yerleşik passwordless kimlik doğrulama akışıdır."
+  },
+  {
+    "n": 17,
+    "group": "Workflows",
+    "topic": "subworkflow reuse scope",
+    "source": "OFFICIAL-S16-WF2",
+    "stem": "A single workflow repeats the same address-normalization steps in several branches. The team wants one implementation within that workflow definition, with explicit inputs and a returned result. It does not need to share this logic across separately deployed workflows or expose it as a network service. Which mechanism should it use?",
+    "options": [
+      "Copy the normalization steps into every branch so variables are automatically shared.",
+      "Create a separate workflow execution for each expression evaluation and reconstruct all local state.",
+      "Define a parameterized subworkflow and call it from the branches.",
+      "Create a new Eventarc trigger for each repeated normalization step."
+    ],
+    "why": "Subworkflow aynı tanım içinde yeniden kullanılabilir parametreli rutin sağlar.",
+    "trap": "Subworkflow ayrı workflow tanımları arasında global library değildir.",
+    "url": "https://docs.cloud.google.com/workflows/docs/reference/syntax/subworkflows",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "C"
+    ],
+    "plain": "Subworkflow aynı tanım içinde yeniden kullanılabilir parametreli rutin sağlar."
+  },
+  {
+    "n": 18,
+    "group": "GKE",
+    "topic": "OOMKilled versus node capacity",
+    "source": "OFFICIAL-S16-GKE1",
+    "stem": "A GKE container requests 512Mi of memory and has a 512Mi memory limit. Measurements show a legitimate, bounded startup requirement of 700Mi, followed by steady use below 400Mi. The container repeatedly terminates with OOMKilled, while node capacity is sufficient. The startup footprint cannot be reduced in this release. What should you change first?",
+    "options": [
+      "Raise the container memory limit to a validated value above the startup peak and review the request against scheduling policy.",
+      "Increase only the memory request above the unchanged 512Mi limit.",
+      "Add node capacity but leave the container at its measured-insufficient limit.",
+      "Increase HPA replicas without changing the per-container memory limit."
+    ],
+    "why": "Container memory limit aşımı OOMKilled nedeni; node boşluğu limit’i kaldırmaz.",
+    "trap": "S15 Pending/insufficient CPU’dan farklı: burada Pod yerleşmiş, container kendi memory limit’ine çarpıyor.",
+    "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "A"
+    ],
+    "plain": "Container memory limit aşımı OOMKilled nedeni; node boşluğu limit’i kaldırmaz."
+  },
+  {
+    "n": 19,
+    "group": "Gemini",
+    "topic": "unit test prompt context",
+    "source": "SCP12-Q04",
+    "stem": "A developer asks Gemini Code Assist to generate tests for a Python function selected in the editor. The proposed tests omit important behavior implemented by helper functions in another file. Those files and an approved test example are available locally. The developer wants to improve the next request without changing assistant products or making the code public. What should the developer do?",
+    "options": [
+      "Explicitly add the relevant implementation, helper, and example-test files as prompt context and request tests covering their interactions.",
+      "Accept tests that cover only the selected lines because generated tests cannot use additional file context.",
+      "Repeat the identical request with only the selected function because repeated generation guarantees discovery of every helper.",
+      "Enable private-repository customization solely to avoid attaching these already available local files."
+    ],
+    "why": "İlgili dosyaları açık context olarak eklemek eksik helper/test örneğini modele verir.",
+    "trap": "Enterprise repo indexing gerekmeden yerel prompt context kullanılabilir; testler ayrıca incelenir.",
+    "url": "https://docs.cloud.google.com/gemini/docs/codeassist/chat-gemini",
+    "previous": "Kaynak ID önceki seçkilerde kullanılmamış; benzer temel konular önceki çalışmalarda bulunabilir.",
+    "answers": [
+      "A"
+    ],
+    "plain": "İlgili dosyaları açık context olarak eklemek eksik helper/test örneğini modele verir."
+  },
+  {
+    "n": 20,
+    "group": "CI/CD",
+    "topic": "repository push identity",
+    "source": "SCP17-Q24",
+    "stem": "A Cloud Build trigger uses a dedicated build service account. Its build succeeds, but pushing the image to an existing Artifact Registry Docker repository is denied. The repository location and network path are correct. The account should push and read images but must not manage repository configuration. Which repository-level role should you grant?",
+    "options": [
+      "Grant Artifact Registry Writer to the application runtime account while leaving the build account unchanged.",
+      "Artifact Registry Writer to the build service account.",
+      "Grant repository Administrator to the build account because Writer cannot push new image tags.",
+      "Grant Artifact Registry Reader to the build account because it includes upload access."
+    ],
+    "why": "Image push yapan build SA repository üzerinde Writer ister.",
+    "trap": "Runtime identity ve build identity farklı; Reader push izni vermez.",
+    "url": "https://docs.cloud.google.com/artifact-registry/docs/access-control",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "B"
+    ],
+    "plain": "Image push yapan build SA repository üzerinde Writer ister."
+  },
+  {
+    "n": 21,
+    "group": "GKE",
+    "topic": "workload principal resource access",
+    "source": "SCP15-Q44",
+    "stem": "A GKE Autopilot Pod uses an explicitly assigned Kubernetes ServiceAccount and ADC. Workload Identity Federation is available, network access is working, and a Pub/Sub publish request reaches the API but is denied for missing permission. No IAM allow binding grants this workload access to the topic. What should you do?",
+    "options": [
+      "Grant the workload principal Pub/Sub Publisher on the intended topic using an IAM allow policy.",
+      "Create and mount a service-account JSON key because Autopilot cannot use federated workload identity.",
+      "Increase the node CPU limit so the metadata server can authorize Pub/Sub requests.",
+      "Grant the Kubernetes ServiceAccount the Workstations User role."
+    ],
+    "why": "Kimlik oluşması kaynak iznini kendiliğinden vermez; workload principal topic publisher olmalı.",
+    "trap": "KSA atamak tek başına Pub/Sub IAM izni sağlamaz.",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/workload-identity",
+    "previous": "Önceki IAM zincirlerinin bilinçli pekiştirmesi; farklı hedef Pub/Sub.",
+    "answers": [
+      "A"
+    ],
+    "plain": "Kimlik oluşması kaynak iznini kendiliğinden vermez; workload principal topic publisher olmalı."
+  },
+  {
+    "n": 22,
+    "group": "GKE",
+    "topic": "event driven scale to zero",
+    "source": "SCP14-Q25",
+    "stem": "A GKE worker Deployment consumes jobs from Pub/Sub only during short daily bursts. The team wants zero worker replicas when the subscription is idle and automatic activation when messages arrive. It currently uses only a conventional CPU-utilization HPA, which cannot observe CPU when no worker exists. Installing a supported event-driven autoscaler and granting it metric access are approved. What should it configure?",
+    "options": [
+      "Keep only the CPU-utilization HPA and lower its CPU target until it can observe metrics from zero Pods.",
+      "Set the worker Deployment replicas to zero permanently and expect Pub/Sub to create Kubernetes Pods without a scaler.",
+      "Use KEDA with an appropriate Pub/Sub event-source scaler to activate workers from zero and scale them with demand.",
+      "Convert the Deployment to a StatefulSet because that change alone gives CPU HPA event-based activation from zero."
+    ],
+    "why": "KEDA event source metriğiyle sıfır replica durumundan aktivasyon ve tekrar idle durumda sıfıra iniş sağlar.",
+    "trap": "CPU metriği sıfır Pod durumunda yoktur; Kubernetes HPA scale-to-zero hakkında tüm yapılandırmalara genelleme yapılmaz, soru conventional CPU HPA ile sınırlandırıldı.",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/tutorials/scale-to-zero-using-keda",
+    "previous": "Önceki seçki kayıtlarında kaynak ID kullanılmamış; S13/S15 gövde ve kararlarıyla karşılaştırıldı. Benzer temel kavramlar yeni kapsam sayılmaz.",
+    "answers": [
+      "C"
+    ],
+    "plain": "KEDA event source metriğiyle sıfır replica durumundan aktivasyon ve tekrar idle durumda sıfıra iniş sağlar."
+  },
+  {
+    "n": 23,
+    "group": "Buildpacks",
+    "topic": "Python startup entrypoint",
+    "source": "OFFICIAL-S16-BP2",
+    "stem": "A supported Python service is built by Google Cloud buildpacks without a Dockerfile. The generated image starts the wrong application module because the project uses a non-default module name. The team knows the correct server command and wants to keep the managed buildpack. How should it configure the command used by the resulting image?",
+    "options": [
+      "Change only the build worker service account and rely on it to choose the application module.",
+      "Rename the source module after the build and leave the generated image unchanged.",
+      "Set GOOGLE_ENTRYPOINT to the desired command in the build environment and rebuild the image.",
+      "Set GOOGLE_ENTRYPOINT only in the running service environment without rebuilding or explicitly overriding its command."
+    ],
+    "why": "GOOGLE_ENTRYPOINT buildpack tarafından startup command üretiminde kullanılır.",
+    "trap": "Builder customization ile runtime IAM birbirinin alternatifi değildir.",
+    "url": "https://docs.cloud.google.com/docs/buildpacks/python",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "C"
+    ],
+    "plain": "GOOGLE_ENTRYPOINT buildpack tarafından startup command üretiminde kullanılır."
+  },
+  {
+    "n": 24,
+    "group": "GKE",
+    "topic": "metrics and logs dashboard",
+    "source": "SCP15-Q55",
+    "stem": "A GKE service already exports container metrics and structured application logs to Google Cloud. The on-call team wants one custom dashboard showing Pod memory usage beside relevant application log entries. It does not need a new metrics backend or cross-dataset analytics pipeline. What should it configure?",
+    "options": [
+      "Add complete log messages as metric labels and use only a metric chart for both data types.",
+      "Create a Logs Explorer query only and assume it also creates the requested metric widget.",
+      "Export every metric and log to BigQuery before building any dashboard because Monitoring cannot show logs.",
+      "A Cloud Monitoring custom dashboard with a container-memory chart and a logs panel filtered to the workload."
+    ],
+    "why": "Custom dashboard native metric chart ve logs panel içerebilir.",
+    "trap": "Kaynak iframe/customize UI varsayımı yerine belgelenmiş logs panel kullanıldı.",
+    "url": "https://docs.cloud.google.com/monitoring/charts/view-logs",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "D"
+    ],
+    "plain": "Custom dashboard native metric chart ve logs panel içerebilir."
+  },
+  {
+    "n": 25,
+    "group": "Workstations",
+    "topic": "developer access role",
+    "source": "OFFICIAL-S16-WS2",
+    "stem": "A workstation administrator has created a Cloud Workstations environment for a new developer. The developer should connect to and use that workstation but must not change workstation configurations or administer other users. Existing network connectivity is valid, and the developer already has project-level Workstations Operation Viewer. Which IAM approach best matches the intended access?",
+    "options": [
+      "Grant Cloud Workstations Creator on the configuration instead of the role for using an existing workstation.",
+      "Grant only Workstations Operation Viewer and expect it to authorize workstation use.",
+      "Grant Workstations Admin on the project to every workstation user.",
+      "Grant the developer the Cloud Workstations User role at the appropriate workstation scope."
+    ],
+    "why": "Workstations User workstation kullanım erişimidir; config yönetimi ayrıdır.",
+    "trap": "Workstations User workstation kapsamındadır; gerekli project-level Operation Viewer soruda zaten verilmiştir.",
+    "url": "https://docs.cloud.google.com/workstations/docs/access-control",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "D"
+    ],
+    "plain": "Workstations User workstation kullanım erişimidir; config yönetimi ayrıdır."
+  },
+  {
+    "n": 26,
+    "group": "CI/CD",
+    "topic": "cleanup keep versus delete",
+    "source": "SCP17-Q08",
+    "stem": "An Artifact Registry Docker repository accumulates old build images. The team wants images older than 90 days deleted automatically, except images with tags beginning release-, which must be retained regardless of age. It wants to preview the affected artifacts before enabling deletion. Which configuration best satisfies the policy?",
+    "options": [
+      "Use versionPrefixes to match Docker release tags and skip a separate keep policy.",
+      "Enable immutable tags because immutability automatically deletes old untagged images.",
+      "Configure only an age-based delete policy because tagged artifacts are always excluded from cleanup.",
+      "Configure a conditional delete policy for age, a keep policy matching the release- tag prefix, and validate the result in dry-run mode."
+    ],
+    "why": "Delete age koşulu ile keep tagPrefixes birlikte kullanılır; keep eşleşmesi korunur, dry-run önizler.",
+    "trap": "Kaynak versionPrefixes’i Docker tag prefix ile karıştırıyordu; tagPrefixes doğru alan.",
+    "url": "https://docs.cloud.google.com/artifact-registry/docs/repositories/cleanup-policy",
+    "previous": "Kaynak ID önceki seçkilerde kullanılmamış; benzer temel konular önceki çalışmalarda bulunabilir.",
+    "answers": [
+      "D"
+    ],
+    "plain": "Delete age koşulu ile keep tagPrefixes birlikte kullanılır; keep eşleşmesi korunur, dry-run önizler."
+  },
+  {
+    "n": 27,
+    "group": "GKE",
+    "topic": "IDE target Kubernetes context",
+    "source": "SCP16-Q04",
+    "stem": "A developer has both a local minikube cluster and a production GKE context in kubeconfig. Cloud Code can build the application, but the next development run must deploy only to minikube. The local cluster is running and accessible. Which action controls where the Kubernetes resources are deployed?",
+    "options": [
+      "Select a local namespace name but leave the production Kubernetes context selected.",
+      "Start minikube but leave Cloud Code explicitly targeting the production context.",
+      "Select the minikube Kubernetes context in the Cloud Code run configuration before starting the development run.",
+      "Change the image repository region and assume it selects a local Kubernetes cluster."
+    ],
+    "why": "Kubernetes context hedef cluster/kimlik/namespace bağlamını seçer.",
+    "trap": "Namespace veya image tag fiziksel hedef cluster’ı değiştirmez.",
+    "url": "https://docs.cloud.google.com/code/docs/vscode/deploying-a-k8-app",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "C"
+    ],
+    "plain": "Kubernetes context hedef cluster/kimlik/namespace bağlamını seçer."
+  },
+  {
+    "n": 28,
+    "group": "Data",
+    "topic": "Firestore cache metadata",
+    "source": "SCP17-Q15",
+    "stem": "A Firestore mobile client uses offline persistence and an active snapshot listener. The UI must identify cached results and update its status when the snapshot becomes server-confirmed, even if document contents are unchanged. Which TWO parts of the listener implementation satisfy this requirement?",
+    "options": [
+      "Treat hasPendingWrites=false as proof that the snapshot is current server data.",
+      "Compare document timestamps to the device clock and ignore snapshot metadata.",
+      "Request metadata-change events so a metadata-only transition can update the UI.",
+      "Inspect the snapshot metadata fromCache value to label cache versus server results.",
+      "Assume any available network interface proves every snapshot was read from the server."
+    ],
+    "why": "fromCache kaynağı belirtir; includeMetadataChanges metadata-only değişimi bildirir.",
+    "trap": "hasPendingWrites local write durumudur; network bağlantısı snapshot kaynağını kanıtlamaz.",
+    "url": "https://firebase.google.com/docs/firestore/query-data/listen",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "C",
+      "D"
+    ],
+    "plain": "fromCache kaynağı belirtir; includeMetadataChanges metadata-only değişimi bildirir."
+  },
+  {
+    "n": 29,
+    "group": "Workflows",
+    "topic": "OIDC audience boundary",
+    "source": "OFFICIAL-S16-WF3",
+    "stem": "A workflow service account has Cloud Run Invoker on a private Cloud Run service. A call still fails authentication because the OIDC token audience was configured for another service. Routing and permissions are verified. The request includes an application-specific URL path. Which change addresses the authentication issue?",
+    "options": [
+      "Give the destination runtime account Workflows Invoker on the source workflow.",
+      "Replace the bearer token with a caller-controlled email header.",
+      "Configure OIDC authentication with the expected audience of the destination Cloud Run service, rather than the unrelated service.",
+      "Grant the workflow service account Project Owner and keep the wrong audience."
+    ],
+    "why": "Invoker IAM hakkı doğru olsa da token audience hedefle uyuşmalı.",
+    "trap": "S15 sorusunda audience doğru kabul edilmişti; burada hata özellikle audience.",
+    "url": "https://docs.cloud.google.com/workflows/docs/authenticate-from-workflow",
+    "previous": "S15 Q35 kimlik zincirinden farklı: IAM yeterli, token audience hatalı.",
+    "answers": [
+      "C"
+    ],
+    "plain": "Invoker IAM hakkı doğru olsa da token audience hedefle uyuşmalı."
+  },
+  {
+    "n": 30,
+    "group": "GKE",
+    "topic": "readiness versus liveness",
+    "source": "OFFICIAL-S16-GKE2",
+    "stem": "A GKE web container starts successfully but occasionally cannot serve requests while refreshing an internal cache. Restarting it during that short interval makes recovery slower. The application exposes a health endpoint that indicates whether it can currently accept requests. You want traffic withheld temporarily while the process remains running. Which probe should use that endpoint?",
+    "options": [
+      "A readiness probe that fails while the application cannot serve traffic.",
+      "Use a liveness probe to restart the container whenever the cache refresh temporarily blocks requests.",
+      "Increase initialDelaySeconds but leave no readiness check for later cache-refresh intervals.",
+      "Use only a startup probe and expect it to keep controlling traffic after initial startup succeeds."
+    ],
+    "why": "Readiness trafik almayı, liveness restart kararını yönetir.",
+    "trap": "Geçici trafik dışına alma için process restart gerekmiyor.",
+    "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "A"
+    ],
+    "plain": "Readiness trafik almayı, liveness restart kararını yönetir."
+  },
+  {
+    "n": 31,
+    "group": "Eventarc",
+    "topic": "independent consumers and triggers",
+    "source": "OFFICIAL-S16-EA2",
+    "stem": "An order service publishes business events to a Pub/Sub topic. A billing worker must pull messages independently, while a separate Cloud Run audit service should be invoked through Eventarc when a message is published. Both consumers must receive the events rather than compete for one shared backlog. Which design is appropriate?",
+    "options": [
+      "Remove Pub/Sub because Eventarc cannot receive published-message events.",
+      "Run both consumers against the same pull subscription and assume each receives every message.",
+      "Keep a dedicated pull subscription for billing and configure a separate Eventarc Pub/Sub trigger for the audit service.",
+      "Configure only a Cloud Monitoring threshold on topic size and use it as a per-message trigger."
+    ],
+    "why": "Bağımsız tüketim için ayrı subscription/trigger teslim yolları gerekir; Eventarc Pub/Sub kaynağı destekler.",
+    "trap": "Aynı subscription tüketicileri işi paylaşır; her biri bütün mesajları almaz.",
+    "url": "https://docs.cloud.google.com/eventarc/standard/docs/overview",
+    "previous": "S15 sonrası konuşulan Eventarc/PubSub ayrımına bilinçli uygulama; yeni kapsam değil.",
+    "answers": [
+      "C"
+    ],
+    "plain": "Bağımsız tüketim için ayrı subscription/trigger teslim yolları gerekir; Eventarc Pub/Sub kaynağı destekler."
+  },
+  {
+    "n": 32,
+    "group": "CI/CD",
+    "topic": "canary phase advancement",
+    "source": "SCP18-Q10",
+    "stem": "A Cloud Deploy release is rolling out to a Cloud Run production target that already has a stable revision. Its configured canary stages are 10%, 50%, and stable. The rollout has completed the 10% stage successfully and is waiting for manual progression. You want this same rollout to enter its next canary phase. Which operation fits?",
+    "options": [
+      "Create a new release from another image because an existing rollout cannot progress.",
+      "Delete the stable revision so the new revision automatically receives exactly 50% of traffic.",
+      "Advance the rollout to its next phase after checking the current phase results.",
+      "Promote the release to a different target solely to move from 10% to 50% in this target."
+    ],
+    "why": "Rollout phase advance aynı hedefte canary aşamasını ilerletir; promote sonraki hedefe geçer.",
+    "trap": "Automatic traffic control aşama trafiğini yönetir; her fazın kendi kendine ilerlemesi ayrı automation konusudur.",
+    "url": "https://docs.cloud.google.com/deploy/docs/deployment-strategies/manage-rollout",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "C"
+    ],
+    "plain": "Rollout phase advance aynı hedefte canary aşamasını ilerletir; promote sonraki hedefe geçer."
+  },
+  {
+    "n": 33,
+    "group": "GKE",
+    "topic": "bounded batch Job execution",
+    "source": "OFFICIAL-S16-GKE3",
+    "stem": "A one-time migration runs on GKE as a Kubernetes Job. The migration is safe to retry, but a persistent failure must not create replacement Pods indefinitely. The container uses restartPolicy: Never, and the team wants the Job controller to stop retrying after its configured retry budget is exhausted. Which Job setting controls that failure budget?",
+    "options": [
+      "Set only a readiness probe and assume it limits failed Job replacements.",
+      "Set activeDeadlineSeconds only and assume it counts failed attempts rather than elapsed time.",
+      "Set an appropriate backoffLimit on the Job.",
+      "Set restartPolicy: Never alone and assume the Job controller will never create a replacement Pod."
+    ],
+    "why": "Job backoffLimit başarısızlık retry bütçesidir; restartPolicy Never yalnız aynı Pod container restart davranışını belirler.",
+    "trap": "restartPolicy Never Job controller’ın replacement Pod oluşturmasını tek başına durdurmaz.",
+    "url": "https://kubernetes.io/docs/concepts/workloads/controllers/job/",
+    "previous": "Kaynak ID önceki seçkilerde kullanılmamış; benzer temel konular önceki çalışmalarda bulunabilir.",
+    "answers": [
+      "C"
+    ],
+    "plain": "Job backoffLimit başarısızlık retry bütçesidir; restartPolicy Never yalnız aynı Pod container restart davranışını belirler."
+  },
+  {
+    "n": 34,
+    "group": "Tasks",
+    "topic": "task creation deduplication",
+    "source": "SCP16-Q47",
+    "stem": "A producer calls CreateTask for a monthly subscription renewal but loses the response because of a network interruption. It cannot tell whether creation succeeded and must retry without creating a second task for the same subscription and month. Different renewal months remain separate work items. Which task-naming strategy should it use?",
+    "options": [
+      "Use a deterministic task ID derived from subscription ID and renewal month, within the supported task-name deduplication window.",
+      "Use only the subscription ID forever so all future months are treated as the same renewal.",
+      "Allow a fresh random task ID on every retry and reduce dispatch concurrency to one.",
+      "Set maxAttempts to one and assume it deduplicates CreateTask requests."
+    ],
+    "why": "Stable business işlem anahtarı aynı creation retry’sinde aynı task adı üretir.",
+    "trap": "Bu creation dedup; handler redelivery idempotency hâlâ ayrı gereksinimdir.",
+    "url": "https://docs.cloud.google.com/tasks/docs/creating-http-target-tasks",
+    "previous": "S15 Q14 ile bilinçli ayrım: orada handler redelivery, burada CreateTask belirsizliği.",
+    "answers": [
+      "A"
+    ],
+    "plain": "Stable business işlem anahtarı aynı creation retry’sinde aynı task adı üretir."
+  },
+  {
+    "n": 35,
+    "group": "Data",
+    "topic": "Firestore emulator test scope",
+    "source": "SCP16-Q44",
+    "stem": "A web client relies on Firestore Security Rules and document queries. The team wants local automated integration tests that exercise allow and deny rules without touching a real project database. Unit mocks do not cover these checks. Which test environment should it use?",
+    "options": [
+      "Use the server Admin SDK against production and assume it enforces client Security Rules.",
+      "Replace every database call with a stub and consider the security rules tested.",
+      "Run the Firestore emulator, load the intended rules, and connect the client or rules-testing library to it with isolated test data.",
+      "Connect a Firestore client to the Bigtable emulator because both use document-like data."
+    ],
+    "why": "Firestore emulator + rules-aware client/test library izin/red testlerini yerelde çalıştırır.",
+    "trap": "Server Admin SDK Security Rules’ı bypass eder; kaynak Node backend varsayımı bu yüzden düzeltildi.",
+    "url": "https://firebase.google.com/docs/rules/unit-tests",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "C"
+    ],
+    "plain": "Firestore emulator + rules-aware client/test library izin/red testlerini yerelde çalıştırır."
+  },
+  {
+    "n": 36,
+    "group": "GKE",
+    "topic": "planned disruption budget",
+    "source": "OFFICIAL-S16-GKE4",
+    "stem": "A GKE service has three healthy replicas. During planned node drains, the team wants voluntary evictions to preserve at least two available replicas. It understands that this policy does not prevent every outage or constrain the Deployment controller rolling update itself. Which Kubernetes resource expresses this requirement?",
+    "options": [
+      "A PodDisruptionBudget selecting the service Pods with minAvailable set to 2.",
+      "Set the Deployment replica count to two and assume that prevents all voluntary evictions.",
+      "Use a readiness probe alone and assume it rejects voluntary eviction requests.",
+      "Set rollingUpdate.maxUnavailable to one and treat it as the node-drain eviction policy."
+    ],
+    "why": "PDB voluntary eviction için availability bütçesi belirler.",
+    "trap": "PDB her arızayı engellemez; rollout availability rollingUpdate ile ayrı yönetilir.",
+    "url": "https://kubernetes.io/docs/concepts/workloads/pods/disruptions/",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "A"
+    ],
+    "plain": "PDB voluntary eviction için availability bütçesi belirler."
+  },
+  {
+    "n": 37,
+    "group": "GKE",
+    "topic": "Cloud Code debugger setup",
+    "source": "SCP16-Q48",
+    "stem": "A developer uses Cloud Code in VS Code to debug a multi-container application on GKE. The relevant container languages and images support the documented Cloud Code debugging workflow, and cluster permissions are already configured. The developer wants to avoid manually preparing each debug connection. Which setup does Cloud Code manage as part of its supported Kubernetes debugging workflow?",
+    "options": [
+      "Expose every debug port through a public LoadBalancer Service because Cloud Code cannot forward local debugger connections.",
+      "Use Skaffold debugging support to prepare supported language debug settings and handle debug-port forwarding and debugger attachment.",
+      "Use application log streaming as a replacement for attaching a language debugger, without preparing debug settings.",
+      "Grant Project Owner to the container runtime identity so a normal run automatically becomes an IDE debugging session."
+    ],
+    "why": "Cloud Code skaffold debug üzerinden desteklenen runtime debug ayarları, port forwarding ve debugger bağlantısını yönetir.",
+    "trap": "Kaynakta gereğinden geniş tüm container/source mapping iddiası vardı; desteklenen runtime ve dokümante workflow ile sınırlandırıldı.",
+    "url": "https://docs.cloud.google.com/code/docs/vscode/debug",
+    "previous": "Önceki seçki kayıtlarında kaynak ID kullanılmamış; S13/S15 gövde ve kararlarıyla karşılaştırıldı. Benzer temel kavramlar yeni kapsam sayılmaz.",
+    "answers": [
+      "B"
+    ],
+    "plain": "Cloud Code skaffold debug üzerinden desteklenen runtime debug ayarları, port forwarding ve debugger bağlantısını yönetir."
+  },
+  {
+    "n": 38,
+    "group": "CI/CD",
+    "topic": "images build result provenance",
+    "source": "SCP13-Q07",
+    "stem": "A Cloud Build pipeline builds a container image and pushes it with an explicit docker push step. The team also requires Cloud Build-generated provenance for the image and a corresponding image entry in build results. The image is stored in Artifact Registry and the build is eligible for provenance. Which configuration should it use?",
+    "options": [
+      "Keep only docker push and assume every externally pushed artifact receives Cloud Build provenance.",
+      "Declare the built image under the top-level images field and request verified provenance using options.requestedVerifyOption: VERIFIED.",
+      "Enable Binary Authorization and assume it creates missing build provenance during admission.",
+      "Put the image name in an application log line and let Cloud Logging generate the provenance."
+    ],
+    "why": "images alanı Cloud Build’in image artifact yönetimini sağlar; VERIFIED provenance gereksinimini doğrular.",
+    "trap": "Binary Authorization kanıtı denetler; build provenance üretiminin yerine geçmez.",
+    "url": "https://docs.cloud.google.com/build/docs/securing-builds/generate-validate-build-provenance",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "B"
+    ],
+    "plain": "images alanı Cloud Build’in image artifact yönetimini sağlar; VERIFIED provenance gereksinimini doğrular."
+  },
+  {
+    "n": 39,
+    "group": "Workstations",
+    "topic": "persistent home versus VM lifecycle",
+    "source": "OFFICIAL-S16-WS3",
+    "stem": "A developer stores a project under the configured persistent /home directory of a Cloud Workstation. The workstation is stopped overnight and started again with the same configuration and persistent disk. The team wants the project to survive without rebuilding the container image. Which statement correctly explains the expected behavior?",
+    "options": [
+      "Every saved file automatically becomes a new layer in the shared workstation image.",
+      "The persistent home disk retains the project across stop/start; the development container image need not contain the changed project files.",
+      "Stopping the workstation necessarily deletes its persistent home disk and all user projects.",
+      "The project survives only if its contents are copied into the workstation machine-type setting."
+    ],
+    "why": "Persistent home kullanıcı verisini image’dan ayrı tutar; aynı diskle stop/start korunur.",
+    "trap": "VM yaşam döngüsü ile persistent disk/image yaşam döngüsü aynı değildir.",
+    "url": "https://docs.cloud.google.com/workstations/docs/architecture",
+    "previous": "S15 Q26 home mount konusunun bilinçli pekiştirmesi.",
+    "answers": [
+      "B"
+    ],
+    "plain": "Persistent home kullanıcı verisini image’dan ayrı tutar; aynı diskle stop/start korunur."
+  },
+  {
+    "n": 40,
+    "group": "GKE",
+    "topic": "Service selector endpoints",
+    "source": "OFFICIAL-S16-GKE5",
+    "stem": "A GKE Service returns no backend responses after a label refactor. The application Pods are Running and Ready, and direct Pod-IP requests succeed. The Service selector still matches app=checkout, but the intended Pods now have app=checkout-api. No network policy blocks the traffic. What should you correct first?",
+    "options": [
+      "Switch to LoadBalancer and assume external exposure bypasses selector matching.",
+      "Align the Service selector with the intended Pod labels and verify that the corresponding endpoints appear.",
+      "Change the Service port while leaving the selector mismatched with every intended Pod.",
+      "Increase replica count without correcting the labels used by the selector."
+    ],
+    "why": "Service selector hedef Pod kümesini belirler; yanlış label endpoint oluşturmaz.",
+    "trap": "Ingress veya replica sayısı düzeltmek yanlış selector eşleşmesini çözmez.",
+    "url": "https://kubernetes.io/docs/concepts/services-networking/service/",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "B"
+    ],
+    "plain": "Service selector hedef Pod kümesini belirler; yanlış label endpoint oluşturmaz."
+  },
+  {
+    "n": 41,
+    "group": "Workflows",
+    "topic": "catch failure versus success",
+    "source": "OFFICIAL-S16-WF4",
+    "stem": "A workflow catches an exception from a required payment-confirmation call, writes a diagnostic log, and then returns status=completed. Operators see successful executions even though confirmation failed. Retrying the payment is outside this workflow and must be handled by a recovery process. How should the workflow preserve an accurate failure outcome?",
+    "options": [
+      "Grant the workflow account Logging Admin so ERROR log entries terminate executions.",
+      "Increase Eventarc delivery retention so a successfully started execution is marked failed automatically.",
+      "Return status=completed with HTTP 200 and rely on the log severity to change execution state.",
+      "Log the context and re-raise the caught error, or raise an explicit failure, rather than return a normal completion result."
+    ],
+    "why": "Caught error normal return ile yutulursa execution başarılı bitebilir; raise failure durumunu korur.",
+    "trap": "Log severity workflow execution sonucunu kendiliğinden değiştirmez.",
+    "url": "https://docs.cloud.google.com/workflows/docs/reference/syntax/catching-errors",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "D"
+    ],
+    "plain": "Caught error normal return ile yutulursa execution başarılı bitebilir; raise failure durumunu korur."
+  },
+  {
+    "n": 42,
+    "group": "GKE",
+    "topic": "namespace scoped IAM principal set",
+    "source": "SCP17-Q13",
+    "stem": "Several GKE workloads use distinct Kubernetes ServiceAccounts in the namespace reporting. They all need the same read permission on one Cloud Storage bucket. Security explicitly approves this access for all workloads in that namespace across clusters sharing the project workload identity pool. Workload Identity Federation is configured. How can the team express the grant with one IAM binding while preserving the distinct ServiceAccounts?",
+    "options": [
+      "Grant the bucket role to the node service account and assume namespaces limit which Pods inherit that node identity.",
+      "Replace all ServiceAccounts with one shared Kubernetes ServiceAccount, despite the requirement to preserve separate identities.",
+      "Create a Kubernetes RoleBinding in reporting and expect Kubernetes RBAC alone to grant Cloud Storage bucket IAM permissions.",
+      "Grant the bucket read role to the Workload Identity Federation namespace principalSet for reporting in the project workload identity pool."
+    ],
+    "why": "Namespace principalSet aynı project workload identity pool içindeki o namespace workload kümesine tek IAM binding ile izin verir.",
+    "trap": "Namespace principalSet cluster ayrımı yapmaz; bu kapsam soruda açıkça onaylandı. Kubernetes RBAC Cloud Storage IAM izninin yerine geçmez.",
+    "url": "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/workload-identity",
+    "previous": "Önceki seçki kayıtlarında kaynak ID kullanılmamış; S13/S15 gövde ve kararlarıyla karşılaştırıldı. Benzer temel kavramlar yeni kapsam sayılmaz.",
+    "answers": [
+      "D"
+    ],
+    "plain": "Namespace principalSet aynı project workload identity pool içindeki o namespace workload kümesine tek IAM binding ile izin verir."
+  },
+  {
+    "n": 43,
+    "group": "Buildpacks",
+    "topic": "reproducible source build inputs",
+    "source": "OFFICIAL-S16-BP3",
+    "stem": "A supported Python application is built with Google Cloud buildpacks. Developers report dependency drift because requirements use broad ranges and each build can resolve different versions. The runtime family is already approved, and the team wants dependency changes reviewed with source changes. Which TWO practices directly address this reproducibility requirement?",
+    "options": [
+      "Install dependency updates only inside running containers without recording or rebuilding the source inputs.",
+      "Reuse a mutable latest image tag as the only record of resolved dependency versions.",
+      "Commit an appropriately pinned dependency manifest or supported lockfile used by the selected package manager.",
+      "Select the same runtime family but leave dependency version ranges broad and assume runtime selection pins packages.",
+      "Review dependency updates in version control and rebuild the image through the normal pipeline."
+    ],
+    "why": "Versiyonlanmış pinned dependency input ve kontrollü rebuild bağımlılık değişimini görünür yapar.",
+    "trap": "Scale veya live container değişikliği build input reproducibility sağlamaz.",
+    "url": "https://docs.cloud.google.com/docs/buildpacks/python",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "C",
+      "E"
+    ],
+    "plain": "Versiyonlanmış pinned dependency input ve kontrollü rebuild bağımlılık değişimini görünür yapar."
+  },
+  {
+    "n": 44,
+    "group": "GKE",
+    "topic": "rolling update capacity",
+    "source": "OFFICIAL-S16-GKE6",
+    "stem": "A Deployment has four replicas. During an application rolling update, at least four ready replicas must remain available, and the cluster can temporarily host one additional Pod. Readiness probes accurately report readiness, and no other disruption is occurring. Which rollingUpdate settings match the requirement?",
+    "options": [
+      "Set maxUnavailable to one and maxSurge to zero.",
+      "Set maxUnavailable to 0 and maxSurge to 1.",
+      "Use a PodDisruptionBudget alone and leave the Deployment rollingUpdate settings at values that permit fewer than four available replicas.",
+      "Set maxSurge to zero and maxUnavailable to four."
+    ],
+    "why": "0 unavailable mevcut availability’yi korur; 1 surge önce yeni Pod için yer sağlar.",
+    "trap": "PDB Deployment rolling update stratejisinin yerine geçmez.",
+    "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "B"
+    ],
+    "plain": "0 unavailable mevcut availability’yi korur; 1 surge önce yeni Pod için yer sağlar."
+  },
+  {
+    "n": 45,
+    "group": "Gemini",
+    "topic": "investigation follow up",
+    "source": "SCP14-Q41",
+    "stem": "A Gemini Cloud Assist investigation has completed and presented observations about an application latency increase. The on-call engineer wants to ask follow-up questions about those findings in the Google Cloud console before deciding on remediation. The feature and permissions are already available. Which action best fits this interactive investigation workflow?",
+    "options": [
+      "Use Gemini Cloud Assist chat to ask contextual follow-up questions about the findings and verify the proposed explanation against the evidence.",
+      "Restart the investigation after each question instead of using the conversational interface.",
+      "Apply every proposed change automatically because ranked hypotheses are confirmed root causes.",
+      "Export all telemetry to a new warehouse solely to ask a natural-language follow-up question."
+    ],
+    "why": "Chat bulguları takip sorularıyla incelemeyi sağlar; öneri insan tarafından kanıtla değerlendirilir.",
+    "trap": "AI hypothesis kesin kök neden veya otomatik değişiklik yetkisi değildir.",
+    "url": "https://docs.cloud.google.com/cloud-assist/chat-panel",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "A"
+    ],
+    "plain": "Chat bulguları takip sorularıyla incelemeyi sağlar; öneri insan tarafından kanıtla değerlendirilir."
+  },
+  {
+    "n": 46,
+    "group": "CI/CD",
+    "topic": "environment build substitutions",
+    "source": "SCP15-Q41",
+    "stem": "A team uses one Cloud Build configuration for development and staging. The steps are identical, but the Artifact Registry repository name differs by environment. The repository value is nonsecret and must be visible in the trigger configuration. Which approach avoids duplicating the whole build file?",
+    "options": [
+      "Use a user-defined substitution such as _REPOSITORY in the build configuration and set its value per trigger.",
+      "Put the repository name in Secret Manager and have every step discover it independently.",
+      "Use the runtime Cloud Run service account email as an automatic repository-routing rule.",
+      "Create a separate hand-edited build file for every repository and compare them manually."
+    ],
+    "why": "User-defined substitutions aynı build recipe’ye ortam değeri geçirir.",
+    "trap": "Nonsecret config için secret mekanizması veya duplicate recipe gereksizdir.",
+    "url": "https://docs.cloud.google.com/build/docs/configuring-builds/substitute-variable-values",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "A"
+    ],
+    "plain": "User-defined substitutions aynı build recipe’ye ortam değeri geçirir."
+  },
+  {
+    "n": 47,
+    "group": "Eventarc",
+    "topic": "source trigger location",
+    "source": "OFFICIAL-S16-EA3",
+    "stem": "A Cloud Storage bucket is regional in europe-west1. A team is creating an Eventarc Standard trigger for direct object-finalized events from that bucket to a supported destination. It plans to place the trigger in us-central1 because that is its usual CLI default region. The source project and permissions are otherwise correct. What should it change?",
+    "options": [
+      "Grant Project Owner to the destination runtime account to remove source-location restrictions.",
+      "Rename the bucket so its name ends in us-central1 without moving its data.",
+      "Keep the trigger in us-central1 and change only the Pub/Sub acknowledgment deadline.",
+      "Create the trigger in the location matching the regional source bucket, europe-west1."
+    ],
+    "why": "Direct Storage event trigger konumu bucket konumuyla eşleşmeli.",
+    "trap": "Hedef region ile kaynak trigger location aynı kavram değildir; IAM region kuralını kaldırmaz.",
+    "url": "https://docs.cloud.google.com/eventarc/standard/docs/workflows/route-trigger-cloud-storage",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "D"
+    ],
+    "plain": "Direct Storage event trigger konumu bucket konumuyla eşleşmeli."
+  },
+  {
+    "n": 48,
+    "group": "GKE",
+    "topic": "zone topology distribution",
+    "source": "OFFICIAL-S16-GKE7",
+    "stem": "A regional GKE cluster has suitable worker capacity in three zones. An application has three replicas, but the team wants scheduling to distribute them across zones rather than place all replicas in one zone. It wants to express placement intent in the Pod specification, with suitable labels already present on the nodes. What should it configure?",
+    "options": [
+      "Increase the Deployment replica count without expressing any zone placement policy.",
+      "Use a regional cluster alone and omit any workload placement constraints.",
+      "Set required node affinity to a single zone and assume replicas spread across all zones.",
+      "Pod topology spread constraints using topology.kubernetes.io/zone and an appropriate skew and scheduling policy."
+    ],
+    "why": "Topology spread zone label üzerinden replica yerleşimini yönlendirir.",
+    "trap": "Regional cluster tek başına her workload için istenen dağılımı garanti etmez.",
+    "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "D"
+    ],
+    "plain": "Topology spread zone label üzerinden replica yerleşimini yönlendirir."
+  },
+  {
+    "n": 49,
+    "group": "Tasks",
+    "topic": "HTTP acknowledgment boundary",
+    "source": "SCP18-Q16",
+    "stem": "A Cloud Tasks HTTP handler has durably completed its intended operation. It wants to acknowledge the task so it is removed from the queue. A developer proposes returning 429 because the service is busy after completing this request. Which response handling correctly distinguishes success from overload?",
+    "options": [
+      "Return 404 for completed tasks because all 4xx responses delete the task.",
+      "Return 429 for every completed task because Cloud Tasks treats it as successful backpressure.",
+      "Leave the connection open after completion because timeouts count as success.",
+      "Return a 2xx response for the completed task; use an appropriate non-2xx response such as 429 when the task has not been successfully completed and should be retried."
+    ],
+    "why": "2xx task başarısıdır; non-2xx veya deadline retry’ye gider.",
+    "trap": "429 special backoff sağlar ama success acknowledgment değildir.",
+    "url": "https://docs.cloud.google.com/tasks/docs/reference/rest/v2/projects.locations.queues.tasks",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "D"
+    ],
+    "plain": "2xx task başarısıdır; non-2xx veya deadline retry’ye gider."
+  },
+  {
+    "n": 50,
+    "group": "Data",
+    "topic": "Bigtable key range heatmap",
+    "source": "SCP18-Q14",
+    "stem": "A Bigtable application shows uneven latency during peak writes. The team suspects that particular row-key ranges receive most traffic and wants a visual history of access patterns across the key space before changing its schema. It does not need to export every row to an analytics system. Which diagnostic tool should it use?",
+    "options": [
+      "Add column families without examining traffic because each family automatically gets a separate compute cluster.",
+      "Key Visualizer to inspect heatmaps for hot row-key ranges over time.",
+      "Use only a table-wide average latency chart and assume it identifies individual row-key ranges.",
+      "Run a full-table export and infer hot key ranges from the number of bytes stored alone."
+    ],
+    "why": "Key Visualizer erişim örüntülerini key range/zaman ısı haritasında gösterir.",
+    "trap": "Kaynak ListHotTablets de ilgili diagnostic olabilirdi; görsel tarih ihtiyacı tek doğruyu belirginleştiriyor.",
+    "url": "https://docs.cloud.google.com/bigtable/docs/keyvis-overview",
+    "previous": "Konu tanıdık olabilir; bu soru yeni bir karar koşulu içerir. Tam semantik yenilik iddiası yok.",
+    "answers": [
+      "B"
+    ],
+    "plain": "Key Visualizer erişim örüntülerini key range/zaman ısı haritasında gösterir."
+  }
+]

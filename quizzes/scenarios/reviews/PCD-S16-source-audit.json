@@ -1,0 +1,72 @@
+{
+  "created": "2026-10-15",
+  "scheduled_use": "2026-10-17",
+  "questions": 50,
+  "source_adaptations": 30,
+  "official_supplements": 20,
+  "groups": {
+    "GKE": 20,
+    "CI/CD": 8,
+    "Data": 4,
+    "Workflows": 4,
+    "Buildpacks": 3,
+    "Eventarc": 3,
+    "Workstations": 3,
+    "Identity": 1,
+    "Gemini": 2,
+    "Tasks": 2
+  },
+  "double_questions": [
+    7,
+    28,
+    43
+  ],
+  "source_id_reuse_in_previous_selection_files": [],
+  "novelty_limit": "Source IDs compared across prior selection files. Textual similarity screening and manual close-candidate review performed. Familiar concepts and deliberate reinforcement remain; exhaustive semantic novelty is not claimed.",
+  "corrections": {
+    "2": "Source timeout answer/options were ambiguous. Explicit build cap added; top-level timeout is outside options and cannot be overridden by a longer step timeout.",
+    "15": "Source incorrectly implied KMS encryption stops authorized API readers. Threat narrowed to additional at-rest etcd protection; RBAC remains separate.",
+    "19": "Private-repository customization would repeat S13 Q32. Replaced with local explicit file context for test generation.",
+    "22": "Conventional CPU HPA scenario narrowed; KEDA provides event-based zero-to-one activation. No universal claim that every Kubernetes HPA configuration cannot scale to zero.",
+    "24": "Replaced questionable predefined dashboard UI and iframe choices with documented native custom-dashboard logs panel.",
+    "25": "Current documentation also requires Operation Viewer at project level; stem grants it already so workstation User is the missing role.",
+    "26": "Immutable tags candidate repeated S13 Q44. Replaced with cleanup policies; Docker tagPrefixes used instead of source versionPrefixes mistake.",
+    "28": "Metadata-only server/cache transition requires includeMetadataChanges as well as fromCache.",
+    "33": "Startup probe candidate repeated S12 Q36. Replaced with Job backoffLimit versus restartPolicy.",
+    "35": "Admin SDK bypasses client rules; test scenario explicitly uses rules-aware clients/testing library.",
+    "38": "Cloud Build images field and VERIFIED requested provenance, rather than Binary Authorization creating provenance.",
+    "42": "Namespace principalSet crosses clusters sharing the pool; scope explicitly approved in stem.",
+    "45": "Current Cloud Assist chat documentation replaces obsolete inaccessible Gemini investigations URL.",
+    "37": "Supported-language Cloud Code/Skaffold debug scope, not automatic support for every arbitrary container."
+  },
+  "validation": "50 numbered questions, answer-option mapping, 47 single/3 double, 2 direct Gemini, balanced single-answer positions. Technical document checks; no deployed cloud lab or empirical exam calibration.",
+  "revision": "2026-10-15: user requested S15-level GKE weighting and fewer data questions",
+  "replaced_questions": {
+    "13": {
+      "source": "SCP13-Q19",
+      "group": "Data",
+      "topic": "Spanner write hotspot"
+    },
+    "22": {
+      "source": "SCP16-Q42",
+      "group": "Data",
+      "topic": "Bigtable isolated batch compute"
+    },
+    "37": {
+      "source": "SCP13-Q12",
+      "group": "Identity",
+      "topic": "SMS second factor"
+    },
+    "42": {
+      "source": "SCP18-Q21",
+      "group": "Data",
+      "topic": "missing composite index"
+    }
+  },
+  "added_source_questions": {
+    "13": "SCP12-Q22",
+    "22": "SCP14-Q25",
+    "37": "SCP16-Q48",
+    "42": "SCP17-Q13"
+  }
+}

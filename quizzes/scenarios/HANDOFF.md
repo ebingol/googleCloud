@@ -1,5 +1,11 @@
 # Yeni sohbet buradan devam etsin
 
+## S16 Cumartesi için hazır
+
+Kullanıcı düzeltmesiyle S16 GKE 16→20, veri 7→4, Identity 2→1 olarak güncellendi. Q13/Q22/Q37/Q42 dört kullanılmamış SkillCertPro GKE adayıyla değişti; toplam 30 kaynak + 20 tamamlayıcı, 47 tek/3 çift ve 50 soru korunur. Önceki doğru cevap harfleri korunarak yeni seçenekler eşlendi. Henüz çözülmedi.
+
+15 Ekim 2026. Kullanıcının açık isteğiyle 17 Ekim Cumartesi için S16 hazır: 50 soru / 120 dakika kişisel hedef, 47 tek + Q07/Q28/Q43 çift seçim. 30 kullanılmamış kaynak ID uyarlaması + 20 resmî belge tamamlayıcısı; GKE20/CI-CD8/veri4/Workflows4/Workstations3/Buildpacks3/Eventarc3/Gemini2/Identity1/Tasks2. GKE geliştirici araçları ve gözlem konularını içerir. S13 ile aynı kararı soran partial-response, code customization ve immutable tags adayları değiştirildi; S12 startup probe adayı değiştirildi. Tanıdık mekanizmalar ve bilinçli pekiştirmeler vardır, bütünüyle yeni kapsam veya gerçek sınav zorluk eşdeğerliği iddia edilmez. İngilizce sorular ve ayrı Türkçe anahtar, reviews/PCD-S16-selection.json ve source-audit.json kayıtları hazır. 50 soru/anahtar eşleşmesi, 47+3 seçim, 2 Gemini, kaynak ID ve seçenek konumları doğrulandı; cloud lab yok. Henüz çözülmedi; puan/süre/kavrayış yok. Cumartesi cevaplar ilk tur bittikten sonra değerlendirilecek; yardım/mola ayrı kaydedilir. S15 38/50 (%76), bölümlü öğretimli çalışma ve önceki ilk sonuçlar korunur. Kullanıcı yarın 16 Ekim Cuma 21 Ekim Çarşamba için randevu almayı ve enerjisi varsa resmî sample çözmeyi planlıyor; randevu/uygunluk henüz doğrulanmadı. Otomasyon yok; yeni sonraki ID S17.
+
 ## 14 Ekim 2026 S15 hazır
 
 Kullanıcının açık isteğiyle Chrome üzerinden satın alınmış SkillCertPro bankasının 18 setinde 1.050 soru/seçenek/cevap DOM metni tarandı (başlık 1.052). Seçilen 38 adayın gövde ve platform açıklamaları ayrıntılı karşılaştırıldı; bütün bankanın her teknik açıklamasının bağımsız doğrulanması iddia edilmez. Set 1/2 boş bitirildi, Set 3 inceleme için başlatıldı; bunlar kullanıcı sınav sonuçları değildir.
