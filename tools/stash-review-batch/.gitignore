@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+reports/
+runs/
+*.zip
+cookiefile*.txt
+.env
+.env.*
+launch.py
+start_90_days.command
