@@ -1,8 +1,16 @@
-# Google Cloud — üç haftalık sınav hazırlığı
+# Google Cloud — hazırlık ve tekrar arşivi
+
+## 22 Ekim 2026 — hazırlık tamamlandı
+
+Kullanıcı Google Cloud Professional Cloud Developer sınavını geçtiğini **22 Ekim 2026** tarihinde öğrendiğini bildirdi. Sınav zorlayıcıydı ancak başarılı oldu. Ayrıntılı puan henüz elinde yok; sertifika numarası paylaşılmadı. Bu tarih sonucun öğrenildiği tarihtir; sınava giriş tarihi varsayılmaz.
+
+Aşağıdaki üç haftalık plan ve tekrar kayıtları tarihsel olarak korunur; aktif günlük hedef veya tamamlanması gereken görev değildir. Başarı sonucu son denemelerin ya da tüm quizlerin tamamlandığını göstermez. [Güncel durum](quizzes/scenarios/HANDOFF.md).
+
+## Tarihsel çalışma planı ve kayıtlar
 
 Başlangıç: 19 Eylül 2026. Sınav: Professional Cloud Developer; kesin tarih bilinmiyor. 20 Eylül'de yaklaşık üç hafta kaldığı belirtildi.
 
-**Güncel plan:** Kullanıcı 20 Eylül'de her gün bir quiz klasörü ve bir senaryo seti istedi. [Strateji](quizzes/scenarios/STRATEGY.md) ve [devam notu](quizzes/scenarios/HANDOFF.md) aşağıdaki ilk planın yerini alır. Aşağıdaki değerlendirmeler tarihsel kayıt olarak korunmuştur; “henüz okunmadı/yanıt yok” ifadeleri ilgili eski oturumun durumudur.
+**20 Eylül 2026 tarihli plan:** Kullanıcı 20 Eylül'de her gün bir quiz klasörü ve bir senaryo seti istedi. [Strateji](quizzes/scenarios/STRATEGY.md) ve [devam notu](quizzes/scenarios/HANDOFF.md) aşağıdaki ilk planın yerini alır. Aşağıdaki değerlendirmeler tarihsel kayıt olarak korunmuştur; “henüz okunmadı/yanıt yok” ifadeleri ilgili eski oturumun durumudur.
 
 ## Kaynaklar ve sınırlar
 

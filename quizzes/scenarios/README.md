@@ -1,6 +1,16 @@
-# PCD senaryo çalışmaları
+# PCD senaryo çalışmaları — hazırlık arşivi
 
-[Yeni sohbet için devam notu](HANDOFF.md) · [Günlük çalışma ve soru üretme stratejisi](STRATEGY.md) · [Soru geçmişi — hazırlayan için](QUESTION-LOG.md)
+## Güncel durum — 22 Ekim 2026
+
+Kullanıcı Google Cloud Professional Cloud Developer sınavını geçtiğini **22 Ekim 2026** tarihinde öğrendiğini bildirdi. Sınav zorlayıcıydı ancak başarılı oldu; hazırlık süreci tamamlandı. Ayrıntılı puan henüz elinde yok; sertifika numarası paylaşılmadı. [Güncel sonuç ve kayıt sınırları](HANDOFF.md).
+
+Soru setleri, ilk sonuçlar, teknik açıklamalar ve strateji geçmişi korunur. 17 Ekim için hazırlanmış S16'nın tamamlanma durumu bu bildirimle doğrulanmadı; eski “henüz çözülmedi” notu son kayıt anına aittir. Eski 21 Ekim randevu planı gerçekleşmiş sınav tarihi sayılmaz.
+
+## Tarihsel senaryo dizini ve çalışma akışı
+
+Aşağıdaki dizin, sayımlar, sonuçlar ve hazırlık notları eski kayıtları yansıtır. “Çözüm bekleniyor”, “henüz çözülmedi” ve “sonraki set” ifadeleri aktif görev değildir. Materyaller isteğe bağlı tekrar için kullanılabilir; tüm setlerin tamamlandığı varsayılmaz.
+
+[Güncel durum ve hazırlık geçmişi](HANDOFF.md) · [Arşivlenmiş çalışma stratejisi](STRATEGY.md) · [Soru geçmişi — hazırlayan için](QUESTION-LOG.md)
 
 **13 senaryo seti + 1 pekiştirme seti · 400 soru.** Bu seri, ana dizindeki 152 adet beş soruluk ders tekrar setinden ayrıdır. Ders bankasının JSON dosyasına veya mevcut çözüm puanlarına dahil edilmemiştir.
 
@@ -25,7 +35,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. S01–S11 çal�
 
 **İlk set sonrası:** [Doküman sayfaları, ilgili quizler ve bugünkü çalışma sırası](PCD-S01-review-guide.md).
 
-## Çalışma akışı
+## İsteğe bağlı tekrar akışı (eski hazırlık yöntemi)
 
 1. İlk turda cevap anahtarını ve kaynakları açmadan çöz.
 2. E/K/T güven düzeyi isteğe bağlıdır; kararsız olduğunda ikinci seçeneği belirtebilirsin. Her soruya gerekçe yazman gerekmiyor.
@@ -48,7 +58,7 @@ Sorular İngilizce; açıklamalar Türkçe ve ayrı dosyadadır. S01–S11 çal�
 
 ## Kapsam
 
-[Resmî sınav rehberi](https://services.google.com/fh/files/misc/professional_cloud_developer_exam_guide_english.pdf) 20 Eylül 2026'da kontrol edildi. Pilot kişisel çalışma önceliklerine göre dağıtılmıştır; sınavın konu ağırlıklarını taklit etmez. Soru bazındaki rehber eşleştirmesi cevap dosyasındadır. GKE, Apigee, AI ve observability gibi eksik alanlar sonraki setlerde tamamlanmalıdır.
+[Resmî sınav rehberi](https://services.google.com/fh/files/misc/professional_cloud_developer_exam_guide_english.pdf) 20 Eylül 2026'da kontrol edildi. Pilot kişisel çalışma önceliklerine göre dağıtılmıştır; sınavın konu ağırlıklarını taklit etmez. Soru bazındaki rehber eşleştirmesi cevap dosyasındadır. Bu kaydın yazıldığı dönemde GKE, Apigee, AI ve observability gibi eksik alanların sonraki setlerde tamamlanması planlanmıştı.
 
 [Ana quiz dizini](../README.md) · [Repo ana sayfası](../../README.md)
 

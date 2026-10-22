@@ -1,4 +1,14 @@
-# Günlük quiz ve senaryo stratejisi
+# Çalışma stratejisi — tamamlanan hazırlığın arşivi
+
+## Güncel durum — 22 Ekim 2026
+
+Kullanıcı Google Cloud Professional Cloud Developer sınavını geçtiğini **22 Ekim 2026** tarihinde öğrendiğini bildirdi. Sınavı zorlayıcı buldu; hazırlık süreci tamamlandı. Ayrıntılı puan henüz elinde yok, sertifika numarası paylaşılmadı. Güncel sonuç ve kayıt sınırları [HANDOFF.md](HANDOFF.md) içindedir.
+
+Günlük quiz hedefleri, son deneme ve randevu planları artık aktif değildir. Yeni set üretimi veya eski açık çalışmaları bitirme zorunluluğu yoktur; materyaller kullanıcı isterse başvuru ve tekrar için kullanılabilir. Başarı sonucu S16'nın veya diğer açık çalışmaların tamamlandığını doğrulamaz.
+
+## Tarihsel stratejiler — 15 Ekim 2026 ve öncesi
+
+Aşağıdaki planlar, öncelikler, sonuçlar ve soru hazırlama kuralları tarihsel içerikleriyle korunmuştur. “Güncel”, “sonraki adım”, “henüz çözülmedi” ve göreli tarih ifadeleri kendi oturumlarına aittir; bugünkü çalışma yönlendirmesi değildir. 21 Ekim randevu planından gerçekleşmiş sınav tarihi çıkarılmaz.
 
 ## 17 Ekim son karma deneme
 

@@ -1,4 +1,8 @@
-# Beş soruluk quizler
+# Beş soruluk quizler — hazırlık arşivi
+
+**22 Ekim 2026:** Kullanıcı Google Cloud Professional Cloud Developer sınavını geçtiğini bu tarihte öğrendiğini bildirdi; hazırlık süreci tamamlandı. Ayrıntılı puan henüz elinde yok; sertifika numarası paylaşılmadı. [Güncel durum](scenarios/HANDOFF.md).
+
+Bu dizin isteğe bağlı tekrar ve teknik başvuru için korunur. Aşağıdaki çözüm akışı bir kullanım tarifidir; aktif hazırlık görevi değildir. Sınav başarısı, çözüm takip tablosundaki veya senaryo kayıtlarındaki açık çalışmaları tamamlandı yapmaz.
 
 **152 quiz · 760 soru · 6 bölüm · 43 PDF dosyası (41 benzersiz) + paylaşılan quiz**
 
