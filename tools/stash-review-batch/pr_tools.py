@@ -13,12 +13,13 @@ import warnings
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote, unquote, urlencode, urlsplit
+from urllib.parse import quote, unquote, urlencode
 from urllib.request import Request, build_opener, HTTPSHandler, HTTPRedirectHandler
+
+from bitbucket_config import add_base_url_argument, validate_base_url
 
 ISTANBUL = timezone(timedelta(hours=3))
 REVIEW_ACTIONS = {"APPROVED", "REVIEWED", "UNAPPROVED"}
-DEFAULT_URL = "https://stash.turkcell.com.tr/git"
 
 
 class ScanError(RuntimeError):
@@ -32,10 +33,10 @@ class NoRedirect(HTTPRedirectHandler):
 
 class Client:
     def __init__(self, base, token, ca_bundle=None, cookie_file=None):
-        parts = urlsplit(base)
-        if parts.scheme != "https" or not parts.netloc or parts.username or parts.query or parts.fragment:
-            raise ScanError("--base-url must be an HTTPS application URL without credentials/query/fragment.")
-        self.base = base.rstrip("/")
+        try:
+            self.base = validate_base_url(base)
+        except ValueError as error:
+            raise ScanError(str(error)) from None
         self.token = token
         self.username = None
         self.cookie_file = str(Path(cookie_file).expanduser().resolve()) if cookie_file else None
@@ -267,7 +268,7 @@ def main(argv=None):
             stream.reconfigure(errors="replace")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=["stats", "ready"])
-    parser.add_argument("--base-url", default=DEFAULT_URL)
+    add_base_url_argument(parser)
     parser.add_argument("--months", nargs="+", default=["2026-09", "2026-10"])
     parser.add_argument("--limit", type=int, default=3)
     parser.add_argument("--output", default="reports")
@@ -281,8 +282,14 @@ def main(argv=None):
     parser.add_argument("--verify-pr", help="Known commented PR: PROJECT/REPO#ID")
     parser.add_argument("--expected-comments", type=int, default=None)
     args = parser.parse_args(argv)
+    try:
+        args.base_url = validate_base_url(args.base_url)
+    except ValueError as error:
+        parser.error(str(error))
     if not 1 <= args.workers <= 8:
         parser.error("--workers 1 ile 8 arasinda olmali")
+    if args.expected_comments is not None and not args.verify_pr:
+        parser.error("--expected-comments requires --verify-pr")
     if args.expected_comments is not None and args.expected_comments < 1:
         parser.error("--expected-comments pozitif olmali")
     if args.limit < 1:
@@ -329,8 +336,6 @@ def main(argv=None):
     from scan_engine import atomic_json, run_lock
     reference = args.verify_pr
     minimum = args.expected_comments or 1
-    if not reference and client.base == DEFAULT_URL and str(user.get("name", "")).casefold() == "tcezbingol":
-        reference, minimum = "SO471469/solid-mcp#5", args.expected_comments or 3
     check = verification(client, user, reference, minimum) if reference else {"status":"not_configured"}
     if not reference:
         print("Bilinen PR kontrolu yapilandirilmadi; isterseniz --verify-pr PROJECT/REPO#ID kullanin.")

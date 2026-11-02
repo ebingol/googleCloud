@@ -118,13 +118,14 @@ class EndToEndTests(unittest.TestCase):
              patch.object(p, 'Client', return_value=client), \
              patch.object(client, 'get', return_value=USER), \
              patch.object(client, 'pages', side_effect=pages), redirect_stdout(io.StringIO()):
-            self.assertEqual(p.main(['ready', '--output', folder]), 0)
+            self.assertEqual(p.main(['ready', '--base-url', 'https://example.org/git', '--output', folder]), 0)
             report_path = next(Path(folder).glob('*/report.json'))
             text = report_path.read_text()
             report = json.loads(text)
             self.assertEqual([r['pr'] for r in report['candidates']], ['P/r#4', 'P/r#3', 'P/r#2'])
             self.assertNotIn('secret-test-token', text)
             self.assertTrue(report['complete'])
+            self.assertEqual(report['verification'], {'status': 'not_configured'})
 
 class NativeTransportTests(unittest.TestCase):
     def test_token_stays_off_process_args_and_no_tls_bypass(self):

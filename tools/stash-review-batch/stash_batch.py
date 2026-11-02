@@ -21,6 +21,8 @@ import urllib.parse
 import urllib.request
 import zipfile
 
+from bitbucket_config import add_base_url_argument, validate_base_url
+
 TZ = dt.timezone(dt.timedelta(hours=3))
 REVIEW = {'APPROVED', 'NEEDS_WORK', 'REVIEWED'}
 
@@ -44,7 +46,7 @@ class SameOrigin(urllib.request.HTTPRedirectHandler):
 
 class API:
     def __init__(self, base, cookie_file, token):
-        self.base = base.rstrip('/')
+        self.base = validate_base_url(base)
         jar = http.cookiejar.MozillaCookieJar()
         if cookie_file:
             text = Path(cookie_file).read_text()
@@ -276,7 +278,7 @@ def main():
         return pr_tools.main(sys.argv[1:])
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('command',choices=['run','start','status','import-legacy'])
-    p.add_argument('--base-url',default='https://stash.turkcell.com.tr/git')
+    add_base_url_argument(p)
     p.add_argument('--user',required=True,help='Token/oturum sahibinin Stash kullanıcı adı')
     p.add_argument('--days',type=int,default=90)
     p.add_argument('--end')
@@ -286,7 +288,11 @@ def main():
     p.add_argument('--legacy-dir',help='Mevcut 30 günlük raporun klasörü (regresyon kontrolü)')
     args=p.parse_args()
     if args.days<1:p.error('--days pozitif olmalı')
-    if urllib.parse.urlsplit(args.base_url).scheme!='https':p.error('--base-url HTTPS olmalı')
+    if args.command != 'status':
+        try:
+            args.base_url = validate_base_url(args.base_url)
+        except ValueError as error:
+            p.error(str(error))
     out=Path(args.output).expanduser().resolve()
     if args.command=='status':
         print((out/'status.json').read_text() if (out/'status.json').exists() else 'Henüz başlatılmamış.');return 0

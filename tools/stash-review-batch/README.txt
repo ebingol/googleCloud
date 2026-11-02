@@ -1,7 +1,7 @@
 BITBUCKET PR TOOLS — Windows CMD / Python 3.10+
 
 Mevcut stash-review-batch/stash_batch.py uzerine stats ve ready komutlari
-eklenmistir. pr_tools.py ortak tarama modulu olarak ayni klasorde bulunmalidir.
+eklenmistir. pr_tools.py ve bitbucket_config.py ortak modulleri ayni klasorde bulunmalidir.
 Eski run/start/status/import-legacy komutlari da korunmustur; bunlarin eski
 dashboard kapsamli raporlari yeni stats raporuyla ayni kapsamda degildir.
 
@@ -12,11 +12,17 @@ KURULUM
 3. Kurum agina / VPN'e baglanin. CMD'de bu klasore gecin.
 
 CALISTIRMA
+Once sunucu adresini kendi ortaminda ayarla (depoya ekleme):
+  CMD: set BITBUCKET_BASE_URL=https://bitbucket.example.com/git
+  macOS/Linux: export BITBUCKET_BASE_URL=https://bitbucket.example.com/git
+Alternatif: her komutta --base-url kullan. Komut satiri ortam degiskenini ezer.
+Sunucu icin sabit varsayilan yoktur; adres eksik/gecersizse tarama baslamaz.
+
   stats.cmd
   ready.cmd
 
 Her komut once uname, sonra gizli access token ister:
-  uname (e-posta veya Bitbucket kullanici adi): ezgi.bingol@turkcell.com.tr
+  uname (e-posta veya Bitbucket kullanici adi): user@example.com
   Access token (gizli): [yazarken gorunmez]
 
 Herkes kendi e-postasi ve kendi Bitbucket PERSONAL access token'i ile kullanir.
@@ -101,7 +107,7 @@ baska adrese tasinmamasi icin reddedilir. 429/502/503/504 icin sinirli retry var
 
 TEST
   py -3 -m unittest discover -s . -v
-Bu paket yerel mock/unit testleriyle dogrulandi. Windows CMD ve Turkcell canli
+Bu paket yerel mock/unit testleriyle dogrulandi. Windows CMD ve canli Bitbucket
 REST servisinde token ile uctan uca calistirma henuz yapilmadi.
 
 API REFERANSI
@@ -146,9 +152,9 @@ Tum repo ve PR sayfalari taranir; eski acilmis PR'daki yeni yorumu kacirmamak
 icin guvenilmeyen acilis/son-guncelleme tarihi elemesi uygulanmaz. Hiz kazanci
 sinirli paralellik ve resume'da tamamlanan islerin tekrar okunmamasindan gelir.
 
-Bilinen PR kontrolu: TCEZBINGOL / Turkcell sunucusunda SOLID #5 icin en az 3
-yorum dogrulanir; kontrol basarisizsa ana tarama durur. Baska kullanicilar icin:
+Bilinen PR kontrolu istege baglidir; hesaba veya sunucuya ozel varsayilan yoktur.
+Kendi kontrol PR referansinizi acikca belirtin; kontrol basarisizsa tarama durur:
   python3 stash_batch.py stats --verify-pr "PROJECT/REPO#ID" --expected-comments 1
 Bu bir kimlik/yorum ayrisma kontroludur; tum review turlerini dogrulamaz.
-Baska kullanicilar kontrol PR'i vermediginde bu kontrolun yapilmadigi belirtilir.
+Kontrol PR'i verilmediginde bu kontrolun yapilmadigi belirtilir.
 Token veya cookie icerikleri checkpoint'e kaydedilmez.
